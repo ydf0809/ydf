@@ -1,0 +1,23 @@
+{
+  "files_checked": 189,
+  "xpr_checks": [
+    {
+      "xpr": "projects/merged_cam_lcd_voice_scnn/vivado_prj/merged_cam_lcd_voice_scnn.xpr",
+      "references": 46,
+      "missing": [],
+      "outside": [],
+      "unresolved": [],
+      "passed": true
+    },
+    {
+      "xpr": "projects/realfinal_min_102404/realfinal.xpr",
+      "references": 46,
+      "missing": [],
+      "outside": [],
+      "unresolved": [],
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "passed": true
+}

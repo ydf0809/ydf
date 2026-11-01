@@ -1,0 +1,7 @@
+tool_version=2026.1
+top=super_top
+part=xc7z020clg400-1
+wns=6.947
+whs=0.151
+drc_errors=0
+loop_warning_present=0

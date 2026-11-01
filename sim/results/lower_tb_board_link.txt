@@ -1,0 +1,101 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "[repository]/projects/realfinal_min_102404/realfinal.srcs/sources_1/new/asr_frame_decode.v" into library work
+INFO: [VRFC 10-311] analyzing module asr_frame_decode
+INFO: [VRFC 10-2263] Analyzing Verilog file "[repository]/projects/realfinal_min_102404/realfinal.srcs/sources_1/new/board_link.v" into library work
+INFO: [VRFC 10-311] analyzing module board_link
+INFO: [VRFC 10-2263] Analyzing Verilog file "[repository]/projects/realfinal_min_102404/realfinal.srcs/sources_1/new/link_demux.v" into library work
+INFO: [VRFC 10-311] analyzing module link_demux
+INFO: [VRFC 10-2263] Analyzing Verilog file "[repository]/projects/realfinal_min_102404/realfinal.srcs/sources_1/new/link_rx.v" into library work
+INFO: [VRFC 10-311] analyzing module link_rx
+INFO: [VRFC 10-2263] Analyzing Verilog file "[repository]/projects/realfinal_min_102404/realfinal.srcs/sources_1/new/link_tx.v" into library work
+INFO: [VRFC 10-311] analyzing module link_tx
+INFO: [VRFC 10-2263] Analyzing Verilog file "[repository]/projects/realfinal_min_102404/realfinal.srcs/sources_1/new/track_send.v" into library work
+INFO: [VRFC 10-311] analyzing module track_send
+INFO: [VRFC 10-2263] Analyzing Verilog file "[repository]/projects/realfinal_min_102404/realfinal.srcs/sources_1/new/uart_rx.v" into library work
+INFO: [VRFC 10-311] analyzing module uart_rx
+INFO: [VRFC 10-2263] Analyzing Verilog file "[repository]/projects/realfinal_min_102404/realfinal.srcs/sources_1/new/uart_tx.v" into library work
+INFO: [VRFC 10-311] analyzing module uart_tx
+INFO: [VRFC 10-2263] Analyzing Verilog file "[repository]/projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_board_link.v" into library work
+INFO: [VRFC 10-311] analyzing module tb_board_link
+
+Vivado Simulator v2026.1
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: D:/vivado2026.1/2026.1/Vivado/bin/unwrapped/win64.o/xelab.exe -L unisims_ver --timescale 1ns/1ps tb_board_link -s lower_tb_board_link 
+Multi-threading is on. Using 14 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module work.track_send_default
+Compiling module work.uart_rx(CLK_FREQ=33333333)
+Compiling module work.asr_frame_decode
+Compiling module work.link_rx
+Compiling module work.uart_tx(CLK_FREQ=33333333)
+Compiling module work.link_tx
+Compiling module work.board_link
+Compiling module work.link_demux_default
+Compiling module work.tb_board_link
+Built simulation snapshot lower_tb_board_link
+
+
+****** xsim v2026.1 (64-bit)
+  **** SW Build 6511674 on Tue Jun 16 11:02:23 MDT 2026
+  **** IP Build 6504888 on Tue Jun 09 09:05:25 MDT 2026
+  **** SharedData Build 6501428 on Mon Jun 08 17:34:18 MDT 2026
+  **** Start of session at: Mon Nov  2 02:43:11 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source xsim.dir/lower_tb_board_link/xsim_script.tcl
+# xsim {lower_tb_board_link} -autoloadwcfg -tclbatch {run_all.tcl}
+Time resolution is 1 ps
+source run_all.tcl
+## run all
+==================================================
+ tb_board_link: CLK_FREQ=33333333  UART_BPS=115200
+   upper(ECHO_EN=0) <--cross--> lower(ECHO_EN=1)
+   byte: bit7=0 command / bit7=1 five line sensors
+==================================================
+--- 1) upper sends command 1 ---
+[ OK ] wire carried AA 55 01 55 AA
+[ OK ] lower decoded the frame, byte=0x01
+[ OK ] upper decoded the echo, byte=0x01
+[ OK ] upper link_err stayed low
+--- 2) upper sends command 5 (CARGO) ---
+[ OK ] wire carried AA 55 05 55 AA
+[ OK ] lower decoded the frame, byte=0x05
+[ OK ] upper decoded the echo, byte=0x05
+--- 3) two commands back to back while still sending ---
+[ OK ] both commands went out, last one 0x04
+[ OK ] lower saw both commands, last one 0x04
+[ OK ] upper got both echoes, last one 0x04
+--- 4) tracking: five sensors forwarded to the lower board ---
+[ OK ] five sensors 0b10000 reached the lower board
+[ OK ] five sensors 0b00100 reached the lower board
+[ OK ] five sensors 0b00011 reached the lower board
+[ OK ] five sensors 0b10101 reached the lower board
+[ OK ] wire carried 5 tracking frames
+[ OK ] last tracking frame on the wire = 0b10101
+[ OK ] lower board saw 5 tracking updates
+--- 5) a command frame must not disturb the held pattern ---
+[ OK ] track_pat stayed 0b10101 through a command frame
+--- 6) only commands are echoed, tracking frames are not ---
+[ OK ] no tracking frame was echoed back
+[ OK ] lower echoed 5 command frames
+--- 7) broken frame injected into the upper board's RX line ---
+[ OK ] upper link_err latched high on the broken frame
+[ OK ] lower link_err stayed low
+--- 8) recovery: a good command after the error ---
+[ OK ] wire carried AA 55 02 55 AA
+[ OK ] lower decoded the frame, byte=0x02
+[ OK ] upper decoded the echo, byte=0x02
+--- 9) the lower board never talks on its own ---
+[ OK ] lower TX stayed quiet (29 tracking frames still flowing up)
+==================================================
+ RESULT: all passed (errors=0)
+==================================================
+$finish called at time : 32350846 ns : File "[repository]/projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_board_link.v" Line 522
+## quit
+INFO: [Common 17-206] Exiting xsim at Mon Nov  2 02:43:13 2026...

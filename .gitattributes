@@ -1,0 +1,12 @@
+* -text
+*.md text eol=lf
+*.py text eol=lf
+*.tcl text eol=lf
+*.json text eol=lf
+*.bit binary
+LICENSE text eol=lf
+*.csv text eol=lf
+*.rpt text eol=lf
+*.txt text eol=lf
+.gitignore text eol=lf
+.gitattributes text eol=lf

@@ -1,0 +1,67 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "[repository]/projects/realfinal_min_102404/realfinal.srcs/sources_1/imports/imported/armfinal/project_9.srcs/sources_1/new/arm_pick_place_once_top.v" into library work
+INFO: [VRFC 10-311] analyzing module arm_pick_place_once_top
+INFO: [VRFC 10-2263] Analyzing Verilog file "[repository]/projects/realfinal_min_102404/realfinal.srcs/sources_1/imports/imported/armfinal/project_9.srcs/sources_1/new/bus_servo_packet_tx.v" into library work
+INFO: [VRFC 10-311] analyzing module bus_servo_packet_tx
+INFO: [VRFC 10-2263] Analyzing Verilog file "[repository]/projects/realfinal_min_102404/realfinal.srcs/sources_1/imports/imported/armfinal/project_9.srcs/sources_1/new/bus_servo_uart_tx.v" into library work
+INFO: [VRFC 10-311] analyzing module bus_servo_uart_tx
+INFO: [VRFC 10-2263] Analyzing Verilog file "[repository]/projects/realfinal_min_102404/realfinal.srcs/sources_1/new/uart_rx.v" into library work
+INFO: [VRFC 10-311] analyzing module uart_rx
+INFO: [VRFC 10-2263] Analyzing Verilog file "[repository]/projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_arm_stop.v" into library work
+INFO: [VRFC 10-311] analyzing module tb_arm_stop
+
+Vivado Simulator v2026.1
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: D:/vivado2026.1/2026.1/Vivado/bin/unwrapped/win64.o/xelab.exe -L unisims_ver --timescale 1ns/1ps tb_arm_stop -s lower_tb_arm_stop 
+Multi-threading is on. Using 14 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module work.bus_servo_uart_tx(CLK_HZ=3333333...
+Compiling module work.bus_servo_packet_tx(CLK_HZ=33333...
+Compiling module work.arm_pick_place_once_top(CLK_HZ=3...
+Compiling module work.uart_rx(CLK_FREQ=33333333)
+Compiling module work.tb_arm_stop
+Built simulation snapshot lower_tb_arm_stop
+
+
+****** xsim v2026.1 (64-bit)
+  **** SW Build 6511674 on Tue Jun 16 11:02:23 MDT 2026
+  **** IP Build 6504888 on Tue Jun 09 09:05:25 MDT 2026
+  **** SharedData Build 6501428 on Mon Jun 08 17:34:18 MDT 2026
+  **** Start of session at: Mon Nov  2 02:43:01 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source xsim.dir/lower_tb_arm_stop/xsim_script.tcl
+# xsim {lower_tb_arm_stop} -autoloadwcfg -tclbatch {run_all.tcl}
+Time resolution is 1 ps
+source run_all.tcl
+## run all
+==================================================
+ tb_arm_stop: CLK_FREQ=33333333  UART_BPS=115200  STARTUP_WAIT_MS=1
+==================================================
+--- 1) power-up: the arm homes by itself ---
+[FAIL] power-up home: 0 pose / 0 start / 0 stop packets (expected 6/1/0)
+[ OK ] stays at the initial pose until told to run
+--- 2) run_en=1: pose packets start after the startup wait ---
+[ OK ] pose packets started (1 seen)
+--- 3) command 4: run_en drops + stop_i pulses ---
+[ OK ] SERVO_MOVE_STOP sent (55 55 FE 03 0C)
+[ OK ] MOVE_STOP checksum = 0xF2
+[ OK ] exactly one stop packet was sent
+[ OK ] no new pose packets after the stop (was 1, now 1)
+--- 4) enable again: the sequence restarts ---
+[ OK ] enabling again restarted the sequence (pose packets: 2)
+--- 5) home request (commands 1/2/3): initial pose, then stay ---
+[ OK ] home = 6 pose packets + 1 broadcast START
+[ OK ] arm stayed at the home pose (no more packets)
+==================================================
+ RESULT: 1 checks failed
+==================================================
+$finish called at time : 33366016 ns : File "[repository]/projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_arm_stop.v" Line 305
+## quit
+INFO: [Common 17-206] Exiting xsim at Mon Nov  2 02:43:04 2026...

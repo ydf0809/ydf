@@ -1,0 +1,371 @@
+{
+  "completed_at": "2026-11-02T02:45:02+08:00",
+  "physical_validation": "not_performed",
+  "tests": [
+    {
+      "board": "upper",
+      "test": "tb_air_defence_mode",
+      "passed": true,
+      "source": "projects/merged_cam_lcd_voice_scnn/tb/tb_air_defence_mode.v",
+      "stage": "simulate",
+      "dependencies": [
+        "projects/merged_cam_lcd_voice_scnn/rtl/asr_frame_decode.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/board_link.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/control_unit_cnn.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/conv_engine.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/drone_data_roms.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/drone_frame_ram.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/fc_classifier.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/font_rom.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/frame_buffer.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/i2c_dri.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/i2c_ov5640_rgb565_cfg.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/input_frontend.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/lcd_cam_text_scnn.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/lif_bram.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/lif_neuron_cell.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/lif_neuron_layer.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/link_rx.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/link_tx.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/motion_detector.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/neuron_processing_unit.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/output_logic.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/ov5640_capture.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/periodic_recheck_timer.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/pool_engine.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/prng_lfsr.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/roi_resampler.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/roi_scheduler.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/rst_sync.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/scnn_chain.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/snn_cnn_core.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/snn_cnn_top.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/spike_ram.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/top.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/top_asr_voice.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/uart_rx.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/uart_tx.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/upper_link_send.v",
+        "projects/merged_cam_lcd_voice_scnn/tb/tb_air_defence_mode.v"
+      ],
+      "exit_code": 0,
+      "pass_markers": [
+        "AIR_DEFENCE_MODE_TEST: PASS"
+      ],
+      "failure_markers": []
+    },
+    {
+      "board": "upper",
+      "test": "tb_integrated_recheck_cdc",
+      "passed": true,
+      "source": "projects/merged_cam_lcd_voice_scnn/tb/tb_integrated_recheck_cdc.v",
+      "stage": "simulate",
+      "dependencies": [
+        "projects/merged_cam_lcd_voice_scnn/rtl/asr_frame_decode.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/board_link.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/control_unit_cnn.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/conv_engine.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/drone_data_roms.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/drone_frame_ram.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/fc_classifier.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/font_rom.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/frame_buffer.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/i2c_dri.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/i2c_ov5640_rgb565_cfg.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/input_frontend.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/lcd_cam_text_scnn.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/lif_bram.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/lif_neuron_cell.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/lif_neuron_layer.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/link_rx.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/link_tx.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/motion_detector.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/neuron_processing_unit.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/output_logic.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/ov5640_capture.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/periodic_recheck_timer.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/pool_engine.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/prng_lfsr.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/roi_resampler.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/roi_scheduler.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/rst_sync.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/scnn_chain.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/snn_cnn_core.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/snn_cnn_top.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/spike_ram.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/top.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/top_asr_voice.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/uart_rx.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/uart_tx.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/upper_link_send.v",
+        "projects/merged_cam_lcd_voice_scnn/tb/tb_integrated_recheck_cdc.v"
+      ],
+      "exit_code": 0,
+      "pass_markers": [
+        "INTEGRATED_RECHECK_CDC_TEST: PASS"
+      ],
+      "failure_markers": []
+    },
+    {
+      "board": "upper",
+      "test": "tb_lock_policy",
+      "passed": true,
+      "source": "projects/merged_cam_lcd_voice_scnn/tb/tb_lock_policy.v",
+      "stage": "simulate",
+      "dependencies": [
+        "projects/merged_cam_lcd_voice_scnn/rtl/roi_scheduler.v",
+        "projects/merged_cam_lcd_voice_scnn/tb/tb_lock_policy.v"
+      ],
+      "exit_code": 0,
+      "pass_markers": [
+        "LOCK_POLICY_TEST: PASS"
+      ],
+      "failure_markers": []
+    },
+    {
+      "board": "upper",
+      "test": "tb_periodic_recheck",
+      "passed": true,
+      "source": "projects/merged_cam_lcd_voice_scnn/tb/tb_periodic_recheck.v",
+      "stage": "simulate",
+      "dependencies": [
+        "projects/merged_cam_lcd_voice_scnn/rtl/periodic_recheck_timer.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/roi_scheduler.v",
+        "projects/merged_cam_lcd_voice_scnn/tb/tb_periodic_recheck.v"
+      ],
+      "exit_code": 0,
+      "pass_markers": [
+        "PERIODIC_RECHECK_TEST: PASS"
+      ],
+      "failure_markers": []
+    },
+    {
+      "board": "lower",
+      "test": "tb_arm_red_track",
+      "passed": true,
+      "source": "projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_arm_red_track.v",
+      "stage": "simulate",
+      "dependencies": [
+        "projects/realfinal_min_102404/realfinal.srcs/sources_1/imports/imported/armfinal/project_9.srcs/sources_1/new/bus_servo_packet_tx.v",
+        "projects/realfinal_min_102404/realfinal.srcs/sources_1/imports/imported/armfinal/project_9.srcs/sources_1/new/bus_servo_uart_tx.v",
+        "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/arm_red_track.v",
+        "projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_arm_red_track.v"
+      ],
+      "exit_code": 0,
+      "pass_markers": [
+        "ARM_RED_TRACK_PASS pos3=700 pos4=294 pos6=505 servo5_packets=2"
+      ],
+      "failure_markers": []
+    },
+    {
+      "board": "lower",
+      "test": "tb_arm_stop",
+      "passed": false,
+      "source": "projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_arm_stop.v",
+      "stage": "simulate",
+      "dependencies": [
+        "projects/realfinal_min_102404/realfinal.srcs/sources_1/imports/imported/armfinal/project_9.srcs/sources_1/new/arm_pick_place_once_top.v",
+        "projects/realfinal_min_102404/realfinal.srcs/sources_1/imports/imported/armfinal/project_9.srcs/sources_1/new/bus_servo_packet_tx.v",
+        "projects/realfinal_min_102404/realfinal.srcs/sources_1/imports/imported/armfinal/project_9.srcs/sources_1/new/bus_servo_uart_tx.v",
+        "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/uart_rx.v",
+        "projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_arm_stop.v"
+      ],
+      "exit_code": 0,
+      "pass_markers": [],
+      "failure_markers": [
+        "[FAIL] power-up home: 0 pose / 0 start / 0 stop packets (expected 6/1/0)"
+      ]
+    },
+    {
+      "board": "lower",
+      "test": "tb_bbox_unpack",
+      "passed": true,
+      "source": "projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_bbox_unpack.v",
+      "stage": "simulate",
+      "dependencies": [
+        "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/bbox_unpack.v",
+        "projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_bbox_unpack.v"
+      ],
+      "exit_code": 0,
+      "pass_markers": [
+        "RESULT: all passed (errors=0)"
+      ],
+      "failure_markers": []
+    },
+    {
+      "board": "lower",
+      "test": "tb_board_link",
+      "passed": false,
+      "source": "projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_board_link.v",
+      "stage": "simulate",
+      "dependencies": [
+        "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/asr_frame_decode.v",
+        "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/board_link.v",
+        "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/link_demux.v",
+        "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/link_rx.v",
+        "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/link_tx.v",
+        "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/track_send.v",
+        "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/uart_rx.v",
+        "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/uart_tx.v",
+        "projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_board_link.v"
+      ],
+      "exit_code": 0,
+      "pass_markers": [
+        "RESULT: all passed (errors=0)"
+      ],
+      "failure_markers": [
+        "--- 8) recovery: a good command after the error ---"
+      ]
+    },
+    {
+      "board": "lower",
+      "test": "tb_chassis_filter",
+      "passed": false,
+      "source": "projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_chassis_filter.v",
+      "stage": "simulate",
+      "dependencies": [
+        "projects/realfinal_min_102404/realfinal.srcs/sources_1/imports/imported/shijuefinal/project_7.srcs/sources_1/new/chassis_control.v",
+        "projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_chassis_filter.v"
+      ],
+      "exit_code": 0,
+      "pass_markers": [
+        "RESULT: all passed (errors=0)"
+      ],
+      "failure_markers": [
+        "--- 3) +20 px size error: filtered, not a jump ---",
+        "--- 4) large error stays inside the +-12 clamp ---"
+      ]
+    },
+    {
+      "board": "lower",
+      "test": "tb_corner_turn",
+      "passed": true,
+      "source": "projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_corner_turn.v",
+      "stage": "simulate",
+      "dependencies": [
+        "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/corner_turn.v",
+        "projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_corner_turn.v"
+      ],
+      "exit_code": 0,
+      "pass_markers": [
+        "== tb_corner_turn PASS =="
+      ],
+      "failure_markers": []
+    },
+    {
+      "board": "lower",
+      "test": "tb_defense_spin",
+      "passed": true,
+      "source": "projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_defense_spin.v",
+      "stage": "simulate",
+      "dependencies": [
+        "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/defense_spin.v",
+        "projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_defense_spin.v"
+      ],
+      "exit_code": 0,
+      "pass_markers": [
+        "DEFENSE_SPIN_PASS"
+      ],
+      "failure_markers": []
+    },
+    {
+      "board": "lower",
+      "test": "tb_iic_stop",
+      "passed": true,
+      "source": "projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_iic_stop.v",
+      "stage": "simulate",
+      "dependencies": [
+        "projects/realfinal_min_102404/realfinal.srcs/sources_1/imports/imported/shijuefinal/project_7.srcs/sources_1/new/iic_w_top.v",
+        "projects/realfinal_min_102404/realfinal.srcs/sources_1/imports/imported/shijuefinal/project_7.srcs/sources_1/new/iic_write.v",
+        "projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_iic_stop.v"
+      ],
+      "exit_code": 0,
+      "pass_markers": [
+        "== tb_iic_stop PASS =="
+      ],
+      "failure_markers": []
+    },
+    {
+      "board": "lower",
+      "test": "tb_line_pid",
+      "passed": true,
+      "source": "projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_line_pid.v",
+      "stage": "simulate",
+      "dependencies": [
+        "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/line_pid_ctrl.v",
+        "projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_line_pid.v"
+      ],
+      "exit_code": 0,
+      "pass_markers": [
+        "== tb_line_pid PASS =="
+      ],
+      "failure_markers": []
+    },
+    {
+      "board": "lower",
+      "test": "tb_voice_arm",
+      "passed": true,
+      "source": "projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_voice_arm.v",
+      "stage": "simulate",
+      "dependencies": [
+        "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/arm_voice_trigger.v",
+        "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/asr_frame_decode.v",
+        "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/board_link.v",
+        "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/link_demux.v",
+        "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/link_rx.v",
+        "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/link_tx.v",
+        "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/uart_rx.v",
+        "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/uart_tx.v",
+        "projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_voice_arm.v"
+      ],
+      "exit_code": 0,
+      "pass_markers": [
+        "RESULT: all passed (errors=0)"
+      ],
+      "failure_markers": []
+    },
+    {
+      "board": "lower",
+      "test": "tb_voice_mode",
+      "passed": true,
+      "source": "projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_voice_mode.v",
+      "stage": "simulate",
+      "dependencies": [
+        "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/asr_frame_decode.v",
+        "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/board_link.v",
+        "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/link_demux.v",
+        "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/link_rx.v",
+        "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/link_tx.v",
+        "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/uart_rx.v",
+        "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/uart_tx.v",
+        "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/voice_mode_select.v",
+        "projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_voice_mode.v"
+      ],
+      "exit_code": 0,
+      "pass_markers": [
+        "RESULT: all passed (errors=0)"
+      ],
+      "failure_markers": []
+    },
+    {
+      "board": "lower",
+      "test": "tb_xunbi_tracking",
+      "passed": true,
+      "source": "projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_xunbi_tracking.v",
+      "stage": "simulate",
+      "dependencies": [
+        "projects/realfinal_min_102404/realfinal.srcs/sources_1/imports/imported/xunbifinal/xunjibizhang02.srcs/sources_1/new/line_follow_ctrl.v",
+        "projects/realfinal_min_102404/realfinal.srcs/sources_1/imports/imported/xunbifinal/xunjibizhang02.srcs/sources_1/new/obstacle_avoid_ctrl.v",
+        "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/corner_turn.v",
+        "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/line_pid_ctrl.v",
+        "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/xunbi_core.v",
+        "projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_xunbi_tracking.v"
+      ],
+      "exit_code": 0,
+      "pass_markers": [
+        "== tb_xunbi_tracking PASS =="
+      ],
+      "failure_markers": []
+    }
+  ]
+}

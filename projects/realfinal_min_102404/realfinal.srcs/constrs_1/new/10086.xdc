@@ -1,0 +1,145 @@
+set_property IOSTANDARD LVCMOS33 [get_ports {ov_data[7]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {ov_data[6]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {ov_data[5]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {ov_data[4]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {ov_data[3]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {ov_data[2]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {ov_data[1]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {ov_data[0]}]
+set_property IOSTANDARD LVCMOS33 [get_ports arm_uart]
+set_property IOSTANDARD LVCMOS33 [get_ports lcd_clk]
+set_property IOSTANDARD LVCMOS33 [get_ports lcd_hs]
+set_property IOSTANDARD LVCMOS33 [get_ports lcd_vs]
+set_property IOSTANDARD LVCMOS33 [get_ports lcd_de]
+set_property IOSTANDARD LVCMOS33 [get_ports lcd_bl]
+set_property IOSTANDARD LVCMOS33 [get_ports lcd_rst]
+set_property IOSTANDARD LVCMOS33 [get_ports {lcd_rgb[0]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {lcd_rgb[1]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {lcd_rgb[2]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {lcd_rgb[3]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {lcd_rgb[4]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {lcd_rgb[5]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {lcd_rgb[6]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {lcd_rgb[7]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {lcd_rgb[8]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {lcd_rgb[9]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {lcd_rgb[10]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {lcd_rgb[11]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {lcd_rgb[12]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {lcd_rgb[13]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {lcd_rgb[14]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {lcd_rgb[15]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {lcd_rgb[16]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {lcd_rgb[17]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {lcd_rgb[18]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {lcd_rgb[19]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {lcd_rgb[20]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {lcd_rgb[21]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {lcd_rgb[22]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {lcd_rgb[23]}]
+set_property IOSTANDARD LVCMOS33 [get_ports motor_scl]
+set_property IOSTANDARD LVCMOS33 [get_ports motor_sda]
+set_property IOSTANDARD LVCMOS33 [get_ports ov_href]
+set_property IOSTANDARD LVCMOS33 [get_ports ov_pclk]
+set_property IOSTANDARD LVCMOS33 [get_ports ov_sio_c]
+set_property IOSTANDARD LVCMOS33 [get_ports ov_sio_d]
+set_property IOSTANDARD LVCMOS33 [get_ports ov_vsync]
+set_property IOSTANDARD LVCMOS33 [get_ports ov_xclk]
+set_property IOSTANDARD LVCMOS33 [get_ports rst_n]
+set_property IOSTANDARD LVCMOS33 [get_ports sys_clk_pin]
+set_property IOSTANDARD LVCMOS33 [get_ports tcon]
+set_property IOSTANDARD LVCMOS33 [get_ports us_echo]
+set_property IOSTANDARD LVCMOS33 [get_ports us_trig]
+set_property PACKAGE_PIN W14 [get_ports {ov_data[7]}]
+set_property PACKAGE_PIN Y14 [get_ports {ov_data[6]}]
+set_property PACKAGE_PIN U13 [get_ports {ov_data[5]}]
+set_property PACKAGE_PIN V13 [get_ports {ov_data[4]}]
+set_property PACKAGE_PIN V12 [get_ports {ov_data[3]}]
+set_property PACKAGE_PIN W13 [get_ports {ov_data[2]}]
+# ---------- 拨码开关已经拆掉 ----------
+# 工作模式改由板间链路来的命令决定（voice_mode_select），RTL 里已经没有 sw[2:0] 端口，
+# 原来那三个脚 Y7 / Y6 / Y9 空出来了，要接什么新东西就在这附近加 PACKAGE_PIN。
+set_property PACKAGE_PIN N18 [get_ports sys_clk_pin]
+set_property PACKAGE_PIN W9 [get_ports rst_n]
+# ---------- ATK-4384 RGB LCD (800x480, DE mode, pixel clk = 33.333MHz) ----------
+# lcd_rgb[23:16]=R, [15:8]=G, [7:0]=B ; same mapping as robeipingzhengchang/project_97
+set_property PACKAGE_PIN M19 [get_ports lcd_clk]
+set_property PACKAGE_PIN M18 [get_ports lcd_hs]
+set_property PACKAGE_PIN M17 [get_ports lcd_vs]
+set_property PACKAGE_PIN P20 [get_ports lcd_de]
+set_property PACKAGE_PIN N20 [get_ports lcd_bl]
+set_property PACKAGE_PIN U20 [get_ports lcd_rst]
+set_property PACKAGE_PIN H17 [get_ports {lcd_rgb[0]}]
+set_property PACKAGE_PIN G17 [get_ports {lcd_rgb[1]}]
+set_property PACKAGE_PIN J19 [get_ports {lcd_rgb[2]}]
+set_property PACKAGE_PIN H16 [get_ports {lcd_rgb[3]}]
+set_property PACKAGE_PIN L20 [get_ports {lcd_rgb[4]}]
+set_property PACKAGE_PIN M20 [get_ports {lcd_rgb[6]}]
+set_property PACKAGE_PIN L19 [get_ports {lcd_rgb[7]}]
+set_property PACKAGE_PIN E19 [get_ports {lcd_rgb[8]}]
+set_property PACKAGE_PIN E18 [get_ports {lcd_rgb[9]}]
+set_property PACKAGE_PIN A20 [get_ports {lcd_rgb[10]}]
+set_property PACKAGE_PIN B20 [get_ports {lcd_rgb[12]}]
+set_property PACKAGE_PIN G20 [get_ports {lcd_rgb[13]}]
+set_property PACKAGE_PIN G19 [get_ports {lcd_rgb[14]}]
+# TODO: motor_scl(V17) conflicts with lcd_rgb[6]; motor_sda(T16) with lcd_rgb[4].
+#       Re-assign both to free J4 pins, then uncomment and edit.
+#set_property PACKAGE_PIN V17 [get_ports motor_scl]
+#set_property PACKAGE_PIN T16 [get_ports motor_sda]
+set_property PACKAGE_PIN V15 [get_ports ov_href]
+set_property PACKAGE_PIN Y16 [get_ports ov_pclk]
+set_property PACKAGE_PIN Y17 [get_ports ov_vsync]
+set_property PACKAGE_PIN W15 [get_ports ov_xclk]
+# ---------- 五路循迹改到上层板了 ----------
+# 传感器线接在上层板（本板 J4 被板载 LCD 占满），状态经板间链路下来（link_demux）。
+# 原来的 track_l2 / track_l1 / track_m 三个脚（D20 / F20 / F19）因此空出来了，
+# 要接什么新东西就在这附近加 PACKAGE_PIN。
+# TODO: us_trig(U14)->lcd_rgb[0], us_echo(U15)->lcd_rgb[1], tcon(T15)->lcd_rgb[3],
+#       arm_uart(U17)->lcd_rgb[5]. Re-assign all four to free J4 pins, then uncomment.
+#set_property PACKAGE_PIN U14 [get_ports us_trig]
+#set_property PACKAGE_PIN U15 [get_ports us_echo]
+#set_property PACKAGE_PIN T15 [get_ports tcon]
+#set_property PACKAGE_PIN U17 [get_ports arm_uart]
+set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets ov_pclk_IBUF]
+
+
+set_property PACKAGE_PIN K19 [get_ports {lcd_rgb[5]}]
+set_property PACKAGE_PIN B19 [get_ports {lcd_rgb[11]}]
+set_property PACKAGE_PIN G18 [get_ports {lcd_rgb[15]}]
+set_property PACKAGE_PIN V17 [get_ports motor_scl]
+set_property PACKAGE_PIN T16 [get_ports motor_sda]
+set_property PACKAGE_PIN T12 [get_ports {ov_data[1]}]
+set_property PACKAGE_PIN U12 [get_ports {ov_data[0]}]
+set_property PACKAGE_PIN V16 [get_ports ov_sio_c]
+set_property PACKAGE_PIN W16 [get_ports ov_sio_d]
+set_property PACKAGE_PIN U17 [get_ports arm_uart]
+set_property PACKAGE_PIN T15 [get_ports tcon]
+set_property PACKAGE_PIN U15 [get_ports us_echo]
+set_property PACKAGE_PIN U14 [get_ports us_trig]
+
+
+set_property PACKAGE_PIN T10 [get_ports {lcd_rgb[16]}]
+set_property PACKAGE_PIN T11 [get_ports {lcd_rgb[17]}]
+set_property PACKAGE_PIN G15 [get_ports {lcd_rgb[18]}]
+set_property PACKAGE_PIN H15 [get_ports {lcd_rgb[19]}]
+set_property PACKAGE_PIN F17 [get_ports {lcd_rgb[20]}]
+set_property PACKAGE_PIN F16 [get_ports {lcd_rgb[21]}]
+set_property PACKAGE_PIN D18 [get_ports {lcd_rgb[22]}]
+set_property PACKAGE_PIN E17 [get_ports {lcd_rgb[23]}]
+
+
+# ---------- board-to-board UART link to the upper board (project_109_cam_lcd_voice) ----------
+# Both boards are 33.333MHz, 115200 8N1, TX must cross to RX, GND must be common:
+#   link_rx (D19) <- upper board link_tx (F19)
+#   link_tx (C20) -> upper board link_rx (F20)
+# D19 / C20 used to be track_r1 / track_r2; those two line-sensor inputs are now tied to 0
+# in super_top (see the xunbi_core instantiation).
+# The pull-up is not optional: with the upper board powered off this line floats, and without
+# it background noise gets decoded as UART data.
+set_property PACKAGE_PIN D20 [get_ports link_rx]
+set_property IOSTANDARD LVCMOS33 [get_ports link_rx]
+set_property PULLTYPE PULLUP [get_ports link_rx]
+set_property PACKAGE_PIN F20 [get_ports link_tx]
+set_property IOSTANDARD LVCMOS33 [get_ports link_tx]
+set_property DRIVE 8 [get_ports link_tx]
+

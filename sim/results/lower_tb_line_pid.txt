@@ -1,0 +1,253 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "[repository]/projects/realfinal_min_102404/realfinal.srcs/sources_1/new/line_pid_ctrl.v" into library work
+INFO: [VRFC 10-311] analyzing module line_pid_ctrl
+INFO: [VRFC 10-2263] Analyzing Verilog file "[repository]/projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_line_pid.v" into library work
+INFO: [VRFC 10-311] analyzing module tb_line_pid
+
+Vivado Simulator v2026.1
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: D:/vivado2026.1/2026.1/Vivado/bin/unwrapped/win64.o/xelab.exe -L unisims_ver --timescale 1ns/1ps tb_line_pid -s lower_tb_line_pid 
+Multi-threading is on. Using 14 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+WARNING: [VRFC 10-3645] port 'active' remains unconnected for this instance [[repository]/projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_line_pid.v:19]
+WARNING: [VRFC 10-3645] port 'active' remains unconnected for this instance [[repository]/projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_line_pid.v:32]
+WARNING: [VRFC 10-3645] port 'active' remains unconnected for this instance [[repository]/projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_line_pid.v:49]
+WARNING: [VRFC 10-3645] port 'search_active' remains unconnected for this instance [[repository]/projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_line_pid.v:64]
+WARNING: [VRFC 10-3645] port 'active' remains unconnected for this instance [[repository]/projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_line_pid.v:78]
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module work.line_pid_ctrl(CLK_FREQ_HZ=100000...
+Compiling module work.line_pid_ctrl(CLK_FREQ_HZ=100000...
+Compiling module work.tb_line_pid
+Built simulation snapshot lower_tb_line_pid
+
+
+****** xsim v2026.1 (64-bit)
+  **** SW Build 6511674 on Tue Jun 16 11:02:23 MDT 2026
+  **** IP Build 6504888 on Tue Jun 09 09:05:25 MDT 2026
+  **** SharedData Build 6501428 on Mon Jun 08 17:34:18 MDT 2026
+  **** Start of session at: Mon Nov  2 02:43:52 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source xsim.dir/lower_tb_line_pid/xsim_script.tcl
+# xsim {lower_tb_line_pid} -autoloadwcfg -tclbatch {run_all.tcl}
+Time resolution is 1 ps
+source run_all.tcl
+## run all
+== tb_line_pid start ==
+[ OK ] run_en=0 stop : L=0 R=0
+[ OK ] center straight : L=16 R=16
+[ OK ] one step left : L=10 R=18
+[ OK ] one step right : L=18 R=10
+[ OK ] two left (centroid) : L=-2 R=20
+[ OK ] far left reverses inner : L=-8 R=20
+[ OK ] far right reverses inner : L=20 R=-8
+[ OK ] line lost stop : L=0 R=0
+[ OK ] line reacquired : L=16 R=16
+[ OK ] I: p only @5ms : L=10 R=6
+[ OK ] I: integral @120ms : L=13 R=3
+[ OK ] D: settled : L=8 R=8
+[ OK ] D: kick peak L=12
+[ OK ] D: back to P : L=10 R=6
+[ OK ] loss confirmation stops immediately : L=0 R=0
+-- all zero invalid: left4/right8/left4 --
+search output index 0
+[ OK ] all zero invalid: left4/right8/left4 : L=-8 R=8
+search output index 1
+[ OK ] all zero invalid: left4/right8/left4 : L=-8 R=8
+search output index 2
+[ OK ] all zero invalid: left4/right8/left4 : L=-8 R=8
+search output index 3
+[ OK ] all zero invalid: left4/right8/left4 : L=-8 R=8
+search output index 4
+[ OK ] all zero invalid: left4/right8/left4 : L=8 R=-8
+search output index 5
+[ OK ] all zero invalid: left4/right8/left4 : L=8 R=-8
+search output index 6
+[ OK ] all zero invalid: left4/right8/left4 : L=8 R=-8
+search output index 7
+[ OK ] all zero invalid: left4/right8/left4 : L=8 R=-8
+search output index 8
+[ OK ] all zero invalid: left4/right8/left4 : L=8 R=-8
+search output index 9
+[ OK ] all zero invalid: left4/right8/left4 : L=8 R=-8
+search output index 10
+[ OK ] all zero invalid: left4/right8/left4 : L=8 R=-8
+search output index 11
+[ OK ] all zero invalid: left4/right8/left4 : L=8 R=-8
+search output index 12
+[ OK ] all zero invalid: left4/right8/left4 : L=-8 R=8
+search output index 13
+[ OK ] all zero invalid: left4/right8/left4 : L=-8 R=8
+search output index 14
+[ OK ] all zero invalid: left4/right8/left4 : L=-8 R=8
+search output index 15
+[ OK ] all zero invalid: left4/right8/left4 : L=-8 R=8
+[ OK ] scan complete stops on next tick : L=0 R=0
+[ OK ] timeout stays stopped : L=0 R=0
+[ OK ] reacquire on first control tick : L=8 R=8
+[ OK ] loss confirmation stops immediately : L=0 R=0
+-- all one invalid: left4/right8/left4 --
+search output index 0
+[ OK ] all one invalid: left4/right8/left4 : L=-8 R=8
+search output index 1
+[ OK ] all one invalid: left4/right8/left4 : L=-8 R=8
+search output index 2
+[ OK ] all one invalid: left4/right8/left4 : L=-8 R=8
+search output index 3
+[ OK ] all one invalid: left4/right8/left4 : L=-8 R=8
+search output index 4
+[ OK ] all one invalid: left4/right8/left4 : L=8 R=-8
+search output index 5
+[ OK ] all one invalid: left4/right8/left4 : L=8 R=-8
+search output index 6
+[ OK ] all one invalid: left4/right8/left4 : L=8 R=-8
+search output index 7
+[ OK ] all one invalid: left4/right8/left4 : L=8 R=-8
+search output index 8
+[ OK ] all one invalid: left4/right8/left4 : L=8 R=-8
+search output index 9
+[ OK ] all one invalid: left4/right8/left4 : L=8 R=-8
+search output index 10
+[ OK ] all one invalid: left4/right8/left4 : L=8 R=-8
+search output index 11
+[ OK ] all one invalid: left4/right8/left4 : L=8 R=-8
+search output index 12
+[ OK ] all one invalid: left4/right8/left4 : L=-8 R=8
+search output index 13
+[ OK ] all one invalid: left4/right8/left4 : L=-8 R=8
+search output index 14
+[ OK ] all one invalid: left4/right8/left4 : L=-8 R=8
+search output index 15
+[ OK ] all one invalid: left4/right8/left4 : L=-8 R=8
+[ OK ] scan complete stops on next tick : L=0 R=0
+[ OK ] timeout stays stopped : L=0 R=0
+[ OK ] reacquire on first control tick : L=0 R=16
+[ OK ] loss confirmation stops immediately : L=0 R=0
+-- hard left loss: left4/right8/left4 --
+search output index 0
+[ OK ] hard left loss: left4/right8/left4 : L=-8 R=8
+search output index 1
+[ OK ] hard left loss: left4/right8/left4 : L=-8 R=8
+search output index 2
+[ OK ] hard left loss: left4/right8/left4 : L=-8 R=8
+search output index 3
+[ OK ] hard left loss: left4/right8/left4 : L=-8 R=8
+search output index 4
+[ OK ] hard left loss: left4/right8/left4 : L=8 R=-8
+search output index 5
+[ OK ] hard left loss: left4/right8/left4 : L=8 R=-8
+search output index 6
+[ OK ] hard left loss: left4/right8/left4 : L=8 R=-8
+search output index 7
+[ OK ] hard left loss: left4/right8/left4 : L=8 R=-8
+search output index 8
+[ OK ] hard left loss: left4/right8/left4 : L=8 R=-8
+search output index 9
+[ OK ] hard left loss: left4/right8/left4 : L=8 R=-8
+search output index 10
+[ OK ] hard left loss: left4/right8/left4 : L=8 R=-8
+search output index 11
+[ OK ] hard left loss: left4/right8/left4 : L=8 R=-8
+search output index 12
+[ OK ] hard left loss: left4/right8/left4 : L=-8 R=8
+search output index 13
+[ OK ] hard left loss: left4/right8/left4 : L=-8 R=8
+search output index 14
+[ OK ] hard left loss: left4/right8/left4 : L=-8 R=8
+search output index 15
+[ OK ] hard left loss: left4/right8/left4 : L=-8 R=8
+[ OK ] scan complete stops on next tick : L=0 R=0
+[ OK ] timeout stays stopped : L=0 R=0
+[ OK ] reacquire on first control tick : L=16 R=0
+[ OK ] loss confirmation stops immediately : L=0 R=0
+-- hard right loss: left4/right8/left4 --
+search output index 0
+[ OK ] hard right loss: left4/right8/left4 : L=-8 R=8
+search output index 1
+[ OK ] hard right loss: left4/right8/left4 : L=-8 R=8
+search output index 2
+[ OK ] hard right loss: left4/right8/left4 : L=-8 R=8
+search output index 3
+[ OK ] hard right loss: left4/right8/left4 : L=-8 R=8
+search output index 4
+[ OK ] hard right loss: left4/right8/left4 : L=8 R=-8
+search output index 5
+[ OK ] hard right loss: left4/right8/left4 : L=8 R=-8
+search output index 6
+[ OK ] hard right loss: left4/right8/left4 : L=8 R=-8
+search output index 7
+[ OK ] hard right loss: left4/right8/left4 : L=8 R=-8
+search output index 8
+[ OK ] hard right loss: left4/right8/left4 : L=8 R=-8
+search output index 9
+[ OK ] hard right loss: left4/right8/left4 : L=8 R=-8
+search output index 10
+[ OK ] hard right loss: left4/right8/left4 : L=8 R=-8
+search output index 11
+[ OK ] hard right loss: left4/right8/left4 : L=8 R=-8
+search output index 12
+[ OK ] hard right loss: left4/right8/left4 : L=-8 R=8
+search output index 13
+[ OK ] hard right loss: left4/right8/left4 : L=-8 R=8
+search output index 14
+[ OK ] hard right loss: left4/right8/left4 : L=-8 R=8
+search output index 15
+[ OK ] hard right loss: left4/right8/left4 : L=-8 R=8
+[ OK ] scan complete stops on next tick : L=0 R=0
+[ OK ] timeout stays stopped : L=0 R=0
+[ OK ] reacquire on first control tick : L=8 R=8
+[ OK ] loss confirmation stops immediately : L=0 R=0
+[ OK ] search right before reacquire : L=8 R=-8
+[ OK ] reacquire on first control tick : L=10 R=6
+[ OK ] loss confirmation stops immediately : L=0 R=0
+[ OK ] mode off stops immediately : L=0 R=0
+[ OK ] restart confirms loss from zero : L=0 R=0
+-- mode restart: left4/right8/left4 --
+search output index 0
+[ OK ] mode restart: left4/right8/left4 : L=-8 R=8
+search output index 1
+[ OK ] mode restart: left4/right8/left4 : L=-8 R=8
+search output index 2
+[ OK ] mode restart: left4/right8/left4 : L=-8 R=8
+search output index 3
+[ OK ] mode restart: left4/right8/left4 : L=-8 R=8
+search output index 4
+[ OK ] mode restart: left4/right8/left4 : L=8 R=-8
+search output index 5
+[ OK ] mode restart: left4/right8/left4 : L=8 R=-8
+search output index 6
+[ OK ] mode restart: left4/right8/left4 : L=8 R=-8
+search output index 7
+[ OK ] mode restart: left4/right8/left4 : L=8 R=-8
+search output index 8
+[ OK ] mode restart: left4/right8/left4 : L=8 R=-8
+search output index 9
+[ OK ] mode restart: left4/right8/left4 : L=8 R=-8
+search output index 10
+[ OK ] mode restart: left4/right8/left4 : L=8 R=-8
+search output index 11
+[ OK ] mode restart: left4/right8/left4 : L=8 R=-8
+search output index 12
+[ OK ] mode restart: left4/right8/left4 : L=-8 R=8
+search output index 13
+[ OK ] mode restart: left4/right8/left4 : L=-8 R=8
+search output index 14
+[ OK ] mode restart: left4/right8/left4 : L=-8 R=8
+search output index 15
+[ OK ] mode restart: left4/right8/left4 : L=-8 R=8
+[ OK ] scan complete stops on next tick : L=0 R=0
+[ OK ] timeout stays stopped : L=0 R=0
+[ OK ] reacquire on first control tick : L=8 R=8
+[ OK ] all-one remains stopped : L=0 R=0
+[ OK ] all-zero enters search after confirmation : L=-8 R=8
+[ OK ] deadband half pitch : L=15 R=17
+[ OK ] deadband one pitch : L=9 R=19
+== tb_line_pid PASS ==
+$finish called at time : 280020501 ns : File "[repository]/projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_line_pid.v" Line 298
+## quit
+INFO: [Common 17-206] Exiting xsim at Mon Nov  2 02:43:54 2026...

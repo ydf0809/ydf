@@ -1,0 +1,51 @@
+{
+  "completed_at": "2026-11-02T03:07:44+08:00",
+  "procedure": "tracked inputs compressed to ZIP, extracted into independent directory, dependency checker and both main-XPR builds rerun without original runs/cache",
+  "dependency_checks": "passed",
+  "simulation_tests": 16,
+  "simulation_passed": 15,
+  "same_simulation_outcomes": true,
+  "builds": [
+    {
+      "board": "upper",
+      "release_status": "preview_build_candidate",
+      "completed_at": "2026-11-02T03:07:01+08:00",
+      "same_source_inputs": true,
+      "source_unchanged_during_build": true,
+      "wns": "5.997",
+      "whs": "0.037",
+      "drc_errors": "0",
+      "loop_warning_present": "0",
+      "main_run_bit": "projects/merged_cam_lcd_voice_scnn/vivado_prj/merged_cam_lcd_voice_scnn.runs/impl_1/top.bit",
+      "bit_sha256": "a97961b5f4114ea81287d916d7d42bc00fdaebc0337d00d2b1ceda6655a93bcd",
+      "release_copy_matches_main_run": true,
+      "tool_diagnostics": [
+        "ERROR: [Common 17-354] Could not open 'C' for writing."
+      ]
+    },
+    {
+      "board": "lower",
+      "release_status": "preview_build_candidate",
+      "completed_at": "2026-11-02T03:03:02+08:00",
+      "same_source_inputs": true,
+      "source_unchanged_during_build": true,
+      "wns": "6.947",
+      "whs": "0.151",
+      "drc_errors": "0",
+      "loop_warning_present": "0",
+      "main_run_bit": "projects/realfinal_min_102404/realfinal.runs/impl_1/super_top.bit",
+      "bit_sha256": "811b6c275cdf5c965673a35285b9dfd58d394e39a3e19e9e0ef31caa2ab6bfc8",
+      "release_copy_matches_main_run": true,
+      "tool_diagnostics": []
+    }
+  ],
+  "tool_diagnostics": [
+    {
+      "board": "upper",
+      "message": "ERROR: [Common 17-354] Could not open 'C' for writing.",
+      "classification": "tool_diagnostic_observed_despite_successful_completion"
+    }
+  ],
+  "physical_validation": "not_performed",
+  "scope": "same Windows host and installed Vivado 2026.1; no cross-OS claim"
+}
