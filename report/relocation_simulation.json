@@ -1,8 +1,8 @@
 {
   "status": "PASS",
-  "completed_at": "2026-11-04T00:57:04+08:00",
-  "git_tree": "6a4032a5d3c5c9da40a960d8d6f43b7e99eb7068",
-  "archive_sha256": "cb035edf37776b44c9ea98b0a74e23ebc20d74312d0afc20cf85c29b8dfa3148",
+  "completed_at": "2026-11-04T01:35:55+08:00",
+  "git_tree": "ca8793ff7aaae7794b0aa532a1810b6feda7f89e",
+  "archive_sha256": "fdf2015b2335114b1b578b106543aa60e5323f025c46cd88f38e53ef8426ac6d",
   "physical_validation": "not_performed",
   "source_sha256": {
     "upper": {
@@ -187,7 +187,7 @@
       ],
       "failure_markers": [],
       "log": "sim/results/upper_tb_air_defence_mode.txt",
-      "log_sha256": "78929fcd2e9dbbe7df5892c511672102bfa19888925fe4d584a8894cb45afd76",
+      "log_sha256": "47c62252ed3e002c1bf5967e7b721d5f5f652b00d301c1a5066b128f72bee7f7",
       "inputs_unchanged": true
     },
     {
@@ -243,7 +243,7 @@
       ],
       "failure_markers": [],
       "log": "sim/results/upper_tb_integrated_recheck_cdc.txt",
-      "log_sha256": "bfed9b22c7ff2bf84abec831a91e6346806b0a86a6aa744c22454b63a034741b",
+      "log_sha256": "9cffdd7b6b357dc1cdf13a75f5e8d4b95cbcf0320872d2d1882c7f7a1656e7ac",
       "inputs_unchanged": true
     },
     {
@@ -263,7 +263,7 @@
       ],
       "failure_markers": [],
       "log": "sim/results/upper_tb_lcd_box_color.txt",
-      "log_sha256": "6a3da2d45c79a7174f9e9710446f2492f38d5865ebff9afc49526e1dba8cd897",
+      "log_sha256": "80c6ea50f444a41b86b238e24a73f349e07a0c396b99ec737ffcede5d2b3d6f6",
       "inputs_unchanged": true
     },
     {
@@ -285,7 +285,7 @@
       ],
       "failure_markers": [],
       "log": "sim/results/upper_tb_lower_display_compat.txt",
-      "log_sha256": "c416b4a85233aad405675e0bce74c918f2ffe4566d798ba4a9b72592a2b5c056",
+      "log_sha256": "1eeb86f4f879df0d84e7ad3beb1b701f61eae4f3bf723c856cb1d22c24a423f2",
       "inputs_unchanged": true
     },
     {
@@ -304,7 +304,7 @@
       ],
       "failure_markers": [],
       "log": "sim/results/upper_tb_motion_candidate_priority.txt",
-      "log_sha256": "af9805d222b03f5b8b428911dc2ac9b085dac6a8141815e95a5ebf9c0c54977b",
+      "log_sha256": "77363669da155217ee0217b7a040e2f84371311b7ce1fffcb9801bf1bc8338d6",
       "inputs_unchanged": true
     },
     {
@@ -324,7 +324,7 @@
       ],
       "failure_markers": [],
       "log": "sim/results/upper_tb_motion_detector.txt",
-      "log_sha256": "2551335a6d7bede00ebf1068abfad591a47a8aad7f9ee8b3171b5d4767911a25",
+      "log_sha256": "cb0125e93d35cad0be5897cffc58d621d26111ea6b27d7c81920079072e36147",
       "inputs_unchanged": true
     },
     {
@@ -344,7 +344,7 @@
       ],
       "failure_markers": [],
       "log": "sim/results/upper_tb_periodic_recheck.txt",
-      "log_sha256": "a310c759d60d6afa714f98b96ded27ab05a9531fc43a3b7bd8bdea6529e3241f",
+      "log_sha256": "da7528b2732c3a6af8263481906f5dad9b0945bf0e48c0bbdb6f0c853c41814d",
       "inputs_unchanged": true
     },
     {
@@ -363,7 +363,7 @@
       ],
       "failure_markers": [],
       "log": "sim/results/upper_tb_roi_scheduler.txt",
-      "log_sha256": "aeadfd30ca8a3b064caa70c0d9c01e8689cfe0afd7fef081ee8f6b6f0cef8c38",
+      "log_sha256": "38a433583338debc5f4c06444f32fddca6db713d0c5d1bea90bb22f65b208a22",
       "inputs_unchanged": true
     },
     {
@@ -384,7 +384,7 @@
       ],
       "failure_markers": [],
       "log": "sim/results/upper_tb_servo6_compat.txt",
-      "log_sha256": "f8ee66300a961ee56f060e6f8bb284ca695c9bc2fd71ed1767c599de1914dd88",
+      "log_sha256": "c233add40bac43064c8d579155164064cc48017829d86033dda65f641e94ee90",
       "inputs_unchanged": true
     },
     {
@@ -448,7 +448,7 @@
       ],
       "failure_markers": [],
       "log": "sim/results/upper_tb_upper_lower_serial_compat.txt",
-      "log_sha256": "6fdd51f70d60901d0d6f2886784a71716c959c3b60a7e827439ca89672abb146",
+      "log_sha256": "1b89a5806f7cc5f0be1a37a654fda009e0249c6e6f7edb77545ecf201dba05d7",
       "inputs_unchanged": true
     },
     {
@@ -470,7 +470,7 @@
       ],
       "failure_markers": [],
       "log": "sim/results/lower_tb_arm_red_track.txt",
-      "log_sha256": "7a6d206274bf91d4064f8e22a06ec08a85815f3024fe2aae5bb0a0f4939b7399",
+      "log_sha256": "6b59bcc88a67473db42d1f3a31438490e89aa93c9c280e8382531ba8c962f177",
       "inputs_unchanged": true
     },
     {
@@ -493,7 +493,7 @@
       ],
       "failure_markers": [],
       "log": "sim/results/lower_tb_arm_stop.txt",
-      "log_sha256": "b05bc925772f186f06e916e8d929933d9ff5b00db764281e06b5d0a5bbfe672e",
+      "log_sha256": "3d6f7f65df646a31db018e4b570e236222bc96f3242608bc8268824f53f07540",
       "inputs_unchanged": true
     },
     {
@@ -513,7 +513,7 @@
       ],
       "failure_markers": [],
       "log": "sim/results/lower_tb_bbox_unpack.txt",
-      "log_sha256": "ea4a1c17aa7ad499803ad8f954d3a853c48f0a356e2202bbbcfd1a092a9a4070",
+      "log_sha256": "ad5add31017ff87d9588878de2090d862100add1ff0fa591a8ffe02dcd79fb43",
       "inputs_unchanged": true
     },
     {
@@ -540,7 +540,7 @@
       ],
       "failure_markers": [],
       "log": "sim/results/lower_tb_board_link.txt",
-      "log_sha256": "247bd36adad301c527ab5868f79904585739eda103c8fe6e324364a3b5d0b8d7",
+      "log_sha256": "061365a265b60ad7c9e3e396469ecf9765f438d85c3cca8b5889d499fcbb02f5",
       "inputs_unchanged": true
     },
     {
@@ -560,7 +560,7 @@
       ],
       "failure_markers": [],
       "log": "sim/results/lower_tb_chassis_filter.txt",
-      "log_sha256": "436b20ffbd01fe7b6940c078cc1aeb091fe5253e9618ce2fd483c074ed307952",
+      "log_sha256": "8cc7e98451fcd31810e1909a7123197714e4a1538316130186fff5a77ca8d352",
       "inputs_unchanged": true
     },
     {
@@ -580,7 +580,7 @@
       ],
       "failure_markers": [],
       "log": "sim/results/lower_tb_corner_turn.txt",
-      "log_sha256": "17289f48746e90fbe3f0c0e6e9d3b6cdfe9f3f26731d1d2ed0204b8d3e23df59",
+      "log_sha256": "b87056ca440f799e4229f3e428ad190bb09054b8c93500fa4070f98a69f9f1c0",
       "inputs_unchanged": true
     },
     {
@@ -600,7 +600,7 @@
       ],
       "failure_markers": [],
       "log": "sim/results/lower_tb_defense_spin.txt",
-      "log_sha256": "2ee74c50bd6be78cbb136e153afc45b2d41e456276892052cf7cbeccfa96e0b5",
+      "log_sha256": "ec76772c9744539812213f0d294b258d97b20a6d8d8b9499e5d8015cab827925",
       "inputs_unchanged": true
     },
     {
@@ -621,7 +621,7 @@
       ],
       "failure_markers": [],
       "log": "sim/results/lower_tb_iic_stop.txt",
-      "log_sha256": "f60d9c3917d31b2950e8a8c50ae5057cafaee8493e02fa36980957b6b7a8f1d3",
+      "log_sha256": "75ba01d4ad6e6c7f3c01fea2ff7c232bd63d6bcc6d8ac87feeedb3ba7fb51d54",
       "inputs_unchanged": true
     },
     {
@@ -641,7 +641,7 @@
       ],
       "failure_markers": [],
       "log": "sim/results/lower_tb_line_pid.txt",
-      "log_sha256": "dca04b0644f6bc23d4cf1cb113bdd64ae42f06ac43e287129afe56cf1cfba307",
+      "log_sha256": "a57f938d4f4c2c50893ad55e0ed0981d2c1e99f8cab1f2a08a6e9de6be45ce85",
       "inputs_unchanged": true
     },
     {
@@ -661,7 +661,7 @@
       ],
       "failure_markers": [],
       "log": "sim/results/lower_tb_rgb2hsv_pipeline.txt",
-      "log_sha256": "ff7746a4b44f06716f2f4b4b40807a3d98d74f6e694fae4b19aadedf5cc8565a",
+      "log_sha256": "845971e75259586d29bc26942d8c2ea0d18c503f4f03241525b5b3a17763a1fb",
       "inputs_unchanged": true
     },
     {
@@ -688,7 +688,7 @@
       ],
       "failure_markers": [],
       "log": "sim/results/lower_tb_voice_arm.txt",
-      "log_sha256": "57377fbdb2a8dae1f205c5095b56de19d1a167063cd597f0d0b7b5069a777567",
+      "log_sha256": "4e757dfe7d97e79509ea39fb1b64bdb8eaa0a7de897326144f387eabdb7b73be",
       "inputs_unchanged": true
     },
     {
@@ -715,7 +715,7 @@
       ],
       "failure_markers": [],
       "log": "sim/results/lower_tb_voice_mode.txt",
-      "log_sha256": "379fe5bec7591aa24a585de948f14431ffcb371f00177b2003be34c4181a5cd2",
+      "log_sha256": "709f4f1c2796412cfc122d9503e73e94b4c8136a2ab7d76c894c212495dd1efd",
       "inputs_unchanged": true
     },
     {
@@ -739,7 +739,7 @@
       ],
       "failure_markers": [],
       "log": "sim/results/lower_tb_xunbi_tracking.txt",
-      "log_sha256": "ecdfe22aac02e02b1115bc2a5d58c4568dc1e8da90e414f174ca33501ea87621",
+      "log_sha256": "c191d04f17e938919f26a004d8b5df2cc98c6e7acd0e451245e1198053e8f140",
       "inputs_unchanged": true
     }
   ]

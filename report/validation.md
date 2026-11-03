@@ -36,7 +36,7 @@ Vivado/XSim 2026.1，23/23：上层 10/10、下层 13/13。最终源包测试为
 
 ## 4. 来源与复现
 
-source_manifest.json 记录来源及适配，source_integrity.json 记录原源包核对。Git 索引树 `940bb17628caed3c7adb9e753de8b9b3fb03904d` 导出 ZIP 后解压到其他盘符的带空格路径，归档 SHA-256 为 `ed9c1ef332a0d2c6347876957bf8a05f8cbd8c570cb904063d4c674248e9ea1f`。异路径仓库检查 310 文件、仿真 26/26、双板主 XPR 构建及交付检查均通过，见 [relocation](relocation.json)、[详细仿真](relocation_simulation.json) 和 [异路径仓库检查](repository_check_relocation.json)。
+source_manifest.json 记录来源及适配，source_integrity.json 记录原源包核对。Git 索引树导出 ZIP 后解压到其他盘符的带空格路径，归档哈希、受检文件数、仿真 23/23、双板主 XPR 构建和交付检查结果见 [relocation](relocation.json)、[详细仿真](relocation_simulation.json) 和 [异路径仓库检查](repository_check_relocation.json)。
 
 异路径重建的 bit 文件头与主工程构建不相同，因此按各自主 run 分别记录 SHA-256；不把“文件不同”误写为功能失败，也不把异路径 bit 混入 `board/bitstreams/`。当前证据由 [delivery_check](delivery_check.json) 核对。
 
@@ -46,7 +46,7 @@ source_manifest.json 记录来源及适配，source_integrity.json 记录原源�
 
 ## 6. 作者正式报告
 
-作者提供的 [设计报告 V7 PDF](design_report/design_report_v7.pdf) 已纳入仓库，PDF SHA-256 为 `e033612f6f5cf9230c83a822d8f7e730b87ce4d87207e266a47415b708358741`。源 DOCX 保持项目外只读，SHA-256 为 `380f4bcc1b4e5a7bce8aeae4ca81ca41407e45557002fea2e927c735eccc6b04`。PDF 已逐页检查共 48 页，无批注或修订；报告中仍有两处图片占位。报告引用 xiegithub 原始发布 bit 的哈希，仓库 `board/bitstreams/` 则记录从主 XPR 重建的 bit，两者已分别在 [formal_report_source.json](design_report/formal_report_source.json) 中登记，不能互换。
+作者提供的 [最终设计报告 PDF](design_report/design_report_v7.pdf) 已按原文件逐字节纳入仓库，共 47 页，PDF SHA-256 为 `dab7a8c09a288848f57c2bc8de6bce1b83b0b4cde04376c84f16d9fad4491b82`。PDF 无表单、JavaScript、批注，47 页均已渲染检查，无空白页或可见版面破损。报告正文仍引用 26/26 测试、6.916/3.591 ns 和原始发布 bit 哈希；仓库当前重建证据为 23/23、5.815/4.295 ns 和 `board/bitstreams/` 所列哈希。两类数据已分别在 [formal_report_source.json](design_report/formal_report_source.json) 中登记，不能互换。
 
 ## 7. SCNN 训练部署技能
 

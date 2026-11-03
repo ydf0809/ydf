@@ -1,41 +1,73 @@
 {
-  "schema": "owner-supplied-formal-report-v1",
-  "received_at": "2026-11-03",
-  "title": "基于FPGA的多模态低空空前预警战备车",
+  "schema": "owner-supplied-formal-report-v2",
+  "received_at": "2026-11-04",
+  "title": "基于FPGA的多模态低空空情预警战备车",
   "authors": [
     "罗欣言",
     "聂明飞",
     "郭康帅"
   ],
-  "source_filename": "基于FPGA的多模态感知移动作业平台_设计报告_v7.docx",
-  "source_docx_sha256": "380f4bcc1b4e5a7bce8aeae4ca81ca41407e45557002fea2e927c735eccc6b04",
-  "source_docx_bytes": 4461627,
+  "source_filename": "基于FPGA的多模态低空空前预警战备车.pdf",
+  "source_pdf_sha256": "dab7a8c09a288848f57c2bc8de6bce1b83b0b4cde04376c84f16d9fad4491b82",
+  "source_pdf_bytes": 4273636,
   "exported": "report/design_report/design_report_v7.pdf",
-  "exported_sha256": "e033612f6f5cf9230c83a822d8f7e730b87ce4d87207e266a47415b708358741",
-  "bytes": 4046572,
+  "exported_sha256": "dab7a8c09a288848f57c2bc8de6bce1b83b0b4cde04376c84f16d9fad4491b82",
+  "bytes": 4273636,
   "format": "pdf",
-  "copy_status": "derived_pdf",
-  "render": {
-    "pages": 48,
-    "page_size": "A4",
-    "paragraphs": 348,
-    "tables": 17,
-    "inline_shapes": 46,
-    "tracked_changes": 0,
-    "comments": 0,
-    "figure_placeholders": 2
+  "copy_status": "byte_identical",
+  "pdf_metadata": {
+    "title": "基于FPGA的多模态感知移动作业平台设计报告",
+    "creator": "WPS 文字",
+    "creation_date": "2026-11-04T01:27:44+08:00",
+    "form": "none",
+    "javascript": "no"
   },
-  "bitstream_provenance": {
-    "report_upper_sha256": "a6a27076f61adc6b35ca027db51f8ce2cb926f04a4d549dd3e7601ddeba5710d",
-    "report_lower_sha256": "aebd4004da50f6ee2cb19d249d9c5ac25a5d636019f8b3c76bf22c8aedaec233",
-    "repository_upper_sha256": "fa947a84887b1c5122325621bc08ea997ad6d7d87d38158eff5c40ea39677918",
-    "repository_lower_sha256": "888f1b1bde28812eac15d66b3261173b01b25e737db220c3aca8278693f5977f",
-    "note": "The formal report cites the selected xiegithub release bits. The repository bits were regenerated from the final synchronized main XPRs and are tracked separately."
+  "render": {
+    "pages": 47,
+    "page_size": "A4",
+    "page_size_points": "595.3 x 841.9",
+    "text_chars": 33161,
+    "annotations": 0,
+    "blank_pages": 0,
+    "visual_review": "all_pages_rendered_and_contact_sheet_reviewed"
+  },
+  "report_internal_snapshot": {
+    "tests": "upper 11, lower 15, total 26",
+    "wns_ns": {
+      "upper": 6.916,
+      "lower": 3.591
+    },
+    "upper_bit_sha256": "a6a27076f61adc6b35ca027db51f8ce2cb926f04a4d549dd3e7601ddeba5710d",
+    "lower_bit_sha256": "aebd4004da50f6ee2cb19d249d9c5ac25a5d636019f8b3c76bf22c8aedaec233",
+    "status": "preserved_as_authored"
+  },
+  "repository_build_evidence": {
+    "tests": {
+      "upper": {
+        "passed": 10,
+        "total": 10
+      },
+      "lower": {
+        "passed": 13,
+        "total": 13
+      }
+    },
+    "wns_ns": {
+      "upper": 5.815,
+      "lower": 4.295
+    },
+    "whs_ns": {
+      "upper": 0.017,
+      "lower": 0.063
+    },
+    "upper_bit_sha256": "fa947a84887b1c5122325621bc08ea997ad6d7d87d38158eff5c40ea39677918",
+    "lower_bit_sha256": "888f1b1bde28812eac15d66b3261173b01b25e737db220c3aca8278693f5977f",
+    "physical_board_validation": "not_performed"
   },
   "notes": [
-    "The PDF was exported read-only from the supplied DOCX; the author narrative was not rewritten.",
-    "The DOCX remains outside the published repository and is not required to open the PDF preview.",
-    "Two figure placeholder areas remain in the supplied v7 report.",
-    "The report says offline scripts were not supplied, while this repository now includes training/scnn; the repository version is authoritative for delivered tooling."
+    "The owner-supplied final PDF is copied byte-for-byte; the author narrative and historical measurements were not rewritten.",
+    "The report still carries the test, timing and bitstream snapshot used by the author. The repository records its later rebuild separately.",
+    "The PDF title metadata differs from the title page, so the title-page wording is recorded here.",
+    "The final PDF contains figures throughout and no blank pages were observed during the 47-page visual review."
   ]
 }

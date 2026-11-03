@@ -1,9 +1,9 @@
 {
   "status": "PASS",
-  "completed_at": "2026-11-04T01:09:32.581658+08:00",
-  "git_tree": "6a4032a5d3c5c9da40a960d8d6f43b7e99eb7068",
-  "archive_sha256": "cb035edf37776b44c9ea98b0a74e23ebc20d74312d0afc20cf85c29b8dfa3148",
-  "archive_size_bytes": 4872405,
+  "completed_at": "2026-11-04T01:48:09.356440+08:00",
+  "git_tree": "ca8793ff7aaae7794b0aa532a1810b6feda7f89e",
+  "archive_sha256": "fdf2015b2335114b1b578b106543aa60e5323f025c46cd88f38e53ef8426ac6d",
+  "archive_size_bytes": 5060526,
   "relocated_repository_check": {
     "passed": true,
     "files_checked": 315,
@@ -25,8 +25,8 @@
       "clock_coverage_failed": "0",
       "source_unchanged_during_build": true,
       "bit_bytes": 4045758,
-      "bit_sha256": "538c69bfb7f33af7651879efc9b67c18cb81a495579efddb72ce71c58657ac48",
-      "elapsed_seconds": 747.7,
+      "bit_sha256": "818508c119f29bce205b97794d55c4cece87d6769344de679487338356abb6d2",
+      "elapsed_seconds": 733.4,
       "source_sha256": {
         "projects/merged_cam_lcd_voice_scnn/constraints/impl_route.xdc": "9c750238599c9358b1d8c8f128e46715c21975d0238deddddee7595fbedd0c66",
         "projects/merged_cam_lcd_voice_scnn/constraints/top.xdc": "e7776c06951db6007f9e41b865318a878a74e2958530f99a310f64c9015d5bea",
@@ -113,8 +113,8 @@
       "clock_coverage_failed": "0",
       "source_unchanged_during_build": true,
       "bit_bytes": 4045764,
-      "bit_sha256": "4154b5927b7a3aacac0da6019b03b14c6454bc5214f4266bc38a70df48c138aa",
-      "elapsed_seconds": 501.3,
+      "bit_sha256": "959f392cadec585ecbe67938b9128747fce70b77575d96c4cf190441831cc80d",
+      "elapsed_seconds": 495.9,
       "source_sha256": {
         "projects/realfinal_min_102404/realfinal.srcs/clk_wiz_0/ip/clk_wiz_0/clk_wiz_0.xci": "d10b6ebd1b3e57ae019c18f1e4236cc386931962802e5a6161045eda0c1809c8",
         "projects/realfinal_min_102404/realfinal.srcs/constrs_1/new/10086.xdc": "089e685ccb3069c54bc99150bdc033bafe2a3e48ef1abfc32045a99412ca7458",
@@ -183,7 +183,7 @@
         "total": 13
       }
     },
-    "completed_at": "2026-11-04T01:09:32+08:00",
+    "completed_at": "2026-11-04T01:48:09+08:00",
     "physical_board_validation": "not_performed",
     "scope": "Current local simulation, conversion, main-XPR build and artifact provenance."
   },
