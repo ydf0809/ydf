@@ -46,7 +46,7 @@ source_manifest.json 记录来源及适配，source_integrity.json 记录原源�
 
 ## 6. 作者正式报告
 
-作者提供的 [设计报告 V7 PDF](design/design_report_v7.pdf) 已纳入仓库，PDF SHA-256 为 `e033612f6f5cf9230c83a822d8f7e730b87ce4d87207e266a47415b708358741`。源 DOCX 保持项目外只读，SHA-256 为 `380f4bcc1b4e5a7bce8aeae4ca81ca41407e45557002fea2e927c735eccc6b04`。PDF 已逐页检查共 48 页，无批注或修订；报告中仍有两处图片占位。报告引用 xiegithub 原始发布 bit 的哈希，仓库 `board/bitstreams/` 则记录从主 XPR 重建的 bit，两者已分别在 [formal_report_source.json](design/formal_report_source.json) 中登记，不能互换。
+作者提供的 [设计报告 V7 PDF](design_report/design_report_v7.pdf) 已纳入仓库，PDF SHA-256 为 `e033612f6f5cf9230c83a822d8f7e730b87ce4d87207e266a47415b708358741`。源 DOCX 保持项目外只读，SHA-256 为 `380f4bcc1b4e5a7bce8aeae4ca81ca41407e45557002fea2e927c735eccc6b04`。PDF 已逐页检查共 48 页，无批注或修订；报告中仍有两处图片占位。报告引用 xiegithub 原始发布 bit 的哈希，仓库 `board/bitstreams/` 则记录从主 XPR 重建的 bit，两者已分别在 [formal_report_source.json](design_report/formal_report_source.json) 中登记，不能互换。
 
 ## 7. SCNN 训练部署技能
 

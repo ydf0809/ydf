@@ -48,7 +48,7 @@ def audit_collaboration(root, errors):
 
 
 def audit_formal_report(root, errors):
-    path = root / 'report/design/formal_report_source.json'
+    path = root / 'report/design_report/formal_report_source.json'
     if not path.is_file():
         errors.append({'kind': 'formal_report_metadata_missing',
                        'path': path.relative_to(root).as_posix()})
