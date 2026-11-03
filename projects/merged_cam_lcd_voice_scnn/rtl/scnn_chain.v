@@ -1,24 +1,4 @@
 `timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
-// Create Date: 2026/06/28 22:50:26
-// Design Name: 
-// Module Name: scnn_chain
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
-// 
-// Dependencies: 
-// 
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-// 
-//////////////////////////////////////////////////////////////////////////////////
-
 
 module scnn_chain #(
     parameter P_IN_H   = 16,
@@ -40,52 +20,45 @@ module scnn_chain #(
     output reg  o_done,
     output wire o_busy,
 
-    // 输入脉冲写入
     input  wire                              i_in_we,
     input  wire [$clog2(P_IN_H*P_IN_W)-1:0]  i_in_waddr,
     input  wire [P_CIN-1:0]                  i_in_wdata,
 
-    // 最终特征 (pool3) 读出
     input  wire [$clog2((P_IN_H/8)*(P_IN_W/8))-1:0] i_fo_raddr,
     output wire [P_C2-1:0]                    o_fo_rdata
 );
-    // ---- 各层空间尺寸 ----
-    localparam P1_H = P_IN_H/2, P1_W = P_IN_W/2;   // pool1 后
-    localparam P2_H = P1_H/2,   P2_W = P1_W/2;     // pool2 后
-    localparam P3_H = P2_H/2,   P3_W = P2_W/2;     // pool3 后 (= FC 输入空间)
+
+    localparam P1_H = P_IN_H/2, P1_W = P_IN_W/2;
+    localparam P2_H = P1_H/2,   P2_W = P1_W/2;
+    localparam P3_H = P2_H/2,   P3_W = P2_W/2;
 
     localparam IN_POS = P_IN_H*P_IN_W;
     localparam P1_POS = P1_H*P1_W;
     localparam P2_POS = P2_H*P2_W;
     localparam P3_POS = P3_H*P3_W;
 
-    // ============ 内部 RAM 与引擎互联线 ============
-    // 输入 RAM
     wire [$clog2(IN_POS)-1:0] in_raddr;  wire [P_CIN-1:0] in_rdata;
-    // conv1 输出 RAM
+
     wire c1_owe; wire [$clog2(IN_POS)-1:0] c1_owaddr; wire [P_C1-1:0] c1_owdata;
     wire [$clog2(IN_POS)-1:0] c1_raddr;  wire [P_C1-1:0] c1_rdata;
-    // pool1 输出 RAM
+
     wire p1_owe; wire [$clog2(P1_POS)-1:0] p1_owaddr; wire [P_C1-1:0] p1_owdata;
     wire [$clog2(P1_POS)-1:0] p1_raddr;  wire [P_C1-1:0] p1_rdata;
-    // conv2 输出 RAM
+
     wire c2_owe; wire [$clog2(P1_POS)-1:0] c2_owaddr; wire [P_C2-1:0] c2_owdata;
     wire [$clog2(P1_POS)-1:0] c2_raddr;  wire [P_C2-1:0] c2_rdata;
-    // pool2 输出 RAM
+
     wire p2_owe; wire [$clog2(P2_POS)-1:0] p2_owaddr; wire [P_C2-1:0] p2_owdata;
     wire [$clog2(P2_POS)-1:0] p2_raddr;  wire [P_C2-1:0] p2_rdata;
-    // pool3 输出 RAM
+
     wire p3_owe; wire [$clog2(P3_POS)-1:0] p3_owaddr; wire [P_C2-1:0] p3_owdata;
 
-    // 权重 ROM 线
     wire [$clog2(P_K*P_K)-1:0] w1_addr; wire [P_CIN*P_C1*P_WBITS-1:0] w1_word;
     wire [$clog2(P_K*P_K)-1:0] w2_addr; wire [P_C1*P_C2*P_WBITS-1:0]  w2_word;
 
-    // 引擎启动/完成
     reg  c1_start, c1_clear, p1_start, c2_start, c2_clear, p2_start, p3_start;
     wire c1_done, p1_done, c2_done, p2_done, p3_done;
 
-    // ============ RAM 实例 ============
     spike_ram #(.P_WIDTH(P_CIN), .P_DEPTH(IN_POS)) u_in_ram (
         .clk(clk), .i_we(i_in_we), .i_waddr(i_in_waddr), .i_wdata(i_in_wdata),
         .i_raddr(in_raddr), .o_rdata(in_rdata));
@@ -105,11 +78,9 @@ module scnn_chain #(
         .clk(clk), .i_we(p3_owe), .i_waddr(p3_owaddr), .i_wdata(p3_owdata),
         .i_raddr(i_fo_raddr), .o_rdata(o_fo_rdata));
 
-    // ============ 权重 ROM ============
     drone_conv1_rom u_w1 (.i_tap_addr(w1_addr), .o_word(w1_word));
     drone_conv2_rom u_w2 (.i_tap_addr(w2_addr), .o_word(w2_word));
 
-    // ============ 计算引擎 ============
     conv_engine #(.P_IMG_H(P_IN_H), .P_IMG_W(P_IN_W), .P_CIN(P_CIN), .P_COUT(P_C1),
                   .P_K(P_K), .P_WEIGHT_BITS(P_WBITS), .P_VBITS(P_VBITS), .P_VFRAC(P_VFRAC)) u_conv1 (
         .clk(clk), .rst_n(rst_n), .i_start(c1_start), .i_clear_mem(c1_clear),
@@ -141,7 +112,6 @@ module scnn_chain #(
         .o_in_raddr(p2_raddr), .i_in_rdata(p2_rdata),
         .o_out_we(p3_owe), .o_out_waddr(p3_owaddr), .o_out_wdata(p3_owdata));
 
-    // ============ 逐层调度 FSM ============
     localparam S_IDLE=4'd0, S_C1S=4'd1, S_C1W=4'd2, S_P1S=4'd3, S_P1W=4'd4,
                S_C2S=4'd5, S_C2W=4'd6, S_P2S=4'd7, S_P2W=4'd8,
                S_P3S=4'd9, S_P3W=4'd10, S_DONE=4'd11;
@@ -156,7 +126,7 @@ module scnn_chain #(
             c1_start<=0; c1_clear<=0; p1_start<=0; c2_start<=0; c2_clear<=0; p2_start<=0; p3_start<=0;
             clr_latch<=0; o_done<=0;
         end else begin
-            // 默认拉低所有单周期脉冲
+
             c1_start<=0; c1_clear<=0; p1_start<=0; c2_start<=0; c2_clear<=0; p2_start<=0; p3_start<=0;
             o_done<=0;
             case (state)
@@ -177,4 +147,3 @@ module scnn_chain #(
         end
     end
 endmodule
-

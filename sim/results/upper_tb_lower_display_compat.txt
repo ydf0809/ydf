@@ -1,0 +1,47 @@
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "[repository]/projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/compat_support/compat_color_track.v" into library work
+INFO: [VRFC 10-311] analyzing module compat_color_track
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "[repository]/projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/compat_support/compat_rgb2hsv.v" into library work
+INFO: [VRFC 10-311] analyzing module compat_rgb2hsv
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "[repository]/projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/compat_support/compat_rgb_lcd_driver.v" into library work
+INFO: [VRFC 10-311] analyzing module compat_rgb_lcd_driver
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "[repository]/projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/compat_support/compat_voice_mode_select.v" into library work
+INFO: [VRFC 10-311] analyzing module compat_voice_mode_select
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "[repository]/projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/tb_lower_display_compat.v" into library work
+INFO: [VRFC 10-311] analyzing module tb_lower_display_compat
+
+Vivado Simulator v2026.1
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: D:/vivado2026.1/2026.1/Vivado/bin/unwrapped/win64.o/xelab.exe -L unisims_ver --timescale 1ns/1ps tb_lower_display_compat -s upper_tb_lower_display_compat 
+Multi-threading is on. Using 14 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module work.compat_voice_mode_select
+Compiling module work.compat_rgb2hsv
+Compiling module work.compat_color_track
+Compiling module work.compat_rgb_lcd_driver
+Compiling module work.tb_lower_display_compat
+Built simulation snapshot upper_tb_lower_display_compat
+
+
+****** xsim v2026.1 (64-bit)
+  **** SW Build 6511674 on Tue Jun 16 11:02:23 MDT 2026
+  **** IP Build 6504888 on Tue Jun 09 09:05:25 MDT 2026
+  **** SharedData Build 6501428 on Mon Jun 08 17:34:18 MDT 2026
+  **** Start of session at: Tue Nov  3 14:02:38 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source xsim.dir/upper_tb_lower_display_compat/xsim_script.tcl
+# xsim {upper_tb_lower_display_compat} -autoloadwcfg -tclbatch {run_all.tcl}
+Time resolution is 1 ps
+source run_all.tcl
+## run all
+LOWER_DISPLAY_COMPAT_TEST: PASS
+$finish called at time : 13230 ns : File "[repository]/projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/tb_lower_display_compat.v" Line 17
+## quit
+INFO: [Common 17-206] Exiting xsim at Tue Nov  3 14:02:40 2026...

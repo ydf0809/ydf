@@ -1,0 +1,41 @@
+
+****** xsim v2026.1 (64-bit)
+  **** SW Build 6511674 on Tue Jun 16 11:02:23 MDT 2026
+  **** IP Build 6504888 on Tue Jun 09 09:05:25 MDT 2026
+  **** SharedData Build 6501428 on Mon Jun 08 17:34:18 MDT 2026
+  **** Start of session at: Tue Nov  3 02:44:18 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source xsim.dir/tb_chassis_filter_sim/xsim_script.tcl
+# xsim {tb_chassis_filter_sim} -autoloadwcfg -runall
+Time resolution is 1 ps
+run -all
+==================================================
+ tb_chassis_filter: CLK_FREQ=33333333
+==================================================
+--- 1) sw=0: all speeds 0 ---
+[ OK ] disabled -> all speeds 0
+--- 2) enable with the box at its reference size ---
+[ OK ] at reference size -> 0 (inside the dead band)
+--- 3) +20 px size error: filtered, not a jump ---
+      first tick: m1=2 m2=-2 m3=-2 m4=2
+[ OK ] first tick is about 2, not 10 -> filter + half gain working
+      after 10 ticks: m1=8 m2=-8
+[ OK ] converged towards the full error
+[ OK ] opposite wheel pair gets the opposite sign
+--- 4) large error stays inside the +-12 clamp ---
+      saturated: m1=12 m2=-12
+[ OK ] clamped at +-10
+--- 5) turning: target above / below centre ---
+      box_y=260: m1=12 m2=-12 m3=12 m4=-12
+[ OK ] turning response has the expected sign pair
+      box_y=140: m1=-12 m2=12 m3=-12 m4=12
+[ OK ] turning response flips with the target side
+==================================================
+ RESULT: all passed (errors=0)
+==================================================
+$finish called at time : 2900000836 ns : File "[previous_source_location]/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_chassis_filter.v" Line 150
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:21 . Memory (MB): peak = 229.457 ; gain = 0.000
+exit
+INFO: [Common 17-206] Exiting xsim at Tue Nov  3 02:44:41 2026...

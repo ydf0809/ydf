@@ -1,0 +1,33 @@
+
+****** xsim v2026.1 (64-bit)
+  **** SW Build 6511674 on Tue Jun 16 11:02:23 MDT 2026
+  **** IP Build 6504888 on Tue Jun 09 09:05:25 MDT 2026
+  **** SharedData Build 6501428 on Mon Jun 08 17:34:18 MDT 2026
+  **** Start of session at: Tue Nov  3 02:51:04 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source xsim.dir/tb_corner_turn_sim/xsim_script.tcl
+# xsim {tb_corner_turn_sim} -autoloadwcfg -runall
+Time resolution is 1 ps
+run -all
+== tb_corner_turn start ==
+[ OK ] idle passthrough : 5/5
+[ OK ] idle not busy : busy=0
+[ OK ] left3 -> forward : busy=1
+[ OK ] forward straight : 16/16
+[ OK ] spin left : -20/20
+[ OK ] line found -> idle : busy=0
+[ OK ] pid back in charge : 5/5
+[ OK ] cooldown blocks : busy=0
+[ OK ] retrigger after cooldown : busy=1
+[ OK ] finish second turn : busy=0
+[ OK ] spin right : 20/-20
+[ OK ] timeout stops spin : busy=0
+[ OK ] timer spin : -20/20
+[ OK ] timer finished : busy=0
+[ OK ] timer back to pid : 5/5
+== tb_corner_turn PASS ==
+$finish called at time : 99020 us : File "[previous_source_location]/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_corner_turn.v" Line 146
+exit
+INFO: [Common 17-206] Exiting xsim at Tue Nov  3 02:51:06 2026...

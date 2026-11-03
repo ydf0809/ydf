@@ -1,0 +1,37 @@
+
+****** xsim v2026.1 (64-bit)
+  **** SW Build 6511674 on Tue Jun 16 11:02:23 MDT 2026
+  **** IP Build 6504888 on Tue Jun 09 09:05:25 MDT 2026
+  **** SharedData Build 6501428 on Mon Jun 08 17:34:18 MDT 2026
+  **** Start of session at: Tue Nov  3 02:43:59 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source xsim.dir/tb_arm_stop_sim/xsim_script.tcl
+# xsim {tb_arm_stop_sim} -autoloadwcfg -runall
+Time resolution is 1 ps
+run -all
+==================================================
+ tb_arm_stop: CLK_FREQ=33333333  UART_BPS=115200  STARTUP_WAIT_MS=1
+==================================================
+--- 1) top-level power-up home request ---
+[ OK ] power-up home = 6 pose packets + 1 START
+[ OK ] stays at the initial pose until told to run
+--- 2) run_en=1: pose packets start after the startup wait ---
+[ OK ] pose packets started (6 seen)
+--- 3) command 4: run_en drops + stop_i pulses ---
+[ OK ] SERVO_MOVE_STOP sent (55 55 FE 03 0C)
+[ OK ] MOVE_STOP checksum = 0xF2
+[ OK ] exactly one stop packet was sent
+[ OK ] no new pose packets after the stop (was 6, now 6)
+--- 4) enable again: the sequence restarts ---
+[ OK ] enabling again restarted the sequence (pose packets: 7)
+--- 5) home request (commands 1/2/3): initial pose, then stay ---
+[ OK ] home = 6 pose packets + 1 broadcast START
+[ OK ] arm stayed at the home pose (no more packets)
+==================================================
+ RESULT: all passed (errors=0)
+==================================================
+$finish called at time : 31498156 ns : File "[previous_source_location]/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_arm_stop.v" Line 259
+exit
+INFO: [Common 17-206] Exiting xsim at Tue Nov  3 02:44:02 2026...

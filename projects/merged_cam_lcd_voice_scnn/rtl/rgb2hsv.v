@@ -1,6 +1,5 @@
 `timescale 1ns / 1ps
 
-// RGB565 to HSV, matching the lower-board follow-mode tracker.
 module rgb2hsv(
     input  wire        clk,
     input  wire        rst_n,

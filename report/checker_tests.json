@@ -1,0 +1,119 @@
+{
+  "status": "PASS",
+  "completed_at": "2026-11-03T15:05:37.542076+08:00",
+  "cases": [
+    {
+      "case": "complete",
+      "expected_accept": true,
+      "actual_accept": true,
+      "pass_markers": [
+        "PASS complete"
+      ],
+      "failure_markers": [],
+      "passed": true
+    },
+    {
+      "case": "failure_after_pass",
+      "expected_accept": false,
+      "actual_accept": false,
+      "pass_markers": [
+        "PASS complete"
+      ],
+      "failure_markers": [
+        "FAIL: mismatch"
+      ],
+      "passed": true
+    },
+    {
+      "case": "fatal_after_pass",
+      "expected_accept": false,
+      "actual_accept": false,
+      "pass_markers": [
+        "PASS complete"
+      ],
+      "failure_markers": [
+        "FATAL: stopped"
+      ],
+      "passed": true
+    },
+    {
+      "case": "error_after_pass",
+      "expected_accept": false,
+      "actual_accept": false,
+      "pass_markers": [
+        "PASS complete"
+      ],
+      "failure_markers": [
+        "ERROR: stopped"
+      ],
+      "passed": true
+    },
+    {
+      "case": "numeric_fail_count",
+      "expected_accept": false,
+      "actual_accept": false,
+      "pass_markers": [
+        "PASS complete"
+      ],
+      "failure_markers": [
+        "RESULT: 2 checks failed"
+      ],
+      "passed": true
+    },
+    {
+      "case": "missing_completion",
+      "expected_accept": false,
+      "actual_accept": false,
+      "pass_markers": [],
+      "failure_markers": [],
+      "passed": true
+    },
+    {
+      "case": "nonzero_exit",
+      "expected_accept": false,
+      "actual_accept": false,
+      "pass_markers": [
+        "PASS complete"
+      ],
+      "failure_markers": [],
+      "passed": true
+    },
+    {
+      "case": "not_line_marker",
+      "expected_accept": false,
+      "actual_accept": false,
+      "pass_markers": [],
+      "failure_markers": [],
+      "passed": true
+    },
+    {
+      "case": "contained_xpr_source_accepted",
+      "expected_accept": true,
+      "actual_accept": true,
+      "failure_category": null,
+      "failure_present": true,
+      "passed": true
+    },
+    {
+      "case": "missing_xpr_source_rejected",
+      "expected_accept": false,
+      "actual_accept": false,
+      "failure_category": "missing",
+      "failure_present": true,
+      "passed": true
+    },
+    {
+      "case": "outside_xpr_source_rejected",
+      "expected_accept": false,
+      "actual_accept": false,
+      "failure_category": "outside",
+      "failure_present": true,
+      "passed": true
+    }
+  ],
+  "script_sha256": {
+    "build/test_checkers.py": "48d198b2c406b0c26a54befb7191829a96dd5da70ed43583fe6a96c4b68a6853",
+    "sim/run.py": "301d3b2fb60fc17f27d0835963a119fa371087773f08ce291ab67e3de251c8cd",
+    "skill/project_repro/check_xpr.py": "60109d1443ad953fb6e04e815769c2baa07184ff9a50dc6bd0a0dda8fa050d0c"
+  }
+}

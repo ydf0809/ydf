@@ -1,10 +1,7 @@
+// Decode atomic bbox bursts: 40 xL xH yL yH wL wH hL hH flags xor.
+// flags[0]=valid, flags[1]=label; XOR covers the nine payload bytes.
 `timescale 1ns / 1ps
 
-// Reassemble the 11-byte bbox burst sent by the upper board's upper_link_send.
-//
-// Format, one byte per AA 55 <byte> 55 AA UART frame:
-//   40 xL xH yL yH wL wH hL hH {6'b0,label,valid} checksum
-// checksum is XOR of the nine payload bytes after 0x40.
 module bbox_unpack #(
     parameter integer CLK_FREQ = 33_333_333
 )(
@@ -25,8 +22,8 @@ module bbox_unpack #(
 );
 
     localparam [7:0]  CMD_START = 8'h40;
-    localparam integer AGE_MAX  = CLK_FREQ / 10;   // invalid after 100 ms
-    localparam integer BUSY_MAX = CLK_FREQ / 100;  // incomplete burst timeout 10 ms
+    localparam integer AGE_MAX  = CLK_FREQ / 10;
+    localparam integer BUSY_MAX = CLK_FREQ / 100;
 
     reg [7:0] buf0, buf1, buf2, buf3, buf4;
     reg [7:0] buf5, buf6, buf7, buf8;
@@ -58,7 +55,7 @@ module bbox_unpack #(
             bbox_label <= 1'b0;
             bbox_frame_tgl <= 1'b0;
         end else begin
-            // Do not keep steering the arm forever if the upper link dies.
+
             if (age_cnt < AGE_MAX)
                 age_cnt <= age_cnt + 1'b1;
             else
@@ -91,7 +88,7 @@ module bbox_unpack #(
                         4'd7: buf7 <= peer_cmd;
                         4'd8: buf8 <= peer_cmd;
                         default: begin
-                            // idx == 9: checksum byte.
+
                             busy <= 1'b0;
                             if (peer_cmd == checksum) begin
                                 bbox_x     <= {buf1[1:0], buf0};

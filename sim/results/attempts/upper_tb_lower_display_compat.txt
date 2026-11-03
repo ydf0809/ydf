@@ -1,0 +1,14 @@
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "[repository]/projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/tb_lower_display_compat.v" into library work
+INFO: [VRFC 10-311] analyzing module tb_lower_display_compat
+
+Vivado Simulator v2026.1
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: D:/vivado2026.1/2026.1/Vivado/bin/unwrapped/win64.o/xelab.exe -L unisims_ver --timescale 1ns/1ps tb_lower_display_compat -s upper_tb_lower_display_compat 
+Multi-threading is on. Using 14 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+ERROR: [VRFC 10-2063] Module <compat_voice_mode_select> not found while processing module instance <modes> [[repository]/projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/tb_lower_display_compat.v:5]
+ERROR: [VRFC 10-2063] Module <compat_color_track> not found while processing module instance <tracker> [[repository]/projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/tb_lower_display_compat.v:6]
+ERROR: [VRFC 10-2063] Module <compat_rgb_lcd_driver> not found while processing module instance <lcd> [[repository]/projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/tb_lower_display_compat.v:7]
+ERROR: [XSIM 43-3322] Static elaboration of top level Verilog design unit(s) in library work failed.

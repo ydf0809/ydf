@@ -1,7 +1,7 @@
-# 权重、测试输入与参考输出
+# 模型参数与参考输入
 
-现有SCNN权重保存在上层工程的weights/，参考帧保存在该工程根目录的reference_frame.mem；ROM实现也在RTL中。位置与文件哈希列于report/source_manifest.json。
+现用规范权重、JSON 参数、参考帧位于 [training/scnn](../training/scnn/README.md)。上层实际编译的权重在 [drone_data_roms.v](../projects/merged_cam_lcd_voice_scnn/rtl/drone_data_roms.v)。
 
-原始测试台的激励与预期检查逻辑随源码提交，实际仿真输出位于sim/results。板级样本、黄金参考和测量数据尚未交付，不能用合成测试台的通过率替代真实识别效果。
+当前四组 COE/MEM 与部署 ROM 数值一致，见 [一致性报告](../report/weight_alignment.json)。训练工程 references/new_weight_coe 是独立历史参考，不作为默认部署源。不能因同名而互换。
 
-详见[模型说明](model_card.md)。新增数据和图片使用英文文件名，并记录来源、用途、参考标签及适用许可。
+参考输入是 64×64、24 位 RRGGBB 文件，不是数据集。固定点软件从全局复位起处理 50 步，现用参数参考输出 [0,50]、黑帧 [0,0]；平票取类别 0。上述是功能基准，不是准确率。训练数据目录当前只含说明。

@@ -1,15 +1,7 @@
+// Serialize mode commands, atomic bbox bursts and active-high line status.
+// Bbox payload: 40 xL xH yL yH wL wH hL hH flags xor; each byte uses one UART frame.
 `timescale 1ns / 1ps
 
-// Upper-board link scheduler.
-//
-// One UART frame carries one byte. This module serializes the three producers
-// that share that link:
-//   1. mode command (AA 55 cmd 55 AA),
-//   2. a complete 11-frame bbox burst,
-//   3. periodic five-sensor status (bit7=1).
-//
-// A bbox burst is kept contiguous on the wire. link_busy is the transmitter's
-// real busy signal; no byte is requested until the previous UART frame is over.
 module upper_link_send #(
     parameter integer CLK_FREQ        = 33_333_333,
     parameter integer TRACK_PERIOD_US = 1000
@@ -52,6 +44,8 @@ module upper_link_send #(
     reg [9:0] cap_x, cap_y, cap_w, cap_h;
     reg       cap_valid;
     reg       bbox_pending;
+    reg       bbox_wait_invalid;
+    wire restart_command=mode_upd && (mode_cmd==8'd3);
 
     reg [9:0] burst_x, burst_y, burst_w, burst_h;
     reg       burst_valid;
@@ -117,6 +111,7 @@ module upper_link_send #(
             cap_h <= 10'd0;
             cap_valid <= 1'b0;
             bbox_pending <= 1'b0;
+            bbox_wait_invalid <= 1'b0;
 
             burst_x <= 10'd0;
             burst_y <= 10'd0;
@@ -146,13 +141,20 @@ module upper_link_send #(
                 cmd_pending_data <= mode_cmd[4:0];
             end
 
-            if (bbox_tgl_edge) begin
+            if (bbox_tgl_edge && !restart_command) begin
                 cap_x <= bbox_x;
                 cap_y <= bbox_y;
                 cap_w <= bbox_w;
                 cap_h <= bbox_h;
-                cap_valid <= bbox_valid;
+                cap_valid <= bbox_valid && !bbox_wait_invalid;
+                if(!bbox_valid)bbox_wait_invalid<=1'b0;
                 bbox_pending <= 1'b1;
+            end
+
+            if(restart_command)begin
+
+                cap_x<=10'd236;cap_y<=10'd136;cap_w<=10'd128;cap_h<=10'd128;
+                cap_valid<=1'b0;bbox_pending<=1'b1;bbox_wait_invalid<=1'b1;
             end
 
             if (track_cnt >= TRACK_TICKS - 1)
@@ -175,7 +177,7 @@ module upper_link_send #(
                             burst_idx <= burst_idx + 1'b1;
                     end
                 end
-            end else if (!link_busy) begin
+            end else if (!link_busy && (!restart_command || burst_active)) begin
                 if (burst_active) begin
                     local_cmd  <= make_bbox_byte(burst_idx, burst_x, burst_y,
                                                  burst_w, burst_h, burst_valid);

@@ -1,24 +1,5 @@
+// Convolution tap order is row-major; low weight lane index is ci*COUT+co.
 `timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
-// Create Date: 2026/06/28 22:52:19
-// Design Name: 
-// Module Name: conv_engine
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
-// 
-// Dependencies: 
-// 
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-// 
-//////////////////////////////////////////////////////////////////////////////////
-
 
 module conv_engine #(
     parameter P_IMG_H        = 8,
@@ -32,20 +13,17 @@ module conv_engine #(
 ) (
     input  wire                              clk,
     input  wire                              rst_n,
-    input  wire                              i_start,        // 处理一个时间步
-    input  wire                              i_clear_mem,    // 本次处理前先清零膜电位(新图像)
+    input  wire                              i_start,
+    input  wire                              i_clear_mem,
     output wire                              o_busy,
-    output reg                               o_done,         // 单周期脉冲: 本时间步处理完毕
+    output reg                               o_done,
 
-    // 输入脉冲 RAM (组合读)
     output wire [$clog2(P_IMG_H*P_IMG_W)-1:0] o_in_raddr,
     input  wire [P_CIN-1:0]                   i_in_rdata,
 
-    // 权重 ROM (组合读)
     output wire [$clog2(P_K*P_K)-1:0]         o_w_addr,
     input  wire [P_CIN*P_COUT*P_WEIGHT_BITS-1:0] i_w_word,
 
-    // 输出脉冲 RAM (同步写)
     output reg                               o_out_we,
     output reg  [$clog2(P_IMG_H*P_IMG_W)-1:0] o_out_waddr,
     output reg  [P_COUT-1:0]                  o_out_wdata
@@ -56,14 +34,13 @@ module conv_engine #(
     localparam TAPW  = $clog2(TAPS);
     localparam PAD   = (P_K-1)/2;
 
-    // ---- FSM ----
     localparam S_IDLE=3'd0, S_CLR=3'd1, S_SET=3'd2, S_TAP=3'd3,
                S_LIF=3'd4, S_WAIT=3'd5, S_DONE=3'd6;
     reg [2:0] state;
 
     reg [$clog2(P_IMG_H)-1:0] r;
     reg [$clog2(P_IMG_W)-1:0] c;
-    reg [TAPW:0]              k;       // 0..TAPS-1
+    reg [TAPW:0]              k;
     reg                       clr_pulse;
 
     reg signed [P_VBITS-1:0]  acc [0:P_COUT-1];
@@ -71,7 +48,6 @@ module conv_engine #(
     assign o_busy   = (state != S_IDLE);
     assign o_w_addr = k[TAPW-1:0];
 
-    // ---- 组合: 当前 tap 的邻域地址、越界判定、各输出通道贡献 ----
     integer ci_i, co_i, kk_h, kk_w, nr_i, nc_i;
     reg                      inb_c;
     reg [ADDRW-1:0]          nbr_addr_c;
@@ -96,7 +72,6 @@ module conv_engine #(
 
     assign o_in_raddr = nbr_addr_c;
 
-    // 当前输出位置地址 + 打包电流给 lif_bram
     wire [ADDRW-1:0] pos_addr = r*P_IMG_W + c;
     wire [P_COUT*P_VBITS-1:0] acc_packed;
     genvar gp;
@@ -106,7 +81,6 @@ module conv_engine #(
         end
     endgenerate
 
-    // ---- 内嵌 LIF 膜电位单元 ----
     wire                  lif_o_valid;
     wire [ADDRW-1:0]      lif_o_addr;
     wire [P_COUT-1:0]     lif_o_spikes;
@@ -154,7 +128,7 @@ module conv_engine #(
                     if (i_start) begin
                         r <= 0; c <= 0;
                         if (i_clear_mem) begin
-                            clr_pulse <= 1'b1;     // 触发 lif 清零 (单周期脉冲)
+                            clr_pulse <= 1'b1;
                             state     <= S_CLR;
                         end else begin
                             state <= S_SET;
@@ -180,7 +154,7 @@ module conv_engine #(
                 end
 
                 S_LIF: begin
-                    lif_i_valid <= 1'b1;          // 把累加电流交给 lif (隔1拍出脉冲)
+                    lif_i_valid <= 1'b1;
                     state       <= S_WAIT;
                 end
 
@@ -189,7 +163,7 @@ module conv_engine #(
                         o_out_we    <= 1'b1;
                         o_out_waddr <= lif_o_addr;
                         o_out_wdata <= lif_o_spikes;
-                        // 推进到下一个输出位置
+
                         if (r == P_IMG_H-1 && c == P_IMG_W-1) begin
                             state <= S_DONE;
                         end else begin

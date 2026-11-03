@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "checked_at": "2026-11-03T14:14:24.238499+08:00",
+  "selected_source_label": "xiegithub",
+  "source_files_and_bits_checked": 161,
+  "changed_source_inputs": [],
+  "hardware_inputs_byte_identical": 126,
+  "method": "SHA-256 against frozen selected-source bytes; original paths not published"
+}

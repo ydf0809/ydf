@@ -1,0 +1,288 @@
+{
+  "schema": "visible-collaboration-excerpts-v1",
+  "captured_at": "2026-11-03T13:59:00.870184+08:00",
+  "scope": "Selected outward messages only. Internal reasoning, hidden analysis, credentials, and unrelated content excluded.",
+  "sources": [
+    {
+      "session_id": "01a1982d-0909-70f0-977c-afd3503c679e",
+      "source_filename": "rollout-2026-11-02T01-34-10-01a1982d-0909-70f0-977c-afd3503c679e.jsonl",
+      "captured_bytes": 7771899,
+      "sha256_at_capture": "dedd22a47bf61adcffc3f7596741556d610bac59ac7711839c91b15fdbd93208"
+    },
+    {
+      "session_id": "01a197f0-307c-7972-940f-15799aa7c31f",
+      "source_filename": "rollout-2026-11-02T00-27-43-01a197f0-307c-7972-940f-15799aa7c31f.jsonl",
+      "captured_bytes": 13245218,
+      "sha256_at_capture": "e7ae9649104e4617bdd287bd18eea1d57b64a02be12a30c792d5057956905972"
+    },
+    {
+      "session_id": "01a19170-fd57-7fc3-93d8-67bca6108f44",
+      "source_filename": "rollout-2026-10-31T18-11-03-01a19170-fd57-7fc3-93d8-67bca6108f44.jsonl",
+      "captured_bytes": 4290765,
+      "sha256_at_capture": "2a624a03788438027138686d390200afaf81421df7249a37745e5cd69270c7e2"
+    },
+    {
+      "session_id": "01a1984a-ec58-7082-8c9d-0bee8f996569",
+      "source_filename": "rollout-2026-11-02T02-06-49-01a1984a-ec58-7082-8c9d-0bee8f996569.jsonl",
+      "captured_bytes": 5397509,
+      "sha256_at_capture": "9119c1b0571dfea4ae1b62ef286706c6193eaec7e866407d32e6eedfbc59e560"
+    }
+  ],
+  "records": [
+    {
+      "id": "excerpt_01",
+      "topic": "training",
+      "session_id": "01a1982d-0909-70f0-977c-afd3503c679e",
+      "jsonl_line": 11,
+      "timestamp": "2026-11-01T17:36:17.649Z",
+      "role": "user",
+      "phase": null,
+      "model_from_turn_context": "gpt-6.1-sol",
+      "text": "根据\"[workspace]\\new weight\"反推出训练代码和权重转换脚本放到\"[workspace]\\jiaoben\"",
+      "is_excerpt": false,
+      "redactions": [
+        "local_path"
+      ]
+    },
+    {
+      "id": "excerpt_02",
+      "topic": "training",
+      "session_id": "01a1982d-0909-70f0-977c-afd3503c679e",
+      "jsonl_line": 59,
+      "timestamp": "2026-11-01T17:37:33.516Z",
+      "role": "assistant",
+      "phase": "final_answer",
+      "model_from_turn_context": "gpt-6.1-sol",
+      "text": "**可以重建兼容的训练代码和权重转换脚本，但无法仅凭权重恢复原始数据集、训练超参数和原始浮点权重。**",
+      "is_excerpt": true,
+      "redactions": []
+    },
+    {
+      "id": "excerpt_03",
+      "topic": "training",
+      "session_id": "01a1982d-0909-70f0-977c-afd3503c679e",
+      "jsonl_line": 68,
+      "timestamp": "2026-11-01T17:40:01.609Z",
+      "role": "user",
+      "phase": null,
+      "model_from_turn_context": "gpt-6.1-sol",
+      "text": "我的工程是根据new weight建造的，为什么会出现不一致",
+      "is_excerpt": false,
+      "redactions": []
+    },
+    {
+      "id": "excerpt_04",
+      "topic": "training",
+      "session_id": "01a1982d-0909-70f0-977c-afd3503c679e",
+      "jsonl_line": 107,
+      "timestamp": "2026-11-01T17:41:20.055Z",
+      "role": "assistant",
+      "phase": "final_answer",
+      "model_from_turn_context": "gpt-6.1-sol",
+      "text": "**原因已经查清：`new weight` 文件夹内部的 COE 和 MEM 并不是同一套权重，当前工程使用的是其中 MEM 对应的数值。** 我上一条没有把这个关系说明清楚。",
+      "is_excerpt": true,
+      "redactions": []
+    },
+    {
+      "id": "excerpt_05",
+      "topic": "weight_sync",
+      "session_id": "01a1982d-0909-70f0-977c-afd3503c679e",
+      "jsonl_line": 874,
+      "timestamp": "2026-11-02T15:48:31.650Z",
+      "role": "user",
+      "phase": null,
+      "model_from_turn_context": "gpt-6.1-sol",
+      "text": "如果对最终工程没有影响的话将最终工程目录里的 COE改为old weight",
+      "is_excerpt": false,
+      "redactions": []
+    },
+    {
+      "id": "excerpt_06",
+      "topic": "weight_sync",
+      "session_id": "01a1982d-0909-70f0-977c-afd3503c679e",
+      "jsonl_line": 962,
+      "timestamp": "2026-11-02T16:03:49.712Z",
+      "role": "assistant",
+      "phase": "final_answer",
+      "model_from_turn_context": "gpt-6.1-sol",
+      "text": "- 将最终工程中的 4 份 COE 替换为 `old weight/F` 对应文件。\n- 4 份 COE 与对应 MEM 已逐项一致。\n- 4 个权重 ROM 与 MEM 仍保持一致。\n- XPR、内嵌 ROM、MEM 和现有 bitstream 的 SHA-256 均未变化。\n- 已确认 XPR 和构建脚本没有登记或读取 COE，因此本次修改不会改变当前 FPGA 运行结果。",
+      "is_excerpt": true,
+      "redactions": []
+    },
+    {
+      "id": "excerpt_07",
+      "topic": "locking",
+      "session_id": "01a197f0-307c-7972-940f-15799aa7c31f",
+      "jsonl_line": 338,
+      "timestamp": "2026-11-02T04:27:40.810Z",
+      "role": "user",
+      "phase": null,
+      "model_from_turn_context": "gpt-6.1-sol",
+      "text": "锁定时容易被亮色吸引走是为什么",
+      "is_excerpt": false,
+      "redactions": []
+    },
+    {
+      "id": "excerpt_08",
+      "topic": "locking",
+      "session_id": "01a197f0-307c-7972-940f-15799aa7c31f",
+      "jsonl_line": 376,
+      "timestamp": "2026-11-02T04:30:03.903Z",
+      "role": "assistant",
+      "phase": "final_answer",
+      "model_from_turn_context": "gpt-6.1-sol",
+      "text": "**主要原因是：当前定位器会选择“与背景反差最强的区域”，它没有约束必须继续跟随最初锁定的那个目标。** 我已用当前 RTL 的合成图样复现了亮块把框吸走的现象。",
+      "is_excerpt": true,
+      "redactions": []
+    },
+    {
+      "id": "excerpt_09",
+      "topic": "locking",
+      "session_id": "01a197f0-307c-7972-940f-15799aa7c31f",
+      "jsonl_line": 415,
+      "timestamp": "2026-11-02T04:36:17.834Z",
+      "role": "user",
+      "phase": null,
+      "model_from_turn_context": "gpt-6.1-sol",
+      "text": "实施，另外我发现防空模式下再次说出防空模式，机械臂虽然会回到初始位但马上就会回到上次防空模式最后锁定的物体，我希望每次防空模式都重新搜寻",
+      "is_excerpt": false,
+      "redactions": []
+    },
+    {
+      "id": "excerpt_10",
+      "topic": "locking",
+      "session_id": "01a197f0-307c-7972-940f-15799aa7c31f",
+      "jsonl_line": 757,
+      "timestamp": "2026-11-02T05:04:02.823Z",
+      "role": "assistant",
+      "phase": "final_answer",
+      "model_from_turn_context": "gpt-6.1-sol",
+      "text": "- **定位抗干扰**：加入目标亮暗参考和连续 3 帧位置确认，优先选择原目标附近的候选；实际框移动限制为每帧每轴最多 16 个显示像素。\n- **每次防空都重新搜索**：包括已经处于防空模式时再次说“防空”。现在会清空旧锁定、定位参考、分类历史、未完成推理和待发送旧框，重新搜索并完成新的分类确认。\n- feifei 保锁、脱锁规则继续保留；下层工程未修改。",
+      "is_excerpt": true,
+      "redactions": []
+    },
+    {
+      "id": "excerpt_11",
+      "topic": "corner_parameter",
+      "session_id": "01a19170-fd57-7fc3-93d8-67bca6108f44",
+      "jsonl_line": 333,
+      "timestamp": "2026-10-31T10:51:09.225Z",
+      "role": "user",
+      "phase": null,
+      "model_from_turn_context": "gpt-6.1-sol",
+      "text": "直行一秒再转，告诉我怎么改，我自己改，",
+      "is_excerpt": false,
+      "redactions": []
+    },
+    {
+      "id": "excerpt_12",
+      "topic": "corner_parameter",
+      "session_id": "01a19170-fd57-7fc3-93d8-67bca6108f44",
+      "jsonl_line": 338,
+      "timestamp": "2026-10-31T10:51:36.473Z",
+      "role": "assistant",
+      "phase": "final_answer",
+      "model_from_turn_context": "gpt-6.1-sol",
+      "text": "只改这里即可，`corner_turn.v` 的默认值会被这里覆盖。保存后重新综合、实现、生成 bit 并烧录，修改才会在车上生效。",
+      "is_excerpt": true,
+      "redactions": []
+    },
+    {
+      "id": "excerpt_13",
+      "topic": "corner_parameter",
+      "session_id": "01a19170-fd57-7fc3-93d8-67bca6108f44",
+      "jsonl_line": 345,
+      "timestamp": "2026-10-31T10:58:29.774Z",
+      "role": "user",
+      "phase": null,
+      "model_from_turn_context": "gpt-6.1-sol",
+      "text": "我需要xpr工程中的比特流为最新的，目前检测转弯后没有直行操作",
+      "is_excerpt": false,
+      "redactions": []
+    },
+    {
+      "id": "excerpt_14",
+      "topic": "corner_parameter",
+      "session_id": "01a19170-fd57-7fc3-93d8-67bca6108f44",
+      "jsonl_line": 359,
+      "timestamp": "2026-10-31T11:00:12.365Z",
+      "role": "assistant",
+      "phase": "commentary",
+      "model_from_turn_context": "gpt-6.1-sol",
+      "text": "已确认 1 秒设置未生效：`corner_turn.v` 默认值虽改为 1000，但 `xunbi_core.v` 仍传入 300，覆盖了它。我会修改实际实例，验证四轮先直行 1 秒，再重建原 XPR 的 bit。",
+      "is_excerpt": false,
+      "redactions": []
+    },
+    {
+      "id": "excerpt_15",
+      "topic": "publication",
+      "session_id": "01a1984a-ec58-7082-8c9d-0bee8f996569",
+      "jsonl_line": 92,
+      "timestamp": "2026-11-01T18:11:00.904Z",
+      "role": "user",
+      "phase": null,
+      "model_from_turn_context": "gpt-6.1-sol",
+      "text": "别看审核稿重新做",
+      "is_excerpt": false,
+      "redactions": []
+    },
+    {
+      "id": "excerpt_16",
+      "topic": "publication",
+      "session_id": "01a1984a-ec58-7082-8c9d-0bee8f996569",
+      "jsonl_line": 129,
+      "timestamp": "2026-11-01T18:18:33.674Z",
+      "role": "user",
+      "phase": null,
+      "model_from_turn_context": "gpt-6.1-sol",
+      "text": "1a 2a 3b",
+      "is_excerpt": false,
+      "redactions": []
+    },
+    {
+      "id": "excerpt_17",
+      "topic": "publication",
+      "session_id": "01a1984a-ec58-7082-8c9d-0bee8f996569",
+      "jsonl_line": 755,
+      "timestamp": "2026-11-01T19:11:15.131Z",
+      "role": "assistant",
+      "phase": "final_answer",
+      "model_from_turn_context": "gpt-6.1-sol",
+      "text": "好的，暂时只保留本地提交 **`745a0bd`**，不推送 GitHub，也不再尝试登录。\n\n工程位于 [github_release/ydf](<[workspace]/github_release/ydf/README.md>)，源码、脚本和验证记录均已保存。后续你明确说“继续发布”时再恢复。",
+      "is_excerpt": false,
+      "redactions": [
+        "local_path"
+      ]
+    },
+    {
+      "id": "excerpt_18",
+      "topic": "publication",
+      "session_id": "01a1984a-ec58-7082-8c9d-0bee8f996569",
+      "jsonl_line": 789,
+      "timestamp": "2026-11-02T14:52:53.686Z",
+      "role": "user",
+      "phase": null,
+      "model_from_turn_context": "gpt-6.1-terra",
+      "text": "以\"[final_source]\"中的两个文件为最终文件，\"[workspace]\\jiaoben\"为scnn训练工程\nskill建议写踩坑清单，或者你有认为可取的也可以写\n大模型协作记录：提示词、模型回答、自我纠错轨迹、智能体工作流设计如有\n给出计划在修改",
+      "is_excerpt": false,
+      "redactions": [
+        "local_path"
+      ]
+    },
+    {
+      "id": "excerpt_19",
+      "topic": "publication",
+      "session_id": "01a1984a-ec58-7082-8c9d-0bee8f996569",
+      "jsonl_line": 1006,
+      "timestamp": "2026-11-03T05:49:21.933Z",
+      "role": "user",
+      "phase": null,
+      "model_from_turn_context": "gpt-6.1-sol",
+      "text": "根据\"[selected_source]\"中的内容继续完成任务",
+      "is_excerpt": false,
+      "redactions": [
+        "local_path"
+      ]
+    }
+  ]
+}

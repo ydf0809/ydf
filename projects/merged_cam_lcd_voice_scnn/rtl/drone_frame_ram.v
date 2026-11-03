@@ -1,6 +1,6 @@
+// Banked network frame RAM; separate camera write and network read clocks.
 `timescale 1ns / 1ps
 
-// Ping-pong 64x64 RGB888 live frame store.
 module drone_frame_ram (
     input  wire        clk_wr,
     input  wire        wr_en,

@@ -1,0 +1,40 @@
+
+****** xsim v2026.1 (64-bit)
+  **** SW Build 6511674 on Tue Jun 16 11:02:23 MDT 2026
+  **** IP Build 6504888 on Tue Jun 09 09:05:25 MDT 2026
+  **** SharedData Build 6501428 on Mon Jun 08 17:34:18 MDT 2026
+  **** Start of session at: Tue Nov  3 02:44:04 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source xsim.dir/tb_voice_arm_sim/xsim_script.tcl
+# xsim {tb_voice_arm_sim} -autoloadwcfg -runall
+Time resolution is 1 ps
+run -all
+==================================================
+ tb_voice_arm: CLK_FREQ=33333333  UART_BPS=115200
+   voice CARGO (cmd=5) must start the arm action
+==================================================
+--- 1) reset state ---
+[ OK ] after reset: arm_req=0, arm_rst_n=1 (arm held, not running)
+--- 2) upper board says CARGO: AA 55 05 55 AA ---
+[ OK ] arm reset pulse: 33334 clocks (~33333 expected)
+[ OK ] arm_req high: the arm action was started
+[ OK ] arm_rst_n released again (the arm is free to run)
+[ OK ] echoed AA 55 05 55 AA back to the upper board
+--- 3) a different command (02 FOLLOW) must not touch the arm ---
+[ OK ] cmd=2 produced no reset pulse
+--- 4) a broken frame must not touch the arm ---
+[ OK ] broken frame ignored (no reset pulse)
+--- 5) saying CARGO again must run the action again ---
+[ OK ] arm reset pulse: 33334 clocks (~33333 expected)
+[ OK ] second CARGO produced one more reset pulse
+--- 7) a tracking status frame (0x85) must not start the arm ---
+[ OK ] tracking frame ignored by the arm trigger
+[ OK ] link_demux latched the five sensors = 0b00101
+==================================================
+ RESULT: all passed (errors=0)
+==================================================
+$finish called at time : 7547256 ns : File "[previous_source_location]/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_voice_arm.v" Line 293
+exit
+INFO: [Common 17-206] Exiting xsim at Tue Nov  3 02:44:06 2026...

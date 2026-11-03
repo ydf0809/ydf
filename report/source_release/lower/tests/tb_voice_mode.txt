@@ -1,0 +1,44 @@
+
+****** xsim v2026.1 (64-bit)
+  **** SW Build 6511674 on Tue Jun 16 11:02:23 MDT 2026
+  **** IP Build 6504888 on Tue Jun 09 09:05:25 MDT 2026
+  **** SharedData Build 6501428 on Mon Jun 08 17:34:18 MDT 2026
+  **** Start of session at: Tue Nov  3 02:44:09 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source xsim.dir/tb_voice_mode_sim/xsim_script.tcl
+# xsim {tb_voice_mode_sim} -autoloadwcfg -runall
+Time resolution is 1 ps
+run -all
+==================================================
+ tb_voice_mode: CLK_FREQ=33333333  UART_BPS=115200
+   voice command picks the mode on the lower board
+==================================================
+--- 1) no command yet: everything OFF (idle) ---
+[ OK ] no command -> all off: xunbi=0 vision=0 defense=0 arm=0
+--- 2) say TRACK (01) ---
+[ OK ] cmd=01 -> tracking on: xunbi=1 vision=0 defense=0 arm=0
+--- 3) say CARGO (05) ---
+[ OK ] cmd=05 -> cargo arm on: xunbi=0 vision=0 defense=0 arm=1
+--- 4) say FOLLOW (02): tracking OFF, vision ON ---
+[ OK ] cmd=02 -> vision follow on: xunbi=0 vision=1 defense=0 arm=0
+--- 5) say DEFENSE (03): arm tracking ON, chassis OFF ---
+[ OK ] cmd=03 -> arm defense tracking: xunbi=0 vision=0 defense=1 arm=0
+--- 6) say HOLD (04) ---
+[ OK ] cmd=04 -> all off: xunbi=0 vision=0 defense=0 arm=0
+--- 7) say TRACK (01) again ---
+[ OK ] cmd=01 again -> tracking on: xunbi=1 vision=0 defense=0 arm=0
+--- 8) a tracking status frame (0x85) must not change the mode ---
+[ OK ] tracking frame -> mode unchanged: xunbi=1 vision=0 defense=0 arm=0
+[ OK ] the same frame updated track_pat to 0b00101
+--- 8b) link watchdog: no tracking frame -> line lost -> pattern 0 ---
+[ OK ] watchdog forced track_pat to 0 (wheels will stop)
+--- 9) board reset: the mode is cleared ---
+[ OK ] after reset -> all off: xunbi=0 vision=0 defense=0 arm=0
+==================================================
+ RESULT: all passed (errors=0)
+==================================================
+$finish called at time : 8525235 ns : File "[previous_source_location]/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_voice_mode.v" Line 195
+exit
+INFO: [Common 17-206] Exiting xsim at Tue Nov  3 02:44:11 2026...

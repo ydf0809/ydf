@@ -1,11 +1,147 @@
 {
-  "description": "compressed archive extracted into an independent directory without original runs/cache",
+  "status": "PASS",
+  "completed_at": "2026-11-03T15:10:27+08:00",
+  "git_tree": "940bb17628caed3c7adb9e753de8b9b3fb03904d",
+  "archive_sha256": "ed9c1ef332a0d2c6347876957bf8a05f8cbd8c570cb904063d4c674248e9ea1f",
+  "physical_validation": "not_performed",
+  "source_sha256": {
+    "upper": {
+      "projects/merged_cam_lcd_voice_scnn/constraints/impl_route.xdc": "ca8b3b6d4a45d410a56208142def28a08384be25361bb24a260e94e7e35c8733",
+      "projects/merged_cam_lcd_voice_scnn/constraints/top.xdc": "c540b5ff6464f2df792f4c8c224dd07019b583a3e374e248b37e3ae2cc8194df",
+      "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/compat_support/compat_arm_red_track.v": "e98669147052c47ca5720b80b5edfd1c8869755e32c8b58e0aa81f8191d18db2",
+      "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/compat_support/compat_bbox_unpack.v": "966dd9947768f323133729712585d06661cb71b673235700c0fd8a17ce3cb659",
+      "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/compat_support/compat_board_link.v": "1765980d9bb2f93e21552200e6fe325f27e70081b1563c7feeabd1cfd60b5ce2",
+      "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/compat_support/compat_bus_servo_packet_tx.v": "a399545b978855a1d28a7b503ee68109b264b95db454efc1e94480f06f765bb5",
+      "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/compat_support/compat_bus_servo_uart_tx.v": "b8357ebf7dda694a5a9b3a34ba3cb41566f3024aafd848e87fb3189db2bfd36a",
+      "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/compat_support/compat_color_track.v": "47ffc4035d65399f74555bbc8db156990586eedf1dbeaebbe0aa2b8d1e2414c0",
+      "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/compat_support/compat_link_demux.v": "2007ccaa5b5f2d15381c46ddaf0e6d37b6ae545383dcb9ad50aca466824d74e1",
+      "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/compat_support/compat_link_rx.v": "2c900bc61576329234c25bf0d3bbb2ccb56db19bf7d41cd8e385f5209219f221",
+      "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/compat_support/compat_link_tx.v": "ec56da329f6dcc34dc41bfcabec9212ac102d27eca43b40e9c4b7bd6a3d349e3",
+      "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/compat_support/compat_rgb2hsv.v": "149a1b0c51516f6300690f68bf8f458e5ba67f5db4031e588209d4a6f78e29da",
+      "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/compat_support/compat_rgb_lcd_driver.v": "dafaa8f935ea18e1e01792be0eed94bfb6ac18040e990df7256c8f0529f0fded",
+      "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/compat_support/compat_uart_rx.v": "7bede311743e237503ef2d4da0385564d2d45ba264800a7e8598e0c3d64ac4f2",
+      "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/compat_support/compat_uart_tx.v": "3ce2c61450ed613734770d7a5bede86429b59b4c12bbfa70ae3a9eb336cd1786",
+      "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/compat_support/compat_voice_mode_select.v": "35bef590d64e9fc77899746b0e89af37054950773a9415ba315bc5cfe361191f",
+      "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/tb_air_defence_mode.v": "f445314d42d186337f60cb34b1d58a659815bd27d55a4239da5c2606dc52885f",
+      "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/tb_i2c_config_clock.v": "7044c4392a656bb13a31f5bb31e41931076627420d4532c3aa8d731d7017e95f",
+      "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/tb_integrated_recheck_cdc.v": "71487037a215dd40d7a5b7c53e5a7f49cf83b23f03ce7a62bc9b2ee01c0d7bd5",
+      "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/tb_lcd_box_color.v": "b8cdbe4382506cb79dc169b9c83a4ae50f9c005e03cd7dd8acac1ecc1e1f1b43",
+      "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/tb_lower_display_compat.v": "c000942ae3cd42be816b684ad89a6d74294066b6852f65dfc114cb5f84f5f2a5",
+      "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/tb_motion_candidate_priority.v": "1c47beac9caedc30ea76be65e664b05e1215fb3e0ae17b515d2e8ad68a7727af",
+      "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/tb_motion_detector.v": "7a1c8294412da21645eaa383c1b59ea29376fa289325d3bdbb2fd059c058630f",
+      "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/tb_periodic_recheck.v": "d59d19f1d00b3a85723f75d4498fa73d007de606dd2794b9be41201cf44fb2e3",
+      "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/tb_roi_scheduler.v": "549c3f15e2ab2a2a4cc8d070303054f428b0b8d0b19fdd174f65b208281267b0",
+      "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/tb_servo6_compat.v": "0bcf8b33280437a80bae156e29bea051232606829f591f92a63bba206360ab53",
+      "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/tb_upper_lower_serial_compat.v": "d9faa33f3eac074494859ef6e58a0768363c93f01c08299be5fe84618c5fca5f",
+      "projects/merged_cam_lcd_voice_scnn/reference_frame.mem": "36e642a9ea96c198fa499b78f861d780220c4caa69b5bceeaac2ea06c2c0f41c",
+      "projects/merged_cam_lcd_voice_scnn/rtl/asr_frame_decode.v": "2affd4409f0fc90fcbd7591f7d6c9e5bb4639ce4918514a463faa311a8ce4c1f",
+      "projects/merged_cam_lcd_voice_scnn/rtl/board_link.v": "0874eef73f83086c595ac7f2064bac67619cb06696bc4256dfd98b87727eaf32",
+      "projects/merged_cam_lcd_voice_scnn/rtl/control_unit_cnn.v": "dba11543cc8d40d264959a0aa5c8566159c5722a263f675e021568dbb2186439",
+      "projects/merged_cam_lcd_voice_scnn/rtl/conv_engine.v": "e563c8c46fdfbb0ab9e36505032515d420a99d67fe3206a68499102dfd363925",
+      "projects/merged_cam_lcd_voice_scnn/rtl/conv_weight_rom.v": "1ebd5936d4c266525ac2e7ff3ca63409e3fdbb54455681252d0d71ff99075e3d",
+      "projects/merged_cam_lcd_voice_scnn/rtl/drone_data_roms.v": "2d157f22f561c119a45e4d72899379ce765663f895a8d8ff26fb4c8144076300",
+      "projects/merged_cam_lcd_voice_scnn/rtl/drone_frame_ram.v": "47d273f93b330b217db0ea5f95e5789a83b6e283535677ec863f52e2eea5fc22",
+      "projects/merged_cam_lcd_voice_scnn/rtl/fc_classifier.v": "eeb770cf8e5a21e9d49a997d11771429feed5dcec5ee2c7b160dbfba879164c8",
+      "projects/merged_cam_lcd_voice_scnn/rtl/font_rom.v": "92082692a6eb90f863af31f008d0c7729387700a4e9c57b00cb2e16d6105eb10",
+      "projects/merged_cam_lcd_voice_scnn/rtl/frame_buffer.v": "0bc0b7911642aa17bb93da5c1a0d03d521390c6988690fedee431e8615faec93",
+      "projects/merged_cam_lcd_voice_scnn/rtl/frame_rom_beh.v": "e4bbeadfc7f8ef42fc94307226e1928967edf031454dac978875f90eff3b9e65",
+      "projects/merged_cam_lcd_voice_scnn/rtl/i2c_dri.v": "4fdce5df3f5f9203d2ff5a92b65d79a26785e8ec74591ef0cba648dfb806d05c",
+      "projects/merged_cam_lcd_voice_scnn/rtl/i2c_ov5640_rgb565_cfg.v": "7726d40d9d27147884172966ebd29c253585e6695225bf8e0376d4dfa1391ae3",
+      "projects/merged_cam_lcd_voice_scnn/rtl/input_frontend.v": "e023ebe99f1f02f01db65b4463528234006cbd7a3adb4e8e9c7de223a211aa40",
+      "projects/merged_cam_lcd_voice_scnn/rtl/lcd_cam_text_scnn.v": "f396b2d50f864fcf05720059d53268bb31d09c9023f025ade2b6bedd78bf0559",
+      "projects/merged_cam_lcd_voice_scnn/rtl/lif_bram.v": "546835ceee2e5c272da15a5c05bb4acacb69285e35ea4c4439d46a8b21657d65",
+      "projects/merged_cam_lcd_voice_scnn/rtl/lif_neuron_cell.v": "00224708873b96c721e477a9bb2da224c67fde340d4eb13b2bc1a34472379017",
+      "projects/merged_cam_lcd_voice_scnn/rtl/lif_neuron_layer.v": "cc5af090a7b22d3f8ed90ecd40d259ba8071f2417a7671e208141713b88c19fd",
+      "projects/merged_cam_lcd_voice_scnn/rtl/link_demux.v": "42e595cdb06d45b13356d25706a4e6a9384adef35ecc141fd71e69b51c60ff39",
+      "projects/merged_cam_lcd_voice_scnn/rtl/link_rx.v": "fd8798d0cb2e9ce367b5e2e249fea8ab37a7ebb43fefd5aa46565a7c6edbebb3",
+      "projects/merged_cam_lcd_voice_scnn/rtl/link_tx.v": "7902a2641ce2988d7a2812578eadfe1045633fae7a2d573a5f6b6098cdabde11",
+      "projects/merged_cam_lcd_voice_scnn/rtl/motion_candidate_priority.v": "617c986af11c6a46d8d14108bcc8be9992ff1d79bbdf6ab715d8c5803d044bde",
+      "projects/merged_cam_lcd_voice_scnn/rtl/motion_detector.v": "dbb6e8c313155426c6e2d8c191bb2070ecbf13eb79ff8b43f45543c4b79a11cd",
+      "projects/merged_cam_lcd_voice_scnn/rtl/neuron_processing_unit.v": "d77e0b42c98dd0c56114a893eb9a5f505aa82a7e37fdfc16ebabd53edad4eaf0",
+      "projects/merged_cam_lcd_voice_scnn/rtl/output_logic.v": "bb3e8f7b1bbb4d01b82921d8bd58a3d80446acb8c4dc18cc1e46b60c6ff86e2b",
+      "projects/merged_cam_lcd_voice_scnn/rtl/ov5640_capture.v": "84af0903d2d7b03b05f2b99f8d1a2ce9e6c43279645bc399debb865b416ae45f",
+      "projects/merged_cam_lcd_voice_scnn/rtl/periodic_recheck_timer.v": "2c128ad3453075bfe7828108deea3b9103af2952b2dde1139734808ebe3cf6aa",
+      "projects/merged_cam_lcd_voice_scnn/rtl/pool_engine.v": "2922f97b2569f5f49f2e87633715e4e9aa062e212f74185051b6998e8b64838f",
+      "projects/merged_cam_lcd_voice_scnn/rtl/prng_lfsr.v": "83ba46745ab437264159eab3825fb9445dd5fb552cd1fce38ef7f3630a3167d9",
+      "projects/merged_cam_lcd_voice_scnn/rtl/rgb2hsv.v": "ed4871f0dff73ef93dd945c94f930e0c0f35f11e2caff074dbb23257c45447c3",
+      "projects/merged_cam_lcd_voice_scnn/rtl/roi_resampler.v": "9d2491206a429013ed054386231d0328d2244cec877e112a6e75dfe49b042313",
+      "projects/merged_cam_lcd_voice_scnn/rtl/roi_scheduler.v": "98974c44945b2588cadc2b0725fb92c975dab170d3611b50d81a370245166bc5",
+      "projects/merged_cam_lcd_voice_scnn/rtl/roi_template_guard.v": "5605efb518367efebc2f1db539daaad5adfebf13669d97431ea2650a0f7fdb50",
+      "projects/merged_cam_lcd_voice_scnn/rtl/rst_sync.v": "e9f143d18df578cd6913c2a08adf4573f76f279ac37148b766af2444d6ec02ab",
+      "projects/merged_cam_lcd_voice_scnn/rtl/scnn_chain.v": "7ebd2723126378fc9066b4587475e89bb25945d9f7cd0d72a393b3aa3ed914fb",
+      "projects/merged_cam_lcd_voice_scnn/rtl/snn_cnn_core.v": "6ffc3d90741e8cb14ce4c6c439cdd94e0bd1502a742a048ef4396beeaf0a2438",
+      "projects/merged_cam_lcd_voice_scnn/rtl/snn_cnn_top.v": "9a012fdf7bfef4464c0a92bafc9c1289aac8969569e2666678ec97b675004e63",
+      "projects/merged_cam_lcd_voice_scnn/rtl/spike_ram.v": "81d5f3dc3b23fd506988e7d3cc0a0f2a3327b59652bbc3e2b4e2acc0a8773a7a",
+      "projects/merged_cam_lcd_voice_scnn/rtl/top.v": "06d5c2e5c3828ea3cb063a93c3c10b5b5286d96888685cc87261eb2e7693c2c4",
+      "projects/merged_cam_lcd_voice_scnn/rtl/top_asr_voice.v": "882945dc5417b191b45937b663a0895027f55c1dfbd5590305c009e4b8072764",
+      "projects/merged_cam_lcd_voice_scnn/rtl/track_send.v": "2c60e5791268f6a1aa5b829818f9da2a264d3c8f45db90ef7d1278363b5fadba",
+      "projects/merged_cam_lcd_voice_scnn/rtl/uart_rx.v": "72feb49ab45d41b2b73a6bff3f78ebe3482fea61824fc8309468f709bce9fb20",
+      "projects/merged_cam_lcd_voice_scnn/rtl/uart_tx.v": "909dd6d36adb8c613fffdc28b3fba254912b3c02379676ca31b28a04fee69856",
+      "projects/merged_cam_lcd_voice_scnn/rtl/upper_link_send.v": "15896787b1e42beedbc9d4f20f6ff82a63efb7bf2c31282f8b55cda253eae08f",
+      "projects/merged_cam_lcd_voice_scnn/rtl/weight_bram_beh.v": "265eacc8f4dee12cdd365c1661aec47fdf6d24cb4c8135caa96d1cd12f1809b4"
+    },
+    "lower": {
+      "projects/realfinal_min_102404/realfinal.srcs/clk_wiz_0/ip/clk_wiz_0/clk_wiz_0.xci": "cded5ef8b0d459bc9aa5f62bf4773c24f83a39aae91bc134f8866c12faee6ea9",
+      "projects/realfinal_min_102404/realfinal.srcs/constrs_1/new/10086.xdc": "d25a8e68ca611ff66786269079cb0455eb1fd6e4b0fd9ca5317517739d19f898",
+      "projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_arm_red_track.v": "13439b37e8ad0baf30abf0515165fe7bbb7e9656a544bb575c42e9c838998745",
+      "projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_arm_stop.v": "654685476bbe1bd0e93f0103f56aaf0c1dc15f89469f6ac344d1ff23e1f784b9",
+      "projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_bbox_unpack.v": "e61d23d7c1121de1942d5493071a08d833abd6327cd87849d9803e086aa97f50",
+      "projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_board_link.v": "8f6cf6e63dc73af0460d1e9f65c45ad1df884be7ec2e49966f941628cb7f0078",
+      "projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_camera_box_cdc.v": "73507abb8bbfb47dee971207cc5a81f62d67b285572263cdf88a2db583d03ab4",
+      "projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_chassis_filter.v": "3c67f1afc04b89d25f66991331e94a3e0137b254c70d155b47884db7bb4124d6",
+      "projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_corner_turn.v": "093fd1f5fad241ea4fafe2c35be3aff4cbc3e3b51c7ed46072aec454b5fcc819",
+      "projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_defense_spin.v": "b9379757b24ffd706d322382e84b4a15bd77ce8934af5d656114326a61dca8d2",
+      "projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_iic_stop.v": "80f893aba9ef8afc630066327d29a92d5944b9c0e33647a1bda5c6981febf5fe",
+      "projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_line_pid.v": "69a14cc3e76618e6dcd4670fa495b73bae462a1776b4cf1352f5d1c39c71d649",
+      "projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_ov7670_capture.v": "a57c5952b422ea1e6f2b123e8234f2f5381454bd020c7cf404e7a795e2780c83",
+      "projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_rgb2hsv_pipeline.v": "9b6b5f3eff228478310f4622c1d771ce0b5a882b4ed49e45e23faaa2f8904fb0",
+      "projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_voice_arm.v": "b7a1b07b5e37ea659dc17d020d9c7393278824ea3a2a70d6568499872920d5db",
+      "projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_voice_mode.v": "a4ff386535086b3eba090a0dbcb9082f431684d31b7b988c0943a2711e5cf6ec",
+      "projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_xunbi_tracking.v": "cd4c85355124800e0aa1fb6f11831c4cda0972f6b57adfffafd95205fb3f815a",
+      "projects/realfinal_min_102404/realfinal.srcs/sources_1/imports/imported/armfinal/project_9.srcs/sources_1/new/arm_pick_place_once_top.v": "257d83b24a66c9f6da78cecb12619d4b390b3b2d8bfc8b88811c13a1150dfa43",
+      "projects/realfinal_min_102404/realfinal.srcs/sources_1/imports/imported/armfinal/project_9.srcs/sources_1/new/bus_servo_packet_tx.v": "bb553269b928551d827940e7c5047e7af7ae3cdf59abbec5c9e3c0d98b41f1f0",
+      "projects/realfinal_min_102404/realfinal.srcs/sources_1/imports/imported/armfinal/project_9.srcs/sources_1/new/bus_servo_uart_tx.v": "714886ba7bcdc099bf18cf110c8f9146c7916ca8562c4b233f305d864e92b79e",
+      "projects/realfinal_min_102404/realfinal.srcs/sources_1/imports/imported/shijuefinal/project_7.srcs/sources_1/new/atk4384_driver.v": "3fddb5bc66469615e24d73fe54c13f47fec6a6595ba6e9b920cf78ef0b6556d1",
+      "projects/realfinal_min_102404/realfinal.srcs/sources_1/imports/imported/shijuefinal/project_7.srcs/sources_1/new/chassis_control.v": "b9849b419a054dfac4ee3ea9feebe4092668d43a5556a3a232ce0f5188ad8236",
+      "projects/realfinal_min_102404/realfinal.srcs/sources_1/imports/imported/shijuefinal/project_7.srcs/sources_1/new/color_track.v": "c26467d35d83bad10108aa7e4dc08f82edd4977024138a5abcd60d33e1b0f749",
+      "projects/realfinal_min_102404/realfinal.srcs/sources_1/imports/imported/shijuefinal/project_7.srcs/sources_1/new/frame_buffer_bram.v": "5868515aaf3153b7ac54c2f35f659325fb5e3e382ac6ae8e4d2f83fa7f30e80f",
+      "projects/realfinal_min_102404/realfinal.srcs/sources_1/imports/imported/shijuefinal/project_7.srcs/sources_1/new/iic_w_top.v": "a148e91af4774edffd132972245338b72f80f03fff596c9fe3fc8401b3bef637",
+      "projects/realfinal_min_102404/realfinal.srcs/sources_1/imports/imported/shijuefinal/project_7.srcs/sources_1/new/iic_write.v": "1f53385cedbb883886b335dd6c41878cf2bb00ddf9d358471ed8008314a83e98",
+      "projects/realfinal_min_102404/realfinal.srcs/sources_1/imports/imported/shijuefinal/project_7.srcs/sources_1/new/ov7670_capture.v": "2d8fcba2835fc42d52ddf73e113d221ac05ed6212c113d610d544be261107825",
+      "projects/realfinal_min_102404/realfinal.srcs/sources_1/imports/imported/shijuefinal/project_7.srcs/sources_1/new/ov7670_init.v": "989699d2303e17ffe9ccc73615578b373d872bab9b710f6b930b6cf64d0307cc",
+      "projects/realfinal_min_102404/realfinal.srcs/sources_1/imports/imported/shijuefinal/project_7.srcs/sources_1/new/rgb2hsv.v": "d776b1cfc5fabce523fc598768df98e4abfda0c8a10b24b6993c079f5fb5e190",
+      "projects/realfinal_min_102404/realfinal.srcs/sources_1/imports/imported/shijuefinal/project_7.srcs/sources_1/new/sccb_master.v": "6030427a56cd22f242080eb563749fc748c0e97c6ad0518435d79ce8eb28fe48",
+      "projects/realfinal_min_102404/realfinal.srcs/sources_1/imports/imported/shijuefinal/project_7.srcs/sources_1/new/spi_master.v": "1e8cf520f0f71be586020e1a8756b5d353136509de3d21858636d08108491f1b",
+      "projects/realfinal_min_102404/realfinal.srcs/sources_1/imports/imported/xunbifinal/xunjibizhang02.srcs/sources_1/new/line_follow_ctrl.v": "abc26292913226b5c2859ab2f1895cc8713e381c3e5626e4b4ae08fd67eda033",
+      "projects/realfinal_min_102404/realfinal.srcs/sources_1/imports/imported/xunbifinal/xunjibizhang02.srcs/sources_1/new/obstacle_avoid_ctrl.v": "3923fc092c024fc30c5d34862f455bc650e6abb8b06bc41e5b3410f764940006",
+      "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/arm_red_track.v": "ffcb654520b73dbc4a1ae5c384b5c3872258c4f00305d566aa4b7dafab9722ca",
+      "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/arm_voice_trigger.v": "ca949283438d27abb572ba4bd1e7efdb6c8fde9c9fec7c9d6d63c9e1f8a3939c",
+      "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/asr_frame_decode.v": "2affd4409f0fc90fcbd7591f7d6c9e5bb4639ce4918514a463faa311a8ce4c1f",
+      "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/bbox_unpack.v": "7e1b3996a66d7b0aaaf08f372dab26e6d9de1f259e228a410f2be1500b4f15dd",
+      "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/board_link.v": "af5771277e354166f06ebeb5afecac1380f3392a1cecf728b2bfc2d319c969eb",
+      "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/corner_turn.v": "c898d89c2c020d960e56861a8634aa5c5ca7590fd3cb340bb0a5225313d15881",
+      "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/defense_spin.v": "7f31d35b92da5c0a7b17962930e8e434797dc5ac8c3a6515d26478c2362373eb",
+      "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/line_pid_ctrl.v": "e49a344a0ce4d5847e76e307d2c21c6f09077401ee421e718b3d51875823b3c7",
+      "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/link_demux.v": "99b6147cd408940cbe9c7bb1ad1d1eb9facb4661e7ced3cf846b03a63a23d1be",
+      "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/link_rx.v": "fd8798d0cb2e9ce367b5e2e249fea8ab37a7ebb43fefd5aa46565a7c6edbebb3",
+      "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/link_tx.v": "b9dafe42a526070da4dcd00b4692a265ea7781021ad15433fccdde176855d10d",
+      "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/rgb_lcd_driver.v": "97dc904873b1570870cbe4fd1eb1ce183a47e509545fe07ef91663c0418aa975",
+      "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/shijue_arm_core.v": "3cd7cdbd9730598371301d88fe7c889ed125043bfcccfd25d0c9b8ed7d7b2a8d",
+      "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/shijue_core.v": "c518d29714f3d2f403c89c5a58d42f534aef241607f872acd42b11ad7a860b3f",
+      "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/super_top.v": "4aa5ed7177553828340416175de99c204973be89bc9b31051cee43dca7fcc009",
+      "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/track_send.v": "6304c0d16e8e19fce45d506a5eec17d2526142f2341cbac44b1a9b129922a1d8",
+      "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/uart_rx.v": "72feb49ab45d41b2b73a6bff3f78ebe3482fea61824fc8309468f709bce9fb20",
+      "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/uart_tx.v": "909dd6d36adb8c613fffdc28b3fba254912b3c02379676ca31b28a04fee69856",
+      "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/voice_mode_select.v": "bcc7af253c35d389aca444e10cff2ca2900306e9b7528db6f769ae39e00c2193",
+      "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/xunbi_core.v": "01062a1ccb8cc7ab5680753de79a260f70db52a833a4be11b84395e93c400ba0"
+    }
+  },
   "tests": [
     {
       "board": "upper",
       "test": "tb_air_defence_mode",
       "passed": true,
-      "source": "projects/merged_cam_lcd_voice_scnn/tb/tb_air_defence_mode.v",
+      "source": "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/tb_air_defence_mode.v",
       "stage": "simulate",
       "dependencies": [
         "projects/merged_cam_lcd_voice_scnn/rtl/asr_frame_decode.v",
@@ -26,6 +162,7 @@
         "projects/merged_cam_lcd_voice_scnn/rtl/lif_neuron_layer.v",
         "projects/merged_cam_lcd_voice_scnn/rtl/link_rx.v",
         "projects/merged_cam_lcd_voice_scnn/rtl/link_tx.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/motion_candidate_priority.v",
         "projects/merged_cam_lcd_voice_scnn/rtl/motion_detector.v",
         "projects/merged_cam_lcd_voice_scnn/rtl/neuron_processing_unit.v",
         "projects/merged_cam_lcd_voice_scnn/rtl/output_logic.v",
@@ -45,19 +182,41 @@
         "projects/merged_cam_lcd_voice_scnn/rtl/uart_rx.v",
         "projects/merged_cam_lcd_voice_scnn/rtl/uart_tx.v",
         "projects/merged_cam_lcd_voice_scnn/rtl/upper_link_send.v",
-        "projects/merged_cam_lcd_voice_scnn/tb/tb_air_defence_mode.v"
+        "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/tb_air_defence_mode.v"
       ],
       "exit_code": 0,
       "pass_markers": [
         "AIR_DEFENCE_MODE_TEST: PASS"
       ],
-      "failure_markers": []
+      "failure_markers": [],
+      "log": "sim/results/upper_tb_air_defence_mode.txt",
+      "log_sha256": "1393f50f6b6b3006914a78d2f7052af97dd3957955b1ecccd7b7a9f7f2900309",
+      "inputs_unchanged": true
+    },
+    {
+      "board": "upper",
+      "test": "tb_i2c_config_clock",
+      "passed": true,
+      "source": "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/tb_i2c_config_clock.v",
+      "stage": "simulate",
+      "dependencies": [
+        "projects/merged_cam_lcd_voice_scnn/rtl/i2c_dri.v",
+        "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/tb_i2c_config_clock.v"
+      ],
+      "exit_code": 0,
+      "pass_markers": [
+        "I2C_CONFIG_CLOCK_TEST: PASS divide_by=32"
+      ],
+      "failure_markers": [],
+      "log": "sim/results/upper_tb_i2c_config_clock.txt",
+      "log_sha256": "b75ef2c4ca62212be2f39b4d3d5c49ba687019771b3330f36fc760f6498dd002",
+      "inputs_unchanged": true
     },
     {
       "board": "upper",
       "test": "tb_integrated_recheck_cdc",
       "passed": true,
-      "source": "projects/merged_cam_lcd_voice_scnn/tb/tb_integrated_recheck_cdc.v",
+      "source": "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/tb_integrated_recheck_cdc.v",
       "stage": "simulate",
       "dependencies": [
         "projects/merged_cam_lcd_voice_scnn/rtl/asr_frame_decode.v",
@@ -78,6 +237,7 @@
         "projects/merged_cam_lcd_voice_scnn/rtl/lif_neuron_layer.v",
         "projects/merged_cam_lcd_voice_scnn/rtl/link_rx.v",
         "projects/merged_cam_lcd_voice_scnn/rtl/link_tx.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/motion_candidate_priority.v",
         "projects/merged_cam_lcd_voice_scnn/rtl/motion_detector.v",
         "projects/merged_cam_lcd_voice_scnn/rtl/neuron_processing_unit.v",
         "projects/merged_cam_lcd_voice_scnn/rtl/output_logic.v",
@@ -97,46 +257,221 @@
         "projects/merged_cam_lcd_voice_scnn/rtl/uart_rx.v",
         "projects/merged_cam_lcd_voice_scnn/rtl/uart_tx.v",
         "projects/merged_cam_lcd_voice_scnn/rtl/upper_link_send.v",
-        "projects/merged_cam_lcd_voice_scnn/tb/tb_integrated_recheck_cdc.v"
+        "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/tb_integrated_recheck_cdc.v"
       ],
       "exit_code": 0,
       "pass_markers": [
         "INTEGRATED_RECHECK_CDC_TEST: PASS"
       ],
-      "failure_markers": []
+      "failure_markers": [],
+      "log": "sim/results/upper_tb_integrated_recheck_cdc.txt",
+      "log_sha256": "f8078c815c285f5751c4faa13d7b3b935d39c9bd28abf287aea9cfa74a060121",
+      "inputs_unchanged": true
     },
     {
       "board": "upper",
-      "test": "tb_lock_policy",
+      "test": "tb_lcd_box_color",
       "passed": true,
-      "source": "projects/merged_cam_lcd_voice_scnn/tb/tb_lock_policy.v",
+      "source": "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/tb_lcd_box_color.v",
       "stage": "simulate",
       "dependencies": [
-        "projects/merged_cam_lcd_voice_scnn/rtl/roi_scheduler.v",
-        "projects/merged_cam_lcd_voice_scnn/tb/tb_lock_policy.v"
+        "projects/merged_cam_lcd_voice_scnn/rtl/font_rom.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/lcd_cam_text_scnn.v",
+        "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/tb_lcd_box_color.v"
       ],
       "exit_code": 0,
       "pass_markers": [
-        "LOCK_POLICY_TEST: PASS"
+        "LCD_BOX_COLOR_TEST: PASS"
       ],
-      "failure_markers": []
+      "failure_markers": [],
+      "log": "sim/results/upper_tb_lcd_box_color.txt",
+      "log_sha256": "45161b16ab942326d7fb04aac9d7c179d13a4abc96e6047910220cde78df6cf3",
+      "inputs_unchanged": true
+    },
+    {
+      "board": "upper",
+      "test": "tb_lower_display_compat",
+      "passed": true,
+      "source": "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/tb_lower_display_compat.v",
+      "stage": "simulate",
+      "dependencies": [
+        "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/compat_support/compat_color_track.v",
+        "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/compat_support/compat_rgb2hsv.v",
+        "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/compat_support/compat_rgb_lcd_driver.v",
+        "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/compat_support/compat_voice_mode_select.v",
+        "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/tb_lower_display_compat.v"
+      ],
+      "exit_code": 0,
+      "pass_markers": [
+        "LOWER_DISPLAY_COMPAT_TEST: PASS"
+      ],
+      "failure_markers": [],
+      "log": "sim/results/upper_tb_lower_display_compat.txt",
+      "log_sha256": "7bf953f26beb5cd6a41f2312e777b9b9cec19d44d33529b0cc203e930364dd71",
+      "inputs_unchanged": true
+    },
+    {
+      "board": "upper",
+      "test": "tb_motion_candidate_priority",
+      "passed": true,
+      "source": "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/tb_motion_candidate_priority.v",
+      "stage": "simulate",
+      "dependencies": [
+        "projects/merged_cam_lcd_voice_scnn/rtl/motion_candidate_priority.v",
+        "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/tb_motion_candidate_priority.v"
+      ],
+      "exit_code": 0,
+      "pass_markers": [
+        "MOTION_PRIORITY_TEST: PASS"
+      ],
+      "failure_markers": [],
+      "log": "sim/results/upper_tb_motion_candidate_priority.txt",
+      "log_sha256": "6b3110e8acb3764d0369f8fa0a120c5795023873ddfb0d348e9fe19242ef26de",
+      "inputs_unchanged": true
+    },
+    {
+      "board": "upper",
+      "test": "tb_motion_detector",
+      "passed": true,
+      "source": "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/tb_motion_detector.v",
+      "stage": "simulate",
+      "dependencies": [
+        "projects/merged_cam_lcd_voice_scnn/rtl/motion_candidate_priority.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/motion_detector.v",
+        "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/tb_motion_detector.v"
+      ],
+      "exit_code": 0,
+      "pass_markers": [
+        "TEST_RESULT: PASS"
+      ],
+      "failure_markers": [],
+      "log": "sim/results/upper_tb_motion_detector.txt",
+      "log_sha256": "e56d3d2475929c31849c21625be40e20e427ee219452c722f6e9a06262ca9f2e",
+      "inputs_unchanged": true
     },
     {
       "board": "upper",
       "test": "tb_periodic_recheck",
       "passed": true,
-      "source": "projects/merged_cam_lcd_voice_scnn/tb/tb_periodic_recheck.v",
+      "source": "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/tb_periodic_recheck.v",
       "stage": "simulate",
       "dependencies": [
         "projects/merged_cam_lcd_voice_scnn/rtl/periodic_recheck_timer.v",
         "projects/merged_cam_lcd_voice_scnn/rtl/roi_scheduler.v",
-        "projects/merged_cam_lcd_voice_scnn/tb/tb_periodic_recheck.v"
+        "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/tb_periodic_recheck.v"
       ],
       "exit_code": 0,
       "pass_markers": [
         "PERIODIC_RECHECK_TEST: PASS"
       ],
-      "failure_markers": []
+      "failure_markers": [],
+      "log": "sim/results/upper_tb_periodic_recheck.txt",
+      "log_sha256": "c2b3c34ecc2df4cedece3fe57de2844aba2a33f7c7596ff56a9b2ac799675623",
+      "inputs_unchanged": true
+    },
+    {
+      "board": "upper",
+      "test": "tb_roi_scheduler",
+      "passed": true,
+      "source": "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/tb_roi_scheduler.v",
+      "stage": "simulate",
+      "dependencies": [
+        "projects/merged_cam_lcd_voice_scnn/rtl/roi_scheduler.v",
+        "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/tb_roi_scheduler.v"
+      ],
+      "exit_code": 0,
+      "pass_markers": [
+        "ROI_TEST: PASS (local sticky follow)"
+      ],
+      "failure_markers": [],
+      "log": "sim/results/upper_tb_roi_scheduler.txt",
+      "log_sha256": "4cb3b7e6eacb835dcfeae575528d541eb284c617a2aba89169c33686f702b92a",
+      "inputs_unchanged": true
+    },
+    {
+      "board": "upper",
+      "test": "tb_servo6_compat",
+      "passed": true,
+      "source": "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/tb_servo6_compat.v",
+      "stage": "simulate",
+      "dependencies": [
+        "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/compat_support/compat_arm_red_track.v",
+        "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/compat_support/compat_bus_servo_packet_tx.v",
+        "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/compat_support/compat_bus_servo_uart_tx.v",
+        "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/tb_servo6_compat.v"
+      ],
+      "exit_code": 0,
+      "pass_markers": [
+        "SERVO6_COMPAT_TEST: PASS"
+      ],
+      "failure_markers": [],
+      "log": "sim/results/upper_tb_servo6_compat.txt",
+      "log_sha256": "60c2fad54ae3866217419dcda5271854a3acb8ba80ccf6f38d80f32fd090b940",
+      "inputs_unchanged": true
+    },
+    {
+      "board": "upper",
+      "test": "tb_upper_lower_serial_compat",
+      "passed": true,
+      "source": "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/tb_upper_lower_serial_compat.v",
+      "stage": "simulate",
+      "dependencies": [
+        "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/compat_support/compat_bbox_unpack.v",
+        "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/compat_support/compat_board_link.v",
+        "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/compat_support/compat_link_demux.v",
+        "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/compat_support/compat_link_rx.v",
+        "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/compat_support/compat_link_tx.v",
+        "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/compat_support/compat_uart_rx.v",
+        "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/compat_support/compat_uart_tx.v",
+        "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/compat_support/compat_voice_mode_select.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/asr_frame_decode.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/board_link.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/control_unit_cnn.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/conv_engine.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/drone_data_roms.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/drone_frame_ram.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/fc_classifier.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/font_rom.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/frame_buffer.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/i2c_dri.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/i2c_ov5640_rgb565_cfg.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/input_frontend.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/lcd_cam_text_scnn.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/lif_bram.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/lif_neuron_cell.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/lif_neuron_layer.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/link_rx.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/link_tx.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/motion_candidate_priority.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/motion_detector.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/neuron_processing_unit.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/output_logic.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/ov5640_capture.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/periodic_recheck_timer.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/pool_engine.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/prng_lfsr.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/roi_resampler.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/roi_scheduler.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/rst_sync.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/scnn_chain.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/snn_cnn_core.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/snn_cnn_top.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/spike_ram.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/top.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/top_asr_voice.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/uart_rx.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/uart_tx.v",
+        "projects/merged_cam_lcd_voice_scnn/rtl/upper_link_send.v",
+        "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/tb_upper_lower_serial_compat.v"
+      ],
+      "exit_code": 0,
+      "pass_markers": [
+        "UPPER_LOWER_SERIAL_COMPAT_TEST: PASS"
+      ],
+      "failure_markers": [],
+      "log": "sim/results/upper_tb_upper_lower_serial_compat.txt",
+      "log_sha256": "250771b162e1b17bc24f968288343a0c87949955c1822d47923ab7758bffd8cb",
+      "inputs_unchanged": true
     },
     {
       "board": "lower",
@@ -148,18 +483,22 @@
         "projects/realfinal_min_102404/realfinal.srcs/sources_1/imports/imported/armfinal/project_9.srcs/sources_1/new/bus_servo_packet_tx.v",
         "projects/realfinal_min_102404/realfinal.srcs/sources_1/imports/imported/armfinal/project_9.srcs/sources_1/new/bus_servo_uart_tx.v",
         "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/arm_red_track.v",
-        "projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_arm_red_track.v"
+        "projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_arm_red_track.v",
+        "[vivado]/data/verilog/src/glbl.v"
       ],
       "exit_code": 0,
       "pass_markers": [
         "ARM_RED_TRACK_PASS pos3=700 pos4=294 pos6=505 servo5_packets=2"
       ],
-      "failure_markers": []
+      "failure_markers": [],
+      "log": "sim/results/lower_tb_arm_red_track.txt",
+      "log_sha256": "56bc02dbebd35be78cd663df248ebb7a71a5e66f793de91dee7d446940919d27",
+      "inputs_unchanged": true
     },
     {
       "board": "lower",
       "test": "tb_arm_stop",
-      "passed": false,
+      "passed": true,
       "source": "projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_arm_stop.v",
       "stage": "simulate",
       "dependencies": [
@@ -167,14 +506,17 @@
         "projects/realfinal_min_102404/realfinal.srcs/sources_1/imports/imported/armfinal/project_9.srcs/sources_1/new/bus_servo_packet_tx.v",
         "projects/realfinal_min_102404/realfinal.srcs/sources_1/imports/imported/armfinal/project_9.srcs/sources_1/new/bus_servo_uart_tx.v",
         "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/uart_rx.v",
-        "projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_arm_stop.v"
+        "projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_arm_stop.v",
+        "[vivado]/data/verilog/src/glbl.v"
       ],
       "exit_code": 0,
-      "pass_markers": [],
-      "failure_markers": [
-        "[FAIL] power-up home: 0 pose / 0 start / 0 stop packets (expected 6/1/0)",
-        "RESULT: 1 checks failed"
-      ]
+      "pass_markers": [
+        "RESULT: all passed (errors=0)"
+      ],
+      "failure_markers": [],
+      "log": "sim/results/lower_tb_arm_stop.txt",
+      "log_sha256": "d7b9b90a6e50dba0de50e2202de0bcac3a23d6debf9557302085062407fcd326",
+      "inputs_unchanged": true
     },
     {
       "board": "lower",
@@ -184,13 +526,17 @@
       "stage": "simulate",
       "dependencies": [
         "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/bbox_unpack.v",
-        "projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_bbox_unpack.v"
+        "projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_bbox_unpack.v",
+        "[vivado]/data/verilog/src/glbl.v"
       ],
       "exit_code": 0,
       "pass_markers": [
         "RESULT: all passed (errors=0)"
       ],
-      "failure_markers": []
+      "failure_markers": [],
+      "log": "sim/results/lower_tb_bbox_unpack.txt",
+      "log_sha256": "5b8427198e8a44b43c6f959d432f28cff09005af53165fcd50c3c91c24aa013c",
+      "inputs_unchanged": true
     },
     {
       "board": "lower",
@@ -207,13 +553,45 @@
         "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/track_send.v",
         "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/uart_rx.v",
         "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/uart_tx.v",
-        "projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_board_link.v"
+        "projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_board_link.v",
+        "[vivado]/data/verilog/src/glbl.v"
       ],
       "exit_code": 0,
       "pass_markers": [
         "RESULT: all passed (errors=0)"
       ],
-      "failure_markers": []
+      "failure_markers": [],
+      "log": "sim/results/lower_tb_board_link.txt",
+      "log_sha256": "0a45314dcd8bd24508755ed1ff6630b6bc17a4addac81a7822bcf508f7bb5f43",
+      "inputs_unchanged": true
+    },
+    {
+      "board": "lower",
+      "test": "tb_camera_box_cdc",
+      "passed": true,
+      "source": "projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_camera_box_cdc.v",
+      "stage": "simulate",
+      "dependencies": [
+        "projects/realfinal_min_102404/realfinal.srcs/sources_1/imports/imported/shijuefinal/project_7.srcs/sources_1/new/chassis_control.v",
+        "projects/realfinal_min_102404/realfinal.srcs/sources_1/imports/imported/shijuefinal/project_7.srcs/sources_1/new/color_track.v",
+        "projects/realfinal_min_102404/realfinal.srcs/sources_1/imports/imported/shijuefinal/project_7.srcs/sources_1/new/frame_buffer_bram.v",
+        "projects/realfinal_min_102404/realfinal.srcs/sources_1/imports/imported/shijuefinal/project_7.srcs/sources_1/new/ov7670_capture.v",
+        "projects/realfinal_min_102404/realfinal.srcs/sources_1/imports/imported/shijuefinal/project_7.srcs/sources_1/new/ov7670_init.v",
+        "projects/realfinal_min_102404/realfinal.srcs/sources_1/imports/imported/shijuefinal/project_7.srcs/sources_1/new/rgb2hsv.v",
+        "projects/realfinal_min_102404/realfinal.srcs/sources_1/imports/imported/shijuefinal/project_7.srcs/sources_1/new/sccb_master.v",
+        "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/rgb_lcd_driver.v",
+        "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/shijue_arm_core.v",
+        "projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_camera_box_cdc.v",
+        "[vivado]/data/verilog/src/glbl.v"
+      ],
+      "exit_code": 0,
+      "pass_markers": [
+        "CAMERA_BOX_CDC_PASS"
+      ],
+      "failure_markers": [],
+      "log": "sim/results/lower_tb_camera_box_cdc.txt",
+      "log_sha256": "83d434384529f124c10fcad7f9a122429e2072a7d63ab869516fecf582961a07",
+      "inputs_unchanged": true
     },
     {
       "board": "lower",
@@ -223,13 +601,17 @@
       "stage": "simulate",
       "dependencies": [
         "projects/realfinal_min_102404/realfinal.srcs/sources_1/imports/imported/shijuefinal/project_7.srcs/sources_1/new/chassis_control.v",
-        "projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_chassis_filter.v"
+        "projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_chassis_filter.v",
+        "[vivado]/data/verilog/src/glbl.v"
       ],
       "exit_code": 0,
       "pass_markers": [
         "RESULT: all passed (errors=0)"
       ],
-      "failure_markers": []
+      "failure_markers": [],
+      "log": "sim/results/lower_tb_chassis_filter.txt",
+      "log_sha256": "1f1e0e23953c1fc450a06139e48e2b88e8e6b5a7ec8adb8fcd08daea82df93ab",
+      "inputs_unchanged": true
     },
     {
       "board": "lower",
@@ -239,13 +621,17 @@
       "stage": "simulate",
       "dependencies": [
         "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/corner_turn.v",
-        "projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_corner_turn.v"
+        "projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_corner_turn.v",
+        "[vivado]/data/verilog/src/glbl.v"
       ],
       "exit_code": 0,
       "pass_markers": [
         "== tb_corner_turn PASS =="
       ],
-      "failure_markers": []
+      "failure_markers": [],
+      "log": "sim/results/lower_tb_corner_turn.txt",
+      "log_sha256": "b39b8ddefd0af899fc9967edb064e885bbf23aac869f81afda76f4043c0cd206",
+      "inputs_unchanged": true
     },
     {
       "board": "lower",
@@ -255,13 +641,17 @@
       "stage": "simulate",
       "dependencies": [
         "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/defense_spin.v",
-        "projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_defense_spin.v"
+        "projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_defense_spin.v",
+        "[vivado]/data/verilog/src/glbl.v"
       ],
       "exit_code": 0,
       "pass_markers": [
         "DEFENSE_SPIN_PASS"
       ],
-      "failure_markers": []
+      "failure_markers": [],
+      "log": "sim/results/lower_tb_defense_spin.txt",
+      "log_sha256": "28ddbd9bfa5e203f05bf098740aa73523d82c9edccf1d06b9f8f9073bd1f5c4b",
+      "inputs_unchanged": true
     },
     {
       "board": "lower",
@@ -272,13 +662,17 @@
       "dependencies": [
         "projects/realfinal_min_102404/realfinal.srcs/sources_1/imports/imported/shijuefinal/project_7.srcs/sources_1/new/iic_w_top.v",
         "projects/realfinal_min_102404/realfinal.srcs/sources_1/imports/imported/shijuefinal/project_7.srcs/sources_1/new/iic_write.v",
-        "projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_iic_stop.v"
+        "projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_iic_stop.v",
+        "[vivado]/data/verilog/src/glbl.v"
       ],
       "exit_code": 0,
       "pass_markers": [
         "== tb_iic_stop PASS =="
       ],
-      "failure_markers": []
+      "failure_markers": [],
+      "log": "sim/results/lower_tb_iic_stop.txt",
+      "log_sha256": "053c1ea0499ae6d68051a81af108a701c6e25a803486904c6c470ad6a78fac88",
+      "inputs_unchanged": true
     },
     {
       "board": "lower",
@@ -288,13 +682,57 @@
       "stage": "simulate",
       "dependencies": [
         "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/line_pid_ctrl.v",
-        "projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_line_pid.v"
+        "projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_line_pid.v",
+        "[vivado]/data/verilog/src/glbl.v"
       ],
       "exit_code": 0,
       "pass_markers": [
         "== tb_line_pid PASS =="
       ],
-      "failure_markers": []
+      "failure_markers": [],
+      "log": "sim/results/lower_tb_line_pid.txt",
+      "log_sha256": "951e146bdefe3b2a09f89e75f9e004bfa70b1eec72833c8daee1b5ea086eda09",
+      "inputs_unchanged": true
+    },
+    {
+      "board": "lower",
+      "test": "tb_ov7670_capture",
+      "passed": true,
+      "source": "projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_ov7670_capture.v",
+      "stage": "simulate",
+      "dependencies": [
+        "projects/realfinal_min_102404/realfinal.srcs/sources_1/imports/imported/shijuefinal/project_7.srcs/sources_1/new/ov7670_capture.v",
+        "projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_ov7670_capture.v",
+        "[vivado]/data/verilog/src/glbl.v"
+      ],
+      "exit_code": 0,
+      "pass_markers": [
+        "OV7670_CAPTURE_PASS pixels=8"
+      ],
+      "failure_markers": [],
+      "log": "sim/results/lower_tb_ov7670_capture.txt",
+      "log_sha256": "3e5aa8f8fd957ee81ad2b4a80930f8ca9fd47f8e317e5071dc42d2969443d180",
+      "inputs_unchanged": true
+    },
+    {
+      "board": "lower",
+      "test": "tb_rgb2hsv_pipeline",
+      "passed": true,
+      "source": "projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_rgb2hsv_pipeline.v",
+      "stage": "simulate",
+      "dependencies": [
+        "projects/realfinal_min_102404/realfinal.srcs/sources_1/imports/imported/shijuefinal/project_7.srcs/sources_1/new/rgb2hsv.v",
+        "projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_rgb2hsv_pipeline.v",
+        "[vivado]/data/verilog/src/glbl.v"
+      ],
+      "exit_code": 0,
+      "pass_markers": [
+        "RGB2HSV_PIPELINE_PASS samples=65536"
+      ],
+      "failure_markers": [],
+      "log": "sim/results/lower_tb_rgb2hsv_pipeline.txt",
+      "log_sha256": "8c2ad54ca80bd92bb774a02be06f9d36e2531779cc249dce7335dc8fc195eb5f",
+      "inputs_unchanged": true
     },
     {
       "board": "lower",
@@ -311,13 +749,17 @@
         "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/link_tx.v",
         "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/uart_rx.v",
         "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/uart_tx.v",
-        "projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_voice_arm.v"
+        "projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_voice_arm.v",
+        "[vivado]/data/verilog/src/glbl.v"
       ],
       "exit_code": 0,
       "pass_markers": [
         "RESULT: all passed (errors=0)"
       ],
-      "failure_markers": []
+      "failure_markers": [],
+      "log": "sim/results/lower_tb_voice_arm.txt",
+      "log_sha256": "0301836e9699b0b170b12c6f08d4f6b7d3499c3697355bd8a4e6da6c40c9d307",
+      "inputs_unchanged": true
     },
     {
       "board": "lower",
@@ -334,13 +776,17 @@
         "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/uart_rx.v",
         "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/uart_tx.v",
         "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/voice_mode_select.v",
-        "projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_voice_mode.v"
+        "projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_voice_mode.v",
+        "[vivado]/data/verilog/src/glbl.v"
       ],
       "exit_code": 0,
       "pass_markers": [
         "RESULT: all passed (errors=0)"
       ],
-      "failure_markers": []
+      "failure_markers": [],
+      "log": "sim/results/lower_tb_voice_mode.txt",
+      "log_sha256": "8cbf5689420dd52cd52d8b3eaa0090f3e53714a9376c38185c6b3b91db380103",
+      "inputs_unchanged": true
     },
     {
       "board": "lower",
@@ -354,15 +800,17 @@
         "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/corner_turn.v",
         "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/line_pid_ctrl.v",
         "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/xunbi_core.v",
-        "projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_xunbi_tracking.v"
+        "projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_xunbi_tracking.v",
+        "[vivado]/data/verilog/src/glbl.v"
       ],
       "exit_code": 0,
       "pass_markers": [
         "== tb_xunbi_tracking PASS =="
       ],
-      "failure_markers": []
+      "failure_markers": [],
+      "log": "sim/results/lower_tb_xunbi_tracking.txt",
+      "log_sha256": "15059173127510721a90e709184107c473862fb9222776c710be9a4e9183c0f9",
+      "inputs_unchanged": true
     }
-  ],
-  "completed_at": "2026-11-02T03:00:49+08:00",
-  "same_test_outcomes": true
+  ]
 }

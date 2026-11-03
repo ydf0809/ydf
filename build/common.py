@@ -10,15 +10,16 @@ ROOT = Path(__file__).resolve().parents[1]
 BOARDS = {
     'upper': {
         'directory': 'projects/merged_cam_lcd_voice_scnn',
-        'xpr': 'vivado_prj/merged_cam_lcd_voice_scnn.xpr',
-        'rtl': 'rtl', 'tests': 'tb', 'top': 'top', 'system_verilog': True,
+        'xpr': 'merged_cam_lcd_voice_scnn.xpr',
+        'rtl': 'rtl', 'tests': 'merged_cam_lcd_voice_scnn.srcs/sim_1/new',
+        'top': 'top', 'system_verilog': True,
     },
     'lower': {
         'directory': 'projects/realfinal_min_102404',
         'xpr': 'realfinal.xpr',
         'rtl': 'realfinal.srcs/sources_1',
         'tests': 'realfinal.srcs/sim_1/new',
-        'top': 'super_top', 'system_verilog': False,
+        'top': 'super_top', 'system_verilog': True,
     },
 }
 INPUT_SUFFIXES = {'.v', '.sv', '.vh', '.svh', '.vhd', '.xdc', '.xci',

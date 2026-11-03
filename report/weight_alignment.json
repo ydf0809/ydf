@@ -1,0 +1,42 @@
+{
+  "status": "PASS",
+  "completed_at": "2026-11-03T13:57:16.832409+08:00",
+  "canonical_parameters": 3416,
+  "roms": [
+    {
+      "module": "drone_conv1_rom",
+      "word_bits": 384,
+      "words": 9,
+      "matches": true
+    },
+    {
+      "module": "drone_conv2_rom",
+      "word_bits": 2048,
+      "words": 9,
+      "matches": true
+    },
+    {
+      "module": "drone_fc0_rom",
+      "word_bits": 64,
+      "words": 256,
+      "matches": true
+    },
+    {
+      "module": "drone_fc1_rom",
+      "word_bits": 64,
+      "words": 256,
+      "matches": true
+    },
+    {
+      "module": "drone_frame_rom",
+      "word_bits": 24,
+      "words": 4096,
+      "matches": true
+    }
+  ],
+  "main_xpr": "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.xpr",
+  "deployment_rom": "projects/merged_cam_lcd_voice_scnn/rtl/drone_data_roms.v",
+  "deployment_rom_sha256": "2d157f22f561c119a45e4d72899379ce765663f895a8d8ff26fb4c8144076300",
+  "training_source_manifest_sha256": "ca99a5b8e4dcf8a751a5ecd5f722f3a76d44cad0ff731b342e4cae3b108774a5",
+  "scope": "Weight data and registered source; not dataset accuracy or hardware validation."
+}

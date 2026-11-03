@@ -1,0 +1,26 @@
+
+****** xsim v2026.1 (64-bit)
+  **** SW Build 6511674 on Tue Jun 16 11:02:23 MDT 2026
+  **** IP Build 6504888 on Tue Jun 09 09:05:25 MDT 2026
+  **** SharedData Build 6501428 on Mon Jun 08 17:34:18 MDT 2026
+  **** Start of session at: Tue Nov  3 02:27:57 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source xsim.dir/tb_motion_detector_sim/xsim_script.tcl
+# xsim {tb_motion_detector_sim} -autoloadwcfg -runall
+Time resolution is 1 ps
+run -all
+MOTION_DBG aec1 valid=0 best=100 total=59379 found=1 prev_cand=0 mean=44 haves=1 sums=0/5304311
+MOTION_DBG aec2 valid=0 best=110 total=60199 found=1 prev_cand=0 mean=0 haves=1 sums=0/5304400
+MOTION_DBG move1 valid=0 best=100 total=1180 found=1 prev_cand=1
+MOTION dark-motion valid=1 centre=(55,32) box=x23..86 y0..63 best=100 total=1180
+MOTION_DBG weight=628 sumx=7412 sumy=3768 qx=11 qy=6
+MOTION dark-over-bright valid=1 centre=(135,135) box=x103..166 y103..166 best=100 total=1900
+MOTION_DBG weight=504 sumx=13864 sumy=13680 qx=54 qy=36
+MOTION locked-dark-patch valid=1 centre=(135,115) box=x103..166 y83..146 best=0 total=0
+MOTION_DBG weight=0 sumx=0 sumy=0 qx=0 qy=0
+TEST_RESULT: PASS
+$finish called at time : 119507025 ns : File "[previous_source_location]/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/tb_motion_detector.v" Line 350
+exit
+INFO: [Common 17-206] Exiting xsim at Tue Nov  3 02:28:02 2026...

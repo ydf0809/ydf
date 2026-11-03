@@ -1,0 +1,39 @@
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "[repository]/projects/merged_cam_lcd_voice_scnn/rtl/i2c_dri.v" into library work
+INFO: [VRFC 10-311] analyzing module i2c_dri
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "[repository]/projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/tb_i2c_config_clock.v" into library work
+INFO: [VRFC 10-311] analyzing module tb_i2c_config_clock
+
+Vivado Simulator v2026.1
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: D:/vivado2026.1/2026.1/Vivado/bin/unwrapped/win64.o/xelab.exe -L unisims_ver --timescale 1ns/1ps tb_i2c_config_clock -s upper_tb_i2c_config_clock 
+Multi-threading is on. Using 14 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+WARNING: [VRFC 10-3645] port 'i2c_data_r' remains unconnected for this instance [[repository]/projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/tb_i2c_config_clock.v:7]
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module work.i2c_dri(CLK_FREQ=33333333,I2C_FR...
+Compiling module work.tb_i2c_config_clock
+Built simulation snapshot upper_tb_i2c_config_clock
+
+
+****** xsim v2026.1 (64-bit)
+  **** SW Build 6511674 on Tue Jun 16 11:02:23 MDT 2026
+  **** IP Build 6504888 on Tue Jun 09 09:05:25 MDT 2026
+  **** SharedData Build 6501428 on Mon Jun 08 17:34:18 MDT 2026
+  **** Start of session at: Tue Nov  3 14:02:16 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source xsim.dir/upper_tb_i2c_config_clock/xsim_script.tcl
+# xsim {upper_tb_i2c_config_clock} -autoloadwcfg -tclbatch {run_all.tcl}
+Time resolution is 1 ps
+source run_all.tcl
+## run all
+I2C_CONFIG_CLOCK_TEST: PASS divide_by=32
+$finish called at time : 12120 ns : File "[repository]/projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/tb_i2c_config_clock.v" Line 20
+## quit
+INFO: [Common 17-206] Exiting xsim at Tue Nov  3 14:02:18 2026...

@@ -38,6 +38,8 @@ INFO: [VRFC 10-2263] Analyzing SystemVerilog file "[repository]/projects/merged_
 INFO: [VRFC 10-311] analyzing module link_rx
 INFO: [VRFC 10-2263] Analyzing SystemVerilog file "[repository]/projects/merged_cam_lcd_voice_scnn/rtl/link_tx.v" into library work
 INFO: [VRFC 10-311] analyzing module link_tx
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "[repository]/projects/merged_cam_lcd_voice_scnn/rtl/motion_candidate_priority.v" into library work
+INFO: [VRFC 10-311] analyzing module motion_candidate_priority
 INFO: [VRFC 10-2263] Analyzing SystemVerilog file "[repository]/projects/merged_cam_lcd_voice_scnn/rtl/motion_detector.v" into library work
 INFO: [VRFC 10-311] analyzing module motion_detector
 INFO: [VRFC 10-2263] Analyzing SystemVerilog file "[repository]/projects/merged_cam_lcd_voice_scnn/rtl/neuron_processing_unit.v" into library work
@@ -76,7 +78,7 @@ INFO: [VRFC 10-2263] Analyzing SystemVerilog file "[repository]/projects/merged_
 INFO: [VRFC 10-311] analyzing module uart_tx
 INFO: [VRFC 10-2263] Analyzing SystemVerilog file "[repository]/projects/merged_cam_lcd_voice_scnn/rtl/upper_link_send.v" into library work
 INFO: [VRFC 10-311] analyzing module upper_link_send
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "[repository]/projects/merged_cam_lcd_voice_scnn/tb/tb_integrated_recheck_cdc.v" into library work
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "[repository]/projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/tb_integrated_recheck_cdc.v" into library work
 INFO: [VRFC 10-311] analyzing module tb_integrated_recheck_cdc
 
 Vivado Simulator v2026.1
@@ -86,7 +88,7 @@ Running: D:/vivado2026.1/2026.1/Vivado/bin/unwrapped/win64.o/xelab.exe -L unisim
 Multi-threading is on. Using 14 slave threads.
 Starting static elaboration
 Pass Through NonSizing Optimizer
-WARNING: [VRFC 10-3645] port 'led' remains unconnected for this instance [[repository]/projects/merged_cam_lcd_voice_scnn/tb/tb_integrated_recheck_cdc.v:15]
+WARNING: [VRFC 10-3645] port 'led' remains unconnected for this instance [[repository]/projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/tb_integrated_recheck_cdc.v:15]
 Completed static elaboration
 Starting simulation data flow analysis
 Completed simulation data flow analysis
@@ -96,6 +98,7 @@ Compiling module work.i2c_dri(SLAVE_ADDR=7'b0111100,CL...
 Compiling module work.i2c_ov5640_rgb565_cfg
 Compiling module work.ov5640_capture_default
 Compiling module work.frame_buffer(DEPTH=60000,ADDR_W=...
+Compiling module work.motion_candidate_priority_defaul...
 Compiling module work.motion_detector_default
 Compiling module work.periodic_recheck_timer(INTERVAL_...
 Compiling module work.roi_scheduler_default
@@ -151,7 +154,7 @@ Built simulation snapshot upper_tb_integrated_recheck_cdc
   **** SW Build 6511674 on Tue Jun 16 11:02:23 MDT 2026
   **** IP Build 6504888 on Tue Jun 09 09:05:25 MDT 2026
   **** SharedData Build 6501428 on Mon Jun 08 17:34:18 MDT 2026
-  **** Start of session at: Mon Nov  2 02:42:42 2026
+  **** Start of session at: Tue Nov  3 14:02:27 2026
     ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
     ** Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
 
@@ -161,6 +164,6 @@ Time resolution is 1 ps
 source run_all.tcl
 ## run all
 INTEGRATED_RECHECK_CDC_TEST: PASS
-$finish called at time : 68200 ns : File "[repository]/projects/merged_cam_lcd_voice_scnn/tb/tb_integrated_recheck_cdc.v" Line 119
+$finish called at time : 62200 ns : File "[repository]/projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/tb_integrated_recheck_cdc.v" Line 95
 ## quit
-INFO: [Common 17-206] Exiting xsim at Mon Nov  2 02:42:44 2026...
+INFO: [Common 17-206] Exiting xsim at Tue Nov  3 14:02:29 2026...

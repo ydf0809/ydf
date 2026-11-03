@@ -1,44 +1,18 @@
-//----------------------------------------------------------------------------------------
-// File name:           tb_voice_mode
-// Descriptions:        voice command -> working mode, on the lower board
-//
-// DUT chain: board_link (ECHO_EN=1) + link_demux + voice_mode_select
-// Real 5-byte frames are bit-banged onto the link input, exactly like the upper board sends.
-//
-// Checked here (the DIP switch is gone: the mode comes from the link only):
-//   1. no command received yet -> everything OFF (idle until told what to do)
-//   2. frame AA 55 01 55 AA (TRACK)  -> tracking ON
-//   3. frame AA 55 05 55 AA (CARGO)  -> arm ON, tracking OFF
-//   4. frame AA 55 02 55 AA (FOLLOW) -> tracking OFF, vision follow ON
-//   5. frame AA 55 03 55 AA (DEFENSE)-> arm tracking ON, chassis OFF
-//   6. frame AA 55 04 55 AA (HOLD)   -> everything OFF
-//   7. frame AA 55 01 55 AA again    -> tracking ON again
-//   8. a tracking status frame (0x85, bit7=1) must NOT change the mode
-//   9. board reset -> mode cleared, everything OFF again
-//
-// How to run: scripts\sim_voice_mode.bat
-// CLK_FREQ / UART_BPS below are placeholders; the sim script substitutes the real values
-// into a copy and compiles that, so nothing is passed on the command line.
-//----------------------------------------------------------------------------------------
 `timescale 1ns / 1ps
 
 module tb_voice_mode;
 
-//parameter define
-//placeholders -- the simulation script rewrites these two lines
 parameter CLK_FREQ = 33333333;
 parameter UART_BPS = 115200;
 
 localparam CLK_PERIOD = 1000000000 / CLK_FREQ;
 localparam BIT_PERIOD = 1000000000 / UART_BPS;
 
-//reg define
 reg        clk      ;
 reg        rst_n    ;
 reg        frames   ;
 integer    errors   ;
 
-//wire define
 wire [7:0] peer_cmd ;
 wire       peer_valid;
 wire       link_err ;
@@ -50,9 +24,6 @@ wire       vision_en;
 wire       defense_en;
 wire       arm_en   ;
 
-//*****************************************************
-//**                    DUT
-//*****************************************************
 board_link #(
     .CLK_FREQ   (CLK_FREQ ),
     .UART_BPS   (UART_BPS ),
@@ -71,7 +42,7 @@ board_link #(
 
 link_demux #(
     .CLK_FREQ   (CLK_FREQ),
-    .TIMEOUT_MS (2        ))     // short watchdog so the bench stays fast
+    .TIMEOUT_MS (2        ))
     u_demux(
     .clk            (clk       ),
     .rst_n          (rst_n     ),
@@ -99,9 +70,6 @@ initial begin
     forever #(CLK_PERIOD/2) clk = ~clk;
 end
 
-//*****************************************************
-//**      helpers
-//*****************************************************
 task send_byte;
     input [7:0] data;
     integer     b;
@@ -145,9 +113,6 @@ task check4;
     end
 endtask
 
-//*****************************************************
-//**      main
-//*****************************************************
 initial begin
     errors = 0;
     rst_n  = 1'b0;
@@ -161,47 +126,39 @@ initial begin
     $display("   voice command picks the mode on the lower board");
     $display("==================================================");
 
-    //--------------------------------------------------
     $display("--- 1) no command yet: everything OFF (idle) ---");
     check4(1'b0, 1'b0, 1'b0, 1'b0, "no command -> all off");
 
-    //--------------------------------------------------
     $display("--- 2) say TRACK (01) ---");
     send_frame(8'hAA, 8'h55, 8'h01, 8'h55, 8'hAA);
     #(3 * BIT_PERIOD);
     check4(1'b1, 1'b0, 1'b0, 1'b0, "cmd=01 -> tracking on");
 
-    //--------------------------------------------------
     $display("--- 3) say CARGO (05) ---");
     send_frame(8'hAA, 8'h55, 8'h05, 8'h55, 8'hAA);
     #(3 * BIT_PERIOD);
     check4(1'b0, 1'b0, 1'b0, 1'b1, "cmd=05 -> cargo arm on");
 
-    //--------------------------------------------------
     $display("--- 4) say FOLLOW (02): tracking OFF, vision ON ---");
     send_frame(8'hAA, 8'h55, 8'h02, 8'h55, 8'hAA);
     #(3 * BIT_PERIOD);
     check4(1'b0, 1'b1, 1'b0, 1'b0, "cmd=02 -> vision follow on");
 
-    //--------------------------------------------------
     $display("--- 5) say DEFENSE (03): arm tracking ON, chassis OFF ---");
     send_frame(8'hAA, 8'h55, 8'h03, 8'h55, 8'hAA);
     #(3 * BIT_PERIOD);
     check4(1'b0, 1'b0, 1'b1, 1'b0, "cmd=03 -> arm defense tracking");
 
-    //--------------------------------------------------
     $display("--- 6) say HOLD (04) ---");
     send_frame(8'hAA, 8'h55, 8'h04, 8'h55, 8'hAA);
     #(3 * BIT_PERIOD);
     check4(1'b0, 1'b0, 1'b0, 1'b0, "cmd=04 -> all off");
 
-    //--------------------------------------------------
     $display("--- 7) say TRACK (01) again ---");
     send_frame(8'hAA, 8'h55, 8'h01, 8'h55, 8'hAA);
     #(3 * BIT_PERIOD);
     check4(1'b1, 1'b0, 1'b0, 1'b0, "cmd=01 again -> tracking on");
 
-    //--------------------------------------------------
     $display("--- 8) a tracking status frame (0x85) must not change the mode ---");
     send_frame(8'hAA, 8'h55, 8'h85, 8'h55, 8'hAA);
     #(3 * BIT_PERIOD);
@@ -213,9 +170,8 @@ initial begin
     else
         $display("[ OK ] the same frame updated track_pat to 0b00101");
 
-    //--------------------------------------------------
     $display("--- 8b) link watchdog: no tracking frame -> line lost -> pattern 0 ---");
-    #(5000000);                       // more than the 2 ms watchdog
+    #(5000000);
     if(track_pat !== 5'd0) begin
         $display("[FAIL] track_pat=0b%05b after the link went quiet (expected 0b00000)", track_pat);
         errors = errors + 1;
@@ -223,7 +179,6 @@ initial begin
     else
         $display("[ OK ] watchdog forced track_pat to 0 (wheels will stop)");
 
-    //--------------------------------------------------
     $display("--- 9) board reset: the mode is cleared ---");
     rst_n = 1'b0;
     repeat(10) @(posedge clk);

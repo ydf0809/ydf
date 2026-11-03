@@ -1,16 +1,18 @@
-INFO: [VRFC 10-2263] Analyzing Verilog file "[repository]/projects/realfinal_min_102404/realfinal.srcs/sources_1/imports/imported/armfinal/project_9.srcs/sources_1/new/bus_servo_packet_tx.v" into library work
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "[repository]/projects/realfinal_min_102404/realfinal.srcs/sources_1/imports/imported/armfinal/project_9.srcs/sources_1/new/bus_servo_packet_tx.v" into library work
 INFO: [VRFC 10-311] analyzing module bus_servo_packet_tx
-INFO: [VRFC 10-2263] Analyzing Verilog file "[repository]/projects/realfinal_min_102404/realfinal.srcs/sources_1/imports/imported/armfinal/project_9.srcs/sources_1/new/bus_servo_uart_tx.v" into library work
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "[repository]/projects/realfinal_min_102404/realfinal.srcs/sources_1/imports/imported/armfinal/project_9.srcs/sources_1/new/bus_servo_uart_tx.v" into library work
 INFO: [VRFC 10-311] analyzing module bus_servo_uart_tx
-INFO: [VRFC 10-2263] Analyzing Verilog file "[repository]/projects/realfinal_min_102404/realfinal.srcs/sources_1/new/arm_red_track.v" into library work
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "[repository]/projects/realfinal_min_102404/realfinal.srcs/sources_1/new/arm_red_track.v" into library work
 INFO: [VRFC 10-311] analyzing module arm_red_track
-INFO: [VRFC 10-2263] Analyzing Verilog file "[repository]/projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_arm_red_track.v" into library work
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "[repository]/projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_arm_red_track.v" into library work
 INFO: [VRFC 10-311] analyzing module tb_arm_red_track
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/vivado2026.1/2026.1/data/verilog/src/glbl.v" into library work
+INFO: [VRFC 10-311] analyzing module glbl
 
 Vivado Simulator v2026.1
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
-Running: D:/vivado2026.1/2026.1/Vivado/bin/unwrapped/win64.o/xelab.exe -L unisims_ver --timescale 1ns/1ps tb_arm_red_track -s lower_tb_arm_red_track 
+Running: D:/vivado2026.1/2026.1/Vivado/bin/unwrapped/win64.o/xelab.exe -L unisims_ver --timescale 1ns/1ps tb_arm_red_track glbl -s lower_tb_arm_red_track 
 Multi-threading is on. Using 14 slave threads.
 Starting static elaboration
 Pass Through NonSizing Optimizer
@@ -22,6 +24,7 @@ Compiling module work.bus_servo_uart_tx(CLK_HZ=3333333...
 Compiling module work.bus_servo_packet_tx(CLK_HZ=33333...
 Compiling module work.arm_red_track(BAUD=8333333,CENTE...
 Compiling module work.tb_arm_red_track
+Compiling module work.glbl
 Built simulation snapshot lower_tb_arm_red_track
 
 
@@ -29,7 +32,7 @@ Built simulation snapshot lower_tb_arm_red_track
   **** SW Build 6511674 on Tue Jun 16 11:02:23 MDT 2026
   **** IP Build 6504888 on Tue Jun 09 09:05:25 MDT 2026
   **** SharedData Build 6501428 on Mon Jun 08 17:34:18 MDT 2026
-  **** Start of session at: Mon Nov  2 02:42:57 2026
+  **** Start of session at: Tue Nov  3 13:55:58 2026
     ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
     ** Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
 
@@ -46,6 +49,6 @@ TRACE servo4 resume: pos3=700 pos4=202
 TRACE home pose resent: pos3=700 pos4=300 pos6=500 move_time=1000
 TRACE tracking resumed, move_time=100
 ARM_RED_TRACK_PASS pos3=700 pos4=294 pos6=505 servo5_packets=2
-$finish called at time : 1066215 ns : File "[repository]/projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_arm_red_track.v" Line 194
+$finish called at time : 1066215 ns : File "[repository]/projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_arm_red_track.v" Line 184
 ## quit
-INFO: [Common 17-206] Exiting xsim at Mon Nov  2 02:42:58 2026...
+INFO: [Common 17-206] Exiting xsim at Tue Nov  3 13:56:00 2026...

@@ -1,59 +1,34 @@
-//----------------------------------------------------------------------------------------
-// File name:           link_tx
-// Descriptions:        板间串口链路 —— 帧发送（上层板 / 下层板通用）
-//
-// 帧格式固定 5 字节： AA 55 <命令号> 55 AA ，8 数据位 / 无校验 / 1 停止位。
-// 收侧的 asr_frame_decode 就是按这个格式解析的，所以这条路和语音那条路同格式。
-//
-// 用法：req 给一个时钟周期的高脉冲，同时把命令号放在 cmd 上。
-//       帧还没发完就再来请求不会丢：内部把请求锁存住，等这一帧发完补发。
-//       连来多个请求时只留最后一个命令号（命令号是状态量，不是事件流）。
-//
-// 时序：S_SEND 里每次碰到 uart_tx 空闲就送出 shift[39:32]，同时左移 8 位。
-//       uart_tx 在 en 那一拍才把数据锁进它自己的移位寄存器，所以本拍发出去的仍是移位前的字节。
-//       判据只能是 !uart_tx_busy：若与上 !uart_tx_en，状态机会永远停在 S_SEND、无限重发。
-//       （这两条是从 top_asr_voice 的回发状态机搬来的，那边踩过这两个坑。）
-//----------------------------------------------------------------------------------------
-
+// Transmit one AA 55 payload 55 AA frame per accepted request.
 module link_tx #(
-    parameter CLK_FREQ = 33333333,   //系统时钟频率(Hz)：两块板都是 33.333MHz
-    parameter UART_BPS = 115200      //串口波特率
+    parameter CLK_FREQ = 33333333,
+    parameter UART_BPS = 115200
 )(
-    input  wire       clk     ,      //系统时钟
-    input  wire       rst_n   ,      //复位，低有效
+    input  wire       clk     ,
+    input  wire       rst_n   ,
 
-    input  wire       req     ,      //发送请求，一个时钟周期的高脉冲
-    input  wire [7:0] cmd     ,      //要发的命令号（帧里的第 3 个字节）
+    input  wire       req     ,
+    input  wire [7:0] cmd     ,
 
-    output wire       txd     ,      //串口发送脚：接对方板的 RX
-    output wire       busy           //正在发一帧，或还有一帧在排队
+    output wire       txd     ,
+    output wire       busy
 );
 
-//localparam define
-localparam [1:0] S_IDLE = 2'd0,      //空闲
-                 S_SEND = 2'd1;      //逐字节发送
+localparam [1:0] S_IDLE = 2'd0,
+                 S_SEND = 2'd1;
 
-//reg define
 reg  [1:0]  state;
-reg  [39:0] shift;      //{AA,55,cmd,55,AA}，最高字节先发
-reg  [2:0]  idx;        //已发出的字节数
-reg         pend;       //有请求排队
-reg  [7:0]  pend_cmd;   //排队帧的命令号
+reg  [39:0] shift;
+reg  [2:0]  idx;
+reg         pend;
+reg  [7:0]  pend_cmd;
 
-//wire define
-wire        tx_busy;    //uart_tx 正在发
-wire        tx_en;      //uart_tx 发送使能，一个时钟周期的高脉冲
-wire [7:0]  tx_data;    //要发的字节
-
-//*****************************************************
-//**                    main code
-//*****************************************************
+wire        tx_busy;
+wire        tx_en;
+wire [7:0]  tx_data;
 
 assign tx_en   = (state == S_SEND) && !tx_busy;
 assign tx_data = shift[39:32];
-// The state returns to IDLE when the fifth byte is handed to uart_tx, but the
-// stop bit is still on the wire. Include uart_tx busy so callers cannot start
-// the next frame during that stop bit.
+
 assign busy    = (state != S_IDLE) || pend || tx_busy;
 
 always @(posedge clk or negedge rst_n) begin
@@ -87,12 +62,11 @@ always @(posedge clk or negedge rst_n) begin
             default: state <= S_IDLE;
         endcase
 
-        //请求锁存：正忙时来的新请求记下来，等这一帧发完补发
         if(req) begin
             pend     <= 1'b1;
             pend_cmd <= cmd;
         end
-        else if((state == S_IDLE) && pend)   //帧正是在这一拍装进 shift 的
+        else if((state == S_IDLE) && pend)
             pend <= 1'b0;
     end
 end

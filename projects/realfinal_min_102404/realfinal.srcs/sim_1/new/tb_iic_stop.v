@@ -21,7 +21,7 @@ module tb_iic_stop;
     iic_w_top dut (.sys_clk(clk), .rst_n(rst_n), .SDA(sda), .SCL(scl),
         .motor1_spd(m1), .motor2_spd(m2), .motor3_spd(m3), .motor4_spd(m4),
         .cmd_update_req(req));
-    // ACK every byte; reconstruct the transmitted bytes from the actual bus.
+
     assign sda = (dut.iic_write_inst.state == 3'd3) ? 1'b0 : 1'bz;
     always @(negedge sda) if (scl === 1'b1 && !receiving) begin
         receiving = 1; bit_index = 0; byte_index = 0;

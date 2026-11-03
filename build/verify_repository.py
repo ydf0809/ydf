@@ -12,10 +12,19 @@ sys.path.insert(0, str(ROOT / 'skill/project_repro'))
 from check_xpr import check
 
 def tracked_candidates(root):
-    command = subprocess.run(['git', '-C', str(root), 'ls-files', '-z',
-                              '--cached', '--others', '--exclude-standard'],
-                             stdout=subprocess.PIPE, check=True)
-    return sorted({root / item.decode('utf-8') for item in command.stdout.split(b'\0') if item})
+    if (root / '.git').exists():
+        command = subprocess.run(['git', '-C', str(root), 'ls-files', '-z',
+                                  '--cached', '--others', '--exclude-standard'],
+                                 stdout=subprocess.PIPE, check=True)
+        return sorted({root / item.decode('utf-8') for item in command.stdout.split(b'\0') if item})
+    # A GitHub source archive has no .git directory. Audit the extracted files directly.
+    ignored = {'.git', '__pycache__', '.Xil', 'generated'}
+    return sorted(p for p in root.rglob('*') if p.is_file()
+                  and not any(part in ignored or part.endswith(
+                      ('.runs', '.gen', '.cache', '.sim', '.hw', '.ip_user_files'))
+                      for part in p.relative_to(root).parts)
+                  and not p.is_relative_to(root / 'build/work')
+                  and not p.is_relative_to(root / 'sim/work'))
 
 def audit(root):
     files = tracked_candidates(root)
@@ -33,6 +42,7 @@ def audit(root):
         if path.suffix in ['.md', '.py', '.tcl', '.json', '.xpr', '.v', '.xdc', '.txt', '.rpt']:
             text = path.read_bytes().decode('utf-8', errors='replace')
             secret_pattern = (r'gh[pousr]_[A-Za-z0-9]{25,}|github_pat_[A-Za-z0-9_]{30,}|'
+                              r'sk-[A-Za-z0-9_-]{20,}|'
                               + '-----BEGIN ' + '(?:RSA |EC |OPENSSH )?' + 'PRIVATE KEY-----')
             secret = re.search(secret_pattern, text)
             if secret:
@@ -50,9 +60,9 @@ def audit(root):
         path = root / item['exported']
         if path.suffix == '.xpr':
             continue
-        if hashlib.sha256(path.read_bytes()).hexdigest() != item['sha256']:
-            errors.append({'kind': 'production_input_changed', 'path': item['exported']})
-    xprs = [root / 'projects/merged_cam_lcd_voice_scnn/vivado_prj/merged_cam_lcd_voice_scnn.xpr',
+        if not path.is_file() or hashlib.sha256(path.read_bytes()).hexdigest() != item.get('exported_sha256', item['sha256']):
+            errors.append({'kind': 'export_input_changed', 'path': item['exported']})
+    xprs = [root / 'projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.xpr',
             root / 'projects/realfinal_min_102404/realfinal.xpr']
     checks = [check(root, path) for path in xprs]
     for item in checks:

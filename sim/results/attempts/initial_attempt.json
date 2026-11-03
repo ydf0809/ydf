@@ -1,8 +1,0 @@
-{
-  "status": "stopped_tooling_attempt",
-  "observed": [
-    "lower full-source compile failed on unrelated color_track declaration order",
-    "upper XSim reported file mapping error and EXCEPTION_ACCESS_VIOLATION"
-  ],
-  "action": "isolate test dependencies and use a Tcl batch entry; production RTL unchanged"
-}

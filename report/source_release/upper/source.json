@@ -1,0 +1,36 @@
+{
+  "selected_source": "merged_cam_lcd_voice_scnn",
+  "source_xpr_sha256": "4a1929947a2049cde9d69832ba1d6f6e501d08486b7d8fd630e23bddde4ce3f8",
+  "source_bitstream": {
+    "path": "merged_cam_lcd_voice_scnn.runs/impl_1/top.bit",
+    "bytes": 4045758,
+    "sha256": "a6a27076f61adc6b35ca027db51f8ce2cb926f04a4d549dd3e7601ddeba5710d",
+    "modified_time": "2026-11-03T03:24:29.543487+08:00"
+  },
+  "registered_input_hashes_checked": 48,
+  "source_recorded_timing": {
+    "WNS_ns": 6.916,
+    "WHS_ns": 0.032,
+    "DRC_errors": 0,
+    "checks": {
+      "no_clock": 0,
+      "constant_clock": 0,
+      "pulse_width_clock": 0,
+      "unconstrained_internal_endpoints": 0,
+      "no_input_delay": 18,
+      "no_output_delay": 37,
+      "multiple_clock": 0,
+      "generated_clocks": 0,
+      "loops": 0,
+      "partial_input_delay": 0,
+      "partial_output_delay": 0,
+      "latch_loops": 0
+    }
+  },
+  "source_recorded_regression": {
+    "passed": 11,
+    "total": 11
+  },
+  "physical_board_validation": "NOT_PERFORMED",
+  "status": "source_evidence_only_repository_rebuild_required"
+}

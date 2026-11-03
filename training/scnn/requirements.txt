@@ -1,0 +1,4 @@
+# Verified runtime dependencies for the drone SCNN project, 2026-11-02.
+torch==2.12.0
+numpy==2.4.6
+Pillow==12.2.0

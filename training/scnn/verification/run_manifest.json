@@ -1,0 +1,45 @@
+{
+  "status": "PASS",
+  "completed_at": "2026-11-03T14:05:42.317963+08:00",
+  "runtime": {
+    "python": "3.12.10",
+    "torch": "2.12.0+cpu",
+    "numpy": "2.4.6",
+    "pillow": "12.2.0"
+  },
+  "inputs_sha256": {
+    "training/scnn/assets/reference_frame.mem": "36e642a9ea96c198fa499b78f861d780220c4caa69b5bceeaac2ea06c2c0f41c",
+    "training/scnn/convert_weights.py": "4416021c2b4417465fb1896da22f2ba1096e160bf0bea095c8b01ac0828c5b2e",
+    "training/scnn/model.py": "79c82c29aeee4d742540ce3c5533318a6977062e7338ded5ac02e233993df6f6",
+    "training/scnn/model_spec.json": "d7ecc7bdccd4eda9fa379f38ebb1103785ade0c15bc66c8c65a76b0e203c363e",
+    "training/scnn/parameters/final_engine_weights.json": "5d75b5a66ef0f3c4156b0d920612b87a734a7d872f93ef21ed30daed3b6f7ccf",
+    "training/scnn/parameters/new_weight_coe_weights.json": "a03797e38b50b190a9814385511bbdb126903a59104a7a446931d1d103ac6972",
+    "training/scnn/recovered_weights.json": "8800b3b668783010f4cc95da5bda669a934ca5136ee82da0cf6b7d8bf615dfae",
+    "training/scnn/references/final_engine/drone_data_roms.v": "cdadd7b996b351b9c30fadc8538af787ef8515e41a507db86b867e9f33934325",
+    "training/scnn/references/new_weight_coe/0/conv1_weights.coe": "a5930a3515f819abb93f7d8b7dd21694237cf6b4e0e266a5b6725cef64871a70",
+    "training/scnn/references/new_weight_coe/2/conv2_weights.coe": "03cff75edfaf6b31714fc1aa5c4e0452f7c2be258ce2fbbe4fd8363151d5f0b0",
+    "training/scnn/references/new_weight_coe/4/fc_weights_0.coe": "28e2408f2ee89017a4afcfae828cb70ebe38f868835773ec205e32e6a9d88393",
+    "training/scnn/references/new_weight_coe/6/fc_weights_1.coe": "19aa6598bff25b890e4b0c04ea9cf5d5e55cd1bc60cfcc2a42881605a97d6bad",
+    "training/scnn/requirements.txt": "85804a595d5b0f95758696e9543275ca32357a87e18af72c95cd63a341d4ecac",
+    "training/scnn/source_manifest.json": "ca99a5b8e4dcf8a751a5ecd5f722f3a76d44cad0ff731b342e4cae3b108774a5",
+    "training/scnn/train.py": "8c17b5506c495b50f18e85d45cb408105834534f8f6034aec04f4a0d3204e822",
+    "training/scnn/verify.py": "99635be55a0d0926ec21465d955cab4f81f45549873f5da786781f50ae9661f6",
+    "training/scnn/weights/0/conv1_weights.coe": "59f6ffcd95bfc05bceb4bc91b0066e84de27afd612cab39502d2c1057a675101",
+    "training/scnn/weights/1/conv1_weights.mem": "4e91345630e9276042c6fe6b6cd5760834070038f78af97431431f152db5c3ac",
+    "training/scnn/weights/2/conv2_weights.coe": "549e4802505850c00cc5e31a93a02b9de371da315c49f39c3b0aba7fd367352c",
+    "training/scnn/weights/3/conv2_weights.mem": "75c3385aa07a26ccb95ef110e8272211c71f3a68c245d23aeb543d64f56db151",
+    "training/scnn/weights/4/fc_weights_0.coe": "ab7a00ce85646e8bdf9521f443dd3cf4ac3984418f854a3433dea6127cdddc95",
+    "training/scnn/weights/5/fc_weights_0.mem": "82d213199c01d8577a0df993fe749b1fcfb02cda89c43cc77d5aa4fdf7ba8a35",
+    "training/scnn/weights/6/fc_weights_1.coe": "c483be26595d81a4a53bca5ddeb0faa44a704838d94a869f7cff679e5f85f0b2",
+    "training/scnn/weights/7/fc_weights_1.mem": "70d28b6a896c2c3a3d45857b6b3f0dc261b0f284a196eab2ef71e4366882d3f3"
+  },
+  "outputs_sha256": {
+    "training/scnn/verification/rom_compile.json": "5aa643f7aa3ae79ec33b6587ea9de7f4f65905789808b6996fe84f6df4284e4b",
+    "training/scnn/verification/rom_compile.txt": "ddc393cfbb3c3b65e792c99c7eb9425c584f727327923018cc120bdf2e793e79",
+    "training/scnn/verification/smoke_test.json": "b31fbd1e6bc96e9a98301b14d7f7a16c6f78396ab6d44e743e0ecddfbaf1e739",
+    "training/scnn/verification/verification.json": "e903c2395a268415254b1ad916a089e905b53724f8c3ac6d251e9c12f759f52d",
+    "training/scnn/verification/weight_source_audit.json": "398d06023c31f3a8d03c3156a7f43790f0ba37e15cf3961f3181dc2e932690dc"
+  },
+  "real_dataset_training": "not_performed",
+  "physical_validation": "not_performed"
+}

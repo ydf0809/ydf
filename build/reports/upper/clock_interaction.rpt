@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2026.1 (win64) Build 6511674 Tue Jun 16 11:02:23 MDT 2026
-| Date         : Mon Nov  2 02:39:02 2026
+| Date         : Tue Nov  3 14:05:28 2026
 | Host         : YDF running 64-bit major release  (build 9200)
 | Command      : report_clock_interaction -file {[repository]/build/reports/upper/clock_interaction.rpt}
 | Design       : top
@@ -18,9 +18,12 @@ Clock Interaction Table
                             WNS                            TNS Failing  TNS Total    WNS Path         Clock-Pair           Inter-Clock          
 From Clock    To Clock      Clock Edges  WNS(ns)  TNS(ns)    Endpoints    Endpoints  Requirement(ns)  Classification       Constraints          
 ------------  ------------  -----------  -------  -------  -----------  -----------  ---------------  -------------------  -------------------  
-cam_pclk      cam_pclk      rise - rise    13.11     0.00            0        21348            40.00  Clean                Timed                
-cam_pclk      sys_clk                                                0           44                   Ignored              Asynchronous Groups  
-sys_clk       cam_pclk                                               0            7                   Ignored              Asynchronous Groups  
-sys_clk       sys_clk       rise - rise     6.00     0.00            0        30800            30.00  Clean                Timed                
+cam_pclk      cam_pclk      rise - rise    11.34     0.00            0        17977            40.00  Clean                Timed                
+cam_pclk      sys_clk                                                0           39                   Ignored              Asynchronous Groups  
+i2c_cfg_clk   cam_pclk                                               0           29                   Ignored              Asynchronous Groups  
+i2c_cfg_clk   i2c_cfg_clk   rise - rise   954.29     0.00            0          142           960.00  Clean                Timed                
+i2c_cfg_clk   sys_clk       rise - rise    23.87     0.00            0           27            30.00  Clean                Timed                
+sys_clk       cam_pclk                                               0            8                   Ignored              Asynchronous Groups  
+sys_clk       sys_clk       rise - rise     6.92     0.00            0        30816            30.00  Clean                Timed                
 
 

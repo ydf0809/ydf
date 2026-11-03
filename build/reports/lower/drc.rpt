@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2026.1 (win64) Build 6511674 Tue Jun 16 11:02:23 MDT 2026
-| Date         : Mon Nov  2 02:34:39 2026
+| Date         : Tue Nov  3 14:01:24 2026
 | Host         : YDF running 64-bit major release  (build 9200)
 | Command      : report_drc -file {[repository]/build/reports/lower/drc.rpt}
 | Design       : super_top
@@ -24,14 +24,14 @@ Table of Contents
       Design limits: <entire design considered>
            Ruledeck: default
              Max checks: <unlimited>
-             Checks found: 49
+             Checks found: 34
 +-----------+----------+---------------------------------+--------+
 | Rule      | Severity | Description                     | Checks |
 +-----------+----------+---------------------------------+--------+
 | CHECK-3   | Warning  | Report rule limit reached       | 1      |
-| DPIP-1    | Warning  | Input pipelining                | 10     |
-| DPOP-1    | Warning  | PREG Output pipelining          | 8      |
-| DPOP-2    | Warning  | MREG Output pipelining          | 7      |
+| DPIP-1    | Warning  | Input pipelining                | 5      |
+| DPOP-1    | Warning  | PREG Output pipelining          | 3      |
+| DPOP-2    | Warning  | MREG Output pipelining          | 2      |
 | PLCK-12   | Warning  | Clock Placer Checks             | 1      |
 | REQP-1839 | Warning  | RAMB36 async control check      | 20     |
 | RPBF-3    | Warning  | IO port buffering is incomplete | 1      |
@@ -67,32 +67,7 @@ Related violations: <none>
 
 DPIP-1#5 Warning
 Input pipelining  
-DSP u_shijue_arm_core/u_tracker/u_rgb2hsv/h_next1 input u_shijue_arm_core/u_tracker/u_rgb2hsv/h_next1/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
-Related violations: <none>
-
-DPIP-1#6 Warning
-Input pipelining  
-DSP u_shijue_arm_core/u_tracker/u_rgb2hsv/h_next2 input u_shijue_arm_core/u_tracker/u_rgb2hsv/h_next2/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
-Related violations: <none>
-
-DPIP-1#7 Warning
-Input pipelining  
-DSP u_shijue_arm_core/u_tracker/u_rgb2hsv/h_next2__0 input u_shijue_arm_core/u_tracker/u_rgb2hsv/h_next2__0/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
-Related violations: <none>
-
-DPIP-1#8 Warning
-Input pipelining  
-DSP u_shijue_arm_core/u_tracker/u_rgb2hsv/h_next2__1 input u_shijue_arm_core/u_tracker/u_rgb2hsv/h_next2__1/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
-Related violations: <none>
-
-DPIP-1#9 Warning
-Input pipelining  
-DSP u_shijue_arm_core/u_tracker/u_rgb2hsv/h_next2__2 input u_shijue_arm_core/u_tracker/u_rgb2hsv/h_next2__2/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
-Related violations: <none>
-
-DPIP-1#10 Warning
-Input pipelining  
-DSP u_shijue_arm_core/u_tracker/u_rgb2hsv/h_next2__3 input u_shijue_arm_core/u_tracker/u_rgb2hsv/h_next2__3/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+DSP u_shijue_arm_core/u_tracker/u_rgb2hsv/hn0 input u_shijue_arm_core/u_tracker/u_rgb2hsv/hn0/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
 Related violations: <none>
 
 DPOP-1#1 Warning
@@ -107,32 +82,7 @@ Related violations: <none>
 
 DPOP-1#3 Warning
 PREG Output pipelining  
-DSP u_shijue_arm_core/u_tracker/u_rgb2hsv/h_next1 output u_shijue_arm_core/u_tracker/u_rgb2hsv/h_next1/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
-Related violations: <none>
-
-DPOP-1#4 Warning
-PREG Output pipelining  
-DSP u_shijue_arm_core/u_tracker/u_rgb2hsv/h_next2 output u_shijue_arm_core/u_tracker/u_rgb2hsv/h_next2/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
-Related violations: <none>
-
-DPOP-1#5 Warning
-PREG Output pipelining  
-DSP u_shijue_arm_core/u_tracker/u_rgb2hsv/h_next2__0 output u_shijue_arm_core/u_tracker/u_rgb2hsv/h_next2__0/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
-Related violations: <none>
-
-DPOP-1#6 Warning
-PREG Output pipelining  
-DSP u_shijue_arm_core/u_tracker/u_rgb2hsv/h_next2__1 output u_shijue_arm_core/u_tracker/u_rgb2hsv/h_next2__1/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
-Related violations: <none>
-
-DPOP-1#7 Warning
-PREG Output pipelining  
-DSP u_shijue_arm_core/u_tracker/u_rgb2hsv/h_next2__2 output u_shijue_arm_core/u_tracker/u_rgb2hsv/h_next2__2/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
-Related violations: <none>
-
-DPOP-1#8 Warning
-PREG Output pipelining  
-DSP u_shijue_arm_core/u_tracker/u_rgb2hsv/h_next2__3 output u_shijue_arm_core/u_tracker/u_rgb2hsv/h_next2__3/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+DSP u_shijue_arm_core/u_tracker/u_rgb2hsv/hn0 output u_shijue_arm_core/u_tracker/u_rgb2hsv/hn0/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
 Related violations: <none>
 
 DPOP-2#1 Warning
@@ -142,32 +92,7 @@ Related violations: <none>
 
 DPOP-2#2 Warning
 MREG Output pipelining  
-DSP u_shijue_arm_core/u_tracker/u_rgb2hsv/h_next1 multiplier stage u_shijue_arm_core/u_tracker/u_rgb2hsv/h_next1/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
-Related violations: <none>
-
-DPOP-2#3 Warning
-MREG Output pipelining  
-DSP u_shijue_arm_core/u_tracker/u_rgb2hsv/h_next2 multiplier stage u_shijue_arm_core/u_tracker/u_rgb2hsv/h_next2/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
-Related violations: <none>
-
-DPOP-2#4 Warning
-MREG Output pipelining  
-DSP u_shijue_arm_core/u_tracker/u_rgb2hsv/h_next2__0 multiplier stage u_shijue_arm_core/u_tracker/u_rgb2hsv/h_next2__0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
-Related violations: <none>
-
-DPOP-2#5 Warning
-MREG Output pipelining  
-DSP u_shijue_arm_core/u_tracker/u_rgb2hsv/h_next2__1 multiplier stage u_shijue_arm_core/u_tracker/u_rgb2hsv/h_next2__1/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
-Related violations: <none>
-
-DPOP-2#6 Warning
-MREG Output pipelining  
-DSP u_shijue_arm_core/u_tracker/u_rgb2hsv/h_next2__2 multiplier stage u_shijue_arm_core/u_tracker/u_rgb2hsv/h_next2__2/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
-Related violations: <none>
-
-DPOP-2#7 Warning
-MREG Output pipelining  
-DSP u_shijue_arm_core/u_tracker/u_rgb2hsv/h_next2__3 multiplier stage u_shijue_arm_core/u_tracker/u_rgb2hsv/h_next2__3/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+DSP u_shijue_arm_core/u_tracker/u_rgb2hsv/hn0 multiplier stage u_shijue_arm_core/u_tracker/u_rgb2hsv/hn0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
 Related violations: <none>
 
 PLCK-12#1 Warning

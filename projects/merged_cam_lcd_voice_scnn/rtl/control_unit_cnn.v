@@ -1,49 +1,26 @@
 `timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
-// Create Date: 2026/06/28 22:38:48
-// Design Name: 
-// Module Name: control_unit_cnn
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
-// 
-// Dependencies: 
-// 
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-// 
-//////////////////////////////////////////////////////////////////////////////////
-
 
 module control_unit_cnn #(
     parameter P_T_MAX = 20
 ) (
     input  wire clk,
     input  wire rst_n,
-    input  wire i_start_image,        // 开始处理一张新图像
+    input  wire i_start_image,
     output wire o_busy,
-    output reg  o_done_image,         // 单周期: 整图处理完成
+    output reg  o_done_image,
 
-    // 编码握手 (外部编码器填输入脉冲RAM)
     output reg  o_encode_start,
     input  wire i_encode_done,
 
-    // 特征链路握手
     output reg  o_chain_start,
-    output reg  o_chain_clear,        // t==0 清膜电位
+    output reg  o_chain_clear,
     input  wire i_chain_done,
 
-    // 分类头握手
     output reg  o_clf_step_start,
     input  wire i_clf_step_done,
     output reg  o_clf_decide
 );
-    localparam TW = $clog2(P_T_MAX + 1);   // 需能数到 P_T_MAX
+    localparam TW = $clog2(P_T_MAX + 1);
     reg [TW-1:0] t;
 
     localparam S_IDLE=4'd0, S_ENC_S=4'd1, S_ENC_W=4'd2, S_CH_S=4'd3, S_CH_W=4'd4,
@@ -77,4 +54,3 @@ module control_unit_cnn #(
         end
     end
 endmodule
-

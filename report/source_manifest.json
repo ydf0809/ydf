@@ -1,797 +1,993 @@
 {
-  "prepared_on": "2026-11-02",
-  "status": "preview",
-  "origin": "two_owner_selected_main_projects",
-  "production_rtl_modified": false,
+  "schema": "selected-source-export-v2",
+  "selected_source_label": "xiegithub",
+  "date": "2026-11-03",
   "files": [
     {
-      "board": "upper",
-      "original": "merged_cam_lcd_voice_scnn/rtl/asr_frame_decode.v",
-      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/asr_frame_decode.v",
-      "sha256": "94ccad9a1b30d1c5941e2afd18abe6263b77232265feb143bc7f4b36b06f6e01",
-      "exported_sha256": "94ccad9a1b30d1c5941e2afd18abe6263b77232265feb143bc7f4b36b06f6e01"
-    },
-    {
-      "board": "upper",
-      "original": "merged_cam_lcd_voice_scnn/rtl/board_link.v",
-      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/board_link.v",
-      "sha256": "27f4dd85d06c0a70f10b19362f732780ff934c51386fed21c7b2d00be5e11e06",
-      "exported_sha256": "27f4dd85d06c0a70f10b19362f732780ff934c51386fed21c7b2d00be5e11e06"
-    },
-    {
-      "board": "upper",
-      "original": "merged_cam_lcd_voice_scnn/rtl/control_unit_cnn.v",
-      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/control_unit_cnn.v",
-      "sha256": "fae76ead40e36193492ef0914ba6d30f8308a4741d1bd66d7fa9868a3414be47",
-      "exported_sha256": "fae76ead40e36193492ef0914ba6d30f8308a4741d1bd66d7fa9868a3414be47"
-    },
-    {
-      "board": "upper",
-      "original": "merged_cam_lcd_voice_scnn/rtl/conv_engine.v",
-      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/conv_engine.v",
-      "sha256": "9b86a30fa09701de46ac8acf48b4c9087aca944ee7c32574bae8dbde05286e7e",
-      "exported_sha256": "9b86a30fa09701de46ac8acf48b4c9087aca944ee7c32574bae8dbde05286e7e"
-    },
-    {
-      "board": "upper",
-      "original": "merged_cam_lcd_voice_scnn/rtl/conv_weight_rom.v",
-      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/conv_weight_rom.v",
-      "sha256": "64c04cbb2e6e995ee782a922484d4785050bc21681ccb97de707a12c5cc8dead",
-      "exported_sha256": "64c04cbb2e6e995ee782a922484d4785050bc21681ccb97de707a12c5cc8dead"
-    },
-    {
-      "board": "upper",
-      "original": "merged_cam_lcd_voice_scnn/rtl/drone_data_roms.v",
-      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/drone_data_roms.v",
-      "sha256": "cdadd7b996b351b9c30fadc8538af787ef8515e41a507db86b867e9f33934325",
-      "exported_sha256": "cdadd7b996b351b9c30fadc8538af787ef8515e41a507db86b867e9f33934325"
-    },
-    {
-      "board": "upper",
-      "original": "merged_cam_lcd_voice_scnn/rtl/drone_frame_ram.v",
-      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/drone_frame_ram.v",
-      "sha256": "210db54bf308d94cc89ea9ea63297e722f1bdad25e4f44d331359688d75bae5c",
-      "exported_sha256": "210db54bf308d94cc89ea9ea63297e722f1bdad25e4f44d331359688d75bae5c"
-    },
-    {
-      "board": "upper",
-      "original": "merged_cam_lcd_voice_scnn/rtl/fc_classifier.v",
-      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/fc_classifier.v",
-      "sha256": "2a72633942610af4313c55f163a562fce910e08c475295148083ce76db6c1209",
-      "exported_sha256": "2a72633942610af4313c55f163a562fce910e08c475295148083ce76db6c1209"
-    },
-    {
-      "board": "upper",
-      "original": "merged_cam_lcd_voice_scnn/rtl/font_rom.v",
-      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/font_rom.v",
-      "sha256": "ed039146cf89bb7f9fe2c79d490a0e62f1527ab977e3d39939958ec92b195b78",
-      "exported_sha256": "ed039146cf89bb7f9fe2c79d490a0e62f1527ab977e3d39939958ec92b195b78"
-    },
-    {
-      "board": "upper",
-      "original": "merged_cam_lcd_voice_scnn/rtl/frame_buffer.v",
-      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/frame_buffer.v",
-      "sha256": "64ad899cefabab673017ab3dc31ef897f4187a49c43311319de75af380834534",
-      "exported_sha256": "64ad899cefabab673017ab3dc31ef897f4187a49c43311319de75af380834534"
-    },
-    {
-      "board": "upper",
-      "original": "merged_cam_lcd_voice_scnn/rtl/frame_rom_beh.v",
-      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/frame_rom_beh.v",
-      "sha256": "2d633805053ed00a689910c803df7e5d3cc68f0019a75eb44ccd3e01de51ed3b",
-      "exported_sha256": "2d633805053ed00a689910c803df7e5d3cc68f0019a75eb44ccd3e01de51ed3b"
-    },
-    {
-      "board": "upper",
-      "original": "merged_cam_lcd_voice_scnn/rtl/i2c_dri.v",
-      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/i2c_dri.v",
-      "sha256": "cfeebb923ab6cdb598ced0bd2627a9fc3ab28e2dda3f9ea1c773b1f9c68337f0",
-      "exported_sha256": "cfeebb923ab6cdb598ced0bd2627a9fc3ab28e2dda3f9ea1c773b1f9c68337f0"
-    },
-    {
-      "board": "upper",
-      "original": "merged_cam_lcd_voice_scnn/rtl/i2c_ov5640_rgb565_cfg.v",
-      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/i2c_ov5640_rgb565_cfg.v",
-      "sha256": "d6326c95bf6bd749695048edbd002e2309aaef44f6d64c7129156eb43c9b01ae",
-      "exported_sha256": "d6326c95bf6bd749695048edbd002e2309aaef44f6d64c7129156eb43c9b01ae"
-    },
-    {
-      "board": "upper",
-      "original": "merged_cam_lcd_voice_scnn/rtl/input_frontend.v",
-      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/input_frontend.v",
-      "sha256": "ed63f1a3ae8a07c88e6750ce6eed6db6b3f66cf7d85fea05cf407e6da9a3b7d8",
-      "exported_sha256": "ed63f1a3ae8a07c88e6750ce6eed6db6b3f66cf7d85fea05cf407e6da9a3b7d8"
-    },
-    {
-      "board": "upper",
-      "original": "merged_cam_lcd_voice_scnn/rtl/lcd_cam_text_scnn.v",
-      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/lcd_cam_text_scnn.v",
-      "sha256": "2796d87a53986575e86e0ff219d581df329e2a93d5b5adbee44c9998a1199096",
-      "exported_sha256": "2796d87a53986575e86e0ff219d581df329e2a93d5b5adbee44c9998a1199096"
-    },
-    {
-      "board": "upper",
-      "original": "merged_cam_lcd_voice_scnn/rtl/lif_bram.v",
-      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/lif_bram.v",
-      "sha256": "f15bbbcd6c19ea547ad9b4947087e88f0404dee8968cc032123c26849d69af6e",
-      "exported_sha256": "f15bbbcd6c19ea547ad9b4947087e88f0404dee8968cc032123c26849d69af6e"
-    },
-    {
-      "board": "upper",
-      "original": "merged_cam_lcd_voice_scnn/rtl/lif_neuron_cell.v",
-      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/lif_neuron_cell.v",
-      "sha256": "0ad9a4736adb601903dd7038ea579f2ef3d738f2daa2d79200ba8728075b2cc1",
-      "exported_sha256": "0ad9a4736adb601903dd7038ea579f2ef3d738f2daa2d79200ba8728075b2cc1"
-    },
-    {
-      "board": "upper",
-      "original": "merged_cam_lcd_voice_scnn/rtl/lif_neuron_layer.v",
-      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/lif_neuron_layer.v",
-      "sha256": "6698c577c3e53d9989151e94c4d822aec1191fa53fab54cbbc908e603778420b",
-      "exported_sha256": "6698c577c3e53d9989151e94c4d822aec1191fa53fab54cbbc908e603778420b"
-    },
-    {
-      "board": "upper",
-      "original": "merged_cam_lcd_voice_scnn/rtl/link_demux.v",
-      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/link_demux.v",
-      "sha256": "354cc2ad6234188a0846d89dfbc334650125ccef04050813058dcbf46796c490",
-      "exported_sha256": "354cc2ad6234188a0846d89dfbc334650125ccef04050813058dcbf46796c490"
-    },
-    {
-      "board": "upper",
-      "original": "merged_cam_lcd_voice_scnn/rtl/link_rx.v",
-      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/link_rx.v",
-      "sha256": "8ef2321b9c43f4ad8fcdeea3101af8d88dd14ec04fdf8b5f8f251f0887956010",
-      "exported_sha256": "8ef2321b9c43f4ad8fcdeea3101af8d88dd14ec04fdf8b5f8f251f0887956010"
-    },
-    {
-      "board": "upper",
-      "original": "merged_cam_lcd_voice_scnn/rtl/link_tx.v",
-      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/link_tx.v",
-      "sha256": "743f1a7f5cde0f7ddadd788a1fb2f3b6213eba0e3996b01916287843283e57f7",
-      "exported_sha256": "743f1a7f5cde0f7ddadd788a1fb2f3b6213eba0e3996b01916287843283e57f7"
-    },
-    {
-      "board": "upper",
-      "original": "merged_cam_lcd_voice_scnn/rtl/motion_detector.v",
-      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/motion_detector.v",
-      "sha256": "617657a1138a5c4771670a336286d311d052a7b7635b77098c4a606389d8f81d",
-      "exported_sha256": "617657a1138a5c4771670a336286d311d052a7b7635b77098c4a606389d8f81d"
-    },
-    {
-      "board": "upper",
-      "original": "merged_cam_lcd_voice_scnn/rtl/neuron_processing_unit.v",
-      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/neuron_processing_unit.v",
-      "sha256": "55f140406480aeee87210a50d24411183192453825aeda5dce8631580531ba0e",
-      "exported_sha256": "55f140406480aeee87210a50d24411183192453825aeda5dce8631580531ba0e"
-    },
-    {
-      "board": "upper",
-      "original": "merged_cam_lcd_voice_scnn/rtl/output_logic.v",
-      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/output_logic.v",
-      "sha256": "a90ccc062599ee649b1ee1613a51926ee0f8350e04266e1eca1dcbc69a1906b5",
-      "exported_sha256": "a90ccc062599ee649b1ee1613a51926ee0f8350e04266e1eca1dcbc69a1906b5"
-    },
-    {
-      "board": "upper",
-      "original": "merged_cam_lcd_voice_scnn/rtl/ov5640_capture.v",
-      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/ov5640_capture.v",
-      "sha256": "43e0214b9678d8ba4ea48083cf14983edca6a8cb83643d28d27b5ba5b3212347",
-      "exported_sha256": "43e0214b9678d8ba4ea48083cf14983edca6a8cb83643d28d27b5ba5b3212347"
-    },
-    {
-      "board": "upper",
-      "original": "merged_cam_lcd_voice_scnn/rtl/periodic_recheck_timer.v",
-      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/periodic_recheck_timer.v",
-      "sha256": "46574884ab80ee3f210a87ed06376bd709db2c7fa0f5503cbf3409905279d5e8",
-      "exported_sha256": "46574884ab80ee3f210a87ed06376bd709db2c7fa0f5503cbf3409905279d5e8"
-    },
-    {
-      "board": "upper",
-      "original": "merged_cam_lcd_voice_scnn/rtl/pool_engine.v",
-      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/pool_engine.v",
-      "sha256": "85640cb8357a2064ad1b6d89af7218b391165596354dd631956dddbcc707a1f5",
-      "exported_sha256": "85640cb8357a2064ad1b6d89af7218b391165596354dd631956dddbcc707a1f5"
-    },
-    {
-      "board": "upper",
-      "original": "merged_cam_lcd_voice_scnn/rtl/prng_lfsr.v",
-      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/prng_lfsr.v",
-      "sha256": "b0a9a00308a33e7fd8d5e4c74f12b891cb6c5725b9a7ffc2307df10e63f82431",
-      "exported_sha256": "b0a9a00308a33e7fd8d5e4c74f12b891cb6c5725b9a7ffc2307df10e63f82431"
-    },
-    {
-      "board": "upper",
-      "original": "merged_cam_lcd_voice_scnn/rtl/rgb2hsv.v",
-      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/rgb2hsv.v",
-      "sha256": "da15576038d3c946957440b7d072c07a4da057f187ac5342499c61254a7ec879",
-      "exported_sha256": "da15576038d3c946957440b7d072c07a4da057f187ac5342499c61254a7ec879"
-    },
-    {
-      "board": "upper",
-      "original": "merged_cam_lcd_voice_scnn/rtl/roi_resampler.v",
-      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/roi_resampler.v",
-      "sha256": "cfffe8180635cfa2d8d0a2132808a1effc25011f396fb3608e7f6fd7bd33e6f5",
-      "exported_sha256": "cfffe8180635cfa2d8d0a2132808a1effc25011f396fb3608e7f6fd7bd33e6f5"
-    },
-    {
-      "board": "upper",
-      "original": "merged_cam_lcd_voice_scnn/rtl/roi_scheduler.v",
-      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/roi_scheduler.v",
-      "sha256": "e0b6891d5a5a8ec60159599b9498f3c91072940c5a13bd6f2cc6154fb93e6e03",
-      "exported_sha256": "e0b6891d5a5a8ec60159599b9498f3c91072940c5a13bd6f2cc6154fb93e6e03"
-    },
-    {
-      "board": "upper",
-      "original": "merged_cam_lcd_voice_scnn/rtl/roi_template_guard.v",
-      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/roi_template_guard.v",
-      "sha256": "72b0af9e8492030116b518cb1ed69d1c3f4fade0243a5c833d1aafc710903b30",
-      "exported_sha256": "72b0af9e8492030116b518cb1ed69d1c3f4fade0243a5c833d1aafc710903b30"
-    },
-    {
-      "board": "upper",
-      "original": "merged_cam_lcd_voice_scnn/rtl/rst_sync.v",
-      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/rst_sync.v",
-      "sha256": "52b573dc68c847a58e66bda160e2b98b72abfb9d214da1046ceafb743ab7755c",
-      "exported_sha256": "52b573dc68c847a58e66bda160e2b98b72abfb9d214da1046ceafb743ab7755c"
-    },
-    {
-      "board": "upper",
-      "original": "merged_cam_lcd_voice_scnn/rtl/scnn_chain.v",
-      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/scnn_chain.v",
-      "sha256": "aebe138870c6863c177ab066c79b9acbd5b1a43bbaab81441e6b7d20d5f241d2",
-      "exported_sha256": "aebe138870c6863c177ab066c79b9acbd5b1a43bbaab81441e6b7d20d5f241d2"
-    },
-    {
-      "board": "upper",
-      "original": "merged_cam_lcd_voice_scnn/rtl/snn_cnn_core.v",
-      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/snn_cnn_core.v",
-      "sha256": "ea0fd7011008735c9366ed04ba2478478d42378711a189bfcba2097cc8c12df3",
-      "exported_sha256": "ea0fd7011008735c9366ed04ba2478478d42378711a189bfcba2097cc8c12df3"
-    },
-    {
-      "board": "upper",
-      "original": "merged_cam_lcd_voice_scnn/rtl/snn_cnn_top.v",
-      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/snn_cnn_top.v",
-      "sha256": "25bcc75fb48a22441d2914cd603030dd24579ec761b08a59d3e6bb3cc2bddb0d",
-      "exported_sha256": "25bcc75fb48a22441d2914cd603030dd24579ec761b08a59d3e6bb3cc2bddb0d"
-    },
-    {
-      "board": "upper",
-      "original": "merged_cam_lcd_voice_scnn/rtl/spike_ram.v",
-      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/spike_ram.v",
-      "sha256": "2e6434c4e67868e70777f0b0a10afb4191aef892639bd6685a8e85b8ab5c95cd",
-      "exported_sha256": "2e6434c4e67868e70777f0b0a10afb4191aef892639bd6685a8e85b8ab5c95cd"
-    },
-    {
-      "board": "upper",
-      "original": "merged_cam_lcd_voice_scnn/rtl/top.v",
-      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/top.v",
-      "sha256": "47438d33011033bfdae3e7cc5236418254e6dc07c512c8ef8fba1cffd7d67091",
-      "exported_sha256": "47438d33011033bfdae3e7cc5236418254e6dc07c512c8ef8fba1cffd7d67091"
-    },
-    {
-      "board": "upper",
-      "original": "merged_cam_lcd_voice_scnn/rtl/top_asr_voice.v",
-      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/top_asr_voice.v",
-      "sha256": "e45af07eaab53019528c2cd9dc0065f3a78f7d103ff5773bd318f8b754e2eddb",
-      "exported_sha256": "e45af07eaab53019528c2cd9dc0065f3a78f7d103ff5773bd318f8b754e2eddb"
-    },
-    {
-      "board": "upper",
-      "original": "merged_cam_lcd_voice_scnn/rtl/track_send.v",
-      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/track_send.v",
-      "sha256": "65570d4443860ddf7588dced2af9732faacea2cb31bb2be97e9f408be525ed71",
-      "exported_sha256": "65570d4443860ddf7588dced2af9732faacea2cb31bb2be97e9f408be525ed71"
-    },
-    {
-      "board": "upper",
-      "original": "merged_cam_lcd_voice_scnn/rtl/uart_rx.v",
-      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/uart_rx.v",
-      "sha256": "593a1215e54be0cd79d4e42065ab12a9163b37da8172ee2bb1065367c5724cc5",
-      "exported_sha256": "593a1215e54be0cd79d4e42065ab12a9163b37da8172ee2bb1065367c5724cc5"
-    },
-    {
-      "board": "upper",
-      "original": "merged_cam_lcd_voice_scnn/rtl/uart_tx.v",
-      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/uart_tx.v",
-      "sha256": "35a3c2aa9288ad96207a054e8ddf84ffacfbe420a6e61523e9fa1ff0543680b5",
-      "exported_sha256": "35a3c2aa9288ad96207a054e8ddf84ffacfbe420a6e61523e9fa1ff0543680b5"
-    },
-    {
-      "board": "upper",
-      "original": "merged_cam_lcd_voice_scnn/rtl/upper_link_send.v",
-      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/upper_link_send.v",
-      "sha256": "b5e09a82acdf139b9edcaf2d08aebce7083d91c49c8bde1b62455113ec268199",
-      "exported_sha256": "b5e09a82acdf139b9edcaf2d08aebce7083d91c49c8bde1b62455113ec268199"
-    },
-    {
-      "board": "upper",
-      "original": "merged_cam_lcd_voice_scnn/rtl/weight_bram_beh.v",
-      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/weight_bram_beh.v",
-      "sha256": "c1e26998ed9c457b83d2ba236469c19d992f26b9e126bb417fe3cf3e2db83249",
-      "exported_sha256": "c1e26998ed9c457b83d2ba236469c19d992f26b9e126bb417fe3cf3e2db83249"
-    },
-    {
-      "board": "upper",
-      "original": "merged_cam_lcd_voice_scnn/constraints/impl_route.xdc",
-      "exported": "projects/merged_cam_lcd_voice_scnn/constraints/impl_route.xdc",
-      "sha256": "9c750238599c9358b1d8c8f128e46715c21975d0238deddddee7595fbedd0c66",
-      "exported_sha256": "9c750238599c9358b1d8c8f128e46715c21975d0238deddddee7595fbedd0c66"
-    },
-    {
-      "board": "upper",
-      "original": "merged_cam_lcd_voice_scnn/constraints/top.xdc",
-      "exported": "projects/merged_cam_lcd_voice_scnn/constraints/top.xdc",
-      "sha256": "22d1d43b25865f61330afc163c5c0bdfd3dab3359d4451e0a93ccc6381cd6f9e",
-      "exported_sha256": "22d1d43b25865f61330afc163c5c0bdfd3dab3359d4451e0a93ccc6381cd6f9e"
-    },
-    {
-      "board": "upper",
-      "original": "merged_cam_lcd_voice_scnn/weights/new_weight_20261030/0/conv1_weights.coe",
-      "exported": "projects/merged_cam_lcd_voice_scnn/weights/new_weight_20261030/0/conv1_weights.coe",
-      "sha256": "a5930a3515f819abb93f7d8b7dd21694237cf6b4e0e266a5b6725cef64871a70",
-      "exported_sha256": "a5930a3515f819abb93f7d8b7dd21694237cf6b4e0e266a5b6725cef64871a70"
-    },
-    {
-      "board": "upper",
-      "original": "merged_cam_lcd_voice_scnn/weights/new_weight_20261030/1/conv1_weights.mem",
-      "exported": "projects/merged_cam_lcd_voice_scnn/weights/new_weight_20261030/1/conv1_weights.mem",
-      "sha256": "4e91345630e9276042c6fe6b6cd5760834070038f78af97431431f152db5c3ac",
-      "exported_sha256": "4e91345630e9276042c6fe6b6cd5760834070038f78af97431431f152db5c3ac"
-    },
-    {
-      "board": "upper",
-      "original": "merged_cam_lcd_voice_scnn/weights/new_weight_20261030/2/conv2_weights.coe",
-      "exported": "projects/merged_cam_lcd_voice_scnn/weights/new_weight_20261030/2/conv2_weights.coe",
-      "sha256": "03cff75edfaf6b31714fc1aa5c4e0452f7c2be258ce2fbbe4fd8363151d5f0b0",
-      "exported_sha256": "03cff75edfaf6b31714fc1aa5c4e0452f7c2be258ce2fbbe4fd8363151d5f0b0"
-    },
-    {
-      "board": "upper",
-      "original": "merged_cam_lcd_voice_scnn/weights/new_weight_20261030/3/conv2_weights.mem",
-      "exported": "projects/merged_cam_lcd_voice_scnn/weights/new_weight_20261030/3/conv2_weights.mem",
-      "sha256": "75c3385aa07a26ccb95ef110e8272211c71f3a68c245d23aeb543d64f56db151",
-      "exported_sha256": "75c3385aa07a26ccb95ef110e8272211c71f3a68c245d23aeb543d64f56db151"
-    },
-    {
-      "board": "upper",
-      "original": "merged_cam_lcd_voice_scnn/weights/new_weight_20261030/4/fc_weights_0.coe",
-      "exported": "projects/merged_cam_lcd_voice_scnn/weights/new_weight_20261030/4/fc_weights_0.coe",
-      "sha256": "28e2408f2ee89017a4afcfae828cb70ebe38f868835773ec205e32e6a9d88393",
-      "exported_sha256": "28e2408f2ee89017a4afcfae828cb70ebe38f868835773ec205e32e6a9d88393"
-    },
-    {
-      "board": "upper",
-      "original": "merged_cam_lcd_voice_scnn/weights/new_weight_20261030/5/fc_weights_0.mem",
-      "exported": "projects/merged_cam_lcd_voice_scnn/weights/new_weight_20261030/5/fc_weights_0.mem",
-      "sha256": "82d213199c01d8577a0df993fe749b1fcfb02cda89c43cc77d5aa4fdf7ba8a35",
-      "exported_sha256": "82d213199c01d8577a0df993fe749b1fcfb02cda89c43cc77d5aa4fdf7ba8a35"
-    },
-    {
-      "board": "upper",
-      "original": "merged_cam_lcd_voice_scnn/weights/new_weight_20261030/6/fc_weights_1.coe",
-      "exported": "projects/merged_cam_lcd_voice_scnn/weights/new_weight_20261030/6/fc_weights_1.coe",
-      "sha256": "19aa6598bff25b890e4b0c04ea9cf5d5e55cd1bc60cfcc2a42881605a97d6bad",
-      "exported_sha256": "19aa6598bff25b890e4b0c04ea9cf5d5e55cd1bc60cfcc2a42881605a97d6bad"
-    },
-    {
-      "board": "upper",
-      "original": "merged_cam_lcd_voice_scnn/weights/new_weight_20261030/7/fc_weights_1.mem",
-      "exported": "projects/merged_cam_lcd_voice_scnn/weights/new_weight_20261030/7/fc_weights_1.mem",
-      "sha256": "70d28b6a896c2c3a3d45857b6b3f0dc261b0f284a196eab2ef71e4366882d3f3",
-      "exported_sha256": "70d28b6a896c2c3a3d45857b6b3f0dc261b0f284a196eab2ef71e4366882d3f3"
-    },
-    {
-      "board": "upper",
-      "original": "merged_cam_lcd_voice_scnn/tb/tb_air_defence_mode.v",
-      "exported": "projects/merged_cam_lcd_voice_scnn/tb/tb_air_defence_mode.v",
-      "sha256": "231110613a9da94e2a0d9be6b4019cd13c05b0e84900ecf736a4f93edeb5d934",
-      "exported_sha256": "231110613a9da94e2a0d9be6b4019cd13c05b0e84900ecf736a4f93edeb5d934"
-    },
-    {
-      "board": "upper",
-      "original": "merged_cam_lcd_voice_scnn/tb/tb_integrated_recheck_cdc.v",
-      "exported": "projects/merged_cam_lcd_voice_scnn/tb/tb_integrated_recheck_cdc.v",
-      "sha256": "8ace007e71ca6e05b1a4d2b66a3943cf0a53cd5e90f095eded27d2d0bacc1e1a",
-      "exported_sha256": "8ace007e71ca6e05b1a4d2b66a3943cf0a53cd5e90f095eded27d2d0bacc1e1a"
-    },
-    {
-      "board": "upper",
-      "original": "merged_cam_lcd_voice_scnn/tb/tb_lock_policy.v",
-      "exported": "projects/merged_cam_lcd_voice_scnn/tb/tb_lock_policy.v",
-      "sha256": "0c10f83ea5cbf86052b0856a34661ddefc787356ed6ea3db3677a4112ed5f366",
-      "exported_sha256": "0c10f83ea5cbf86052b0856a34661ddefc787356ed6ea3db3677a4112ed5f366"
-    },
-    {
-      "board": "upper",
-      "original": "merged_cam_lcd_voice_scnn/tb/tb_periodic_recheck.v",
-      "exported": "projects/merged_cam_lcd_voice_scnn/tb/tb_periodic_recheck.v",
-      "sha256": "bfe25cbd2138d61c674e1af99589559b9221ba178af9bfe6c626e90e8204aa92",
-      "exported_sha256": "bfe25cbd2138d61c674e1af99589559b9221ba178af9bfe6c626e90e8204aa92"
-    },
-    {
-      "board": "upper",
-      "original": "merged_cam_lcd_voice_scnn/reference_frame.mem",
+      "source": "merged_cam_lcd_voice_scnn/reference_frame.mem",
       "exported": "projects/merged_cam_lcd_voice_scnn/reference_frame.mem",
       "sha256": "36e642a9ea96c198fa499b78f861d780220c4caa69b5bceeaac2ea06c2c0f41c",
-      "exported_sha256": "36e642a9ea96c198fa499b78f861d780220c4caa69b5bceeaac2ea06c2c0f41c"
+      "kind": "hardware_source_or_script"
     },
     {
-      "board": "upper",
-      "original": "merged_cam_lcd_voice_scnn/vivado_prj/merged_cam_lcd_voice_scnn.xpr",
-      "exported": "projects/merged_cam_lcd_voice_scnn/vivado_prj/merged_cam_lcd_voice_scnn.xpr",
-      "sha256": "2cb58d32cf2ecd6f48fe629ae8323edbacc27fa9b3bfb02ce4a369eccda37dcb",
-      "exported_sha256": "838959da4d6d5379a8a9861a2a58a97ecd465997a86dd50efbbeafff9c506a1b",
-      "changes": [
-        "relative_project_hint",
-        "remove_import_origin_hints",
-        "english_import_directory",
-        "remove_optional_incremental_checkpoint"
+      "source": "merged_cam_lcd_voice_scnn/constraints/impl_route.xdc",
+      "exported": "projects/merged_cam_lcd_voice_scnn/constraints/impl_route.xdc",
+      "sha256": "ca8b3b6d4a45d410a56208142def28a08384be25361bb24a260e94e7e35c8733",
+      "kind": "hardware_source_or_script"
+    },
+    {
+      "source": "merged_cam_lcd_voice_scnn/constraints/top.xdc",
+      "exported": "projects/merged_cam_lcd_voice_scnn/constraints/top.xdc",
+      "sha256": "c540b5ff6464f2df792f4c8c224dd07019b583a3e374e248b37e3ae2cc8194df",
+      "kind": "hardware_source_or_script"
+    },
+    {
+      "source": "merged_cam_lcd_voice_scnn/rtl/asr_frame_decode.v",
+      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/asr_frame_decode.v",
+      "sha256": "2affd4409f0fc90fcbd7591f7d6c9e5bb4639ce4918514a463faa311a8ce4c1f",
+      "kind": "hardware_source_or_script"
+    },
+    {
+      "source": "merged_cam_lcd_voice_scnn/rtl/board_link.v",
+      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/board_link.v",
+      "sha256": "0874eef73f83086c595ac7f2064bac67619cb06696bc4256dfd98b87727eaf32",
+      "kind": "hardware_source_or_script"
+    },
+    {
+      "source": "merged_cam_lcd_voice_scnn/rtl/control_unit_cnn.v",
+      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/control_unit_cnn.v",
+      "sha256": "dba11543cc8d40d264959a0aa5c8566159c5722a263f675e021568dbb2186439",
+      "kind": "hardware_source_or_script"
+    },
+    {
+      "source": "merged_cam_lcd_voice_scnn/rtl/conv_engine.v",
+      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/conv_engine.v",
+      "sha256": "e563c8c46fdfbb0ab9e36505032515d420a99d67fe3206a68499102dfd363925",
+      "kind": "hardware_source_or_script"
+    },
+    {
+      "source": "merged_cam_lcd_voice_scnn/rtl/conv_weight_rom.v",
+      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/conv_weight_rom.v",
+      "sha256": "1ebd5936d4c266525ac2e7ff3ca63409e3fdbb54455681252d0d71ff99075e3d",
+      "kind": "hardware_source_or_script"
+    },
+    {
+      "source": "merged_cam_lcd_voice_scnn/rtl/drone_data_roms.v",
+      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/drone_data_roms.v",
+      "sha256": "2d157f22f561c119a45e4d72899379ce765663f895a8d8ff26fb4c8144076300",
+      "kind": "hardware_source_or_script"
+    },
+    {
+      "source": "merged_cam_lcd_voice_scnn/rtl/drone_frame_ram.v",
+      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/drone_frame_ram.v",
+      "sha256": "47d273f93b330b217db0ea5f95e5789a83b6e283535677ec863f52e2eea5fc22",
+      "kind": "hardware_source_or_script"
+    },
+    {
+      "source": "merged_cam_lcd_voice_scnn/rtl/fc_classifier.v",
+      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/fc_classifier.v",
+      "sha256": "eeb770cf8e5a21e9d49a997d11771429feed5dcec5ee2c7b160dbfba879164c8",
+      "kind": "hardware_source_or_script"
+    },
+    {
+      "source": "merged_cam_lcd_voice_scnn/rtl/font_rom.v",
+      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/font_rom.v",
+      "sha256": "92082692a6eb90f863af31f008d0c7729387700a4e9c57b00cb2e16d6105eb10",
+      "kind": "hardware_source_or_script"
+    },
+    {
+      "source": "merged_cam_lcd_voice_scnn/rtl/frame_buffer.v",
+      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/frame_buffer.v",
+      "sha256": "0bc0b7911642aa17bb93da5c1a0d03d521390c6988690fedee431e8615faec93",
+      "kind": "hardware_source_or_script"
+    },
+    {
+      "source": "merged_cam_lcd_voice_scnn/rtl/frame_rom_beh.v",
+      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/frame_rom_beh.v",
+      "sha256": "e4bbeadfc7f8ef42fc94307226e1928967edf031454dac978875f90eff3b9e65",
+      "kind": "hardware_source_or_script"
+    },
+    {
+      "source": "merged_cam_lcd_voice_scnn/rtl/i2c_dri.v",
+      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/i2c_dri.v",
+      "sha256": "4fdce5df3f5f9203d2ff5a92b65d79a26785e8ec74591ef0cba648dfb806d05c",
+      "kind": "hardware_source_or_script"
+    },
+    {
+      "source": "merged_cam_lcd_voice_scnn/rtl/i2c_ov5640_rgb565_cfg.v",
+      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/i2c_ov5640_rgb565_cfg.v",
+      "sha256": "7726d40d9d27147884172966ebd29c253585e6695225bf8e0376d4dfa1391ae3",
+      "kind": "hardware_source_or_script"
+    },
+    {
+      "source": "merged_cam_lcd_voice_scnn/rtl/input_frontend.v",
+      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/input_frontend.v",
+      "sha256": "e023ebe99f1f02f01db65b4463528234006cbd7a3adb4e8e9c7de223a211aa40",
+      "kind": "hardware_source_or_script"
+    },
+    {
+      "source": "merged_cam_lcd_voice_scnn/rtl/lcd_cam_text_scnn.v",
+      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/lcd_cam_text_scnn.v",
+      "sha256": "f396b2d50f864fcf05720059d53268bb31d09c9023f025ade2b6bedd78bf0559",
+      "kind": "hardware_source_or_script"
+    },
+    {
+      "source": "merged_cam_lcd_voice_scnn/rtl/lif_bram.v",
+      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/lif_bram.v",
+      "sha256": "546835ceee2e5c272da15a5c05bb4acacb69285e35ea4c4439d46a8b21657d65",
+      "kind": "hardware_source_or_script"
+    },
+    {
+      "source": "merged_cam_lcd_voice_scnn/rtl/lif_neuron_cell.v",
+      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/lif_neuron_cell.v",
+      "sha256": "00224708873b96c721e477a9bb2da224c67fde340d4eb13b2bc1a34472379017",
+      "kind": "hardware_source_or_script"
+    },
+    {
+      "source": "merged_cam_lcd_voice_scnn/rtl/lif_neuron_layer.v",
+      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/lif_neuron_layer.v",
+      "sha256": "cc5af090a7b22d3f8ed90ecd40d259ba8071f2417a7671e208141713b88c19fd",
+      "kind": "hardware_source_or_script"
+    },
+    {
+      "source": "merged_cam_lcd_voice_scnn/rtl/link_demux.v",
+      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/link_demux.v",
+      "sha256": "42e595cdb06d45b13356d25706a4e6a9384adef35ecc141fd71e69b51c60ff39",
+      "kind": "hardware_source_or_script"
+    },
+    {
+      "source": "merged_cam_lcd_voice_scnn/rtl/link_rx.v",
+      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/link_rx.v",
+      "sha256": "fd8798d0cb2e9ce367b5e2e249fea8ab37a7ebb43fefd5aa46565a7c6edbebb3",
+      "kind": "hardware_source_or_script"
+    },
+    {
+      "source": "merged_cam_lcd_voice_scnn/rtl/link_tx.v",
+      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/link_tx.v",
+      "sha256": "7902a2641ce2988d7a2812578eadfe1045633fae7a2d573a5f6b6098cdabde11",
+      "kind": "hardware_source_or_script"
+    },
+    {
+      "source": "merged_cam_lcd_voice_scnn/rtl/motion_candidate_priority.v",
+      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/motion_candidate_priority.v",
+      "sha256": "617c986af11c6a46d8d14108bcc8be9992ff1d79bbdf6ab715d8c5803d044bde",
+      "kind": "hardware_source_or_script"
+    },
+    {
+      "source": "merged_cam_lcd_voice_scnn/rtl/motion_detector.v",
+      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/motion_detector.v",
+      "sha256": "dbb6e8c313155426c6e2d8c191bb2070ecbf13eb79ff8b43f45543c4b79a11cd",
+      "kind": "hardware_source_or_script"
+    },
+    {
+      "source": "merged_cam_lcd_voice_scnn/rtl/neuron_processing_unit.v",
+      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/neuron_processing_unit.v",
+      "sha256": "d77e0b42c98dd0c56114a893eb9a5f505aa82a7e37fdfc16ebabd53edad4eaf0",
+      "kind": "hardware_source_or_script"
+    },
+    {
+      "source": "merged_cam_lcd_voice_scnn/rtl/output_logic.v",
+      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/output_logic.v",
+      "sha256": "bb3e8f7b1bbb4d01b82921d8bd58a3d80446acb8c4dc18cc1e46b60c6ff86e2b",
+      "kind": "hardware_source_or_script"
+    },
+    {
+      "source": "merged_cam_lcd_voice_scnn/rtl/ov5640_capture.v",
+      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/ov5640_capture.v",
+      "sha256": "84af0903d2d7b03b05f2b99f8d1a2ce9e6c43279645bc399debb865b416ae45f",
+      "kind": "hardware_source_or_script"
+    },
+    {
+      "source": "merged_cam_lcd_voice_scnn/rtl/periodic_recheck_timer.v",
+      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/periodic_recheck_timer.v",
+      "sha256": "2c128ad3453075bfe7828108deea3b9103af2952b2dde1139734808ebe3cf6aa",
+      "kind": "hardware_source_or_script"
+    },
+    {
+      "source": "merged_cam_lcd_voice_scnn/rtl/pool_engine.v",
+      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/pool_engine.v",
+      "sha256": "2922f97b2569f5f49f2e87633715e4e9aa062e212f74185051b6998e8b64838f",
+      "kind": "hardware_source_or_script"
+    },
+    {
+      "source": "merged_cam_lcd_voice_scnn/rtl/prng_lfsr.v",
+      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/prng_lfsr.v",
+      "sha256": "83ba46745ab437264159eab3825fb9445dd5fb552cd1fce38ef7f3630a3167d9",
+      "kind": "hardware_source_or_script"
+    },
+    {
+      "source": "merged_cam_lcd_voice_scnn/rtl/rgb2hsv.v",
+      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/rgb2hsv.v",
+      "sha256": "ed4871f0dff73ef93dd945c94f930e0c0f35f11e2caff074dbb23257c45447c3",
+      "kind": "hardware_source_or_script"
+    },
+    {
+      "source": "merged_cam_lcd_voice_scnn/rtl/roi_resampler.v",
+      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/roi_resampler.v",
+      "sha256": "9d2491206a429013ed054386231d0328d2244cec877e112a6e75dfe49b042313",
+      "kind": "hardware_source_or_script"
+    },
+    {
+      "source": "merged_cam_lcd_voice_scnn/rtl/roi_scheduler.v",
+      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/roi_scheduler.v",
+      "sha256": "98974c44945b2588cadc2b0725fb92c975dab170d3611b50d81a370245166bc5",
+      "kind": "hardware_source_or_script"
+    },
+    {
+      "source": "merged_cam_lcd_voice_scnn/rtl/roi_template_guard.v",
+      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/roi_template_guard.v",
+      "sha256": "5605efb518367efebc2f1db539daaad5adfebf13669d97431ea2650a0f7fdb50",
+      "kind": "hardware_source_or_script"
+    },
+    {
+      "source": "merged_cam_lcd_voice_scnn/rtl/rst_sync.v",
+      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/rst_sync.v",
+      "sha256": "e9f143d18df578cd6913c2a08adf4573f76f279ac37148b766af2444d6ec02ab",
+      "kind": "hardware_source_or_script"
+    },
+    {
+      "source": "merged_cam_lcd_voice_scnn/rtl/scnn_chain.v",
+      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/scnn_chain.v",
+      "sha256": "7ebd2723126378fc9066b4587475e89bb25945d9f7cd0d72a393b3aa3ed914fb",
+      "kind": "hardware_source_or_script"
+    },
+    {
+      "source": "merged_cam_lcd_voice_scnn/rtl/snn_cnn_core.v",
+      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/snn_cnn_core.v",
+      "sha256": "6ffc3d90741e8cb14ce4c6c439cdd94e0bd1502a742a048ef4396beeaf0a2438",
+      "kind": "hardware_source_or_script"
+    },
+    {
+      "source": "merged_cam_lcd_voice_scnn/rtl/snn_cnn_top.v",
+      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/snn_cnn_top.v",
+      "sha256": "9a012fdf7bfef4464c0a92bafc9c1289aac8969569e2666678ec97b675004e63",
+      "kind": "hardware_source_or_script"
+    },
+    {
+      "source": "merged_cam_lcd_voice_scnn/rtl/spike_ram.v",
+      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/spike_ram.v",
+      "sha256": "81d5f3dc3b23fd506988e7d3cc0a0f2a3327b59652bbc3e2b4e2acc0a8773a7a",
+      "kind": "hardware_source_or_script"
+    },
+    {
+      "source": "merged_cam_lcd_voice_scnn/rtl/top.v",
+      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/top.v",
+      "sha256": "06d5c2e5c3828ea3cb063a93c3c10b5b5286d96888685cc87261eb2e7693c2c4",
+      "kind": "hardware_source_or_script"
+    },
+    {
+      "source": "merged_cam_lcd_voice_scnn/rtl/top_asr_voice.v",
+      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/top_asr_voice.v",
+      "sha256": "882945dc5417b191b45937b663a0895027f55c1dfbd5590305c009e4b8072764",
+      "kind": "hardware_source_or_script"
+    },
+    {
+      "source": "merged_cam_lcd_voice_scnn/rtl/track_send.v",
+      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/track_send.v",
+      "sha256": "2c60e5791268f6a1aa5b829818f9da2a264d3c8f45db90ef7d1278363b5fadba",
+      "kind": "hardware_source_or_script"
+    },
+    {
+      "source": "merged_cam_lcd_voice_scnn/rtl/uart_rx.v",
+      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/uart_rx.v",
+      "sha256": "72feb49ab45d41b2b73a6bff3f78ebe3482fea61824fc8309468f709bce9fb20",
+      "kind": "hardware_source_or_script"
+    },
+    {
+      "source": "merged_cam_lcd_voice_scnn/rtl/uart_tx.v",
+      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/uart_tx.v",
+      "sha256": "909dd6d36adb8c613fffdc28b3fba254912b3c02379676ca31b28a04fee69856",
+      "kind": "hardware_source_or_script"
+    },
+    {
+      "source": "merged_cam_lcd_voice_scnn/rtl/upper_link_send.v",
+      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/upper_link_send.v",
+      "sha256": "15896787b1e42beedbc9d4f20f6ff82a63efb7bf2c31282f8b55cda253eae08f",
+      "kind": "hardware_source_or_script"
+    },
+    {
+      "source": "merged_cam_lcd_voice_scnn/rtl/weight_bram_beh.v",
+      "exported": "projects/merged_cam_lcd_voice_scnn/rtl/weight_bram_beh.v",
+      "sha256": "265eacc8f4dee12cdd365c1661aec47fdf6d24cb4c8135caa96d1cd12f1809b4",
+      "kind": "hardware_source_or_script"
+    },
+    {
+      "source": "merged_cam_lcd_voice_scnn/scripts/build_checked.tcl",
+      "exported": "projects/merged_cam_lcd_voice_scnn/scripts/build_checked.tcl",
+      "sha256": "0e4aded7cbedd51c257c1abd55502e437b9595e0dc81d5992996b9c73a3b3039",
+      "kind": "hardware_source_or_script"
+    },
+    {
+      "source": "merged_cam_lcd_voice_scnn/scripts/program_latest_upper.tcl",
+      "exported": "projects/merged_cam_lcd_voice_scnn/scripts/program_latest_upper.tcl",
+      "sha256": "3c28a7389f31a3416fcb29982e5dccbc6c59c9c892917cfe9785a8b3f10991fe",
+      "kind": "hardware_source_or_script"
+    },
+    {
+      "source": "merged_cam_lcd_voice_scnn/scripts/run_tracker_tests.ps1",
+      "exported": "projects/merged_cam_lcd_voice_scnn/scripts/run_tracker_tests.ps1",
+      "sha256": "eeeeb8114bfab7cff22639900a819570a7873cab916c6add6bcaba0008462b95",
+      "kind": "hardware_source_or_script",
+      "exported_sha256": "560f3f246e20e31acd0ead099a20e62b0ccf6878e03404043ea0d848474bdd5c",
+      "adaptations": [
+        "optional_weights_copy_and_actual_test_count"
       ]
     },
     {
-      "board": "lower",
-      "original": "realfinal_min_102404/realfinal.srcs/clk_wiz_0/ip/clk_wiz_0/clk_wiz_0.xci",
+      "source": "merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/tb_air_defence_mode.v",
+      "exported": "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/tb_air_defence_mode.v",
+      "sha256": "f445314d42d186337f60cb34b1d58a659815bd27d55a4239da5c2606dc52885f",
+      "kind": "hardware_source_or_script"
+    },
+    {
+      "source": "merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/tb_i2c_config_clock.v",
+      "exported": "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/tb_i2c_config_clock.v",
+      "sha256": "7044c4392a656bb13a31f5bb31e41931076627420d4532c3aa8d731d7017e95f",
+      "kind": "hardware_source_or_script"
+    },
+    {
+      "source": "merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/tb_integrated_recheck_cdc.v",
+      "exported": "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/tb_integrated_recheck_cdc.v",
+      "sha256": "71487037a215dd40d7a5b7c53e5a7f49cf83b23f03ce7a62bc9b2ee01c0d7bd5",
+      "kind": "hardware_source_or_script"
+    },
+    {
+      "source": "merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/tb_lcd_box_color.v",
+      "exported": "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/tb_lcd_box_color.v",
+      "sha256": "b8cdbe4382506cb79dc169b9c83a4ae50f9c005e03cd7dd8acac1ecc1e1f1b43",
+      "kind": "hardware_source_or_script"
+    },
+    {
+      "source": "merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/tb_lower_display_compat.v",
+      "exported": "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/tb_lower_display_compat.v",
+      "sha256": "c000942ae3cd42be816b684ad89a6d74294066b6852f65dfc114cb5f84f5f2a5",
+      "kind": "hardware_source_or_script"
+    },
+    {
+      "source": "merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/tb_motion_candidate_priority.v",
+      "exported": "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/tb_motion_candidate_priority.v",
+      "sha256": "1c47beac9caedc30ea76be65e664b05e1215fb3e0ae17b515d2e8ad68a7727af",
+      "kind": "hardware_source_or_script"
+    },
+    {
+      "source": "merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/tb_motion_detector.v",
+      "exported": "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/tb_motion_detector.v",
+      "sha256": "7a1c8294412da21645eaa383c1b59ea29376fa289325d3bdbb2fd059c058630f",
+      "kind": "hardware_source_or_script"
+    },
+    {
+      "source": "merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/tb_periodic_recheck.v",
+      "exported": "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/tb_periodic_recheck.v",
+      "sha256": "d59d19f1d00b3a85723f75d4498fa73d007de606dd2794b9be41201cf44fb2e3",
+      "kind": "hardware_source_or_script"
+    },
+    {
+      "source": "merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/tb_roi_scheduler.v",
+      "exported": "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/tb_roi_scheduler.v",
+      "sha256": "549c3f15e2ab2a2a4cc8d070303054f428b0b8d0b19fdd174f65b208281267b0",
+      "kind": "hardware_source_or_script"
+    },
+    {
+      "source": "merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/tb_servo6_compat.v",
+      "exported": "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/tb_servo6_compat.v",
+      "sha256": "0bcf8b33280437a80bae156e29bea051232606829f591f92a63bba206360ab53",
+      "kind": "hardware_source_or_script"
+    },
+    {
+      "source": "merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/tb_upper_lower_serial_compat.v",
+      "exported": "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/tb_upper_lower_serial_compat.v",
+      "sha256": "d9faa33f3eac074494859ef6e58a0768363c93f01c08299be5fe84618c5fca5f",
+      "kind": "hardware_source_or_script"
+    },
+    {
+      "source": "merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/compat_support/compat_arm_red_track.v",
+      "exported": "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/compat_support/compat_arm_red_track.v",
+      "sha256": "e98669147052c47ca5720b80b5edfd1c8869755e32c8b58e0aa81f8191d18db2",
+      "kind": "hardware_source_or_script"
+    },
+    {
+      "source": "merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/compat_support/compat_bbox_unpack.v",
+      "exported": "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/compat_support/compat_bbox_unpack.v",
+      "sha256": "966dd9947768f323133729712585d06661cb71b673235700c0fd8a17ce3cb659",
+      "kind": "hardware_source_or_script"
+    },
+    {
+      "source": "merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/compat_support/compat_board_link.v",
+      "exported": "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/compat_support/compat_board_link.v",
+      "sha256": "1765980d9bb2f93e21552200e6fe325f27e70081b1563c7feeabd1cfd60b5ce2",
+      "kind": "hardware_source_or_script"
+    },
+    {
+      "source": "merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/compat_support/compat_bus_servo_packet_tx.v",
+      "exported": "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/compat_support/compat_bus_servo_packet_tx.v",
+      "sha256": "a399545b978855a1d28a7b503ee68109b264b95db454efc1e94480f06f765bb5",
+      "kind": "hardware_source_or_script"
+    },
+    {
+      "source": "merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/compat_support/compat_bus_servo_uart_tx.v",
+      "exported": "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/compat_support/compat_bus_servo_uart_tx.v",
+      "sha256": "b8357ebf7dda694a5a9b3a34ba3cb41566f3024aafd848e87fb3189db2bfd36a",
+      "kind": "hardware_source_or_script"
+    },
+    {
+      "source": "merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/compat_support/compat_color_track.v",
+      "exported": "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/compat_support/compat_color_track.v",
+      "sha256": "47ffc4035d65399f74555bbc8db156990586eedf1dbeaebbe0aa2b8d1e2414c0",
+      "kind": "hardware_source_or_script"
+    },
+    {
+      "source": "merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/compat_support/compat_link_demux.v",
+      "exported": "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/compat_support/compat_link_demux.v",
+      "sha256": "2007ccaa5b5f2d15381c46ddaf0e6d37b6ae545383dcb9ad50aca466824d74e1",
+      "kind": "hardware_source_or_script"
+    },
+    {
+      "source": "merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/compat_support/compat_link_rx.v",
+      "exported": "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/compat_support/compat_link_rx.v",
+      "sha256": "2c900bc61576329234c25bf0d3bbb2ccb56db19bf7d41cd8e385f5209219f221",
+      "kind": "hardware_source_or_script"
+    },
+    {
+      "source": "merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/compat_support/compat_link_tx.v",
+      "exported": "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/compat_support/compat_link_tx.v",
+      "sha256": "ec56da329f6dcc34dc41bfcabec9212ac102d27eca43b40e9c4b7bd6a3d349e3",
+      "kind": "hardware_source_or_script"
+    },
+    {
+      "source": "merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/compat_support/compat_rgb2hsv.v",
+      "exported": "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/compat_support/compat_rgb2hsv.v",
+      "sha256": "149a1b0c51516f6300690f68bf8f458e5ba67f5db4031e588209d4a6f78e29da",
+      "kind": "hardware_source_or_script"
+    },
+    {
+      "source": "merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/compat_support/compat_rgb_lcd_driver.v",
+      "exported": "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/compat_support/compat_rgb_lcd_driver.v",
+      "sha256": "dafaa8f935ea18e1e01792be0eed94bfb6ac18040e990df7256c8f0529f0fded",
+      "kind": "hardware_source_or_script"
+    },
+    {
+      "source": "merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/compat_support/compat_uart_rx.v",
+      "exported": "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/compat_support/compat_uart_rx.v",
+      "sha256": "7bede311743e237503ef2d4da0385564d2d45ba264800a7e8598e0c3d64ac4f2",
+      "kind": "hardware_source_or_script"
+    },
+    {
+      "source": "merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/compat_support/compat_uart_tx.v",
+      "exported": "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/compat_support/compat_uart_tx.v",
+      "sha256": "3ce2c61450ed613734770d7a5bede86429b59b4c12bbfa70ae3a9eb336cd1786",
+      "kind": "hardware_source_or_script"
+    },
+    {
+      "source": "merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/compat_support/compat_voice_mode_select.v",
+      "exported": "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/compat_support/compat_voice_mode_select.v",
+      "sha256": "35bef590d64e9fc77899746b0e89af37054950773a9415ba315bc5cfe361191f",
+      "kind": "hardware_source_or_script"
+    },
+    {
+      "source": "merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.xpr",
+      "exported": "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.xpr",
+      "sha256": "4a1929947a2049cde9d69832ba1d6f6e501d08486b7d8fd630e23bddde4ce3f8",
+      "kind": "adapted_xpr",
+      "adaptations": [
+        "project_path_relative",
+        "optional_incremental_dcp_reference_removed",
+        "ascii_import_directory_if_needed"
+      ],
+      "exported_sha256": "c6a34c12fbbb2d57fee4de4e4d7fa69686ee204b10b001d2f672e43d3724a306"
+    },
+    {
+      "source": "realfinal_min_102404/scripts/build_checked.tcl",
+      "exported": "projects/realfinal_min_102404/scripts/build_checked.tcl",
+      "sha256": "df0983b390c152179bdefb34e73dee04987279d88e0a960f2a73e916d836b24a",
+      "kind": "hardware_source_or_script"
+    },
+    {
+      "source": "realfinal_min_102404/scripts/run_review_tests.ps1",
+      "exported": "projects/realfinal_min_102404/scripts/run_review_tests.ps1",
+      "sha256": "7fe03a7e7a63f4518713c785724e233f36a5980d93f0846eecc4cd4bf4e89fb7",
+      "kind": "hardware_source_or_script"
+    },
+    {
+      "source": "realfinal_min_102404/realfinal.srcs/clk_wiz_0/ip/clk_wiz_0/clk_wiz_0.xci",
       "exported": "projects/realfinal_min_102404/realfinal.srcs/clk_wiz_0/ip/clk_wiz_0/clk_wiz_0.xci",
-      "sha256": "d10b6ebd1b3e57ae019c18f1e4236cc386931962802e5a6161045eda0c1809c8",
-      "exported_sha256": "d10b6ebd1b3e57ae019c18f1e4236cc386931962802e5a6161045eda0c1809c8"
+      "sha256": "cded5ef8b0d459bc9aa5f62bf4773c24f83a39aae91bc134f8866c12faee6ea9",
+      "kind": "hardware_source_or_script"
     },
     {
-      "board": "lower",
-      "original": "realfinal_min_102404/realfinal.srcs/constrs_1/new/10086.xdc",
+      "source": "realfinal_min_102404/realfinal.srcs/constrs_1/new/10086.xdc",
       "exported": "projects/realfinal_min_102404/realfinal.srcs/constrs_1/new/10086.xdc",
-      "sha256": "929d6f27e9f051d05664e78e01961882e4a3fae0c628c8845e2c69da1be688c2",
-      "exported_sha256": "929d6f27e9f051d05664e78e01961882e4a3fae0c628c8845e2c69da1be688c2"
+      "sha256": "d25a8e68ca611ff66786269079cb0455eb1fd6e4b0fd9ca5317517739d19f898",
+      "kind": "hardware_source_or_script"
     },
     {
-      "board": "lower",
-      "original": "realfinal_min_102404/realfinal.srcs/sim_1/new/tb_arm_red_track.v",
+      "source": "realfinal_min_102404/realfinal.srcs/sim_1/new/tb_arm_red_track.v",
       "exported": "projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_arm_red_track.v",
-      "sha256": "473102e47655c7a7f379d09a68072f91507faad61c9adf411b911541c3bf4e7c",
-      "exported_sha256": "473102e47655c7a7f379d09a68072f91507faad61c9adf411b911541c3bf4e7c"
+      "sha256": "13439b37e8ad0baf30abf0515165fe7bbb7e9656a544bb575c42e9c838998745",
+      "kind": "hardware_source_or_script"
     },
     {
-      "board": "lower",
-      "original": "realfinal_min_102404/realfinal.srcs/sim_1/new/tb_arm_stop.v",
+      "source": "realfinal_min_102404/realfinal.srcs/sim_1/new/tb_arm_stop.v",
       "exported": "projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_arm_stop.v",
-      "sha256": "88a07683976c8dcd424d8efdd74aad370ad276094c8c173398084b60fc4fa984",
-      "exported_sha256": "88a07683976c8dcd424d8efdd74aad370ad276094c8c173398084b60fc4fa984"
+      "sha256": "654685476bbe1bd0e93f0103f56aaf0c1dc15f89469f6ac344d1ff23e1f784b9",
+      "kind": "hardware_source_or_script"
     },
     {
-      "board": "lower",
-      "original": "realfinal_min_102404/realfinal.srcs/sim_1/new/tb_bbox_unpack.v",
+      "source": "realfinal_min_102404/realfinal.srcs/sim_1/new/tb_bbox_unpack.v",
       "exported": "projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_bbox_unpack.v",
-      "sha256": "95486f194b1343a7821cd316f0341ee64a44a4b1d9c3a2959ef8d03ab07705e9",
-      "exported_sha256": "95486f194b1343a7821cd316f0341ee64a44a4b1d9c3a2959ef8d03ab07705e9"
+      "sha256": "e61d23d7c1121de1942d5493071a08d833abd6327cd87849d9803e086aa97f50",
+      "kind": "hardware_source_or_script"
     },
     {
-      "board": "lower",
-      "original": "realfinal_min_102404/realfinal.srcs/sim_1/new/tb_board_link.v",
+      "source": "realfinal_min_102404/realfinal.srcs/sim_1/new/tb_board_link.v",
       "exported": "projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_board_link.v",
-      "sha256": "22267b4bc48078ef1838fc374b09d19d6617b09b61d85f490c2c6303367ab8d0",
-      "exported_sha256": "22267b4bc48078ef1838fc374b09d19d6617b09b61d85f490c2c6303367ab8d0"
+      "sha256": "8f6cf6e63dc73af0460d1e9f65c45ad1df884be7ec2e49966f941628cb7f0078",
+      "kind": "hardware_source_or_script"
     },
     {
-      "board": "lower",
-      "original": "realfinal_min_102404/realfinal.srcs/sim_1/new/tb_chassis_filter.v",
+      "source": "realfinal_min_102404/realfinal.srcs/sim_1/new/tb_camera_box_cdc.v",
+      "exported": "projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_camera_box_cdc.v",
+      "sha256": "73507abb8bbfb47dee971207cc5a81f62d67b285572263cdf88a2db583d03ab4",
+      "kind": "hardware_source_or_script"
+    },
+    {
+      "source": "realfinal_min_102404/realfinal.srcs/sim_1/new/tb_chassis_filter.v",
       "exported": "projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_chassis_filter.v",
-      "sha256": "d58ab1c9ed116332c4c84096ed21aa330522b144c0f7831d8ae043110af88d77",
-      "exported_sha256": "d58ab1c9ed116332c4c84096ed21aa330522b144c0f7831d8ae043110af88d77"
+      "sha256": "3c67f1afc04b89d25f66991331e94a3e0137b254c70d155b47884db7bb4124d6",
+      "kind": "hardware_source_or_script"
     },
     {
-      "board": "lower",
-      "original": "realfinal_min_102404/realfinal.srcs/sim_1/new/tb_corner_turn.v",
+      "source": "realfinal_min_102404/realfinal.srcs/sim_1/new/tb_corner_turn.v",
       "exported": "projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_corner_turn.v",
-      "sha256": "eb38da4abd986ec3d4b0d0a44448c1e47520b88879f593928560a51a6d2e13df",
-      "exported_sha256": "eb38da4abd986ec3d4b0d0a44448c1e47520b88879f593928560a51a6d2e13df"
+      "sha256": "093fd1f5fad241ea4fafe2c35be3aff4cbc3e3b51c7ed46072aec454b5fcc819",
+      "kind": "hardware_source_or_script"
     },
     {
-      "board": "lower",
-      "original": "realfinal_min_102404/realfinal.srcs/sim_1/new/tb_defense_spin.v",
+      "source": "realfinal_min_102404/realfinal.srcs/sim_1/new/tb_defense_spin.v",
       "exported": "projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_defense_spin.v",
-      "sha256": "1e049e84491aa50614b07c8a301379208347256bfe9b000febe166655438b0f5",
-      "exported_sha256": "1e049e84491aa50614b07c8a301379208347256bfe9b000febe166655438b0f5"
+      "sha256": "b9379757b24ffd706d322382e84b4a15bd77ce8934af5d656114326a61dca8d2",
+      "kind": "hardware_source_or_script"
     },
     {
-      "board": "lower",
-      "original": "realfinal_min_102404/realfinal.srcs/sim_1/new/tb_iic_stop.v",
+      "source": "realfinal_min_102404/realfinal.srcs/sim_1/new/tb_iic_stop.v",
       "exported": "projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_iic_stop.v",
-      "sha256": "34cf5939e44899d0047a52cee3956b60e3280f29cfb67cfc2d0bdd129775bcdc",
-      "exported_sha256": "34cf5939e44899d0047a52cee3956b60e3280f29cfb67cfc2d0bdd129775bcdc"
+      "sha256": "80f893aba9ef8afc630066327d29a92d5944b9c0e33647a1bda5c6981febf5fe",
+      "kind": "hardware_source_or_script"
     },
     {
-      "board": "lower",
-      "original": "realfinal_min_102404/realfinal.srcs/sim_1/new/tb_line_pid.v",
+      "source": "realfinal_min_102404/realfinal.srcs/sim_1/new/tb_line_pid.v",
       "exported": "projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_line_pid.v",
-      "sha256": "670d332259e3c34f3560d41fef74632f3cbeafdc6f1057df7059e9e7d88b4d30",
-      "exported_sha256": "670d332259e3c34f3560d41fef74632f3cbeafdc6f1057df7059e9e7d88b4d30"
+      "sha256": "69a14cc3e76618e6dcd4670fa495b73bae462a1776b4cf1352f5d1c39c71d649",
+      "kind": "hardware_source_or_script"
     },
     {
-      "board": "lower",
-      "original": "realfinal_min_102404/realfinal.srcs/sim_1/new/tb_voice_arm.v",
+      "source": "realfinal_min_102404/realfinal.srcs/sim_1/new/tb_ov7670_capture.v",
+      "exported": "projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_ov7670_capture.v",
+      "sha256": "a57c5952b422ea1e6f2b123e8234f2f5381454bd020c7cf404e7a795e2780c83",
+      "kind": "hardware_source_or_script"
+    },
+    {
+      "source": "realfinal_min_102404/realfinal.srcs/sim_1/new/tb_rgb2hsv_pipeline.v",
+      "exported": "projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_rgb2hsv_pipeline.v",
+      "sha256": "9b6b5f3eff228478310f4622c1d771ce0b5a882b4ed49e45e23faaa2f8904fb0",
+      "kind": "hardware_source_or_script"
+    },
+    {
+      "source": "realfinal_min_102404/realfinal.srcs/sim_1/new/tb_voice_arm.v",
       "exported": "projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_voice_arm.v",
-      "sha256": "f8fa3f3033e0d5a3877d1fcac6b9e869efd14048dad43b44a9eccdade5482ba6",
-      "exported_sha256": "f8fa3f3033e0d5a3877d1fcac6b9e869efd14048dad43b44a9eccdade5482ba6"
+      "sha256": "b7a1b07b5e37ea659dc17d020d9c7393278824ea3a2a70d6568499872920d5db",
+      "kind": "hardware_source_or_script"
     },
     {
-      "board": "lower",
-      "original": "realfinal_min_102404/realfinal.srcs/sim_1/new/tb_voice_mode.v",
+      "source": "realfinal_min_102404/realfinal.srcs/sim_1/new/tb_voice_mode.v",
       "exported": "projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_voice_mode.v",
-      "sha256": "95550892f3a4b9395c1340e5e79de6828a25d9da8c4a775e3f0f5e9f0eeaa92e",
-      "exported_sha256": "95550892f3a4b9395c1340e5e79de6828a25d9da8c4a775e3f0f5e9f0eeaa92e"
+      "sha256": "a4ff386535086b3eba090a0dbcb9082f431684d31b7b988c0943a2711e5cf6ec",
+      "kind": "hardware_source_or_script"
     },
     {
-      "board": "lower",
-      "original": "realfinal_min_102404/realfinal.srcs/sim_1/new/tb_xunbi_tracking.v",
+      "source": "realfinal_min_102404/realfinal.srcs/sim_1/new/tb_xunbi_tracking.v",
       "exported": "projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_xunbi_tracking.v",
-      "sha256": "621a61c51c2b46ae8828d025913765fb09eb6a9d267b68105a010233bf7953a7",
-      "exported_sha256": "621a61c51c2b46ae8828d025913765fb09eb6a9d267b68105a010233bf7953a7"
+      "sha256": "cd4c85355124800e0aa1fb6f11831c4cda0972f6b57adfffafd95205fb3f815a",
+      "kind": "hardware_source_or_script"
     },
     {
-      "board": "lower",
-      "original": "realfinal_min_102404/realfinal.srcs/sources_1/new/arm_red_track.v",
+      "source": "realfinal_min_102404/realfinal.srcs/sources_1/new/arm_red_track.v",
       "exported": "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/arm_red_track.v",
-      "sha256": "0788f5d3fb9179ef3200c12d44d52d6eddd73bdc1c331b882b3cb34fc076c72e",
-      "exported_sha256": "0788f5d3fb9179ef3200c12d44d52d6eddd73bdc1c331b882b3cb34fc076c72e"
+      "sha256": "ffcb654520b73dbc4a1ae5c384b5c3872258c4f00305d566aa4b7dafab9722ca",
+      "kind": "hardware_source_or_script"
     },
     {
-      "board": "lower",
-      "original": "realfinal_min_102404/realfinal.srcs/sources_1/new/arm_voice_trigger.v",
+      "source": "realfinal_min_102404/realfinal.srcs/sources_1/new/arm_voice_trigger.v",
       "exported": "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/arm_voice_trigger.v",
-      "sha256": "0d772aff1341190f46a4ae19bfc3b50829082e6c0a015565f50bbe660a8f4679",
-      "exported_sha256": "0d772aff1341190f46a4ae19bfc3b50829082e6c0a015565f50bbe660a8f4679"
+      "sha256": "ca949283438d27abb572ba4bd1e7efdb6c8fde9c9fec7c9d6d63c9e1f8a3939c",
+      "kind": "hardware_source_or_script"
     },
     {
-      "board": "lower",
-      "original": "realfinal_min_102404/realfinal.srcs/sources_1/new/asr_frame_decode.v",
+      "source": "realfinal_min_102404/realfinal.srcs/sources_1/new/asr_frame_decode.v",
       "exported": "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/asr_frame_decode.v",
-      "sha256": "94ccad9a1b30d1c5941e2afd18abe6263b77232265feb143bc7f4b36b06f6e01",
-      "exported_sha256": "94ccad9a1b30d1c5941e2afd18abe6263b77232265feb143bc7f4b36b06f6e01"
+      "sha256": "2affd4409f0fc90fcbd7591f7d6c9e5bb4639ce4918514a463faa311a8ce4c1f",
+      "kind": "hardware_source_or_script"
     },
     {
-      "board": "lower",
-      "original": "realfinal_min_102404/realfinal.srcs/sources_1/new/bbox_unpack.v",
+      "source": "realfinal_min_102404/realfinal.srcs/sources_1/new/bbox_unpack.v",
       "exported": "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/bbox_unpack.v",
-      "sha256": "bb077d353c3db27e3d02c9b6a3d8998073f1d5ce7482d011f3d6d487f4a7b4ee",
-      "exported_sha256": "bb077d353c3db27e3d02c9b6a3d8998073f1d5ce7482d011f3d6d487f4a7b4ee"
+      "sha256": "7e1b3996a66d7b0aaaf08f372dab26e6d9de1f259e228a410f2be1500b4f15dd",
+      "kind": "hardware_source_or_script"
     },
     {
-      "board": "lower",
-      "original": "realfinal_min_102404/realfinal.srcs/sources_1/new/board_link.v",
+      "source": "realfinal_min_102404/realfinal.srcs/sources_1/new/board_link.v",
       "exported": "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/board_link.v",
-      "sha256": "a6ed16bf64a00432c1b9ea7a331695af6f139a6e65b687e2c5d03ef44203bca8",
-      "exported_sha256": "a6ed16bf64a00432c1b9ea7a331695af6f139a6e65b687e2c5d03ef44203bca8"
+      "sha256": "af5771277e354166f06ebeb5afecac1380f3392a1cecf728b2bfc2d319c969eb",
+      "kind": "hardware_source_or_script"
     },
     {
-      "board": "lower",
-      "original": "realfinal_min_102404/realfinal.srcs/sources_1/new/corner_turn.v",
+      "source": "realfinal_min_102404/realfinal.srcs/sources_1/new/corner_turn.v",
       "exported": "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/corner_turn.v",
-      "sha256": "3cc2b059d43780254404f49e81fe9f9cbab50e83816e477c0de96bcae492b9a9",
-      "exported_sha256": "3cc2b059d43780254404f49e81fe9f9cbab50e83816e477c0de96bcae492b9a9"
+      "sha256": "c898d89c2c020d960e56861a8634aa5c5ca7590fd3cb340bb0a5225313d15881",
+      "kind": "hardware_source_or_script"
     },
     {
-      "board": "lower",
-      "original": "realfinal_min_102404/realfinal.srcs/sources_1/new/defense_spin.v",
+      "source": "realfinal_min_102404/realfinal.srcs/sources_1/new/defense_spin.v",
       "exported": "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/defense_spin.v",
-      "sha256": "bad6db8769ce17cfccb3575bab4ba33fb19de2852ab8eb975eedaf5e35123019",
-      "exported_sha256": "bad6db8769ce17cfccb3575bab4ba33fb19de2852ab8eb975eedaf5e35123019"
+      "sha256": "7f31d35b92da5c0a7b17962930e8e434797dc5ac8c3a6515d26478c2362373eb",
+      "kind": "hardware_source_or_script"
     },
     {
-      "board": "lower",
-      "original": "realfinal_min_102404/realfinal.srcs/sources_1/new/line_pid_ctrl.v",
+      "source": "realfinal_min_102404/realfinal.srcs/sources_1/new/line_pid_ctrl.v",
       "exported": "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/line_pid_ctrl.v",
-      "sha256": "e18472f117498c2ca2e4a3772a09f2700b708aad7dbf63500e155fa58d059e00",
-      "exported_sha256": "e18472f117498c2ca2e4a3772a09f2700b708aad7dbf63500e155fa58d059e00"
+      "sha256": "e49a344a0ce4d5847e76e307d2c21c6f09077401ee421e718b3d51875823b3c7",
+      "kind": "hardware_source_or_script"
     },
     {
-      "board": "lower",
-      "original": "realfinal_min_102404/realfinal.srcs/sources_1/new/link_demux.v",
+      "source": "realfinal_min_102404/realfinal.srcs/sources_1/new/link_demux.v",
       "exported": "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/link_demux.v",
-      "sha256": "21d24e5e60a43d8f8b816e0e6892c36b19c68dc8263d2b021f68ebdfa57d1249",
-      "exported_sha256": "21d24e5e60a43d8f8b816e0e6892c36b19c68dc8263d2b021f68ebdfa57d1249"
+      "sha256": "99b6147cd408940cbe9c7bb1ad1d1eb9facb4661e7ced3cf846b03a63a23d1be",
+      "kind": "hardware_source_or_script"
     },
     {
-      "board": "lower",
-      "original": "realfinal_min_102404/realfinal.srcs/sources_1/new/link_rx.v",
+      "source": "realfinal_min_102404/realfinal.srcs/sources_1/new/link_rx.v",
       "exported": "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/link_rx.v",
-      "sha256": "8ef2321b9c43f4ad8fcdeea3101af8d88dd14ec04fdf8b5f8f251f0887956010",
-      "exported_sha256": "8ef2321b9c43f4ad8fcdeea3101af8d88dd14ec04fdf8b5f8f251f0887956010"
+      "sha256": "fd8798d0cb2e9ce367b5e2e249fea8ab37a7ebb43fefd5aa46565a7c6edbebb3",
+      "kind": "hardware_source_or_script"
     },
     {
-      "board": "lower",
-      "original": "realfinal_min_102404/realfinal.srcs/sources_1/new/link_tx.v",
+      "source": "realfinal_min_102404/realfinal.srcs/sources_1/new/link_tx.v",
       "exported": "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/link_tx.v",
-      "sha256": "d12259dec18c188fd50c3d98ef08ec7e00c81a775609e10389cc27e375772eea",
-      "exported_sha256": "d12259dec18c188fd50c3d98ef08ec7e00c81a775609e10389cc27e375772eea"
+      "sha256": "b9dafe42a526070da4dcd00b4692a265ea7781021ad15433fccdde176855d10d",
+      "kind": "hardware_source_or_script"
     },
     {
-      "board": "lower",
-      "original": "realfinal_min_102404/realfinal.srcs/sources_1/new/rgb_lcd_driver.v",
+      "source": "realfinal_min_102404/realfinal.srcs/sources_1/new/rgb_lcd_driver.v",
       "exported": "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/rgb_lcd_driver.v",
-      "sha256": "a33a4bf762b1e41aabcfc49a03133c74c7cd600437f884c85ccbc889ae8930cb",
-      "exported_sha256": "a33a4bf762b1e41aabcfc49a03133c74c7cd600437f884c85ccbc889ae8930cb"
+      "sha256": "97dc904873b1570870cbe4fd1eb1ce183a47e509545fe07ef91663c0418aa975",
+      "kind": "hardware_source_or_script"
     },
     {
-      "board": "lower",
-      "original": "realfinal_min_102404/realfinal.srcs/sources_1/new/shijue_arm_core.v",
+      "source": "realfinal_min_102404/realfinal.srcs/sources_1/new/shijue_arm_core.v",
       "exported": "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/shijue_arm_core.v",
-      "sha256": "b8d6faf556d9f075c5d45e250179bcc9eb2bdc655749fc69d7c5eb7902532506",
-      "exported_sha256": "b8d6faf556d9f075c5d45e250179bcc9eb2bdc655749fc69d7c5eb7902532506"
+      "sha256": "3cd7cdbd9730598371301d88fe7c889ed125043bfcccfd25d0c9b8ed7d7b2a8d",
+      "kind": "hardware_source_or_script"
     },
     {
-      "board": "lower",
-      "original": "realfinal_min_102404/realfinal.srcs/sources_1/new/shijue_core.v",
+      "source": "realfinal_min_102404/realfinal.srcs/sources_1/new/shijue_core.v",
       "exported": "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/shijue_core.v",
-      "sha256": "c3ee491ef69be5ba32b01add2ebdfd2ffc73e33a3fb29e7b59983f21e653a9e9",
-      "exported_sha256": "c3ee491ef69be5ba32b01add2ebdfd2ffc73e33a3fb29e7b59983f21e653a9e9"
+      "sha256": "c518d29714f3d2f403c89c5a58d42f534aef241607f872acd42b11ad7a860b3f",
+      "kind": "hardware_source_or_script"
     },
     {
-      "board": "lower",
-      "original": "realfinal_min_102404/realfinal.srcs/sources_1/new/super_top.v",
+      "source": "realfinal_min_102404/realfinal.srcs/sources_1/new/super_top.v",
       "exported": "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/super_top.v",
-      "sha256": "d21f4fad758c638efea7a68e66e6b010f2f9fa0a3ccd4cb752d8fc7259bbf298",
-      "exported_sha256": "d21f4fad758c638efea7a68e66e6b010f2f9fa0a3ccd4cb752d8fc7259bbf298"
+      "sha256": "4aa5ed7177553828340416175de99c204973be89bc9b31051cee43dca7fcc009",
+      "kind": "hardware_source_or_script"
     },
     {
-      "board": "lower",
-      "original": "realfinal_min_102404/realfinal.srcs/sources_1/new/track_send.v",
+      "source": "realfinal_min_102404/realfinal.srcs/sources_1/new/track_send.v",
       "exported": "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/track_send.v",
-      "sha256": "da33e8a1e8d32308f4f8f5c1863d60de8363d205ed7d6a7f354656d4abafc7c4",
-      "exported_sha256": "da33e8a1e8d32308f4f8f5c1863d60de8363d205ed7d6a7f354656d4abafc7c4"
+      "sha256": "6304c0d16e8e19fce45d506a5eec17d2526142f2341cbac44b1a9b129922a1d8",
+      "kind": "hardware_source_or_script"
     },
     {
-      "board": "lower",
-      "original": "realfinal_min_102404/realfinal.srcs/sources_1/new/uart_rx.v",
+      "source": "realfinal_min_102404/realfinal.srcs/sources_1/new/uart_rx.v",
       "exported": "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/uart_rx.v",
-      "sha256": "593a1215e54be0cd79d4e42065ab12a9163b37da8172ee2bb1065367c5724cc5",
-      "exported_sha256": "593a1215e54be0cd79d4e42065ab12a9163b37da8172ee2bb1065367c5724cc5"
+      "sha256": "72feb49ab45d41b2b73a6bff3f78ebe3482fea61824fc8309468f709bce9fb20",
+      "kind": "hardware_source_or_script"
     },
     {
-      "board": "lower",
-      "original": "realfinal_min_102404/realfinal.srcs/sources_1/new/uart_tx.v",
+      "source": "realfinal_min_102404/realfinal.srcs/sources_1/new/uart_tx.v",
       "exported": "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/uart_tx.v",
-      "sha256": "35a3c2aa9288ad96207a054e8ddf84ffacfbe420a6e61523e9fa1ff0543680b5",
-      "exported_sha256": "35a3c2aa9288ad96207a054e8ddf84ffacfbe420a6e61523e9fa1ff0543680b5"
+      "sha256": "909dd6d36adb8c613fffdc28b3fba254912b3c02379676ca31b28a04fee69856",
+      "kind": "hardware_source_or_script"
     },
     {
-      "board": "lower",
-      "original": "realfinal_min_102404/realfinal.srcs/sources_1/new/voice_mode_select.v",
+      "source": "realfinal_min_102404/realfinal.srcs/sources_1/new/voice_mode_select.v",
       "exported": "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/voice_mode_select.v",
-      "sha256": "b9bc884b851aee0532a04d3adb0d7321fd946aed0b521eecb7a0ca3b2b9d2f56",
-      "exported_sha256": "b9bc884b851aee0532a04d3adb0d7321fd946aed0b521eecb7a0ca3b2b9d2f56"
+      "sha256": "bcc7af253c35d389aca444e10cff2ca2900306e9b7528db6f769ae39e00c2193",
+      "kind": "hardware_source_or_script"
     },
     {
-      "board": "lower",
-      "original": "realfinal_min_102404/realfinal.srcs/sources_1/new/xunbi_core.v",
+      "source": "realfinal_min_102404/realfinal.srcs/sources_1/new/xunbi_core.v",
       "exported": "projects/realfinal_min_102404/realfinal.srcs/sources_1/new/xunbi_core.v",
-      "sha256": "302b942209d3eb3362e03730435884d9725699410883ede4ad648f4bb092670f",
-      "exported_sha256": "302b942209d3eb3362e03730435884d9725699410883ede4ad648f4bb092670f"
+      "sha256": "01062a1ccb8cc7ab5680753de79a260f70db52a833a4be11b84395e93c400ba0",
+      "kind": "hardware_source_or_script"
     },
     {
-      "board": "lower",
-      "original": "realfinal_min_102404/realfinal.srcs/sources_1/imports/\u6682\u65f6/armfinal/project_9.srcs/sources_1/new/arm_pick_place_once_top.v",
+      "source": "realfinal_min_102404/realfinal.srcs/sources_1/imports/\u6682\u65f6/armfinal/project_9.srcs/sources_1/new/arm_pick_place_once_top.v",
       "exported": "projects/realfinal_min_102404/realfinal.srcs/sources_1/imports/imported/armfinal/project_9.srcs/sources_1/new/arm_pick_place_once_top.v",
-      "sha256": "863ea6f9c6724832a8519ac92dd0f8941716518d87f642e9543648f7b7067c8e",
-      "exported_sha256": "863ea6f9c6724832a8519ac92dd0f8941716518d87f642e9543648f7b7067c8e"
+      "sha256": "257d83b24a66c9f6da78cecb12619d4b390b3b2d8bfc8b88811c13a1150dfa43",
+      "kind": "hardware_source_or_script"
     },
     {
-      "board": "lower",
-      "original": "realfinal_min_102404/realfinal.srcs/sources_1/imports/\u6682\u65f6/armfinal/project_9.srcs/sources_1/new/bus_servo_packet_tx.v",
+      "source": "realfinal_min_102404/realfinal.srcs/sources_1/imports/\u6682\u65f6/armfinal/project_9.srcs/sources_1/new/bus_servo_packet_tx.v",
       "exported": "projects/realfinal_min_102404/realfinal.srcs/sources_1/imports/imported/armfinal/project_9.srcs/sources_1/new/bus_servo_packet_tx.v",
-      "sha256": "cca265b337b897300d66a995933cd924bc722ff6b889b3d02a563a25ef094510",
-      "exported_sha256": "cca265b337b897300d66a995933cd924bc722ff6b889b3d02a563a25ef094510"
+      "sha256": "bb553269b928551d827940e7c5047e7af7ae3cdf59abbec5c9e3c0d98b41f1f0",
+      "kind": "hardware_source_or_script"
     },
     {
-      "board": "lower",
-      "original": "realfinal_min_102404/realfinal.srcs/sources_1/imports/\u6682\u65f6/armfinal/project_9.srcs/sources_1/new/bus_servo_uart_tx.v",
+      "source": "realfinal_min_102404/realfinal.srcs/sources_1/imports/\u6682\u65f6/armfinal/project_9.srcs/sources_1/new/bus_servo_uart_tx.v",
       "exported": "projects/realfinal_min_102404/realfinal.srcs/sources_1/imports/imported/armfinal/project_9.srcs/sources_1/new/bus_servo_uart_tx.v",
-      "sha256": "3eae53e436665f7497b9cdca1aab4d8497cdff9593b3acbefb27d404eefc2d8b",
-      "exported_sha256": "3eae53e436665f7497b9cdca1aab4d8497cdff9593b3acbefb27d404eefc2d8b"
+      "sha256": "714886ba7bcdc099bf18cf110c8f9146c7916ca8562c4b233f305d864e92b79e",
+      "kind": "hardware_source_or_script"
     },
     {
-      "board": "lower",
-      "original": "realfinal_min_102404/realfinal.srcs/sources_1/imports/\u6682\u65f6/shijuefinal/project_7.srcs/sources_1/new/atk4384_driver.v",
+      "source": "realfinal_min_102404/realfinal.srcs/sources_1/imports/\u6682\u65f6/shijuefinal/project_7.srcs/sources_1/new/atk4384_driver.v",
       "exported": "projects/realfinal_min_102404/realfinal.srcs/sources_1/imports/imported/shijuefinal/project_7.srcs/sources_1/new/atk4384_driver.v",
-      "sha256": "e252e6977c9ac71ebc5db4f11350b8dd1bc9d0495ceea1a2ea1c6f83b10a428c",
-      "exported_sha256": "e252e6977c9ac71ebc5db4f11350b8dd1bc9d0495ceea1a2ea1c6f83b10a428c"
+      "sha256": "3fddb5bc66469615e24d73fe54c13f47fec6a6595ba6e9b920cf78ef0b6556d1",
+      "kind": "hardware_source_or_script"
     },
     {
-      "board": "lower",
-      "original": "realfinal_min_102404/realfinal.srcs/sources_1/imports/\u6682\u65f6/shijuefinal/project_7.srcs/sources_1/new/chassis_control.v",
+      "source": "realfinal_min_102404/realfinal.srcs/sources_1/imports/\u6682\u65f6/shijuefinal/project_7.srcs/sources_1/new/chassis_control.v",
       "exported": "projects/realfinal_min_102404/realfinal.srcs/sources_1/imports/imported/shijuefinal/project_7.srcs/sources_1/new/chassis_control.v",
-      "sha256": "82859d1ea6e7775662c8f33bcaa0869718dfd592f5ccac83ed5191ee2e18fbd0",
-      "exported_sha256": "82859d1ea6e7775662c8f33bcaa0869718dfd592f5ccac83ed5191ee2e18fbd0"
+      "sha256": "b9849b419a054dfac4ee3ea9feebe4092668d43a5556a3a232ce0f5188ad8236",
+      "kind": "hardware_source_or_script"
     },
     {
-      "board": "lower",
-      "original": "realfinal_min_102404/realfinal.srcs/sources_1/imports/\u6682\u65f6/shijuefinal/project_7.srcs/sources_1/new/color_track.v",
+      "source": "realfinal_min_102404/realfinal.srcs/sources_1/imports/\u6682\u65f6/shijuefinal/project_7.srcs/sources_1/new/color_track.v",
       "exported": "projects/realfinal_min_102404/realfinal.srcs/sources_1/imports/imported/shijuefinal/project_7.srcs/sources_1/new/color_track.v",
-      "sha256": "f48e761ef3c950afadd33b63a97a6cf7fbec77f3e6d465354d612c70864689d7",
-      "exported_sha256": "f48e761ef3c950afadd33b63a97a6cf7fbec77f3e6d465354d612c70864689d7"
+      "sha256": "c26467d35d83bad10108aa7e4dc08f82edd4977024138a5abcd60d33e1b0f749",
+      "kind": "hardware_source_or_script"
     },
     {
-      "board": "lower",
-      "original": "realfinal_min_102404/realfinal.srcs/sources_1/imports/\u6682\u65f6/shijuefinal/project_7.srcs/sources_1/new/frame_buffer_bram.v",
+      "source": "realfinal_min_102404/realfinal.srcs/sources_1/imports/\u6682\u65f6/shijuefinal/project_7.srcs/sources_1/new/frame_buffer_bram.v",
       "exported": "projects/realfinal_min_102404/realfinal.srcs/sources_1/imports/imported/shijuefinal/project_7.srcs/sources_1/new/frame_buffer_bram.v",
-      "sha256": "e67b0f32cab32c5e72b1b251514c16973a62105410bd2b1f7219d3e4a4ea0810",
-      "exported_sha256": "e67b0f32cab32c5e72b1b251514c16973a62105410bd2b1f7219d3e4a4ea0810"
+      "sha256": "5868515aaf3153b7ac54c2f35f659325fb5e3e382ac6ae8e4d2f83fa7f30e80f",
+      "kind": "hardware_source_or_script"
     },
     {
-      "board": "lower",
-      "original": "realfinal_min_102404/realfinal.srcs/sources_1/imports/\u6682\u65f6/shijuefinal/project_7.srcs/sources_1/new/iic_write.v",
+      "source": "realfinal_min_102404/realfinal.srcs/sources_1/imports/\u6682\u65f6/shijuefinal/project_7.srcs/sources_1/new/iic_write.v",
       "exported": "projects/realfinal_min_102404/realfinal.srcs/sources_1/imports/imported/shijuefinal/project_7.srcs/sources_1/new/iic_write.v",
-      "sha256": "8d594e1850fe43d122881437651f7af5413383139ff6980bd365d639fc813eba",
-      "exported_sha256": "8d594e1850fe43d122881437651f7af5413383139ff6980bd365d639fc813eba"
+      "sha256": "1f53385cedbb883886b335dd6c41878cf2bb00ddf9d358471ed8008314a83e98",
+      "kind": "hardware_source_or_script"
     },
     {
-      "board": "lower",
-      "original": "realfinal_min_102404/realfinal.srcs/sources_1/imports/\u6682\u65f6/shijuefinal/project_7.srcs/sources_1/new/iic_w_top.v",
+      "source": "realfinal_min_102404/realfinal.srcs/sources_1/imports/\u6682\u65f6/shijuefinal/project_7.srcs/sources_1/new/iic_w_top.v",
       "exported": "projects/realfinal_min_102404/realfinal.srcs/sources_1/imports/imported/shijuefinal/project_7.srcs/sources_1/new/iic_w_top.v",
-      "sha256": "cc3870aea145f99dc9ee1f472f01dea4cf671d4afe784b92c7c731457ab5e5fc",
-      "exported_sha256": "cc3870aea145f99dc9ee1f472f01dea4cf671d4afe784b92c7c731457ab5e5fc"
+      "sha256": "a148e91af4774edffd132972245338b72f80f03fff596c9fe3fc8401b3bef637",
+      "kind": "hardware_source_or_script"
     },
     {
-      "board": "lower",
-      "original": "realfinal_min_102404/realfinal.srcs/sources_1/imports/\u6682\u65f6/shijuefinal/project_7.srcs/sources_1/new/ov7670_capture.v",
+      "source": "realfinal_min_102404/realfinal.srcs/sources_1/imports/\u6682\u65f6/shijuefinal/project_7.srcs/sources_1/new/ov7670_capture.v",
       "exported": "projects/realfinal_min_102404/realfinal.srcs/sources_1/imports/imported/shijuefinal/project_7.srcs/sources_1/new/ov7670_capture.v",
-      "sha256": "7500f1d0db4846a9dd6c56b695f1fa3ba972d08496e27efc4d5acf79caca4854",
-      "exported_sha256": "7500f1d0db4846a9dd6c56b695f1fa3ba972d08496e27efc4d5acf79caca4854"
+      "sha256": "2d8fcba2835fc42d52ddf73e113d221ac05ed6212c113d610d544be261107825",
+      "kind": "hardware_source_or_script"
     },
     {
-      "board": "lower",
-      "original": "realfinal_min_102404/realfinal.srcs/sources_1/imports/\u6682\u65f6/shijuefinal/project_7.srcs/sources_1/new/ov7670_init.v",
+      "source": "realfinal_min_102404/realfinal.srcs/sources_1/imports/\u6682\u65f6/shijuefinal/project_7.srcs/sources_1/new/ov7670_init.v",
       "exported": "projects/realfinal_min_102404/realfinal.srcs/sources_1/imports/imported/shijuefinal/project_7.srcs/sources_1/new/ov7670_init.v",
-      "sha256": "8351611402736da651061d962a5dccb040a93fd0e277a437215ff909eda1e5db",
-      "exported_sha256": "8351611402736da651061d962a5dccb040a93fd0e277a437215ff909eda1e5db"
+      "sha256": "989699d2303e17ffe9ccc73615578b373d872bab9b710f6b930b6cf64d0307cc",
+      "kind": "hardware_source_or_script"
     },
     {
-      "board": "lower",
-      "original": "realfinal_min_102404/realfinal.srcs/sources_1/imports/\u6682\u65f6/shijuefinal/project_7.srcs/sources_1/new/rgb2hsv.v",
+      "source": "realfinal_min_102404/realfinal.srcs/sources_1/imports/\u6682\u65f6/shijuefinal/project_7.srcs/sources_1/new/rgb2hsv.v",
       "exported": "projects/realfinal_min_102404/realfinal.srcs/sources_1/imports/imported/shijuefinal/project_7.srcs/sources_1/new/rgb2hsv.v",
-      "sha256": "a474ae0bc0232a8d99eb5c2ff1d556b7e7d838d828c46d3cec929b677a3dba95",
-      "exported_sha256": "a474ae0bc0232a8d99eb5c2ff1d556b7e7d838d828c46d3cec929b677a3dba95"
+      "sha256": "d776b1cfc5fabce523fc598768df98e4abfda0c8a10b24b6993c079f5fb5e190",
+      "kind": "hardware_source_or_script"
     },
     {
-      "board": "lower",
-      "original": "realfinal_min_102404/realfinal.srcs/sources_1/imports/\u6682\u65f6/shijuefinal/project_7.srcs/sources_1/new/sccb_master.v",
+      "source": "realfinal_min_102404/realfinal.srcs/sources_1/imports/\u6682\u65f6/shijuefinal/project_7.srcs/sources_1/new/sccb_master.v",
       "exported": "projects/realfinal_min_102404/realfinal.srcs/sources_1/imports/imported/shijuefinal/project_7.srcs/sources_1/new/sccb_master.v",
-      "sha256": "bc3629e7ef767f0268862e259c59a9c4764c097efd2cdb2d6d1d09cf1f6c3ed0",
-      "exported_sha256": "bc3629e7ef767f0268862e259c59a9c4764c097efd2cdb2d6d1d09cf1f6c3ed0"
+      "sha256": "6030427a56cd22f242080eb563749fc748c0e97c6ad0518435d79ce8eb28fe48",
+      "kind": "hardware_source_or_script"
     },
     {
-      "board": "lower",
-      "original": "realfinal_min_102404/realfinal.srcs/sources_1/imports/\u6682\u65f6/shijuefinal/project_7.srcs/sources_1/new/spi_master.v",
+      "source": "realfinal_min_102404/realfinal.srcs/sources_1/imports/\u6682\u65f6/shijuefinal/project_7.srcs/sources_1/new/spi_master.v",
       "exported": "projects/realfinal_min_102404/realfinal.srcs/sources_1/imports/imported/shijuefinal/project_7.srcs/sources_1/new/spi_master.v",
-      "sha256": "e25173304aa04c81c0288235bdaf2684224423678dd9a2d4dcfc07513fbbfeac",
-      "exported_sha256": "e25173304aa04c81c0288235bdaf2684224423678dd9a2d4dcfc07513fbbfeac"
+      "sha256": "1e8cf520f0f71be586020e1a8756b5d353136509de3d21858636d08108491f1b",
+      "kind": "hardware_source_or_script"
     },
     {
-      "board": "lower",
-      "original": "realfinal_min_102404/realfinal.srcs/sources_1/imports/\u6682\u65f6/xunbifinal/xunjibizhang02.srcs/sources_1/new/line_follow_ctrl.v",
+      "source": "realfinal_min_102404/realfinal.srcs/sources_1/imports/\u6682\u65f6/xunbifinal/xunjibizhang02.srcs/sources_1/new/line_follow_ctrl.v",
       "exported": "projects/realfinal_min_102404/realfinal.srcs/sources_1/imports/imported/xunbifinal/xunjibizhang02.srcs/sources_1/new/line_follow_ctrl.v",
-      "sha256": "7a2b5286e9324f7c80d47ab665406332a54be83a19eac3c7fd1dc2d4f949842a",
-      "exported_sha256": "7a2b5286e9324f7c80d47ab665406332a54be83a19eac3c7fd1dc2d4f949842a"
+      "sha256": "abc26292913226b5c2859ab2f1895cc8713e381c3e5626e4b4ae08fd67eda033",
+      "kind": "hardware_source_or_script"
     },
     {
-      "board": "lower",
-      "original": "realfinal_min_102404/realfinal.srcs/sources_1/imports/\u6682\u65f6/xunbifinal/xunjibizhang02.srcs/sources_1/new/obstacle_avoid_ctrl.v",
+      "source": "realfinal_min_102404/realfinal.srcs/sources_1/imports/\u6682\u65f6/xunbifinal/xunjibizhang02.srcs/sources_1/new/obstacle_avoid_ctrl.v",
       "exported": "projects/realfinal_min_102404/realfinal.srcs/sources_1/imports/imported/xunbifinal/xunjibizhang02.srcs/sources_1/new/obstacle_avoid_ctrl.v",
-      "sha256": "c5eff41896ae87b2520f780c43dc8f3a16b86abe2e18b7434a29f7d6f0ca12ad",
-      "exported_sha256": "c5eff41896ae87b2520f780c43dc8f3a16b86abe2e18b7434a29f7d6f0ca12ad"
+      "sha256": "3923fc092c024fc30c5d34862f455bc650e6abb8b06bc41e5b3410f764940006",
+      "kind": "hardware_source_or_script"
     },
     {
-      "board": "lower",
-      "original": "realfinal_min_102404/realfinal.xpr",
+      "source": "realfinal_min_102404/realfinal.xpr",
       "exported": "projects/realfinal_min_102404/realfinal.xpr",
-      "sha256": "27b5c12e4a6a2730cfc8cf24474471ab120492b11503c1b5dcf971d8bd4bf2f4",
-      "exported_sha256": "ee4152483c956b08f49bde477d1b4528f8ac6f62bfc6406828b249420fa1b41c",
-      "changes": [
-        "relative_project_hint",
-        "remove_import_origin_hints",
-        "english_import_directory",
-        "remove_optional_incremental_checkpoint"
+      "sha256": "2909a85699b89167cc55bd4c74c77b5ea24ac159b33632831d07199757da6ba9",
+      "kind": "adapted_xpr",
+      "adaptations": [
+        "project_path_relative",
+        "optional_incremental_dcp_reference_removed",
+        "ascii_import_directory_if_needed"
+      ],
+      "exported_sha256": "3b50e9268203e3a1418dca507dd4b3457fa3fc66e45621a85b9e4a7914ba9ee9"
+    },
+    {
+      "source": "jiaoben/assets/reference_frame.mem",
+      "exported": "training/scnn/assets/reference_frame.mem",
+      "sha256": "36e642a9ea96c198fa499b78f861d780220c4caa69b5bceeaac2ea06c2c0f41c",
+      "kind": "training_source"
+    },
+    {
+      "source": "jiaoben/convert_weights.py",
+      "exported": "training/scnn/convert_weights.py",
+      "sha256": "6b3ae88edd120d9cce93d4ff59146c94a29cdc714291836459cfa58db7eb0f40",
+      "kind": "training_source",
+      "exported_sha256": "4416021c2b4417465fb1896da22f2ba1096e160bf0bea095c8b01ac0828c5b2e",
+      "adaptations": [
+        "audit_default_uses_canonical_coe_and_marks_historical_alternative"
       ]
+    },
+    {
+      "source": "jiaoben/data/README.md",
+      "exported": "training/scnn/data/README.md",
+      "sha256": "5285a7dfa1e3496c686c6bad67d4f7c8664c6101b0531f40f82658fe2e348e1f",
+      "kind": "training_source"
+    },
+    {
+      "source": "jiaoben/model.py",
+      "exported": "training/scnn/model.py",
+      "sha256": "79c82c29aeee4d742540ce3c5533318a6977062e7338ded5ac02e233993df6f6",
+      "kind": "training_source"
+    },
+    {
+      "source": "jiaoben/model_spec.json",
+      "exported": "training/scnn/model_spec.json",
+      "sha256": "d7ecc7bdccd4eda9fa379f38ebb1103785ade0c15bc66c8c65a76b0e203c363e",
+      "kind": "training_source"
+    },
+    {
+      "source": "jiaoben/parameters/final_engine_weights.json",
+      "exported": "training/scnn/parameters/final_engine_weights.json",
+      "sha256": "5d75b5a66ef0f3c4156b0d920612b87a734a7d872f93ef21ed30daed3b6f7ccf",
+      "kind": "training_source"
+    },
+    {
+      "source": "jiaoben/parameters/new_weight_coe_weights.json",
+      "exported": "training/scnn/parameters/new_weight_coe_weights.json",
+      "sha256": "a03797e38b50b190a9814385511bbdb126903a59104a7a446931d1d103ac6972",
+      "kind": "training_source"
+    },
+    {
+      "source": "jiaoben/README.md",
+      "exported": "training/scnn/README.md",
+      "sha256": "d59f69e8f49af2fdccaafbe3c4ddd5d82ab8c8dc11677dc42fa20566b7491d45",
+      "kind": "training_source",
+      "exported_sha256": "a4c7845d75fb140a78ece04e6e9128286e1e6730753df8147bd03b5a0b7314ef",
+      "adaptations": [
+        "verification_links_and_parameter_roles_documented"
+      ]
+    },
+    {
+      "source": "jiaoben/recovered_weights.json",
+      "exported": "training/scnn/recovered_weights.json",
+      "sha256": "8800b3b668783010f4cc95da5bda669a934ca5136ee82da0cf6b7d8bf615dfae",
+      "kind": "training_source"
+    },
+    {
+      "source": "jiaoben/references/final_engine/drone_data_roms.v",
+      "exported": "training/scnn/references/final_engine/drone_data_roms.v",
+      "sha256": "cdadd7b996b351b9c30fadc8538af787ef8515e41a507db86b867e9f33934325",
+      "kind": "training_source"
+    },
+    {
+      "source": "jiaoben/references/new_weight_coe/0/conv1_weights.coe",
+      "exported": "training/scnn/references/new_weight_coe/0/conv1_weights.coe",
+      "sha256": "a5930a3515f819abb93f7d8b7dd21694237cf6b4e0e266a5b6725cef64871a70",
+      "kind": "training_source"
+    },
+    {
+      "source": "jiaoben/references/new_weight_coe/2/conv2_weights.coe",
+      "exported": "training/scnn/references/new_weight_coe/2/conv2_weights.coe",
+      "sha256": "03cff75edfaf6b31714fc1aa5c4e0452f7c2be258ce2fbbe4fd8363151d5f0b0",
+      "kind": "training_source"
+    },
+    {
+      "source": "jiaoben/references/new_weight_coe/4/fc_weights_0.coe",
+      "exported": "training/scnn/references/new_weight_coe/4/fc_weights_0.coe",
+      "sha256": "28e2408f2ee89017a4afcfae828cb70ebe38f868835773ec205e32e6a9d88393",
+      "kind": "training_source"
+    },
+    {
+      "source": "jiaoben/references/new_weight_coe/6/fc_weights_1.coe",
+      "exported": "training/scnn/references/new_weight_coe/6/fc_weights_1.coe",
+      "sha256": "19aa6598bff25b890e4b0c04ea9cf5d5e55cd1bc60cfcc2a42881605a97d6bad",
+      "kind": "training_source"
+    },
+    {
+      "source": "jiaoben/requirements.txt",
+      "exported": "training/scnn/requirements.txt",
+      "sha256": "85804a595d5b0f95758696e9543275ca32357a87e18af72c95cd63a341d4ecac",
+      "kind": "training_source"
+    },
+    {
+      "source": "jiaoben/source_manifest.json",
+      "exported": "training/scnn/source_manifest.json",
+      "sha256": "ec1c71e04257a9c78d73ac4aeb3cc50bf6af916207cc7e287e8513c67ea79a38",
+      "kind": "training_source",
+      "exported_sha256": "ca99a5b8e4dcf8a751a5ecd5f722f3a76d44cad0ff731b342e4cae3b108774a5",
+      "adaptations": [
+        "canonical_and_historical_audit_metadata_added"
+      ]
+    },
+    {
+      "source": "jiaoben/train.py",
+      "exported": "training/scnn/train.py",
+      "sha256": "8c17b5506c495b50f18e85d45cb408105834534f8f6034aec04f4a0d3204e822",
+      "kind": "training_source"
+    },
+    {
+      "source": "jiaoben/verify.py",
+      "exported": "training/scnn/verify.py",
+      "sha256": "ecee2fcf3bbd42ece4c2c095e6f4ee27c3dc2f4eddd0aeb97621e159d2ede960",
+      "kind": "training_source",
+      "exported_sha256": "99635be55a0d0926ec21465d955cab4f81f45549873f5da786781f50ae9661f6",
+      "adaptations": [
+        "historical_coe_reference_comparison_corrected"
+      ]
+    },
+    {
+      "source": "jiaoben/weights/0/conv1_weights.coe",
+      "exported": "training/scnn/weights/0/conv1_weights.coe",
+      "sha256": "59f6ffcd95bfc05bceb4bc91b0066e84de27afd612cab39502d2c1057a675101",
+      "kind": "training_source"
+    },
+    {
+      "source": "jiaoben/weights/1/conv1_weights.mem",
+      "exported": "training/scnn/weights/1/conv1_weights.mem",
+      "sha256": "4e91345630e9276042c6fe6b6cd5760834070038f78af97431431f152db5c3ac",
+      "kind": "training_source"
+    },
+    {
+      "source": "jiaoben/weights/2/conv2_weights.coe",
+      "exported": "training/scnn/weights/2/conv2_weights.coe",
+      "sha256": "549e4802505850c00cc5e31a93a02b9de371da315c49f39c3b0aba7fd367352c",
+      "kind": "training_source"
+    },
+    {
+      "source": "jiaoben/weights/3/conv2_weights.mem",
+      "exported": "training/scnn/weights/3/conv2_weights.mem",
+      "sha256": "75c3385aa07a26ccb95ef110e8272211c71f3a68c245d23aeb543d64f56db151",
+      "kind": "training_source"
+    },
+    {
+      "source": "jiaoben/weights/4/fc_weights_0.coe",
+      "exported": "training/scnn/weights/4/fc_weights_0.coe",
+      "sha256": "ab7a00ce85646e8bdf9521f443dd3cf4ac3984418f854a3433dea6127cdddc95",
+      "kind": "training_source"
+    },
+    {
+      "source": "jiaoben/weights/5/fc_weights_0.mem",
+      "exported": "training/scnn/weights/5/fc_weights_0.mem",
+      "sha256": "82d213199c01d8577a0df993fe749b1fcfb02cda89c43cc77d5aa4fdf7ba8a35",
+      "kind": "training_source"
+    },
+    {
+      "source": "jiaoben/weights/6/fc_weights_1.coe",
+      "exported": "training/scnn/weights/6/fc_weights_1.coe",
+      "sha256": "c483be26595d81a4a53bca5ddeb0faa44a704838d94a869f7cff679e5f85f0b2",
+      "kind": "training_source"
+    },
+    {
+      "source": "jiaoben/weights/7/fc_weights_1.mem",
+      "exported": "training/scnn/weights/7/fc_weights_1.mem",
+      "sha256": "70d28b6a896c2c3a3d45857b6b3f0dc261b0f284a196eab2ef71e4366882d3f3",
+      "kind": "training_source"
     }
   ]
 }

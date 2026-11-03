@@ -1,13 +1,4 @@
-//----------------------------------------------------------------------------------------
-// File name:           arm_pick_place_once_top
-// Descriptions:        机械臂定点放置动作（幻尔总线舵机，UART 115200）
-//
-//   run_en : 1 = 允许跑动作序列（上层板来的"装卸货"模式）；0 = 不动作，停在上电等待里
-//   stop_i : 一拍脉冲 = 立刻广播 SERVO_MOVE_STOP（指令 12，ID 254），所有舵机停在当前角度。
-//            "停下"(命令 4) 用它。这比只把模块按在复位上彻底：舵机收到的是"立即停止"，
-//            而不是把当前那一段匀速运动走完。
-//   每次收到"装卸货"命令，上层会给一个复位脉冲，模块从 STARTUP_WAIT_MS 重新计时后重跑。
-//----------------------------------------------------------------------------------------
+// Execute arm pose sequences; stop and home requests are handled by the shared servo packet path.
 module arm_pick_place_once_top #(
     parameter integer CLK_HZ = 33300000,
     parameter integer STARTUP_WAIT_MS = 10000,
@@ -18,14 +9,14 @@ module arm_pick_place_once_top #(
     input  wire rst_n,
     input  wire run_en,
     input  wire stop_i,
-    input  wire home_i,        // one pulse: move to the initial (step 1) pose and stay there
+    input  wire home_i,
     output wire arm_uart,
     output wire tcon
 );
 
     localparam [7:0] CMD_MOVE_TIME_WAIT_WRITE = 8'd7;
     localparam [7:0] CMD_MOVE_START           = 8'd11;
-    localparam [7:0] CMD_MOVE_STOP            = 8'd12;   // servo protocol: stop at current angle
+    localparam [7:0] CMD_MOVE_STOP            = 8'd12;
     localparam [7:0] LEN_MOVE_TIME_WAIT_WRITE = 8'd7;
     localparam [7:0] LEN_MOVE_START           = 8'd3;
     localparam [7:0] LEN_MOVE_STOP            = 8'd3;
@@ -52,7 +43,7 @@ module arm_pick_place_once_top #(
     reg [31:0] hold_cnt;
 
     reg        send_req;
-    reg        home_only;      // 1 = this pass is just "go back to the initial pose"
+    reg        home_only;
 
     reg [7:0] servo_id_r;
     reg [7:0] frame_len_r;
@@ -267,16 +258,12 @@ module arm_pick_place_once_top #(
             send_req <= 1'b0;
 
             if (stop_i) begin
-                // "停下": whatever step we are on, broadcast SERVO_MOVE_STOP right away
+
                 home_only <= 1'b0;
                 state     <= S_STOP_PREP;
             end
             else if (home_i && !run_en) begin
-                // commands 1/2/3 (and the power-up pulse): go back to the initial pose.
-                // While a 装卸货 run is enabled, a home request is ignored -- step 1 of that
-                // sequence is the same initial pose, so there is nothing to do for it.
-                // Same packet path as a normal step: 6 pose writes + one broadcast START,
-                // then we stop in S_POWERUP (and stay there while run_en=0).
+
                 step_idx  <= 4'd1;
                 servo_idx <= 3'd1;
                 hold_cnt  <= 32'd0;
@@ -285,7 +272,7 @@ module arm_pick_place_once_top #(
             end
             else if (!run_en && !home_only &&
                      (state != S_STOP_PREP) && (state != S_STOP_WAIT)) begin
-                // mode switched away: stop commanding, wait here; next enable starts over
+
                 state       <= S_POWERUP;
                 startup_cnt <= 32'd0;
                 hold_cnt    <= 32'd0;
@@ -350,7 +337,7 @@ module arm_pick_place_once_top #(
                         hold_cnt <= 32'd0;
                         if (home_only) begin
                             home_only <= 1'b0;
-                            state     <= S_POWERUP;     // run_en=0 -> it stays at the home pose
+                            state     <= S_POWERUP;
                         end
                         else
                             state <= S_HOLD;
@@ -400,7 +387,7 @@ module arm_pick_place_once_top #(
                 S_STOP_WAIT: begin
                     if (pkt_done) begin
                         hold_cnt <= 32'd0;
-                        state    <= S_POWERUP;      // stays here while run_en is 0
+                        state    <= S_POWERUP;
                     end
                 end
 

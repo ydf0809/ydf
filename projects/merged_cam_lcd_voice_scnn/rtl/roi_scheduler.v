@@ -1,186 +1,306 @@
+// Camera-domain ROI state machine. roi_hold freezes coordinates during an SCNN transaction.
 `timescale 1ns / 1ps
-// RGB 128x128 crop search.  24 overlapping windows cover 600x400.
-// Acquisition stays 3/5. Locked targets use the feifei periodic low-count
-// policy and 45-frame lost-target verification; no one-second identity timeout.
+
 module roi_scheduler #(
     parameter integer LOW_RECHECK_LIMIT = 5
-)(
-    input wire clk, rst_n, frame_sync, roi_hold,
-    input wire run_en,        // 0 = 非防空模式：ROI 冻结在画面中心，不搜索也不跟踪
-    input wire label_valid, is_drone, drone_count_low, recheck_tick,
-    input wire motion_valid, motion_update,
-    input wire [8:0] motion_x0, motion_x1,
-    input wire [7:0] motion_y0, motion_y1,
-    output reg [9:0] roi_x0,
-    output reg [8:0] roi_y0,
-    output wire tracking, verifying
+) (
+    input  wire        clk,
+    input  wire        rst_n,
+
+    input  wire        frame_sync,
+    input  wire        roi_hold,
+    input  wire        label_valid,
+    input  wire        is_drone,
+    input  wire        drone_count_low,
+    input  wire        recheck_tick,
+
+    input  wire        motion_valid,
+    input  wire [8:0]  motion_x0,
+    input  wire [8:0]  motion_x1,
+    input  wire [7:0]  motion_y0,
+    input  wire [7:0]  motion_y1,
+
+    output reg  [9:0]  roi_x0,
+    output reg  [8:0]  roi_y0,
+    output wire        tracking,
+    output wire        verifying
 );
-    localparam [2:0] SEARCH=0, VERIFY=1, TRACK=2, LOST_CHECK=4, PERIODIC_CHECK=5;
-    localparam [5:0] LOST_FRAME_LIMIT=45;
-    localparam [9:0] CENTER_X0 = 10'd236;     // 128x128 框在 600x400 画面正中
-    localparam [8:0] CENTER_Y0 = 9'd136;
+    localparam [2:0] MODE_SEARCH     = 3'd0;
+    localparam [2:0] MODE_VERIFY     = 3'd1;
+    localparam [2:0] MODE_TRACK      = 3'd2;
+    localparam [2:0] MODE_REACQUIRE  = 3'd3;
+    localparam [2:0] MODE_LOST_CHECK = 3'd4;
+    localparam [2:0] MODE_PERIODIC_CHECK = 3'd5;
+
+    localparam integer ROI_SIDE = 128;
+    localparam integer ROI_HALF = ROI_SIDE / 2;
+    localparam [9:0] SEARCH_X = 10'd236;
+    localparam [8:0] SEARCH_Y = 9'd136;
+    localparam [2:0] CONFIRM_WINDOW = 3'd5;
+    localparam [2:0] CONFIRM_HITS = 3'd3;
+    localparam [1:0] REMOTE_CONFIRM_FRAMES = 2'd3;
+    localparam [5:0] LOST_FRAME_LIMIT = 6'd45;
+    localparam [9:0] LOCAL_GATE = 10'd96;
+
     reg [2:0] mode;
-    reg [2:0] samples, hits, scan_col;
-    reg [1:0] scan_row;
-    reg step_pending, proposal_pending, rejected_valid;
+    reg       motion_armed;
+    reg [2:0] confirm_score;
+    reg [4:0] drone_hist;
+    reg [2:0] hist_count;
+    reg [1:0] remote_count;
     reg [5:0] lost_not_count;
-    localparam integer LOW_COUNT_W=(LOW_RECHECK_LIMIT>1)?$clog2(LOW_RECHECK_LIMIT):1;
+    reg [9:0] saved_roi_x;
+    reg [8:0] saved_roi_y;
+    localparam integer LOW_COUNT_W = (LOW_RECHECK_LIMIT > 1) ?
+                                       $clog2(LOW_RECHECK_LIMIT) : 1;
     reg [LOW_COUNT_W-1:0] low_recheck_count;
-    reg [9:0] proposal_x, rejected_x;
-    reg [8:0] proposal_y, rejected_y;
-    reg signed [10:0] velocity_x;
-    reg signed [9:0] velocity_y;
-    integer nx, ny, vx, vy;
-    assign tracking=(mode==TRACK || mode==LOST_CHECK || mode==PERIODIC_CHECK);
-    assign verifying=(mode==VERIFY || mode==LOST_CHECK || mode==PERIODIC_CHECK);
-    function [9:0] scan_x(input [2:0] col);
-        case(col)
-            0:scan_x=0; 1:scan_x=96; 2:scan_x=192;
-            3:scan_x=288; 4:scan_x=384; default:scan_x=472;
-        endcase
-    endfunction
-    function [8:0] scan_y(input [1:0] row);
-        case(row)
-            0:scan_y=0; 1:scan_y=96; 2:scan_y=192; default:scan_y=272;
-        endcase
-    endfunction
-    function [9:0] clamp_x(input integer x);
-        clamp_x=(x<0)?0:((x>472)?472:x);
-    endfunction
-    function [8:0] clamp_y(input integer y);
-        clamp_y=(y<0)?0:((y>272)?272:y);
-    endfunction
-    // Inclusive detector centre, converted directly from 300x200 to 600x400.
-    wire [9:0] cx={1'b0,motion_x0}+{1'b0,motion_x1}+10'd1;
-    wire [8:0] cy={1'b0,motion_y0}+{1'b0,motion_y1}+9'd1;
-    wire [9:0] candidate_x=clamp_x($signed({1'b0,cx})-64);
-    wire [8:0] candidate_y=clamp_y($signed({1'b0,cy})-64);
-    wire [9:0] dx=(candidate_x>roi_x0)?candidate_x-roi_x0:roi_x0-candidate_x;
-    wire [8:0] dy=(candidate_y>roi_y0)?candidate_y-roi_y0:roi_y0-candidate_y;
-    wire [9:0] reject_dx=(proposal_x>rejected_x)?proposal_x-rejected_x:rejected_x-proposal_x;
-    wire [8:0] reject_dy=(proposal_y>rejected_y)?proposal_y-rejected_y:rejected_y-proposal_y;
-    wire proposal_allowed=proposal_pending &&
-        (!rejected_valid || ({1'b0,reject_dx}+{2'b0,reject_dy}>64));
+
+    assign tracking  = (mode == MODE_TRACK) || (mode == MODE_LOST_CHECK) ||
+                       (mode == MODE_PERIODIC_CHECK);
+    assign verifying = (mode == MODE_VERIFY) || (mode == MODE_REACQUIRE) ||
+                       (mode == MODE_LOST_CHECK) || (mode == MODE_PERIODIC_CHECK);
+
+    wire [9:0] mx_sum = {1'b0, motion_x0} + {1'b0, motion_x1} + 1'b1;
+    wire [8:0] my_sum = {1'b0, motion_y0} + {1'b0, motion_y1} + 1'b1;
+    wire [9:0] motion_cx = {1'b0, mx_sum[9:1]} << 1;
+    wire [8:0] motion_cy = {1'b0, my_sum[8:1]} << 1;
+
+    wire [9:0] cand_x_tmp = (motion_cx >= ROI_HALF) ?
+                            (motion_cx - ROI_HALF) : 10'd0;
+    wire [8:0] cand_y_tmp = (motion_cy >= ROI_HALF) ?
+                            (motion_cy - ROI_HALF) : 9'd0;
+    wire [9:0] cand_x0 = ((cand_x_tmp + ROI_SIDE) > 10'd600) ?
+                         (10'd600 - ROI_SIDE) : cand_x_tmp;
+    wire [8:0] cand_y0 = ((cand_y_tmp + ROI_SIDE) > 9'd400) ?
+                         (9'd400 - ROI_SIDE) : cand_y_tmp;
+
+    wire [9:0] roi_center_x = roi_x0 + ROI_HALF;
+    wire [8:0] roi_center_y = roi_y0 + ROI_HALF;
+
+    wire [9:0] dx = (motion_cx > roi_center_x) ?
+                    (motion_cx - roi_center_x) : (roi_center_x - motion_cx);
+    wire [8:0] dy = (motion_cy > roi_center_y) ?
+                    (motion_cy - roi_center_y) : (roi_center_y - motion_cy);
+    wire [9:0] motion_distance = {1'b0, dx} + {2'b00, dy};
+    wire motion_moved = motion_distance > 10'd4;
+    wire motion_far = motion_distance > LOCAL_GATE;
+
     always @(posedge clk or negedge rst_n) begin
-        if(!rst_n) begin
-            mode<=SEARCH; samples<=0; hits<=0; scan_col<=0; scan_row<=0;
-            step_pending<=0; lost_not_count<=0; low_recheck_count<=0;
-            proposal_pending<=0; proposal_x<=236; proposal_y<=136;
-            rejected_valid<=0; rejected_x<=0; rejected_y<=0;
-            roi_x0<=CENTER_X0; roi_y0<=CENTER_Y0; velocity_x<=0; velocity_y<=0;
-        end else if(!run_en) begin
-            // 非防空模式（循迹/跟随/停下/装卸货/上电）：红框固定在画面中心不动，
-            // 不扫描也不跟踪。重新进入防空后从这个位置开始一轮新的搜索。
-            roi_x0<=CENTER_X0; roi_y0<=CENTER_Y0;
-            mode<=SEARCH; samples<=0; hits<=0; scan_col<=0; scan_row<=0;
-            step_pending<=0; proposal_pending<=0;
-            rejected_valid<=0; lost_not_count<=0; low_recheck_count<=0;
-            velocity_x<=0; velocity_y<=0;
+        if (!rst_n) begin
+            mode           <= MODE_SEARCH;
+            motion_armed   <= 1'b1;
+            confirm_score  <= 3'd0;
+            drone_hist     <= 5'd0;
+            hist_count     <= 3'd0;
+            remote_count   <= 2'd0;
+            lost_not_count <= 6'd0;
+            saved_roi_x    <= SEARCH_X;
+            saved_roi_y    <= SEARCH_Y;
+            roi_x0         <= SEARCH_X;
+            roi_y0         <= SEARCH_Y;
+            low_recheck_count <= {LOW_COUNT_W{1'b0}};
         end else begin
-            if(motion_update && motion_valid && !tracking) begin
-                proposal_pending<=1; proposal_x<=candidate_x; proposal_y<=candidate_y;
-            end
-            if(!motion_valid && !tracking && motion_update)
-                proposal_pending<=0;
-            // Match feifei: busy timer requests are skipped, not queued.
-            if(recheck_tick && mode==TRACK && !roi_hold) mode<=PERIODIC_CHECK;
-            if(label_valid) begin
-                if(tracking && !drone_count_low) low_recheck_count<=0;
-                case(mode)
-                    SEARCH: if(is_drone) begin
-                        mode<=VERIFY; samples<=1; hits<=1; step_pending<=0;
-                    end else step_pending<=1;
-                    VERIFY: begin
-                        samples<=samples+1'b1; hits<=hits+{2'b0,is_drone};
-                        if(samples==4) begin
-                            samples<=0; hits<=0;
-                            if(hits+{2'b0,is_drone}>=3) begin
-                                mode<=TRACK; lost_not_count<=0; low_recheck_count<=0;
-                                proposal_pending<=0; velocity_x<=0; velocity_y<=0;
+            if (!motion_valid)
+                motion_armed <= 1'b1;
+
+            if (recheck_tick && (mode == MODE_TRACK) && !roi_hold)
+                mode <= MODE_PERIODIC_CHECK;
+
+            if (label_valid) begin
+
+                if (tracking && !drone_count_low)
+                    low_recheck_count <= {LOW_COUNT_W{1'b0}};
+                case (mode)
+                    MODE_SEARCH, MODE_VERIFY: begin
+                        drone_hist <= {drone_hist[3:0], is_drone};
+                        if (hist_count < CONFIRM_WINDOW)
+                            hist_count <= hist_count + 1'b1;
+                        if ((hist_count >= CONFIRM_WINDOW - 1'b1) &&
+                            ((drone_hist[3] + drone_hist[2] + drone_hist[1] +
+                              drone_hist[0] + is_drone) >= CONFIRM_HITS)) begin
+                                mode           <= MODE_TRACK;
+                                confirm_score  <= CONFIRM_HITS;
+                                drone_hist     <= 5'd0;
+                                hist_count     <= 3'd0;
+                                remote_count   <= 2'd0;
+                                lost_not_count <= 6'd0;
+                                low_recheck_count <= {LOW_COUNT_W{1'b0}};
+                        end
+                    end
+                    MODE_REACQUIRE: begin
+                        drone_hist <= {drone_hist[3:0], is_drone};
+                        if (hist_count < CONFIRM_WINDOW)
+                            hist_count <= hist_count + 1'b1;
+                        if (hist_count >= CONFIRM_WINDOW - 1'b1) begin
+                            if ((drone_hist[3] + drone_hist[2] + drone_hist[1] +
+                                 drone_hist[0] + is_drone) >= CONFIRM_HITS) begin
+                                mode <= MODE_TRACK;
+                                confirm_score <= CONFIRM_HITS;
+                                drone_hist <= 5'd0;
+                                hist_count <= 3'd0;
+                                remote_count <= 2'd0;
+                                lost_not_count <= 6'd0;
+                                low_recheck_count <= {LOW_COUNT_W{1'b0}};
                             end else begin
-                                mode<=SEARCH; step_pending<=1; rejected_valid<=1;
-                                rejected_x<=roi_x0; rejected_y<=roi_y0;
+                                mode <= MODE_TRACK;
+                                confirm_score <= CONFIRM_HITS;
+                                drone_hist <= 5'd0;
+                                hist_count <= 3'd0;
+                                remote_count <= 2'd0;
+                                lost_not_count <= 6'd0;
+                                roi_x0 <= saved_roi_x;
+                                roi_y0 <= saved_roi_y;
                             end
+                            drone_hist <= 5'd0;
+                            hist_count <= 3'd0;
                         end
                     end
-                    LOST_CHECK: begin
-                        samples<=samples+1'b1; hits<=hits+{2'b0,is_drone};
-                        if(samples==4) begin
-                            samples<=0; hits<=0; lost_not_count<=0;
-                            if(hits+{2'b0,is_drone}>=3) mode<=TRACK;
-                            else begin
-                                mode<=SEARCH; step_pending<=0; low_recheck_count<=0;
-                                proposal_pending<=0; rejected_valid<=0;
-                                scan_col<=0; scan_row<=0; velocity_x<=0; velocity_y<=0;
+                    MODE_LOST_CHECK: begin
+                        drone_hist <= {drone_hist[3:0], is_drone};
+                        if (hist_count < CONFIRM_WINDOW)
+                            hist_count <= hist_count + 1'b1;
+                        if (hist_count >= CONFIRM_WINDOW - 1'b1) begin
+                            if ((drone_hist[3] + drone_hist[2] + drone_hist[1] +
+                                 drone_hist[0] + is_drone) >= CONFIRM_HITS) begin
+                                mode <= MODE_TRACK;
+                            end else begin
+                                mode <= MODE_SEARCH;
+                                motion_armed <= 1'b0;
+                                low_recheck_count <= {LOW_COUNT_W{1'b0}};
                             end
+                            drone_hist <= 5'd0;
+                            hist_count <= 3'd0;
+                            lost_not_count <= 6'd0;
                         end
                     end
-                    PERIODIC_CHECK: begin
-                        if(drone_count_low && low_recheck_count>=LOW_RECHECK_LIMIT-1) begin
-                            mode<=SEARCH; step_pending<=0; low_recheck_count<=0;
-                            samples<=0; hits<=0; lost_not_count<=0;
-                            proposal_pending<=0; rejected_valid<=0;
-                            scan_col<=0; scan_row<=0; velocity_x<=0; velocity_y<=0;
-                            // Keep the last ROI while global motion search resumes.
+                    MODE_PERIODIC_CHECK: begin
+                        if (drone_count_low &&
+                            (low_recheck_count >= LOW_RECHECK_LIMIT - 1)) begin
+                            mode <= MODE_SEARCH;
+                            motion_armed <= 1'b0;
+                            low_recheck_count <= {LOW_COUNT_W{1'b0}};
+                            drone_hist <= 5'd0;
+                            hist_count <= 3'd0;
+                            confirm_score <= 3'd0;
+                            remote_count <= 2'd0;
+                            lost_not_count <= 6'd0;
+
                         end else begin
-                            mode<=TRACK;
-                            if(drone_count_low) low_recheck_count<=low_recheck_count+1'b1;
+                            mode <= MODE_TRACK;
+                            if (drone_count_low)
+                                low_recheck_count <= low_recheck_count + 1'b1;
                         end
                     end
-                    TRACK: begin end
-                    default:mode<=SEARCH;
+                    default: begin end
                 endcase
             end
-            if(frame_sync) begin
-                // Count only idle TRACK frames, exactly as the donor policy.
-                // This path has priority over a coincident periodic request.
-                if(!roi_hold) begin
-                    if(mode==TRACK) begin
-                        if(motion_valid) lost_not_count<=0;
-                        else if(lost_not_count>=LOST_FRAME_LIMIT-1'b1) begin
-                            mode<=LOST_CHECK; samples<=0; hits<=0; lost_not_count<=0;
-                        end else lost_not_count<=lost_not_count+1'b1;
-                    end else if(mode==LOST_CHECK && motion_valid) begin
-                        mode<=TRACK; samples<=0; hits<=0; lost_not_count<=0;
-                    end
+
+            if (frame_sync && !roi_hold) begin
+                if (mode == MODE_TRACK) begin
+                    if (motion_valid)
+                        lost_not_count <= 6'd0;
+                    else if (lost_not_count >= LOST_FRAME_LIMIT - 1'b1) begin
+                        mode           <= MODE_LOST_CHECK;
+                        confirm_score  <= 3'd0;
+                        drone_hist     <= 5'd0;
+                        hist_count     <= 3'd0;
+                        remote_count   <= 2'd0;
+                        lost_not_count <= 6'd0;
+                    end else
+                        lost_not_count <= lost_not_count + 1'b1;
                 end
-                if(mode==TRACK) begin
-                    // Resampler has its own latched crop.  Track may keep
-                    // following while a previous RGB crop is in inference.
-                    if(motion_valid && ({1'b0,dx}+{2'b0,dy}<=96)) begin
-                        vx=$signed({1'b0,candidate_x})-$signed({1'b0,roi_x0});
-                        vy=$signed({1'b0,candidate_y})-$signed({1'b0,roi_y0});
-                        velocity_x<=(vx>16)?16:((vx< -16)?-16:vx);
-                        velocity_y<=(vy>16)?16:((vy< -16)?-16:vy);
-                        roi_x0<=candidate_x; roi_y0<=candidate_y;
-                    end else if(!motion_valid) begin
-                        nx=$signed({1'b0,roi_x0})+velocity_x;
-                        ny=$signed({1'b0,roi_y0})+velocity_y;
-                        roi_x0<=clamp_x(nx); roi_y0<=clamp_y(ny);
-                        velocity_x<=velocity_x/2; velocity_y<=velocity_y/2;
-                    end
-                end else if(!roi_hold && !label_valid) begin
-                    if(mode==SEARCH) begin
-                        if(proposal_allowed) begin
-                            roi_x0<=proposal_x; roi_y0<=proposal_y;
-                            proposal_pending<=0; mode<=VERIFY;
-                            samples<=0; hits<=0; step_pending<=0;
-                        end else if(step_pending) begin
-                            roi_x0<=scan_x(scan_col); roi_y0<=scan_y(scan_row);
-                            step_pending<=0;
-                            if(scan_col==5) begin
-                                scan_col<=0; scan_row<=scan_row+1'b1;
-                                // Revisit a rejected location after one full
-                                // scan, not after a one-frame motion gap.
-                                if(scan_row==3) rejected_valid<=0;
-                            end else scan_col<=scan_col+1'b1;
+                if (!motion_valid) begin
+                    remote_count <= 2'd0;
+                    case (mode)
+                        MODE_VERIFY: begin
+                            mode          <= MODE_SEARCH;
+                            confirm_score <= 3'd0;
+                            drone_hist    <= 5'd0;
+                            hist_count    <= 3'd0;
+
                         end
-                    end else if(mode==VERIFY && motion_valid && ({1'b0,dx}+{2'b0,dy}<=64)) begin
-                        roi_x0<=candidate_x; roi_y0<=candidate_y;
-                    end
+                        MODE_REACQUIRE: begin
+                            mode           <= MODE_TRACK;
+                            confirm_score  <= CONFIRM_HITS;
+                            lost_not_count <= 6'd0;
+                            roi_x0         <= saved_roi_x;
+                            roi_y0         <= saved_roi_y;
+                        end
+                        default: begin
+                        end
+                    endcase
+                end else begin
+                    case (mode)
+                        MODE_SEARCH: begin
+                            if (motion_armed) begin
+                                roi_x0        <= cand_x0;
+                                roi_y0        <= cand_y0;
+                                mode          <= MODE_VERIFY;
+                                confirm_score <= 2'd0;
+                                motion_armed  <= 1'b0;
+                            end
+                        end
+
+                        MODE_VERIFY: begin
+                            if (motion_far) begin
+
+                                roi_x0        <= cand_x0;
+                                roi_y0        <= cand_y0;
+                                confirm_score <= 2'd0;
+                                drone_hist    <= 5'd0;
+                                hist_count    <= 3'd0;
+                            end else if (motion_moved) begin
+                                roi_x0 <= cand_x0;
+                                roi_y0 <= cand_y0;
+                            end
+                        end
+
+                        MODE_TRACK: begin
+                            if (motion_far) begin
+
+                                if (remote_count >= REMOTE_CONFIRM_FRAMES - 1'b1) begin
+                                    saved_roi_x   <= roi_x0;
+                                    saved_roi_y   <= roi_y0;
+                                    roi_x0        <= cand_x0;
+                                    roi_y0        <= cand_y0;
+                                    mode          <= MODE_REACQUIRE;
+                                    confirm_score <= 2'd0;
+                                    drone_hist    <= 5'd0;
+                                    hist_count    <= 3'd0;
+                                    remote_count  <= 2'd0;
+                                    lost_not_count<= 6'd0;
+                                end else begin
+                                    remote_count <= remote_count + 1'b1;
+                                end
+                            end else begin
+                                remote_count <= 2'd0;
+                                if (motion_moved) begin
+                                    roi_x0 <= cand_x0;
+                                    roi_y0 <= cand_y0;
+                                end
+                            end
+                        end
+
+                        MODE_REACQUIRE: begin
+                            if (motion_far) begin
+                                roi_x0 <= cand_x0;
+                                roi_y0 <= cand_y0;
+                            end else if (motion_moved) begin
+                                roi_x0 <= cand_x0;
+                                roi_y0 <= cand_y0;
+                            end
+                        end
+                        MODE_LOST_CHECK: begin
+
+                            mode <= MODE_TRACK;
+                            drone_hist <= 5'd0;
+                            hist_count <= 3'd0;
+                            lost_not_count <= 6'd0;
+                        end
+                        default: begin end
+                    endcase
                 end
             end
-
         end
     end
 endmodule

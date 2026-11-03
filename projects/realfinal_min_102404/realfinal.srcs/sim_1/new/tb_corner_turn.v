@@ -1,12 +1,4 @@
 `timescale 1ns / 1ps
-//============================================================================
-// tb_corner_turn.v -- self-check for corner_turn
-//
-// 1MHz clock, everything in ms. pat[4] is the leftmost sensor.
-//   left three  = 5'b11100
-//   right three = 5'b00111
-//   centered    = 5'b00100
-//============================================================================
 
 module tb_corner_turn;
 
@@ -24,7 +16,6 @@ module tb_corner_turn;
     wire signed [7:0] dl, dr;
     wire busy;
 
-    // STOP_ON_LINE = 1 : stop as soon as the center sensor sees the line again
     corner_turn #(
         .CLK_FREQ_HZ  (CLK_FREQ),
         .FORWARD_MS   (3),
@@ -43,7 +34,6 @@ module tb_corner_turn;
         .out_left(dl), .out_right(dr), .busy(busy)
     );
 
-    // STOP_ON_LINE = 0 : pure timer
     reg  [4:0] pat2 = 5'b00000;
     wire signed [7:0] d2l, d2r;
     wire busy2;
@@ -99,22 +89,18 @@ module tb_corner_turn;
         #20_000;
         rst_n = 1'b1;
 
-        // ---- idle: PID passes through untouched ----
         #2_000_000;
         expect2("idle passthrough", dl, dr, 5, 5);
         expect_busy("idle not busy", busy, 0);
 
-        // ---- left three -> short forward ----
         pat = 5'b11100;
-        #3_500_000;                       // 2ms confirm + 1.5ms of forward
+        #3_500_000;
         expect_busy("left3 -> forward", busy, 1);
         expect2("forward straight", dl, dr, 16, 16);
 
-        // ---- after FORWARD_MS -> spin left (left wheel back) ----
         #4_500_000;
         expect2("spin left", dl, dr, -20, 20);
 
-        // ---- line drops out, then the leftmost sensor finds the new line ----
         pat = 5'b00000;
         #2_000_000;
         pat = 5'b10000;
@@ -122,37 +108,32 @@ module tb_corner_turn;
         expect_busy("line found -> idle", busy, 0);
         expect2("pid back in charge", dl, dr, 5, 5);
 
-        // ---- same corner still there: cooldown must block it ----
         pat = 5'b11100;
         #3_000_000;
         expect_busy("cooldown blocks", busy, 0);
 
-        // ---- after cooldown it may trigger again ----
         #8_000_000;
         expect_busy("retrigger after cooldown", busy, 1);
 
-        // ---- finish this one, then test the right corner ----
         pat = 5'b00000;
         #4_000_000;
         pat = 5'b10000;
         #7_000_000;
         expect_busy("finish second turn", busy, 0);
 
-        #7_000_000;                       // let cooldown expire
-        pat = 5'b00111;                   // right three
+        #7_000_000;
+        pat = 5'b00111;
         #8_000_000;
         expect2("spin right", dl, dr, 20, -20);
 
-        // ---- timeout: never re-detect the line ----
         pat = 5'b00000;
         #32_000_000;
         expect_busy("timeout stops spin", busy, 0);
 
-        // ---- pure timer path (dut2) ----
         pat2 = 5'b11100;
         #6_000_000;
         expect2("timer spin", d2l, d2r, -20, 20);
-        pat2 = 5'b00000;                  // do not re-trigger on the same corner
+        pat2 = 5'b00000;
         #6_000_000;
         expect_busy("timer finished", busy2, 0);
         expect2("timer back to pid", d2l, d2r, 5, 5);

@@ -1,0 +1,6 @@
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "[repository]/training/scnn/generated/deployment/drone_data_roms.v" into library work
+INFO: [VRFC 10-311] analyzing module drone_conv1_rom
+INFO: [VRFC 10-311] analyzing module drone_conv2_rom
+INFO: [VRFC 10-311] analyzing module drone_fc0_rom
+INFO: [VRFC 10-311] analyzing module drone_fc1_rom
+INFO: [VRFC 10-311] analyzing module drone_frame_rom

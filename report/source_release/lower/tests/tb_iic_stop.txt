@@ -1,0 +1,21 @@
+
+****** xsim v2026.1 (64-bit)
+  **** SW Build 6511674 on Tue Jun 16 11:02:23 MDT 2026
+  **** IP Build 6504888 on Tue Jun 09 09:05:25 MDT 2026
+  **** SharedData Build 6501428 on Mon Jun 08 17:34:18 MDT 2026
+  **** Start of session at: Tue Nov  3 02:51:10 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source xsim.dir/tb_iic_stop_sim/xsim_script.tcl
+# xsim {tb_iic_stop_sim} -autoloadwcfg -runall
+Time resolution is 1 ps
+run -all
+== tb_iic_stop start ==
+[ OK ] uninterrupted motion packet decoded on I2C bus
+[ OK ] stop arriving during configuration reaches motor register: stop=1 motion=1
+[ OK ] stop during motor packet queues an intact stop packet: stop=1 motion=1
+== tb_iic_stop PASS ==
+$finish called at time : 18695205 ns : File "[previous_source_location]/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_iic_stop.v" Line 101
+exit
+INFO: [Common 17-206] Exiting xsim at Tue Nov  3 02:51:13 2026...

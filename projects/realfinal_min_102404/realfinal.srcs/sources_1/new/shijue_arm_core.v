@@ -1,8 +1,5 @@
 `timescale 1ns / 1ps
 
-// Lower-board OV7670 red-target frontend.
-// This variant exposes the color tracker output for the arm gimbal and keeps
-// the original chassis_control path for follow mode.
 module shijue_arm_core(
     input  wire        clk,
     input  wire        clk_75m,
@@ -88,18 +85,57 @@ module shijue_arm_core(
         .track_vsync(track_vsync)
     );
 
+    (* ASYNC_REG = "TRUE" *) reg vision_meta, vision_cam;
+    always @(posedge ov_pclk or negedge rst_n) begin
+        if (!rst_n) begin vision_meta <= 1'b0; vision_cam <= 1'b0; end
+        else begin vision_meta <= vision_mode_sw; vision_cam <= vision_meta; end
+    end
+
+    wire [10:0] cam_target_x, cam_target_y, cam_target_w, cam_target_h;
     color_track u_tracker(
         .clk(ov_pclk),
         .rst_n(rst_n),
         .cmos_vsync(track_vsync),
         .cmos_valid(track_valid),
         .cmos_data(track_data),
-        .lock_sw(vision_mode_sw),
-        .target_x(target_x),
-        .target_y(target_y),
-        .target_w(target_w),
-        .target_h(target_h)
+        .lock_sw(vision_cam),
+        .target_x(cam_target_x),
+        .target_y(cam_target_y),
+        .target_w(cam_target_w),
+        .target_h(cam_target_h)
     );
+
+    // Hold the complete bbox stable until its destination acknowledges capture.
+    wire [43:0] camera_box = {cam_target_x, cam_target_y, cam_target_w, cam_target_h};
+    reg [43:0] box_hold, box_system;
+    reg box_request, box_ack;
+    (* ASYNC_REG = "TRUE" *) reg ack_meta, ack_cam;
+    (* ASYNC_REG = "TRUE" *) reg request_meta, request_system;
+    always @(posedge ov_pclk or negedge rst_n) begin
+        if (!rst_n) begin
+            box_hold <= {11'd150,11'd200,11'd100,11'd100};
+            box_request <= 1'b0; ack_meta <= 1'b0; ack_cam <= 1'b0;
+        end else begin
+            ack_meta <= box_ack; ack_cam <= ack_meta;
+            if (box_request == ack_cam && camera_box != box_hold) begin
+                box_hold <= camera_box;
+                box_request <= ~box_request;
+            end
+        end
+    end
+    always @(posedge clk or negedge rst_n) begin
+        if (!rst_n) begin
+            request_meta <= 1'b0; request_system <= 1'b0; box_ack <= 1'b0;
+            box_system <= {11'd150,11'd200,11'd100,11'd100};
+        end else begin
+            request_meta <= box_request; request_system <= request_meta;
+            if (request_system != box_ack) begin
+                box_system <= box_hold;
+                box_ack <= request_system;
+            end
+        end
+    end
+    assign {target_x,target_y,target_w,target_h} = box_system;
 
     frame_buffer_bram u_bram(
         .clka(ov_pclk),

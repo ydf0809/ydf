@@ -1,35 +1,45 @@
-# 验证状态
+# 当前验证状态
 
-整理日期：2026-11-02。版本：工程预览。本表记录本次从指定主工程重新整理和运行的结果。
+2026-11-03；源包 xiegithub；工程预览。
 
-## 仿真
+## 1. RTL 仿真
 
-原始测试台共16项，15项通过、1项失败。上层4/4通过；下层11/12通过。工具：Vivado/XSim 2026.1。
+Vivado/XSim 2026.1，26/26：上层 11/11、下层 15/15。输入及日志哈希见 [summary](../sim/results/summary.json)。首次 3 项辅助模块漏编的展开失败保留，修正入口重跑，不改生产断言。旧提交 745a0bd 的 15/16 不再是当前结论；当前 tb_arm_stop 通过。
 
-失败项为下层tb_arm_stop的上电自动回位检查，详见[失败记录](known_test_failure.md)和[原始汇总](../sim/results/summary.json)。没有删除或修改失败断言，也未改写生产RTL。
+[检查器自测](checker_tests.json) 11/11：覆盖成功、`FAIL`、`FATAL`、`ERROR`、非零失败计数、缺少完成标记、非零退出码，以及 XPR 文件存在、缺失与越界引用。
 
-## 主工程重建
+## 2. 主 XPR 构建
 
-| 板级 | WNS / ns | WHS / ns | DRC Error | 组合环相关告警 | 结果 |
-| --- | --- | --- | --- | --- | --- |
-| upper | 5.997 | 0.037 | 0 | 0 | 主XPR重建并生成bit |
-| lower | 6.947 | 0.151 | 0 | 0 | 主XPR重建并生成bit |
+| 板 | WNS ns | WHS ns | DRC error | loops/no_clock/未约束内部端点 |
+| --- | ---: | ---: | ---: | --- |
+| 上层 | 6.916 | 0.032 | 0 | 均 0 |
+| 下层 | 3.591 | 0.019 | 0 | 均 0 |
 
-两板输入在构建前后SHA-256一致；board/bitstreams中的副本与各自主工程run的bit SHA-256一致。完整数据见build/reports各板manifest。
+两板综合、布局布线及 write_bitstream 实际完成，输入哈希未变，发布 bit 匹配各自主 run。资源见 [resources](resources.csv)，完整证据见 [上层](../build/reports/upper/manifest.json)、[下层](../build/reports/lower/manifest.json)。
 
-上层方法学TIMING-17共91项；下层TIMING-17共1000项、TIMING-27共1项。IO延时和CDC等报告需继续核对；不由这些通过项推导完整时序签核。
+当前发布 SHA-256：
 
-## 可复现性与完整性
+- 上层 top.bit：3822d7b6b398c6304d12f5ec6bcb4a163b91a73ea6a1a0e284a8d547b2f05dcc
+- 下层 super_top.bit：8911d7eee5fcab0bfe1b4b313eb99dffd1d2b3782bfea487405700b4d01266c6
 
-- 两套主XPR各46项交付文件引用：无缺失、无越出仓库引用、无未解析宏。可选历史增量DCP引用已移除。
-- 源文件来自指定主工程，109项非XPR输入按字节复制；原工程111项被记录文件复核未改变。
-- 文件命名、相对文档链接、源码完整性和明显凭据模式检查通过；检查脚本的缺失文件反例确认能失败。
-- 从原工作工程迁至github_release/ydf后已实际重建。压缩解压到独立目录后，依赖检查通过、双板重新综合/实现/生成bit完成、16项仿真结果与首次一致（15通过、1失败）。详见relocation.json。
+上层 18 输入/37 输出、下层 14 输入/35 输出仍缺 I/O delay，另有时钟路由、复位、CDC、RAM 警告；方法学无 Critical Warning 不等于全板签核。
 
-## 未验证
+两板出现 ERROR: [Common 17-354] Could not open 'C' for writing. 之后工具继续完成且门限通过。诊断及上下文在各板 tool_diagnostics.txt/console.txt；不宣称日志无 ERROR，未核实其全部影响。当前为明确带此诊断的预览候选。
 
-实板、训练流程、真实分类效果、同条件优化收益和跨操作系统重建均未验证。详见[限制](limitations.md)与[待补材料](owner_inputs.md)。
+## 3. 训练与部署
 
-## 迁移构建工具诊断
+[数值记录](../training/scnn/verification/verification.json)：规范 COE/MEM、3416 参数往返、4 MEM 字节、异常输入、独立整数 50 步及移动目录通过。现用参数参考帧 [0,50]、黑帧 [0,0]，历史替代结果另记。
 
-上层迁移综合阶段曾输出Common 17-354：Could not open C for writing；工具随后继续完成综合、实现和bit生成并返回成功。原因尚未定位，已原样保留诊断；不将本次迁移称为零工具错误。该诊断未在首次交付副本构建中出现。
+[合成训练](../training/scnn/verification/smoke_test.json)：2 样本、3 步，三个张量梯度/更新/导出通过。[5 ROM 语法](../training/scnn/verification/rom_compile.json)、[部署数值](weight_alignment.json) 通过。
+
+无正式数据集，不报告准确率/泛化；未证明完整 RTL 等价、连续帧或物理硬件。
+
+## 4. 来源与复现
+
+source_manifest.json 记录来源及适配，source_integrity.json 记录原源包核对。Git 索引树 `940bb17628caed3c7adb9e753de8b9b3fb03904d` 导出 ZIP 后解压到其他盘符的带空格路径，归档 SHA-256 为 `ed9c1ef332a0d2c6347876957bf8a05f8cbd8c570cb904063d4c674248e9ea1f`。异路径仓库检查 310 文件、仿真 26/26、双板主 XPR 构建及交付检查均通过，见 [relocation](relocation.json)、[详细仿真](relocation_simulation.json) 和 [异路径仓库检查](repository_check_relocation.json)。
+
+异路径重建的 bit 文件头与主工程构建不相同，因此按各自主 run 分别记录 SHA-256；不把“文件不同”误写为功能失败，也不把异路径 bit 混入 `board/bitstreams/`。当前证据由 [delivery_check](delivery_check.json) 核对。
+
+## 5. 物理状态
+
+本次未接硬件、烧录或上板验收。相机、语音、电机、机械臂、供电与动作成功率按 board/measurements.md 采集；不能从仿真或 bit 推出实板通过。

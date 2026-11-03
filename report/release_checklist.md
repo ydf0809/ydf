@@ -1,16 +1,18 @@
-# 工程预览发布检查
+# 本地工程预览检查
 
-本次授权：单仓库双主工程、独立开源副本、沿用原MIT与署名、先公开工程预览。原工作工程与旧审核目录均不作为修改目标。
+本次授权：指定源包更新、双板、训练工具、踩坑清单、真实协作、本地验证与提交。GitHub 暂停，原工程只读。
 
 | 检查 | 结果入口 |
 | --- | --- |
-| 两套主工程来源、输入哈希与生产源码不改写 | source_manifest.json |
-| 命名、项目依赖、文档链接、明显凭据模式 | repository_check.json |
-| 仿真16项，失败不隐藏 | sim/results/summary.json，known_test_failure.md |
-| 主XPR真实构建、输入不变、bit副本哈希一致 | build/reports各板manifest |
-| 时序、DRC、组合环与关键方法学告警 | validation.md及原始rpt |
-| 压缩迁移后依赖及实际构建 | relocation.json |
-| MIT保留、工具与供应商声明、模型来源缺项 | 根LICENSE、third_party_notices.md、data/model_card.md |
-| 实板、优化基线、训练与正式作品材料尚缺 | limitations.md、owner_inputs.md |
+| 来源、映射与适配哈希 | source_manifest.json、source_integrity.json |
+| 名称、依赖、链接、明显凭据模式 | repository_check.json |
+| 判定器和 XPR 检查正负反例 | checker_tests.json |
+| 26 项和首次依赖失败 | sim/results/summary.json、attempts |
+| 主 XPR、源未变、bit 对应 | build/reports 各板 manifest |
+| 时序/DRC/环/时钟覆盖与工具诊断 | validation.md、rpt/console |
+| 训练/数值/语法/部署 | training/scnn/verification、weight_alignment.json |
+| 异路径真实仿真和构建 | relocation.json、relocation_simulation.json、repository_check_relocation.json |
+| 当前证据时效性 | delivery_check.json |
+| MIT/第三方与缺项 | LICENSE、third_party_notices.md、owner_inputs.md |
 
-GitHub发布保留远端已有历史，使用普通提交和推送，不强推。当前发布为工程预览，不以文件齐全或bit生成代替完整参赛验收。
+保留历史，普通本地提交，不强推。软件检查不等于实板或完整参赛通过。

@@ -1,45 +1,13 @@
-//----------------------------------------------------------------------------------------
-// File name:           tb_arm_stop
-// Descriptions:        arm_pick_place_once_top: enable / immediate SERVO_MOVE_STOP
-//
-// The arm sits on a serial bus-servo bus (115200 8N1). Frames look like
-//   55 55 <ID> <Len> <Cmd> <params> <checksum>
-//   Len 7 / Cmd 7  = MOVE_TIME_WAIT_WRITE (one servo, pose + time)
-//   Len 3 / Cmd 11 = MOVE_START           (broadcast 0xFE)
-//   Len 3 / Cmd 12 = MOVE_STOP            (broadcast 0xFE) -> stop at the current angle
-// Checksum = ~(ID + Len + Cmd + params)
-//
-// Checked here:
-//   1. power-up (run_en=0): after the servo boot wait the arm homes by itself
-//      (6 pose writes + 1 broadcast START), then stays quiet at the initial pose
-//   2. run_en=1 -> after the startup wait a servo pose packet appears
-//   3. run_en drops together with stop_i (that is what command 4 does):
-//      the DUT sends exactly one broadcast MOVE_STOP: 55 55 FE 03 0C F2,
-//      and then sends nothing more (the action sequence is halted)
-//   4. running again (run_en=1) restarts the sequence
-//   5. a home request (commands 1/2/3 use it) sends the 6 initial-pose writes plus one
-//      broadcast MOVE_START, then stays quiet (the arm sits at the initial pose)
-//
-// STARTUP_WAIT_MS is set to 1 here so the whole bench runs in a few ms;
-// the real design uses 3000 (3 s).
-//
-// How to run: scripts\sim_arm_stop.bat
-// CLK_FREQ / UART_BPS below are placeholders; the sim script substitutes the real values
-// into a copy and compiles that, so nothing is passed on the command line.
-//----------------------------------------------------------------------------------------
 `timescale 1ns / 1ps
 
 module tb_arm_stop;
 
-//parameter define
-//placeholders -- the simulation script rewrites these two lines
 parameter CLK_FREQ = 33333333;
 parameter UART_BPS = 115200;
 
 localparam CLK_PERIOD = 1000000000 / CLK_FREQ;
 localparam BIT_PERIOD = 1000000000 / UART_BPS;
 
-//reg define
 reg        clk     ;
 reg        rst_n   ;
 reg        run_en  ;
@@ -50,8 +18,7 @@ integer    i       ;
 integer    n0      ;
 integer    m0      ;
 
-//captured (clocked block only)
-reg [39:0] word    ;      // last five bytes, newest in [7:0]
+reg [39:0] word    ;
 reg [7:0]  rx_byte ;
 reg        rx_done ;
 reg        rx_err  ;
@@ -62,7 +29,6 @@ reg [15:0] byte_cnt ;
 reg        stop_pending;
 reg        stop_chk_err;
 
-//wire define
 wire       arm_uart;
 wire       tcon    ;
 wire       uart_done;
@@ -74,21 +40,18 @@ wire       hit_stop ;
 wire       hit_start;
 
 assign word_next = {word[31:0], uart_data};
-// 55 55 <id> 07 07  (MOVE_TIME_WAIT_WRITE)
+
 assign hit_servo = (word_next[39:32] == 8'h55) && (word_next[31:24] == 8'h55) &&
                    (word_next[15:8]  == 8'h07) && (word_next[7:0]   == 8'h07);
-// 55 55 FE 03 0C  (broadcast MOVE_STOP)
+
 assign hit_stop  = (word_next[39:32] == 8'h55) && (word_next[31:24] == 8'h55) &&
                    (word_next[23:16] == 8'hFE) && (word_next[15:8]  == 8'h03) &&
                    (word_next[7:0]   == 8'h0C);
-// 55 55 FE 03 0B  (broadcast MOVE_START)
+
 assign hit_start = (word_next[39:32] == 8'h55) && (word_next[31:24] == 8'h55) &&
                    (word_next[23:16] == 8'hFE) && (word_next[15:8]  == 8'h03) &&
                    (word_next[7:0]   == 8'h0B);
 
-//*****************************************************
-//**                    DUT
-//*****************************************************
 arm_pick_place_once_top #(
     .CLK_HZ         (CLK_FREQ),
     .STARTUP_WAIT_MS(1       ))
@@ -102,7 +65,6 @@ arm_pick_place_once_top #(
     .tcon     (tcon    )
     );
 
-//byte receiver on the servo bus
 uart_rx #(
     .CLK_FREQ (CLK_FREQ),
     .UART_BPS (UART_BPS))
@@ -120,7 +82,6 @@ initial begin
     forever #(CLK_PERIOD/2) clk = ~clk;
 end
 
-//capture bytes + detect the two packet types
 always @(posedge clk or negedge rst_n) begin
     if(!rst_n) begin
         word         <= 40'd0;
@@ -141,7 +102,7 @@ always @(posedge clk or negedge rst_n) begin
             rx_byte  <= uart_data;
             byte_cnt <= byte_cnt + 1'b1;
             word     <= word_next;
-            // the byte right after the stop prefix is its checksum: must be ~(FE+03+0C) = F2
+
             if(stop_pending) begin
                 stop_pending <= 1'b0;
                 if(uart_data !== 8'hF2) stop_chk_err <= 1'b1;
@@ -158,9 +119,6 @@ always @(posedge clk or negedge rst_n) begin
     end
 end
 
-//*****************************************************
-//**      main
-//*****************************************************
 initial begin
     errors = 0;
     rst_n  = 1'b0;
@@ -170,14 +128,15 @@ initial begin
     repeat(10) @(posedge clk);
     rst_n = 1'b1;
     repeat(10) @(posedge clk);
+    @(negedge clk); home_i = 1'b1;
+    @(negedge clk); home_i = 1'b0;
 
     $display("==================================================");
     $display(" tb_arm_stop: CLK_FREQ=%0d  UART_BPS=%0d  STARTUP_WAIT_MS=1", CLK_FREQ, UART_BPS);
     $display("==================================================");
 
-    //--------------------------------------------------
-    $display("--- 1) power-up: the arm homes by itself ---");
-    #(12000000);                    // 1 ms startup wait + 6 pose packets + 1 START
+    $display("--- 1) top-level power-up home request ---");
+    #(12000000);
     if((servo_cnt != 6) || (start_cnt != 1) || (stop_cnt != 0)) begin
         $display("[FAIL] power-up home: %0d pose / %0d start / %0d stop packets (expected 6/1/0)",
                  servo_cnt, start_cnt, stop_cnt);
@@ -194,7 +153,6 @@ initial begin
     else
         $display("[ OK ] stays at the initial pose until told to run");
 
-    //--------------------------------------------------
     $display("--- 2) run_en=1: pose packets start after the startup wait ---");
     @(posedge clk);
     run_en <= 1'b1;
@@ -207,7 +165,6 @@ initial begin
     else
         $display("[ OK ] pose packets started (%0d seen)", servo_cnt);
 
-    //--------------------------------------------------
     $display("--- 3) command 4: run_en drops + stop_i pulses ---");
     n0 = servo_cnt;
     @(posedge clk);
@@ -244,7 +201,6 @@ initial begin
     else
         $display("[ OK ] no new pose packets after the stop (was %0d, now %0d)", n0, servo_cnt);
 
-    //--------------------------------------------------
     $display("--- 4) enable again: the sequence restarts ---");
     n0 = servo_cnt;
     @(posedge clk);
@@ -258,11 +214,10 @@ initial begin
     else
         $display("[ OK ] enabling again restarted the sequence (pose packets: %0d)", servo_cnt);
 
-    //--------------------------------------------------
     $display("--- 5) home request (commands 1/2/3): initial pose, then stay ---");
     @(posedge clk);
-    run_en <= 1'b0;                 // mode 1/2/3: not running
-    #(2000000);                     // let any in-flight packet finish
+    run_en <= 1'b0;
+    #(2000000);
     n0 = servo_cnt;
     m0 = start_cnt;
     @(posedge clk);
@@ -290,7 +245,6 @@ initial begin
     else
         $display("[ OK ] arm stayed at the home pose (no more packets)");
 
-    //--------------------------------------------------
     if(rx_err !== 1'b0) begin
         $display("[FAIL] the servo bus had a framing error");
         errors = errors + 1;

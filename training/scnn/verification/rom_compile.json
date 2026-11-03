@@ -1,0 +1,7 @@
+{
+  "status": "PASS",
+  "tool": "Vivado 2026.1 xvlog",
+  "modules": 5,
+  "generated_rom_sha256": "417c7ba9775418bd0e8bbed20faba334c488b4a4ac89221d9a542cc8b2daf088",
+  "scope": "Syntax compilation only; deployment data checked separately."
+}

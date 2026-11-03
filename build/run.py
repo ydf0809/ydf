@@ -31,6 +31,7 @@ def build(board, bin_dir, jobs):
             ['-mode', 'batch', '-source', ROOT / 'build/project.tcl',
              '-tclargs', xpr, output, jobs], work, timeout=7200)
         (work / 'console.txt').write_text(text, encoding='utf-8')
+        (output / 'console.txt').write_text(public_text(text), encoding='utf-8')
         result['exit_code'] = status
         result['source_unchanged_during_build'] = initial == input_hashes(board)
         metrics = output / 'metrics.txt'
@@ -75,6 +76,11 @@ def build(board, bin_dir, jobs):
                 node.set('IncrementalCheckpoint', '')
         tree.write(xpr, encoding='utf-8', xml_declaration=True)
         result['xpr_sha256'] = sha256(xpr)
+        result['reports_sha256'] = {
+            path.relative_to(ROOT).as_posix(): sha256(path)
+            for path in sorted(output.iterdir())
+            if path.is_file() and path.suffix in {'.rpt', '.txt'}
+        }
         write_json(output / 'manifest.json', result)
     print('BUILD ' + board + ': ' + result['release_status'], flush=True)
     return result['release_status'] == 'preview_build_candidate'

@@ -1,5 +1,5 @@
 `timescale 1ns / 1ps
-// Production clock/counts: test motor commands, not only the isolated PID.
+
 module tb_xunbi_tracking;
     reg clk = 1'b0;
     always #15 clk = ~clk;
@@ -78,8 +78,7 @@ module tb_xunbi_tracking;
             #1;
             check(dut.corner_left_speed == 16 && dut.corner_right_speed == 16,
                   "confirmed corner starts straight forward phase");
-            // Once confirmed, the requested 1000ms approach owns the motors,
-            // even if all probes leave the old line during the approach.
+
             pat = 5'b11111;
             wait_ms(12);
             check(m1 == 16 && m2 == -16 && m3 == -16 && m4 == 16,

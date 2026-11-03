@@ -7,12 +7,13 @@ import shutil
 import subprocess
 import sys
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'build'))
-from common import ROOT, BOARDS, execute, public_text, tool_bin, write_json
+from common import ROOT, BOARDS, execute, input_hashes, public_text, sha256, tool_bin, write_json
 
 def judge_output(text, expected_prefixes, status):
     lines = text.splitlines()
     markers = [line.strip() for line in lines
-               if any(prefix in line for prefix in expected_prefixes)]
+               if any(prefix and line.strip().startswith(prefix.strip())
+                      for prefix in expected_prefixes)]
     failure_pattern = re.compile(
         r'^\s*(?:\[FAIL\]|(?:FAIL|FAILED|FATAL|ERROR|Fatal|Error)\s*[: ]|'
         r'.*TEST:\s*FAIL|==.*\bFAIL\b)|'
@@ -47,8 +48,11 @@ def test_dependencies(test, rtl):
 def run_board(board, bin_dir, timeout):
     info = BOARDS[board]
     project = ROOT / info['directory']
+    initial = input_hashes(board)
     rtl = sorted((project / info['rtl']).rglob('*.v'))
     tests = sorted((project / info['tests']).glob('tb_*.v'))
+    rtl += sorted(p for p in (project / info['tests']).rglob('*.v')
+                  if not p.name.startswith('tb_'))
     stamp = datetime.now().strftime('%Y%m%d_%H%M%S')
     work = ROOT / 'sim/work' / board / stamp
     work.mkdir(parents=True, exist_ok=True)
@@ -71,9 +75,13 @@ def run_board(board, bin_dir, timeout):
         if reference.exists():
             shutil.copyfile(reference, case_work / reference.name)
         dependencies = test_dependencies(test, rtl)
+        if board == 'lower':
+            dependencies.append(bin_dir.parent / 'data/verilog/src/glbl.v')
         result = {'board': board, 'test': name, 'passed': False,
                   'source': test.relative_to(ROOT).as_posix(), 'stage': 'compile',
-                  'dependencies': [p.relative_to(ROOT).as_posix() for p in dependencies]}
+                  'dependencies': [p.relative_to(ROOT).as_posix() if p.is_relative_to(ROOT)
+                                   else '[vivado]/data/verilog/src/glbl.v'
+                                   for p in dependencies]}
         log = ''
         try:
             compile_code, compile_text = execute(bin_dir, 'xvlog',
@@ -86,7 +94,8 @@ def run_board(board, bin_dir, timeout):
                 snapshot = board + '_' + name
                 status, text = execute(bin_dir, 'xelab',
                     ['-L', 'unisims_ver', '--timescale', '1ns/1ps',
-                     name, '-s', snapshot], case_work, timeout)
+                     name, *(['glbl'] if board == 'lower' else []),
+                     '-s', snapshot], case_work, timeout)
                 log += chr(10) + text
                 result['exit_code'] = status
                 if status == 0:
@@ -108,7 +117,11 @@ def run_board(board, bin_dir, timeout):
         except subprocess.TimeoutExpired:
             result.update(stage='timeout', error='Simulator exceeded configured timeout.')
             log += chr(10) + result['error']
-        (output / (board + '_' + name + '.txt')).write_text(public_text(log), encoding='utf-8')
+        log_path = output / (board + '_' + name + '.txt')
+        log_path.write_text(public_text(log), encoding='utf-8')
+        result.update(log=log_path.relative_to(ROOT).as_posix(), log_sha256=sha256(log_path))
+        result['inputs_unchanged'] = initial == input_hashes(board)
+        result['passed'] = result['passed'] and result['inputs_unchanged']
         results.append(result)
         print(board + '/' + name + ': ' + ('PASS' if result['passed'] else 'FAIL (' + result['stage'] + ')'), flush=True)
     return results
@@ -125,6 +138,7 @@ def main():
     output = 'summary.json' if args.board == 'all' else 'summary_' + args.board + '.json'
     write_json(ROOT / 'sim/results' / output, {
         'completed_at': datetime.now().astimezone().isoformat(timespec='seconds'),
+        'source_sha256': {board: input_hashes(board) for board in boards},
         'physical_validation': 'not_performed', 'tests': results})
     print('SIMULATION: %d/%d PASS' % (sum(r['passed'] for r in results), len(results)), flush=True)
     return 0 if results and all(r['passed'] for r in results) else 1

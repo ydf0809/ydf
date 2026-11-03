@@ -1,57 +1,62 @@
 # 双板 FPGA 视觉识别与运动控制平台
 
-**工程预览版 / Engineering preview**
+**工程预览版 · 2026-11-03 · 仅本地提交，GitHub 推送暂停。**
 
-本仓库从所有者指定的两套主 Vivado 工程重新整理，面向2026年全国大学生嵌入式芯片与系统设计竞赛 AMD 自主选题赛道3.3.5的工程交付要求。此处采用功能描述作为临时标题，作品正式名称和参赛介绍待所有者补充。
+本仓库以所有者指定的 `xiegithub` 源包为依据，包含两套 Zynq-7000 PL 工程和配套 SCNN 模型、训练、参数转换及数值验证工程。上层包含 OV5640 采集、彩色 ROI、SCNN、目标搜索与锁定、LCD、语音和板间通信；下层包含 OV7670 图像处理、LCD、循迹、底盘与机械臂控制。上述为源码范围，板级功能仍需实测验收。
 
-上层工程包含 OV5640 图像采集、RGB 图像通路、SCNN 识别与目标锁定、LCD、语音指令和板间通信；下层工程包含 OV7670/LCD、模式控制、底盘、循迹及机械臂接口。这是源码所表达的设计范围，不代表所有功能已完成实板验收。
+本仓库按 AMD 竞赛指南第 3.3.5 节组织交付。先阅读 [从零复现](report/reproduction.md)、[验证状态](report/validation.md)、[已知限制](report/limitations.md) 和 [待补材料](report/owner_inputs.md)。当前不报告真实数据集准确率，也不把仿真或 bit 生成等同于实板通过。
 
-**请先阅读[验证状态](report/validation.md)和[已知限制](report/limitations.md)。本预览不宣称训练过程可复现、识别效果达标或已通过实板验收。**
+## 主工程与权重
 
-本次回归为15/16通过，尚有机械臂上电回位预期不一致，详见[失败记录](report/known_test_failure.md)。两板主XPR均已重建生成bit，但仍有方法学关键告警；使用前应核对具体报告。
-
-## 主工程
-
-| 板级工程 | 入口 | 顶层 | 器件 |
+| 工程 | 主 XPR | 顶层 | 器件 |
 | --- | --- | --- | --- |
-| 上层 | [主XPR](projects/merged_cam_lcd_voice_scnn/vivado_prj/merged_cam_lcd_voice_scnn.xpr) | top | xc7z020clg400-1 |
-| 下层 | [主XPR](projects/realfinal_min_102404/realfinal.xpr) | super_top | xc7z020clg400-1 |
+| 上层 | [merged_cam_lcd_voice_scnn.xpr](projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.xpr) | top | xc7z020clg400-1 |
+| 下层 | [realfinal.xpr](projects/realfinal_min_102404/realfinal.xpr) | super_top | xc7z020clg400-1 |
 
-一个系统由两块板组成，每块板各保留一个主工程，bit不能互换。工程源码、约束、IP配置和现有权重位于仓库内，机器上已安装的 Vivado 与 Python 属于运行环境。
+每板各保留一个主 XPR，bit 不能互换。上层实际编译的 SCNN 权重位于 `rtl/drone_data_roms.v`；单独复制 COE/MEM 不会更新它。[训练工程](training/scnn/README.md) 的当前四组 COE/MEM、默认参数和上层 ROM 通过 [部署一致性检查](report/weight_alignment.json)。历史 COE 单独保留作来源比较，不作为默认部署参数。
 
 ## 从零复现
 
-1. 完整克隆或下载本仓库。安装 AMD Vivado 2026.1 和 Python 3.10以上版本；Python脚本只用标准库。
-2. 在仓库根目录运行依赖检查。
-3. 按以下命令执行仿真和双板构建。将占位符替换为本机工具安装目录；也可设置 XILINX_VIVADO 后省略参数。
-4. 核对日志、报告、manifest和bit哈希，再按[硬件运行说明](board/README.md)进行板级测试。
+安装 Vivado 2026.1、Python 3.10 以上版本；训练验证另需安装配套依赖。以下命令在仓库根目录运行，`<vivado_install>` 替换为本机工具目录，也可设置 `XILINX_VIVADO`。
 
 ~~~text
 python build/verify_repository.py
+python build/test_checkers.py
+python build/check_weights.py
+python -m pip install -r training/scnn/requirements.txt
+python training/scnn/verify.py
+python training/scnn/train.py --smoke-test
 python sim/run.py --vivado-bin "<vivado_install>/bin"
 python build/run.py --vivado-bin "<vivado_install>/bin"
+python build/verify_release.py
+python build/verify_relocation.py --vivado-bin "<vivado_install>/bin"
 ~~~
 
-两条运行命令默认处理两块板；可加 --board upper 或 --board lower。详见[构建说明](build/README.md)和[仿真说明](sim/README.md)。陌生环境复现范围和实测缺项见验证状态，不以已有bit代替重建验证。
+仿真、构建可加 `--board upper` 或 `--board lower`。完整步骤、预期结果和异路径归档检查见 [从零复现](report/reproduction.md)，分项说明见 [构建说明](build/README.md)、[仿真说明](sim/README.md)、[上板说明](board/README.md)。主 XPR 的原生 `.runs/`、`.gen/` 等目录由 Vivado 生成；通过检查的 bit 复制至 `board/bitstreams/`。运行缓存不纳入 Git。
 
-## 目录与提交要求
+正式训练需要数据集及明确实验配置，见训练说明。合成样本测试只验证梯度、参数更新和导出，不评价识别效果。训练脚本不会自动覆盖硬件 ROM 或重建 bit。
 
-| 目录 | 内容 | 对应指南 |
+## 目录与指南对应
+
+| 目录 | 内容 | 指南条目 |
 | --- | --- | --- |
-| projects/ | 两套主XPR、RTL、约束、IP、权重和原始测试台 | 3.3.5.1 工程与源码；替代推荐src布局 |
-| sim/ | 测试入口、实际日志与结果汇总 | 仿真或验证证据 |
-| build/ | 构建、依赖校验脚本和综合/实现报告 | 可复现构建、资源与时序证据 |
-| board/ | 引脚表、烧录步骤、主工程生成的bit和实测记录入口 | 上板工程与参考比对 |
-| data/ | 权重、参考数据及来源说明 | 测试数据与参考输出说明 |
-| skill/ | [可独立复用的技能包](skill/README.md) | 3.3.5.2 |
-| report/ | [设计报告](report/design_report.md)、协作摘要、需求核对、验证与限制 | 3.3.5.3—3.3.5.5 |
+| projects/ | 双板 XPR、RTL、约束、IP、原始测试台 | 3.3.5.1；替代推荐 src 布局 |
+| training/scnn/ | 模型、训练/微调、COE/MEM/ROM 导出、参考输入 | 配套软件及权重来源 |
+| sim/ | 仿真入口、真实日志与结果 | 功能验证证据 |
+| build/ | 构建与检查脚本、资源/时序/DRC 报告 | 可复现构建 |
+| board/ | 引脚、烧录入口、bit、实测记录入口 | 上板工程；实测尚缺 |
+| data/ | 模型卡、测试输入及参考输出说明 | 参考数据 |
+| skill/ | [三类踩坑清单](skill/README.md) 与检查方法 | 3.3.5.2 |
+| report/ | 设计报告、协作节选、纠错案例、验证及缺项 | 3.3.5.3—3.3.5.5 |
 
-指南目录布局为推荐项，本仓库保留两套Vivado工程的原有内部结构，并给出上述对应关系。文件名采用英文；README.md、LICENSE保留常见标准名称。工具生成的运行目录留在Vivado要求的位置，由构建重新生成，不纳入源码提交。
+指南允许替代目录布局；文件名使用英文，`README.md`、`LICENSE` 沿用标准名称。源包中的中文导入目录仅在本副本映射为 `imported` 并同步 XPR；可选历史增量 DCP 不作为从零构建依赖。
 
-## 来源与许可
+## 协作与可复用经验
 
-沿用仓库已有[MIT许可证](LICENSE)及原有署名。原工程内供应商声明予以保留，适用范围见[第三方与数据说明](third_party_notices.md)。源文件来源、导出路径及SHA-256见[输入清单](report/source_manifest.json)。生产RTL、测试台、约束、IP配置与权重在整理时按原始字节复制。XPR仅做交付路径和可选增量缓存配置调整。
+[协作报告](report/ai_collaboration.md) 区分原文节选、编辑分析和当前验证，附 [19 条真实可见消息及来源索引](report/collaboration/README.md)。技能按“现象—触发—定位—处理—验证—边界”整理，覆盖权重混用、实例参数覆盖、目标身份、CDC、I2C 原子性、时序覆盖及旧产物误用；不编造多智能体过程或优化收益。
 
-本预览尚缺正式作品介绍、板级实测、优化对比及模型训练来源等材料，具体清单见[待补充材料](report/owner_inputs.md)。
+## 来源、许可与发布
 
-整理日期：2026-11-02；仓库：ydf0809/ydf。
+沿用已有 [MIT](LICENSE) 及原署名，第三方声明见 [third_party_notices.md](third_party_notices.md)。[来源清单](report/source_manifest.json) 记录源包相对路径、原始 SHA-256、仓库路径和必要适配；生产 RTL、约束、IP 和权重按字节复制。
+
+本次只更新本地仓库副本，源包只读。发布继续暂停，见 [发布状态](report/publish_status.md)。正式作品名称、板级实测、数据与权重公开依据、同条件优化对比尚需所有者补充。

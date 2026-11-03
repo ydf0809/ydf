@@ -1,52 +1,40 @@
-
-
 module i2c_ov5640_rgb565_cfg
-   (  
-    input                clk            ,     //时钟信号
-    input                rst_n          ,     //复位信号，低电平有效
-    
-    input        [7:0]   i2c_data_r     ,     //I2C读出的数据
-    input                i2c_done       ,     //I2C寄存器配置完成信号
+   (
+    input                clk            ,
+    input                rst_n          ,
+
+    input        [7:0]   i2c_data_r     ,
+    input                i2c_done       ,
     input        [12:0]  cmos_h_pixel   ,
     input        [12:0]  cmos_v_pixel   ,
-    input        [12:0]  total_h_pixel  ,     //水平总像素大小
-    input        [12:0]  total_v_pixel  ,     //垂直总像素大小
-    output  reg          i2c_exec       ,     //I2C触发执行信号   
-    output  reg  [23:0]  i2c_data       ,     //I2C要配置的地址与数据(高16位地址,低8位数据)
-    output  reg          i2c_rh_wl      ,     //I2C读写控制信号
-    output  reg          init_done            //初始化完成信号
+    input        [12:0]  total_h_pixel  ,
+    input        [12:0]  total_v_pixel  ,
+    output  reg          i2c_exec       ,
+    output  reg  [23:0]  i2c_data       ,
+    output  reg          i2c_rh_wl      ,
+    output  reg          init_done
     );
 
-//parameter define
-localparam  REG_NUM = 8'd250  ;               //总共需要配置的寄存器个数
+localparam  REG_NUM = 8'd250  ;
 
-//reg define
-reg   [14:0]   start_init_cnt;                //等待延时计数器
-reg    [7:0]   init_reg_cnt  ;                //寄存器配置个数计数器
+reg   [14:0]   start_init_cnt;
+reg    [7:0]   init_reg_cnt  ;
 
-//*****************************************************
-//**                    main code
-//*****************************************************
-
-//SCL配置成250KHz，输入的clk时钟频率为1MHz,周期为1us 20000*1us = 20ms
-//OV5640上电到开始配置SCCB至少等待20ms
 always @(posedge clk or negedge rst_n) begin
     if(!rst_n)
         start_init_cnt <= 15'd0;
     else if(start_init_cnt < 15'd20000) begin
-        start_init_cnt <= start_init_cnt + 15'd1;                    
+        start_init_cnt <= start_init_cnt + 15'd1;
     end
 end
 
-//寄存器配置个数计数    
 always @(posedge clk or negedge rst_n) begin
     if(!rst_n)
         init_reg_cnt <= 8'd0;
-    else if(i2c_exec)   
+    else if(i2c_exec)
         init_reg_cnt <= init_reg_cnt + 8'd1;
 end
 
-//I2C触发执行信号   
 always @(posedge clk or negedge rst_n) begin
     if(!rst_n)
         i2c_exec <= 1'd0;
@@ -56,42 +44,39 @@ always @(posedge clk or negedge rst_n) begin
         i2c_exec <= 1'd1;
     else
         i2c_exec <= 1'd0;
-end 
+end
 
-//配置I2C读写控制信号
 always @(posedge clk or negedge rst_n) begin
     if(!rst_n)
         i2c_rh_wl <= 1'd1;
-    else if(init_reg_cnt == 8'd2)  
-        i2c_rh_wl <= 1'd0;  
+    else if(init_reg_cnt == 8'd2)
+        i2c_rh_wl <= 1'd0;
 end
 
-//初始化完成信号
 always @(posedge clk or negedge rst_n) begin
     if(!rst_n)
         init_done <= 1'd0;
-    else if((init_reg_cnt == REG_NUM) && i2c_done)  
-        init_done <= 1'd1;  
+    else if((init_reg_cnt == REG_NUM) && i2c_done)
+        init_done <= 1'd1;
 end
 
-//配置寄存器地址与数据
 always @(posedge clk or negedge rst_n) begin
     if(!rst_n)
         i2c_data <= 24'b0;
     else begin
         case(init_reg_cnt)
-            //先读OV5640 ID
-            8'd0  : i2c_data <= {16'h300a,8'h00}; 
-            8'd1  : i2c_data <= {16'h300b,8'h00}; 
-            8'd2  : i2c_data <= {16'h3008,8'h82}; //Bit[7]:复位 Bit[6]:电源休眠
-            8'd3  : i2c_data <= {16'h3008,8'h02}; //正常工作模式
-            8'd4  : i2c_data <= {16'h3103,8'h02}; //Bit[1]:1 PLL Clock
-            //引脚输入/输出控制 FREX/VSYNC/HREF/PCLK/D[9:6]
+
+            8'd0  : i2c_data <= {16'h300a,8'h00};
+            8'd1  : i2c_data <= {16'h300b,8'h00};
+            8'd2  : i2c_data <= {16'h3008,8'h82};
+            8'd3  : i2c_data <= {16'h3008,8'h02};
+            8'd4  : i2c_data <= {16'h3103,8'h02};
+
             8'd5  : i2c_data <= {8'h30,8'h17,8'hff};
-            //引脚输入/输出控制 D[5:0]/GPIO1/GPIO0 
+
             8'd6  : i2c_data <= {16'h3018,8'hff};
-            8'd7  : i2c_data <= {16'h3037,8'h13}; //PLL分频控制
-            8'd8  : i2c_data <= {16'h3108,8'h01}; //系统根分频器
+            8'd7  : i2c_data <= {16'h3037,8'h13};
+            8'd8  : i2c_data <= {16'h3108,8'h01};
             8'd9  : i2c_data <= {16'h3630,8'h36};
             8'd10 : i2c_data <= {16'h3631,8'h0e};
             8'd11 : i2c_data <= {16'h3632,8'he2};
@@ -107,15 +92,15 @@ always @(posedge clk or negedge rst_n) begin
             8'd21 : i2c_data <= {16'h3906,8'h10};
             8'd22 : i2c_data <= {16'h3901,8'h0a};
             8'd23 : i2c_data <= {16'h3731,8'h12};
-            8'd24 : i2c_data <= {16'h3600,8'h08}; //VCM控制,用于自动聚焦
-            8'd25 : i2c_data <= {16'h3601,8'h33}; //VCM控制,用于自动聚焦
-            8'd26 : i2c_data <= {16'h302d,8'h60}; //系统控制
+            8'd24 : i2c_data <= {16'h3600,8'h08};
+            8'd25 : i2c_data <= {16'h3601,8'h33};
+            8'd26 : i2c_data <= {16'h302d,8'h60};
             8'd27 : i2c_data <= {16'h3620,8'h52};
             8'd28 : i2c_data <= {16'h371b,8'h20};
             8'd29 : i2c_data <= {16'h471c,8'h50};
-            8'd30 : i2c_data <= {16'h3a13,8'h43}; //AEC(自动曝光控制)
-            8'd31 : i2c_data <= {16'h3a18,8'h00}; //AEC 增益上限
-            8'd32 : i2c_data <= {16'h3a19,8'hf8}; //AEC 增益上限
+            8'd30 : i2c_data <= {16'h3a13,8'h43};
+            8'd31 : i2c_data <= {16'h3a18,8'h00};
+            8'd32 : i2c_data <= {16'h3a19,8'hf8};
             8'd33 : i2c_data <= {16'h3635,8'h13};
             8'd34 : i2c_data <= {16'h3636,8'h03};
             8'd35 : i2c_data <= {16'h3634,8'h40};
@@ -123,32 +108,32 @@ always @(posedge clk or negedge rst_n) begin
             8'd37 : i2c_data <= {16'h3c01,8'h34};
             8'd38 : i2c_data <= {16'h3c04,8'h28};
             8'd39 : i2c_data <= {16'h3c05,8'h98};
-            8'd40 : i2c_data <= {16'h3c06,8'h00}; //light meter 1 阈值[15:8]
-            8'd41 : i2c_data <= {16'h3c07,8'h08}; //light meter 1 阈值[7:0]
-            8'd42 : i2c_data <= {16'h3c08,8'h00}; //light meter 2 阈值[15:8]
-            8'd43 : i2c_data <= {16'h3c09,8'h1c}; //light meter 2 阈值[7:0]
-            8'd44 : i2c_data <= {16'h3c0a,8'h9c}; //sample number[15:8]
-            8'd45 : i2c_data <= {16'h3c0b,8'h40}; //sample number[7:0]
-            8'd46 : i2c_data <= {16'h3810,8'h00}; //Timing Hoffset[11:8]
-            8'd47 : i2c_data <= {16'h3811,8'h10}; //Timing Hoffset[7:0]
-            8'd48 : i2c_data <= {16'h3812,8'h00}; //Timing Voffset[10:8]
+            8'd40 : i2c_data <= {16'h3c06,8'h00};
+            8'd41 : i2c_data <= {16'h3c07,8'h08};
+            8'd42 : i2c_data <= {16'h3c08,8'h00};
+            8'd43 : i2c_data <= {16'h3c09,8'h1c};
+            8'd44 : i2c_data <= {16'h3c0a,8'h9c};
+            8'd45 : i2c_data <= {16'h3c0b,8'h40};
+            8'd46 : i2c_data <= {16'h3810,8'h00};
+            8'd47 : i2c_data <= {16'h3811,8'h10};
+            8'd48 : i2c_data <= {16'h3812,8'h00};
             8'd49 : i2c_data <= {16'h3708,8'h64};
-            8'd50 : i2c_data <= {16'h4001,8'h02}; //BLC(黑电平校准)补偿起始行号
-            8'd51 : i2c_data <= {16'h4005,8'h1a}; //BLC(黑电平校准)补偿始终更新
-            8'd52 : i2c_data <= {16'h3000,8'h00}; //系统块复位控制
-            8'd53 : i2c_data <= {16'h3004,8'hff}; //时钟使能控制
-            8'd54 : i2c_data <= {16'h4300,8'h61}; //格式控制 RGB565
-            8'd55 : i2c_data <= {16'h501f,8'h01}; //ISP RGB
+            8'd50 : i2c_data <= {16'h4001,8'h02};
+            8'd51 : i2c_data <= {16'h4005,8'h1a};
+            8'd52 : i2c_data <= {16'h3000,8'h00};
+            8'd53 : i2c_data <= {16'h3004,8'hff};
+            8'd54 : i2c_data <= {16'h4300,8'h61};
+            8'd55 : i2c_data <= {16'h501f,8'h01};
             8'd56 : i2c_data <= {16'h440e,8'h00};
-            8'd57 : i2c_data <= {16'h5000,8'ha7}; //ISP控制
-            8'd58 : i2c_data <= {16'h3a0f,8'h30}; //AEC控制;stable range in high
-            8'd59 : i2c_data <= {16'h3a10,8'h28}; //AEC控制;stable range in low
-            8'd60 : i2c_data <= {16'h3a1b,8'h30}; //AEC控制;stable range out high
-            8'd61 : i2c_data <= {16'h3a1e,8'h26}; //AEC控制;stable range out low
-            8'd62 : i2c_data <= {16'h3a11,8'h60}; //AEC控制; fast zone high
-            8'd63 : i2c_data <= {16'h3a1f,8'h14}; //AEC控制; fast zone low
-            //LENC(镜头校正)控制 16'h5800~16'h583d
-            8'd64 : i2c_data <= {16'h5800,8'h23}; 
+            8'd57 : i2c_data <= {16'h5000,8'ha7};
+            8'd58 : i2c_data <= {16'h3a0f,8'h30};
+            8'd59 : i2c_data <= {16'h3a10,8'h28};
+            8'd60 : i2c_data <= {16'h3a1b,8'h30};
+            8'd61 : i2c_data <= {16'h3a1e,8'h26};
+            8'd62 : i2c_data <= {16'h3a11,8'h60};
+            8'd63 : i2c_data <= {16'h3a1f,8'h14};
+
+            8'd64 : i2c_data <= {16'h5800,8'h23};
             8'd65 : i2c_data <= {16'h5801,8'h14};
             8'd66 : i2c_data <= {16'h5802,8'h0f};
             8'd67 : i2c_data <= {16'h5803,8'h0f};
@@ -210,7 +195,7 @@ always @(posedge clk or negedge rst_n) begin
             8'd123: i2c_data <= {16'h583b,8'h28};
             8'd124: i2c_data <= {16'h583c,8'h42};
             8'd125: i2c_data <= {16'h583d,8'hce};
-            //AWB(自动白平衡控制) 16'h5180~16'h519e
+
             8'd126: i2c_data <= {16'h5180,8'hff};
             8'd127: i2c_data <= {16'h5181,8'hf2};
             8'd128: i2c_data <= {16'h5182,8'h00};
@@ -242,8 +227,8 @@ always @(posedge clk or negedge rst_n) begin
             8'd154: i2c_data <= {16'h519c,8'h06};
             8'd155: i2c_data <= {16'h519d,8'h82};
             8'd156: i2c_data <= {16'h519e,8'h38};
-            //Gamma(伽马)控制 16'h5480~16'h5490
-            8'd157: i2c_data <= {16'h5480,8'h01}; 
+
+            8'd157: i2c_data <= {16'h5480,8'h01};
             8'd158: i2c_data <= {16'h5481,8'h08};
             8'd159: i2c_data <= {16'h5482,8'h14};
             8'd160: i2c_data <= {16'h5483,8'h28};
@@ -260,7 +245,7 @@ always @(posedge clk or negedge rst_n) begin
             8'd171: i2c_data <= {16'h548e,8'hdd};
             8'd172: i2c_data <= {16'h548f,8'hea};
             8'd173: i2c_data <= {16'h5490,8'h1d};
-            //CMX(彩色矩阵控制) 16'h5381~16'h538b
+
             8'd174: i2c_data <= {16'h5381,8'h1e};
             8'd175: i2c_data <= {16'h5382,8'h5b};
             8'd176: i2c_data <= {16'h5383,8'h08};
@@ -272,15 +257,15 @@ always @(posedge clk or negedge rst_n) begin
             8'd182: i2c_data <= {16'h5389,8'h10};
             8'd183: i2c_data <= {16'h538a,8'h01};
             8'd184: i2c_data <= {16'h538b,8'h98};
-            //SDE(特殊数码效果)控制 16'h5580~16'h558b
+
             8'd185: i2c_data <= {16'h5580,8'h06};
             8'd186: i2c_data <= {16'h5583,8'h40};
             8'd187: i2c_data <= {16'h5584,8'h10};
             8'd188: i2c_data <= {16'h5589,8'h10};
             8'd189: i2c_data <= {16'h558a,8'h00};
             8'd190: i2c_data <= {16'h558b,8'hf8};
-            8'd191: i2c_data <= {16'h501d,8'h40}; //ISP MISC
-            //CIP(颜色插值)控制 (16'h5300~16'h530c)
+            8'd191: i2c_data <= {16'h501d,8'h40};
+
             8'd192: i2c_data <= {16'h5300,8'h08};
             8'd193: i2c_data <= {16'h5301,8'h30};
             8'd194: i2c_data <= {16'h5302,8'h10};
@@ -294,11 +279,11 @@ always @(posedge clk or negedge rst_n) begin
             8'd202: i2c_data <= {16'h530b,8'h04};
             8'd203: i2c_data <= {16'h530c,8'h06};
             8'd204: i2c_data <= {16'h5025,8'h00};
-            //系统时钟分频 Bit[7:4]:系统时钟分频 input clock =24Mhz, PCLK = 48Mhz
-            8'd205: i2c_data <= {16'h3035,8'h11}; 
-            8'd206: i2c_data <= {16'h3036,8'h3c}; //PLL倍频
+
+            8'd205: i2c_data <= {16'h3035,8'h11};
+            8'd206: i2c_data <= {16'h3036,8'h3c};
             8'd207: i2c_data <= {16'h3c07,8'h08};
-            //时序控制 16'h3800~16'h3821
+
             8'd208: i2c_data <= {16'h3820,8'h46};
             8'd209: i2c_data <= {16'h3821,8'h01};
             8'd210: i2c_data <= {16'h3814,8'h31};
@@ -311,49 +296,48 @@ always @(posedge clk or negedge rst_n) begin
             8'd217: i2c_data <= {16'h3805,8'h3f};
             8'd218: i2c_data <= {16'h3806,8'h07};
             8'd219: i2c_data <= {16'h3807,8'h9b};
-            //设置输出像素个数
-            //DVP 输出水平像素点数高4位
+
             8'd220: i2c_data <= {16'h3808,{4'd0,cmos_h_pixel[11:8]}};
-            //DVP 输出水平像素点数低8位
+
             8'd221: i2c_data <= {16'h3809,cmos_h_pixel[7:0]};
-            //DVP 输出垂直像素点数高3位
+
             8'd222: i2c_data <= {16'h380a,{5'd0,cmos_v_pixel[10:8]}};
-            //DVP 输出垂直像素点数低8位
+
             8'd223: i2c_data <= {16'h380b,cmos_v_pixel[7:0]};
-            //水平总像素大小高5位
+
             8'd224: i2c_data <= {16'h380c,{3'd0,total_h_pixel[12:8]}};
-            //水平总像素大小低8位 
+
             8'd225: i2c_data <= {16'h380d,total_h_pixel[7:0]};
-            //垂直总像素大小高5位 
+
             8'd226: i2c_data <= {16'h380e,{3'd0,total_v_pixel[12:8]}};
-            //垂直总像素大小低8位     
+
             8'd227: i2c_data <= {16'h380f,total_v_pixel[7:0]};
             8'd228: i2c_data <= {16'h3813,8'h06};
             8'd229: i2c_data <= {16'h3618,8'h00};
             8'd230: i2c_data <= {16'h3612,8'h29};
             8'd231: i2c_data <= {16'h3709,8'h52};
             8'd232: i2c_data <= {16'h370c,8'h03};
-            8'd233: i2c_data <= {16'h3a02,8'h17}; //60Hz max exposure
-            8'd234: i2c_data <= {16'h3a03,8'h10}; //60Hz max exposure
-            8'd235: i2c_data <= {16'h3a14,8'h17}; //50Hz max exposure
-            8'd236: i2c_data <= {16'h3a15,8'h10}; //50Hz max exposure
-            8'd237: i2c_data <= {16'h4004,8'h02}; //BLC(背光) 2 lines
-            8'd238: i2c_data <= {16'h4713,8'h03}; //JPEG mode 3
-            8'd239: i2c_data <= {16'h4407,8'h04}; //量化标度
-            8'd240: i2c_data <= {16'h460c,8'h22};     
-            8'd241: i2c_data <= {16'h4837,8'h22}; //DVP CLK divider
-            8'd242: i2c_data <= {16'h3824,8'h02}; //DVP CLK divider
-            8'd243: i2c_data <= {16'h5001,8'ha3}; //ISP 控制
-            8'd244: i2c_data <= {16'h3b07,8'h0a}; //帧曝光模式  
-            //彩条测试使能 
-            8'd245: i2c_data <= {16'h503d,8'h00}; //8'h00:正常模式 8'h80:彩条显示
-            //测试闪光灯功能
+            8'd233: i2c_data <= {16'h3a02,8'h17};
+            8'd234: i2c_data <= {16'h3a03,8'h10};
+            8'd235: i2c_data <= {16'h3a14,8'h17};
+            8'd236: i2c_data <= {16'h3a15,8'h10};
+            8'd237: i2c_data <= {16'h4004,8'h02};
+            8'd238: i2c_data <= {16'h4713,8'h03};
+            8'd239: i2c_data <= {16'h4407,8'h04};
+            8'd240: i2c_data <= {16'h460c,8'h22};
+            8'd241: i2c_data <= {16'h4837,8'h22};
+            8'd242: i2c_data <= {16'h3824,8'h02};
+            8'd243: i2c_data <= {16'h5001,8'ha3};
+            8'd244: i2c_data <= {16'h3b07,8'h0a};
+
+            8'd245: i2c_data <= {16'h503d,8'h00};
+
             8'd246: i2c_data <= {16'h3016,8'h02};
             8'd247: i2c_data <= {16'h301c,8'h02};
-            8'd248: i2c_data <= {16'h3019,8'h02}; //打开闪光灯
-            8'd249: i2c_data <= {16'h3019,8'h02}; //打开闪光灯(常亮)
-            //只读存储器,防止在case中没有列举的情况，之前的寄存器被重复改写
-            default : i2c_data <= {16'h300a,8'h00}; //器件ID高8位
+            8'd248: i2c_data <= {16'h3019,8'h02};
+            8'd249: i2c_data <= {16'h3019,8'h02};
+
+            default : i2c_data <= {16'h300a,8'h00};
         endcase
     end
 end

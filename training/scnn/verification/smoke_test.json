@@ -1,0 +1,13 @@
+{
+  "smoke_test": "PASS",
+  "synthetic_samples": 2,
+  "time_steps": 3,
+  "loss": 1.548587351573742,
+  "updated_tensors": [
+    "conv1.weight",
+    "conv2.weight",
+    "fc.weight"
+  ],
+  "checkpoint_export": "PASS",
+  "real_dataset_training": false
+}

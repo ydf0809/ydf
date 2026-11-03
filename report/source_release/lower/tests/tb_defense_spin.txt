@@ -1,0 +1,25 @@
+
+****** xsim v2026.1 (64-bit)
+  **** SW Build 6511674 on Tue Jun 16 11:02:23 MDT 2026
+  **** IP Build 6504888 on Tue Jun 09 09:05:25 MDT 2026
+  **** SharedData Build 6501428 on Mon Jun 08 17:34:18 MDT 2026
+  **** Start of session at: Tue Nov  3 02:43:49 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source xsim.dir/tb_defense_spin_sim/xsim_script.tcl
+# xsim {tb_defense_spin_sim} -autoloadwcfg -runall
+Time resolution is 1 ps
+run -all
+TRACE spin start at 4500165000, yaw=850 cx=535
+right spin stopped after 99999 cycles (~999 ms)
+TRACE spin stop at 7500165000 after 99999 cycles
+TRACE spin start at 8550165000, yaw=100 cx=63
+left spin ran 199999 cycles (~1999 ms)
+TRACE spin stop at 14550165000 after 199999 cycles
+TRACE spin start at 15450165000, yaw=850 cx=535
+TRACE spin stop at 16050165000 after 19999 cycles
+DEFENSE_SPIN_PASS
+$finish called at time : 16050195 ns : File "[previous_source_location]/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_defense_spin.v" Line 126
+exit
+INFO: [Common 17-206] Exiting xsim at Tue Nov  3 02:43:52 2026...

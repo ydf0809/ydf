@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2026.1 (win64) Build 6511674 Tue Jun 16 11:02:23 MDT 2026
-| Date         : Mon Nov  2 02:38:56 2026
+| Date         : Tue Nov  3 14:05:22 2026
 | Host         : YDF running 64-bit major release  (build 9200)
 | Command      : report_drc -file {[repository]/build/reports/upper/drc.rpt}
 | Design       : top
@@ -24,14 +24,11 @@ Table of Contents
       Design limits: <entire design considered>
            Ruledeck: default
              Max checks: <unlimited>
-             Checks found: 74
+             Checks found: 46
 +-----------+----------+---------------------------------+--------+
 | Rule      | Severity | Description                     | Checks |
 +-----------+----------+---------------------------------+--------+
 | CHECK-3   | Warning  | Report rule limit reached       | 2      |
-| DPIP-1    | Warning  | Input pipelining                | 16     |
-| DPOP-1    | Warning  | PREG Output pipelining          | 6      |
-| DPOP-2    | Warning  | MREG Output pipelining          | 6      |
 | PLCK-12   | Warning  | Clock Placer Checks             | 1      |
 | REQP-1839 | Warning  | RAMB36 async control check      | 20     |
 | REQP-1840 | Warning  | RAMB18 async control check      | 20     |
@@ -52,146 +49,6 @@ Report rule limit reached
 REQP-1840 rule limit reached: 20 violations have been found.
 Related violations: <none>
 
-DPIP-1#1 Warning
-Input pipelining  
-DSP u_motion/cluster_x0 input u_motion/cluster_x0/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
-Related violations: <none>
-
-DPIP-1#2 Warning
-Input pipelining  
-DSP u_motion/cluster_x0 input u_motion/cluster_x0/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
-Related violations: <none>
-
-DPIP-1#3 Warning
-Input pipelining  
-DSP u_motion/cluster_x0 input u_motion/cluster_x0/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
-Related violations: <none>
-
-DPIP-1#4 Warning
-Input pipelining  
-DSP u_motion/cluster_y0 input u_motion/cluster_y0/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
-Related violations: <none>
-
-DPIP-1#5 Warning
-Input pipelining  
-DSP u_motion/cluster_y0 input u_motion/cluster_y0/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
-Related violations: <none>
-
-DPIP-1#6 Warning
-Input pipelining  
-DSP u_motion/cluster_y0 input u_motion/cluster_y0/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
-Related violations: <none>
-
-DPIP-1#7 Warning
-Input pipelining  
-DSP u_motion/local_num_x0 input u_motion/local_num_x0/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
-Related violations: <none>
-
-DPIP-1#8 Warning
-Input pipelining  
-DSP u_motion/local_num_x0 input u_motion/local_num_x0/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
-Related violations: <none>
-
-DPIP-1#9 Warning
-Input pipelining  
-DSP u_motion/local_num_x0 input u_motion/local_num_x0/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
-Related violations: <none>
-
-DPIP-1#10 Warning
-Input pipelining  
-DSP u_motion/local_num_y0 input u_motion/local_num_y0/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
-Related violations: <none>
-
-DPIP-1#11 Warning
-Input pipelining  
-DSP u_motion/local_num_y0 input u_motion/local_num_y0/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
-Related violations: <none>
-
-DPIP-1#12 Warning
-Input pipelining  
-DSP u_motion/local_num_y0 input u_motion/local_num_y0/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
-Related violations: <none>
-
-DPIP-1#13 Warning
-Input pipelining  
-DSP u_motion/read_current0 input u_motion/read_current0/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
-Related violations: <none>
-
-DPIP-1#14 Warning
-Input pipelining  
-DSP u_motion/read_current0 input u_motion/read_current0/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
-Related violations: <none>
-
-DPIP-1#15 Warning
-Input pipelining  
-DSP u_motion/read_previous0 input u_motion/read_previous0/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
-Related violations: <none>
-
-DPIP-1#16 Warning
-Input pipelining  
-DSP u_motion/read_previous0 input u_motion/read_previous0/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
-Related violations: <none>
-
-DPOP-1#1 Warning
-PREG Output pipelining  
-DSP u_motion/cluster_x0 output u_motion/cluster_x0/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
-Related violations: <none>
-
-DPOP-1#2 Warning
-PREG Output pipelining  
-DSP u_motion/cluster_y0 output u_motion/cluster_y0/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
-Related violations: <none>
-
-DPOP-1#3 Warning
-PREG Output pipelining  
-DSP u_motion/local_num_x0 output u_motion/local_num_x0/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
-Related violations: <none>
-
-DPOP-1#4 Warning
-PREG Output pipelining  
-DSP u_motion/local_num_y0 output u_motion/local_num_y0/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
-Related violations: <none>
-
-DPOP-1#5 Warning
-PREG Output pipelining  
-DSP u_motion/read_current0 output u_motion/read_current0/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
-Related violations: <none>
-
-DPOP-1#6 Warning
-PREG Output pipelining  
-DSP u_motion/read_previous0 output u_motion/read_previous0/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
-Related violations: <none>
-
-DPOP-2#1 Warning
-MREG Output pipelining  
-DSP u_motion/cluster_x0 multiplier stage u_motion/cluster_x0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
-Related violations: <none>
-
-DPOP-2#2 Warning
-MREG Output pipelining  
-DSP u_motion/cluster_y0 multiplier stage u_motion/cluster_y0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
-Related violations: <none>
-
-DPOP-2#3 Warning
-MREG Output pipelining  
-DSP u_motion/local_num_x0 multiplier stage u_motion/local_num_x0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
-Related violations: <none>
-
-DPOP-2#4 Warning
-MREG Output pipelining  
-DSP u_motion/local_num_y0 multiplier stage u_motion/local_num_y0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
-Related violations: <none>
-
-DPOP-2#5 Warning
-MREG Output pipelining  
-DSP u_motion/read_current0 multiplier stage u_motion/read_current0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
-Related violations: <none>
-
-DPOP-2#6 Warning
-MREG Output pipelining  
-DSP u_motion/read_previous0 multiplier stage u_motion/read_previous0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
-Related violations: <none>
-
 PLCK-12#1 Warning
 Clock Placer Checks  
 Poor placement for routing between an IO pin and BUFG. 
@@ -205,102 +62,102 @@ Related violations: <none>
 
 REQP-1839#1 Warning
 RAMB36 async control check  
-The RAMB36E1 u_lcd/u_font/dout_reg_0 has an input control pin u_lcd/u_font/dout_reg_0/ADDRARDADDR[13] (net: u_lcd/u_font/sel[10]) which is driven by a register (u_lcd/h_cnt_reg[10]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+The RAMB36E1 u_lcd/u_font/dout_reg_0 has an input control pin u_lcd/u_font/dout_reg_0/ADDRARDADDR[13] (net: u_lcd/u_font/sel[10]) which is driven by a register (tracker_sys_release_reg[1]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
 Related violations: <none>
 
 REQP-1839#2 Warning
 RAMB36 async control check  
-The RAMB36E1 u_lcd/u_font/dout_reg_0 has an input control pin u_lcd/u_font/dout_reg_0/ADDRARDADDR[13] (net: u_lcd/u_font/sel[10]) which is driven by a register (u_lcd/h_cnt_reg[1]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+The RAMB36E1 u_lcd/u_font/dout_reg_0 has an input control pin u_lcd/u_font/dout_reg_0/ADDRARDADDR[13] (net: u_lcd/u_font/sel[10]) which is driven by a register (u_lcd/h_cnt_reg[10]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
 Related violations: <none>
 
 REQP-1839#3 Warning
 RAMB36 async control check  
-The RAMB36E1 u_lcd/u_font/dout_reg_0 has an input control pin u_lcd/u_font/dout_reg_0/ADDRARDADDR[13] (net: u_lcd/u_font/sel[10]) which is driven by a register (u_lcd/h_cnt_reg[2]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+The RAMB36E1 u_lcd/u_font/dout_reg_0 has an input control pin u_lcd/u_font/dout_reg_0/ADDRARDADDR[13] (net: u_lcd/u_font/sel[10]) which is driven by a register (u_lcd/h_cnt_reg[1]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
 Related violations: <none>
 
 REQP-1839#4 Warning
 RAMB36 async control check  
-The RAMB36E1 u_lcd/u_font/dout_reg_0 has an input control pin u_lcd/u_font/dout_reg_0/ADDRARDADDR[13] (net: u_lcd/u_font/sel[10]) which is driven by a register (u_lcd/h_cnt_reg[3]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+The RAMB36E1 u_lcd/u_font/dout_reg_0 has an input control pin u_lcd/u_font/dout_reg_0/ADDRARDADDR[13] (net: u_lcd/u_font/sel[10]) which is driven by a register (u_lcd/h_cnt_reg[2]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
 Related violations: <none>
 
 REQP-1839#5 Warning
 RAMB36 async control check  
-The RAMB36E1 u_lcd/u_font/dout_reg_0 has an input control pin u_lcd/u_font/dout_reg_0/ADDRARDADDR[13] (net: u_lcd/u_font/sel[10]) which is driven by a register (u_lcd/h_cnt_reg[4]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+The RAMB36E1 u_lcd/u_font/dout_reg_0 has an input control pin u_lcd/u_font/dout_reg_0/ADDRARDADDR[13] (net: u_lcd/u_font/sel[10]) which is driven by a register (u_lcd/h_cnt_reg[3]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
 Related violations: <none>
 
 REQP-1839#6 Warning
 RAMB36 async control check  
-The RAMB36E1 u_lcd/u_font/dout_reg_0 has an input control pin u_lcd/u_font/dout_reg_0/ADDRARDADDR[13] (net: u_lcd/u_font/sel[10]) which is driven by a register (u_lcd/h_cnt_reg[5]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+The RAMB36E1 u_lcd/u_font/dout_reg_0 has an input control pin u_lcd/u_font/dout_reg_0/ADDRARDADDR[13] (net: u_lcd/u_font/sel[10]) which is driven by a register (u_lcd/h_cnt_reg[4]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
 Related violations: <none>
 
 REQP-1839#7 Warning
 RAMB36 async control check  
-The RAMB36E1 u_lcd/u_font/dout_reg_0 has an input control pin u_lcd/u_font/dout_reg_0/ADDRARDADDR[13] (net: u_lcd/u_font/sel[10]) which is driven by a register (u_lcd/h_cnt_reg[6]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+The RAMB36E1 u_lcd/u_font/dout_reg_0 has an input control pin u_lcd/u_font/dout_reg_0/ADDRARDADDR[13] (net: u_lcd/u_font/sel[10]) which is driven by a register (u_lcd/h_cnt_reg[5]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
 Related violations: <none>
 
 REQP-1839#8 Warning
 RAMB36 async control check  
-The RAMB36E1 u_lcd/u_font/dout_reg_0 has an input control pin u_lcd/u_font/dout_reg_0/ADDRARDADDR[13] (net: u_lcd/u_font/sel[10]) which is driven by a register (u_lcd/h_cnt_reg[7]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+The RAMB36E1 u_lcd/u_font/dout_reg_0 has an input control pin u_lcd/u_font/dout_reg_0/ADDRARDADDR[13] (net: u_lcd/u_font/sel[10]) which is driven by a register (u_lcd/h_cnt_reg[6]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
 Related violations: <none>
 
 REQP-1839#9 Warning
 RAMB36 async control check  
-The RAMB36E1 u_lcd/u_font/dout_reg_0 has an input control pin u_lcd/u_font/dout_reg_0/ADDRARDADDR[13] (net: u_lcd/u_font/sel[10]) which is driven by a register (u_lcd/h_cnt_reg[8]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+The RAMB36E1 u_lcd/u_font/dout_reg_0 has an input control pin u_lcd/u_font/dout_reg_0/ADDRARDADDR[13] (net: u_lcd/u_font/sel[10]) which is driven by a register (u_lcd/h_cnt_reg[7]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
 Related violations: <none>
 
 REQP-1839#10 Warning
 RAMB36 async control check  
-The RAMB36E1 u_lcd/u_font/dout_reg_0 has an input control pin u_lcd/u_font/dout_reg_0/ADDRARDADDR[13] (net: u_lcd/u_font/sel[10]) which is driven by a register (u_lcd/h_cnt_reg[9]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+The RAMB36E1 u_lcd/u_font/dout_reg_0 has an input control pin u_lcd/u_font/dout_reg_0/ADDRARDADDR[13] (net: u_lcd/u_font/sel[10]) which is driven by a register (u_lcd/h_cnt_reg[8]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
 Related violations: <none>
 
 REQP-1839#11 Warning
 RAMB36 async control check  
-The RAMB36E1 u_lcd/u_font/dout_reg_0 has an input control pin u_lcd/u_font/dout_reg_0/ADDRARDADDR[13] (net: u_lcd/u_font/sel[10]) which is driven by a register (u_lcd/locked_use_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+The RAMB36E1 u_lcd/u_font/dout_reg_0 has an input control pin u_lcd/u_font/dout_reg_0/ADDRARDADDR[13] (net: u_lcd/u_font/sel[10]) which is driven by a register (u_lcd/h_cnt_reg[9]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
 Related violations: <none>
 
 REQP-1839#12 Warning
 RAMB36 async control check  
-The RAMB36E1 u_lcd/u_font/dout_reg_0 has an input control pin u_lcd/u_font/dout_reg_0/ADDRARDADDR[13] (net: u_lcd/u_font/sel[10]) which is driven by a register (u_lcd/v_cnt_reg[0]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+The RAMB36E1 u_lcd/u_font/dout_reg_0 has an input control pin u_lcd/u_font/dout_reg_0/ADDRARDADDR[13] (net: u_lcd/u_font/sel[10]) which is driven by a register (u_lcd/locked_use_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
 Related violations: <none>
 
 REQP-1839#13 Warning
 RAMB36 async control check  
-The RAMB36E1 u_lcd/u_font/dout_reg_0 has an input control pin u_lcd/u_font/dout_reg_0/ADDRARDADDR[13] (net: u_lcd/u_font/sel[10]) which is driven by a register (u_lcd/v_cnt_reg[10]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+The RAMB36E1 u_lcd/u_font/dout_reg_0 has an input control pin u_lcd/u_font/dout_reg_0/ADDRARDADDR[13] (net: u_lcd/u_font/sel[10]) which is driven by a register (u_lcd/v_cnt_reg[0]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
 Related violations: <none>
 
 REQP-1839#14 Warning
 RAMB36 async control check  
-The RAMB36E1 u_lcd/u_font/dout_reg_0 has an input control pin u_lcd/u_font/dout_reg_0/ADDRARDADDR[13] (net: u_lcd/u_font/sel[10]) which is driven by a register (u_lcd/v_cnt_reg[1]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+The RAMB36E1 u_lcd/u_font/dout_reg_0 has an input control pin u_lcd/u_font/dout_reg_0/ADDRARDADDR[13] (net: u_lcd/u_font/sel[10]) which is driven by a register (u_lcd/v_cnt_reg[10]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
 Related violations: <none>
 
 REQP-1839#15 Warning
 RAMB36 async control check  
-The RAMB36E1 u_lcd/u_font/dout_reg_0 has an input control pin u_lcd/u_font/dout_reg_0/ADDRARDADDR[13] (net: u_lcd/u_font/sel[10]) which is driven by a register (u_lcd/v_cnt_reg[2]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+The RAMB36E1 u_lcd/u_font/dout_reg_0 has an input control pin u_lcd/u_font/dout_reg_0/ADDRARDADDR[13] (net: u_lcd/u_font/sel[10]) which is driven by a register (u_lcd/v_cnt_reg[1]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
 Related violations: <none>
 
 REQP-1839#16 Warning
 RAMB36 async control check  
-The RAMB36E1 u_lcd/u_font/dout_reg_0 has an input control pin u_lcd/u_font/dout_reg_0/ADDRARDADDR[13] (net: u_lcd/u_font/sel[10]) which is driven by a register (u_lcd/v_cnt_reg[3]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+The RAMB36E1 u_lcd/u_font/dout_reg_0 has an input control pin u_lcd/u_font/dout_reg_0/ADDRARDADDR[13] (net: u_lcd/u_font/sel[10]) which is driven by a register (u_lcd/v_cnt_reg[2]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
 Related violations: <none>
 
 REQP-1839#17 Warning
 RAMB36 async control check  
-The RAMB36E1 u_lcd/u_font/dout_reg_0 has an input control pin u_lcd/u_font/dout_reg_0/ADDRARDADDR[13] (net: u_lcd/u_font/sel[10]) which is driven by a register (u_lcd/v_cnt_reg[4]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+The RAMB36E1 u_lcd/u_font/dout_reg_0 has an input control pin u_lcd/u_font/dout_reg_0/ADDRARDADDR[13] (net: u_lcd/u_font/sel[10]) which is driven by a register (u_lcd/v_cnt_reg[3]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
 Related violations: <none>
 
 REQP-1839#18 Warning
 RAMB36 async control check  
-The RAMB36E1 u_lcd/u_font/dout_reg_0 has an input control pin u_lcd/u_font/dout_reg_0/ADDRARDADDR[13] (net: u_lcd/u_font/sel[10]) which is driven by a register (u_lcd/v_cnt_reg[5]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+The RAMB36E1 u_lcd/u_font/dout_reg_0 has an input control pin u_lcd/u_font/dout_reg_0/ADDRARDADDR[13] (net: u_lcd/u_font/sel[10]) which is driven by a register (u_lcd/v_cnt_reg[4]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
 Related violations: <none>
 
 REQP-1839#19 Warning
 RAMB36 async control check  
-The RAMB36E1 u_lcd/u_font/dout_reg_0 has an input control pin u_lcd/u_font/dout_reg_0/ADDRARDADDR[13] (net: u_lcd/u_font/sel[10]) which is driven by a register (u_lcd/v_cnt_reg[6]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+The RAMB36E1 u_lcd/u_font/dout_reg_0 has an input control pin u_lcd/u_font/dout_reg_0/ADDRARDADDR[13] (net: u_lcd/u_font/sel[10]) which is driven by a register (u_lcd/v_cnt_reg[5]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
 Related violations: <none>
 
 REQP-1839#20 Warning
 RAMB36 async control check  
-The RAMB36E1 u_lcd/u_font/dout_reg_0 has an input control pin u_lcd/u_font/dout_reg_0/ADDRARDADDR[13] (net: u_lcd/u_font/sel[10]) which is driven by a register (u_lcd/v_cnt_reg[7]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+The RAMB36E1 u_lcd/u_font/dout_reg_0 has an input control pin u_lcd/u_font/dout_reg_0/ADDRARDADDR[13] (net: u_lcd/u_font/sel[10]) which is driven by a register (u_lcd/v_cnt_reg[6]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
 Related violations: <none>
 
 REQP-1840#1 Warning
@@ -410,7 +267,7 @@ Related violations: <none>
 
 RTSTAT-10#1 Warning
 No routable loads  
-8 net(s) have no routable loads. The problem bus(es) and/or net(s) are u_motion/frame0_reg_1_3_i_1_n_0,
+9 net(s) have no routable loads. The problem bus(es) and/or net(s) are u_ov5640_capture/WEA[1], u_ov5640_capture/write_bank_reg_3[1],
 u_snn/u_core/u_chain/u_conv1/u_lif/vmem_reg_0_i_23__0_n_0,
 u_snn/u_core/u_chain/u_conv1/u_lif/vmem_reg_10_i_11__0_n_0,
 u_snn/u_core/u_chain/u_conv1/u_lif/vmem_reg_13_i_10_n_0,

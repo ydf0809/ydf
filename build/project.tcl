@@ -44,6 +44,12 @@ close $f
 set loops 0
 if {[regexp -nocase {checking loops [(]([1-9][0-9]*)[)]} $timing] ||
     [regexp {TIMING-23} $methodology]} { set loops 1 }
+set coverage_bad 0
+foreach name {no_clock unconstrained_internal_endpoints latch_loops} {
+    set pattern [format {checking %s \(([0-9]+)\)} $name]
+    if {![regexp $pattern $timing full count] || $count != 0} { set coverage_bad 1 }
+}
+report_cdc -details -file [file join $out cdc.rpt]
 set f [open [file join $out metrics.txt] w]
 puts $f "tool_version=[version -short]"
 puts $f "top=$top"
@@ -52,8 +58,9 @@ puts $f "wns=$wns"
 puts $f "whs=$whs"
 puts $f "drc_errors=$errors"
 puts $f "loop_warning_present=$loops"
+puts $f "clock_coverage_failed=$coverage_bad"
 close $f
-if {$wns < 0 || $whs < 0 || $errors != 0 || $loops != 0} {
+if {$wns < 0 || $whs < 0 || $errors != 0 || $loops != 0 || $coverage_bad != 0} {
     error "Candidate rejected: inspect timing, DRC and methodology reports"
 }
 close_design

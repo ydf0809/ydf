@@ -1,12 +1,14 @@
-INFO: [VRFC 10-2263] Analyzing Verilog file "[repository]/projects/realfinal_min_102404/realfinal.srcs/sources_1/new/defense_spin.v" into library work
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "[repository]/projects/realfinal_min_102404/realfinal.srcs/sources_1/new/defense_spin.v" into library work
 INFO: [VRFC 10-311] analyzing module defense_spin
-INFO: [VRFC 10-2263] Analyzing Verilog file "[repository]/projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_defense_spin.v" into library work
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "[repository]/projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_defense_spin.v" into library work
 INFO: [VRFC 10-311] analyzing module tb_defense_spin
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/vivado2026.1/2026.1/data/verilog/src/glbl.v" into library work
+INFO: [VRFC 10-311] analyzing module glbl
 
 Vivado Simulator v2026.1
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
-Running: D:/vivado2026.1/2026.1/Vivado/bin/unwrapped/win64.o/xelab.exe -L unisims_ver --timescale 1ns/1ps tb_defense_spin -s lower_tb_defense_spin 
+Running: D:/vivado2026.1/2026.1/Vivado/bin/unwrapped/win64.o/xelab.exe -L unisims_ver --timescale 1ns/1ps tb_defense_spin glbl -s lower_tb_defense_spin 
 Multi-threading is on. Using 14 slave threads.
 Starting static elaboration
 Pass Through NonSizing Optimizer
@@ -16,6 +18,7 @@ Completed simulation data flow analysis
 Time Resolution for simulation is 1ps
 Compiling module work.defense_spin(CLK_HZ=100000)
 Compiling module work.tb_defense_spin
+Compiling module work.glbl
 Built simulation snapshot lower_tb_defense_spin
 
 
@@ -23,7 +26,7 @@ Built simulation snapshot lower_tb_defense_spin
   **** SW Build 6511674 on Tue Jun 16 11:02:23 MDT 2026
   **** IP Build 6504888 on Tue Jun 09 09:05:25 MDT 2026
   **** SharedData Build 6501428 on Mon Jun 08 17:34:18 MDT 2026
-  **** Start of session at: Mon Nov  2 02:43:43 2026
+  **** Start of session at: Tue Nov  3 13:57:13 2026
     ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
     ** Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
 
@@ -41,6 +44,6 @@ TRACE spin stop at 14550165000 after 199999 cycles
 TRACE spin start at 15450165000, yaw=850 cx=535
 TRACE spin stop at 16050165000 after 19999 cycles
 DEFENSE_SPIN_PASS
-$finish called at time : 16050195 ns : File "[repository]/projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_defense_spin.v" Line 140
+$finish called at time : 16050195 ns : File "[repository]/projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_defense_spin.v" Line 126
 ## quit
-INFO: [Common 17-206] Exiting xsim at Mon Nov  2 02:43:45 2026...
+INFO: [Common 17-206] Exiting xsim at Tue Nov  3 13:57:15 2026...

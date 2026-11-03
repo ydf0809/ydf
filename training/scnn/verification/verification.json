@@ -1,0 +1,283 @@
+{
+  "status": "PASS",
+  "source_sha256": "PASS",
+  "parameter_authority": "final-engine ROM values; byte-exact MEM source",
+  "canonical_coe_mem_agreement": "PASS",
+  "weight_source_audit": {
+    "schema": "scnn-weight-source-audit-v1",
+    "training_initialization": "MEM values verified against final-engine drone_data_roms.v",
+    "coe_role": "historical alternative COE reference; not active deployment weights",
+    "final_engine_rom_sha256": "cdadd7b996b351b9c30fadc8538af787ef8515e41a507db86b867e9f33934325",
+    "layers": {
+      "conv1": {
+        "parameter_count": 216,
+        "coe_sha256": "a5930a3515f819abb93f7d8b7dd21694237cf6b4e0e266a5b6725cef64871a70",
+        "mem_sha256": "4e91345630e9276042c6fe6b6cd5760834070038f78af97431431f152db5c3ac",
+        "coe_values_match_mem": false,
+        "coe_mem_different_values": 216,
+        "first_differences": [
+          {
+            "index": 0,
+            "coe": -916,
+            "mem": -1029
+          },
+          {
+            "index": 1,
+            "coe": -746,
+            "mem": 199
+          },
+          {
+            "index": 2,
+            "coe": -1203,
+            "mem": -680
+          },
+          {
+            "index": 3,
+            "coe": -913,
+            "mem": 129
+          },
+          {
+            "index": 4,
+            "coe": 144,
+            "mem": -873
+          },
+          {
+            "index": 5,
+            "coe": 1881,
+            "mem": 263
+          },
+          {
+            "index": 6,
+            "coe": -211,
+            "mem": -1552
+          },
+          {
+            "index": 7,
+            "coe": -1362,
+            "mem": 387
+          }
+        ],
+        "final_engine_rom_matches_mem": true,
+        "rom_words": 9
+      },
+      "conv2": {
+        "parameter_count": 1152,
+        "coe_sha256": "03cff75edfaf6b31714fc1aa5c4e0452f7c2be258ce2fbbe4fd8363151d5f0b0",
+        "mem_sha256": "75c3385aa07a26ccb95ef110e8272211c71f3a68c245d23aeb543d64f56db151",
+        "coe_values_match_mem": false,
+        "coe_mem_different_values": 1151,
+        "first_differences": [
+          {
+            "index": 0,
+            "coe": 1691,
+            "mem": -269
+          },
+          {
+            "index": 1,
+            "coe": 1779,
+            "mem": 276
+          },
+          {
+            "index": 2,
+            "coe": -1403,
+            "mem": 416
+          },
+          {
+            "index": 3,
+            "coe": -505,
+            "mem": -104
+          },
+          {
+            "index": 4,
+            "coe": -1353,
+            "mem": -32
+          },
+          {
+            "index": 5,
+            "coe": -762,
+            "mem": 146
+          },
+          {
+            "index": 6,
+            "coe": -209,
+            "mem": 241
+          },
+          {
+            "index": 7,
+            "coe": 623,
+            "mem": -384
+          }
+        ],
+        "final_engine_rom_matches_mem": true,
+        "rom_words": 9
+      },
+      "fc0": {
+        "parameter_count": 1024,
+        "coe_sha256": "28e2408f2ee89017a4afcfae828cb70ebe38f868835773ec205e32e6a9d88393",
+        "mem_sha256": "82d213199c01d8577a0df993fe749b1fcfb02cda89c43cc77d5aa4fdf7ba8a35",
+        "coe_values_match_mem": false,
+        "coe_mem_different_values": 1023,
+        "first_differences": [
+          {
+            "index": 0,
+            "coe": 18,
+            "mem": 577
+          },
+          {
+            "index": 1,
+            "coe": 97,
+            "mem": 483
+          },
+          {
+            "index": 2,
+            "coe": 16,
+            "mem": 542
+          },
+          {
+            "index": 3,
+            "coe": 91,
+            "mem": 670
+          },
+          {
+            "index": 4,
+            "coe": -35,
+            "mem": -54
+          },
+          {
+            "index": 5,
+            "coe": 86,
+            "mem": -120
+          },
+          {
+            "index": 6,
+            "coe": -1,
+            "mem": 224
+          },
+          {
+            "index": 7,
+            "coe": -43,
+            "mem": 606
+          }
+        ],
+        "final_engine_rom_matches_mem": true,
+        "rom_words": 256
+      },
+      "fc1": {
+        "parameter_count": 1024,
+        "coe_sha256": "19aa6598bff25b890e4b0c04ea9cf5d5e55cd1bc60cfcc2a42881605a97d6bad",
+        "mem_sha256": "70d28b6a896c2c3a3d45857b6b3f0dc261b0f284a196eab2ef71e4366882d3f3",
+        "coe_values_match_mem": false,
+        "coe_mem_different_values": 1024,
+        "first_differences": [
+          {
+            "index": 0,
+            "coe": -16,
+            "mem": -230
+          },
+          {
+            "index": 1,
+            "coe": -221,
+            "mem": -451
+          },
+          {
+            "index": 2,
+            "coe": -53,
+            "mem": -497
+          },
+          {
+            "index": 3,
+            "coe": -211,
+            "mem": -580
+          },
+          {
+            "index": 4,
+            "coe": 8,
+            "mem": -83
+          },
+          {
+            "index": 5,
+            "coe": 57,
+            "mem": 323
+          },
+          {
+            "index": 6,
+            "coe": -140,
+            "mem": -109
+          },
+          {
+            "index": 7,
+            "coe": -123,
+            "mem": -582
+          }
+        ],
+        "final_engine_rom_matches_mem": true,
+        "rom_words": 256
+      }
+    }
+  },
+  "conversion": {
+    "weights_roundtrip": 3416,
+    "runtime_mem_files_byte_identical_after_export": 4,
+    "final_engine_rom_matches_runtime_mem": "PASS",
+    "new_weight_coe_mem_differences": {
+      "conv1": 216,
+      "conv2": 1151,
+      "fc0": 1023,
+      "fc1": 1024
+    },
+    "rom_embedding": "PASS",
+    "independent_lane_sentinels": "PASS",
+    "invalid_inputs": "PASS"
+  },
+  "functional_model": {
+    "final_engine_parameters": {
+      "model_parameter_count": 3416,
+      "signed_lif_edges": "PASS",
+      "encoder_reset_alignment": "PASS",
+      "reference_frame": {
+        "spike_counts": [
+          0,
+          50
+        ],
+        "steps_checked": 50,
+        "class_index": 1,
+        "integer_reference": "PASS"
+      },
+      "blank_frame": {
+        "spike_counts": [
+          0,
+          0
+        ],
+        "steps_checked": 50,
+        "class_index": 0,
+        "integer_reference": "PASS"
+      }
+    },
+    "new_weight_coe_parameters": {
+      "model_parameter_count": 3416,
+      "signed_lif_edges": "PASS",
+      "encoder_reset_alignment": "PASS",
+      "reference_frame": {
+        "spike_counts": [
+          50,
+          0
+        ],
+        "steps_checked": 50,
+        "class_index": 0,
+        "integer_reference": "PASS"
+      },
+      "blank_frame": {
+        "spike_counts": [
+          0,
+          0
+        ],
+        "steps_checked": 50,
+        "class_index": 0,
+        "integer_reference": "PASS"
+      }
+    }
+  },
+  "relocation": "PASS",
+  "real_dataset_training": "NOT RUN: no dataset supplied",
+  "rtl_simulation_and_bitstream": "NOT RUN: existing FPGA project is not modified"
+}

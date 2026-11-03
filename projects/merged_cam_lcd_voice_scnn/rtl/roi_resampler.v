@@ -1,12 +1,6 @@
+// Average each 2x2 RGB sample from a 128x128 ROI into the 64x64 network frame.
 `timescale 1ns / 1ps
 
-// Exact 2:1 resampler for a 128x128 RGB565 ROI.
-//
-// The network input coordinate (u,v) is the equal-weight bilinear average of
-// source pixels (2u,2v), (2u+1,2v), (2u,2v+1), (2u+1,2v+1).  A single
-// 128-pixel line buffer is sufficient because the camera stream arrives in
-// raster order.  The ROI coordinates are latched shortly after frame sync so
-// the scheduler can select the ROI for this frame without tearing the capture.
 module roi_resampler #(
     parameter integer ROI_W = 128,
     parameter integer OUT_W = 64,
@@ -69,8 +63,6 @@ module roi_resampler #(
     wire [7:0] line_g  = {line_g6, line_g6[5:4]};
     wire [7:0] line_b  = {line_b5, line_b5[4:2]};
 
-    // At an odd relative x, the line-buffer output is the top-right pixel,
-    // and top_left/bottom_left were captured on the previous even pixel.
     wire [9:0] sum_r = {2'b00, top_left_r} + {2'b00, line_r} +
                        {2'b00, bottom_left_r} + {2'b00, cur_r};
     wire [9:0] sum_g = {2'b00, top_left_g} + {2'b00, line_g} +
@@ -78,8 +70,6 @@ module roi_resampler #(
     wire [9:0] sum_b = {2'b00, top_left_b} + {2'b00, line_b} +
                        {2'b00, bottom_left_b} + {2'b00, cur_b};
 
-    // Keep the line store out of the reset-sensitive state process so Vivado
-    // can infer a compact LUTRAM instead of 2048 individual registers.
     always @(posedge clk) begin
         if (capture_active && pixel_valid && in_roi && !rel_y[0])
             line_mem[rel_x] <= pixel_rgb565;
@@ -120,15 +110,14 @@ module roi_resampler #(
                     start_delay <= start_delay + 1'b1;
                 end
             end else if (capture_active && !enable) begin
-                // The SCNN became busy before a complete frame was captured.
-                // Do not start another partial frame until the next vsync.
+
                 capture_active <= 1'b0;
             end
 
             if (capture_active && pixel_valid && in_roi) begin
                 if (rel_y[0]) begin
                     if (!rel_x[0]) begin
-                        // Odd source row, left column of a 2x2 output cell.
+
                         top_left_r    <= line_r;
                         top_left_g    <= line_g;
                         top_left_b    <= line_b;
@@ -136,7 +125,7 @@ module roi_resampler #(
                         bottom_left_g <= cur_g;
                         bottom_left_b <= cur_b;
                     end else begin
-                        // Odd source row, right column: emit the average.
+
                         out_we   <= 1'b1;
                         out_addr <= {rel_y[6:1], rel_x[6:1]};
                         out_data <= {sum_r[9:2], sum_g[9:2], sum_b[9:2]};

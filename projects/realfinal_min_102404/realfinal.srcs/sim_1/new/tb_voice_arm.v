@@ -1,54 +1,28 @@
-//----------------------------------------------------------------------------------------
-// File name:           tb_voice_arm
-// Descriptions:        lower board link + "CARGO starts the arm" path
-//
-// DUT: board_link (ECHO_EN=1, the lower board) + link_demux + arm_voice_trigger
-// Frames are bit-banged onto the link input, exactly like the upper board would send them.
-//
-// Checked here:
-//   1. reset state: arm_req low, arm_rst_n high
-//   2. frame AA 55 05 55 AA -> arm_req goes high AND arm_rst_n is pulled low for RST_HOLD_MS
-//   3. the frame is echoed back on the wire (that is what the upper board uses as an ack)
-//   4. frame AA 55 02 55 AA -> arm_req stays as it was, NO new reset pulse
-//   5. a broken frame   -> no reset pulse, nothing echoed
-//   6. saying CARGO (05) again -> a second reset pulse, so the arm runs again
-//   7. a tracking status frame (bit7=1, e.g. 0x85) -> no reset pulse, and link_demux
-//      latches the five sensors out of it
-//
-// How to run: scripts\sim_voice_arm.bat
-// CLK_FREQ / UART_BPS below are placeholders; the sim script substitutes the real values
-// into a copy and compiles that, so nothing is passed on the command line.
-//----------------------------------------------------------------------------------------
 `timescale 1ns / 1ps
 
 module tb_voice_arm;
 
-//parameter define
-//placeholders -- the simulation script rewrites these two lines
 parameter CLK_FREQ = 33333333;
 parameter UART_BPS = 115200;
 
 localparam CLK_PERIOD  = 1000000000 / CLK_FREQ;
 localparam BIT_PERIOD  = 1000000000 / UART_BPS;
-localparam RST_HOLD_CLK = CLK_FREQ / 1000;      // arm_voice_trigger RST_HOLD_MS = 1
+localparam RST_HOLD_CLK = CLK_FREQ / 1000;
 
-//reg define
 reg        clk       ;
 reg        rst_n     ;
-reg        frames    ;      // bit-banged onto the link input
+reg        frames    ;
 integer    errors    ;
 integer    i         ;
 integer    f0        ;
 
-//captured (clocked block writes these only)
-reg [31:0] low_clk   ;      // clocks spent with arm_rst_n low (current pulse)
+reg [31:0] low_clk   ;
 reg [31:0] last_low  ;
 reg [15:0] fall_cnt  ;
 reg [15:0] rise_cnt  ;
 reg [15:0] mon_cnt   ;
 reg [7:0]  mon_cmd   ;
 
-//wire define
 wire       echo_line ;
 wire [7:0] peer_cmd  ;
 wire       peer_valid;
@@ -65,9 +39,6 @@ wire [7:0] mon_id    ;
 wire       mon_valid ;
 wire       mon_derr  ;
 
-//*****************************************************
-//**                    DUT
-//*****************************************************
 board_link #(
     .CLK_FREQ   (CLK_FREQ ),
     .UART_BPS   (UART_BPS ),
@@ -108,7 +79,6 @@ arm_voice_trigger #(
     .arm_rst_n      (arm_rst_n )
     );
 
-//monitor: listens on the echo line, so the bytes going back to the upper board are checked
 uart_rx #(
     .CLK_FREQ   (CLK_FREQ ),
     .UART_BPS   (UART_BPS ))
@@ -131,17 +101,14 @@ asr_frame_decode u_mon_decode(
     .frame_err      (mon_derr  )
     );
 
-//*****************************************************
-//**      capture
-//*****************************************************
 initial begin
     clk = 1'b0;
     forever #(CLK_PERIOD/2) clk = ~clk;
 end
 
 reg arm_rst_n_d;
-wire rst_fall = arm_rst_n_d & ~arm_rst_n;   //arm_rst_n just went low
-wire rst_rise = ~arm_rst_n_d & arm_rst_n;   //arm_rst_n just went back high
+wire rst_fall = arm_rst_n_d & ~arm_rst_n;
+wire rst_rise = ~arm_rst_n_d & arm_rst_n;
 
 always @(posedge clk or negedge rst_n) begin
     if(!rst_n) begin
@@ -172,9 +139,6 @@ always @(posedge clk or negedge rst_n) begin
     end
 end
 
-//*****************************************************
-//**      helpers
-//*****************************************************
 task send_byte;
     input [7:0] data;
     integer     b;
@@ -197,7 +161,6 @@ task send_frame;
     end
 endtask
 
-//wait for one more arm reset pulse than f0, then check its width
 task wait_pulse;
     input integer bits;
     begin
@@ -208,7 +171,7 @@ task wait_pulse;
             errors = errors + 1;
         end
         else begin
-            //wait for it to finish, then check the width
+
             i = 0;
             while((rise_cnt < fall_cnt) && (i < 200 * BIT_PERIOD)) begin #1; i = i + 1; end
             if(last_low < RST_HOLD_CLK - 4 || last_low > RST_HOLD_CLK + 4) begin
@@ -222,9 +185,6 @@ task wait_pulse;
     end
 endtask
 
-//*****************************************************
-//**      main
-//*****************************************************
 initial begin
     errors = 0;
     rst_n  = 1'b0;
@@ -239,7 +199,6 @@ initial begin
     $display("   voice CARGO (cmd=5) must start the arm action");
     $display("==================================================");
 
-    //--------------------------------------------------
     $display("--- 1) reset state ---");
     if(arm_req !== 1'b0 || arm_rst_n !== 1'b1) begin
         $display("[FAIL] after reset: arm_req=%b arm_rst_n=%b (expected 0 / 1)",
@@ -249,7 +208,6 @@ initial begin
     else
         $display("[ OK ] after reset: arm_req=0, arm_rst_n=1 (arm held, not running)");
 
-    //--------------------------------------------------
     $display("--- 2) upper board says CARGO: AA 55 05 55 AA ---");
     f0 = fall_cnt;
     send_frame(8'hAA, 8'h55, 8'h05, 8'h55, 8'hAA);
@@ -276,7 +234,6 @@ initial begin
     else
         $display("[ OK ] echoed AA 55 05 55 AA back to the upper board");
 
-    //--------------------------------------------------
     $display("--- 3) a different command (02 FOLLOW) must not touch the arm ---");
     f0 = fall_cnt;
     send_frame(8'hAA, 8'h55, 8'h02, 8'h55, 8'hAA);
@@ -288,10 +245,9 @@ initial begin
     else
         $display("[ OK ] cmd=2 produced no reset pulse");
 
-    //--------------------------------------------------
     $display("--- 4) a broken frame must not touch the arm ---");
     f0 = fall_cnt;
-    send_frame(8'hAA, 8'h55, 8'h05, 8'h55, 8'h00);     // wrong tail
+    send_frame(8'hAA, 8'h55, 8'h05, 8'h55, 8'h00);
     #(120 * BIT_PERIOD);
     if(fall_cnt != f0) begin
         $display("[FAIL] a broken frame produced a reset pulse");
@@ -300,7 +256,6 @@ initial begin
     else
         $display("[ OK ] broken frame ignored (no reset pulse)");
 
-    //--------------------------------------------------
     $display("--- 5) saying CARGO again must run the action again ---");
     f0 = fall_cnt;
     send_frame(8'hAA, 8'h55, 8'h05, 8'h55, 8'hAA);
@@ -312,10 +267,9 @@ initial begin
     else
         $display("[ OK ] second CARGO produced one more reset pulse");
 
-    //--------------------------------------------------
     $display("--- 7) a tracking status frame (0x85) must not start the arm ---");
     f0 = fall_cnt;
-    send_frame(8'hAA, 8'h55, 8'h85, 8'h55, 8'hAA);     // bit7=1: tracking, pattern=00101
+    send_frame(8'hAA, 8'h55, 8'h85, 8'h55, 8'hAA);
     #(150 * BIT_PERIOD);
     if(fall_cnt != f0) begin
         $display("[FAIL] a tracking frame produced an arm reset pulse");

@@ -1,0 +1,24 @@
+
+****** xsim v2026.1 (64-bit)
+  **** SW Build 6511674 on Tue Jun 16 11:02:23 MDT 2026
+  **** IP Build 6504888 on Tue Jun 09 09:05:25 MDT 2026
+  **** SharedData Build 6501428 on Mon Jun 08 17:34:18 MDT 2026
+  **** Start of session at: Tue Nov  3 02:43:44 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source xsim.dir/tb_arm_red_track_sim/xsim_script.tcl
+# xsim {tb_arm_red_track_sim} -autoloadwcfg -runall
+Time resolution is 1 ps
+run -all
+TRACE initial move: pos3=700 pos4=302 pos6=505
+TRACE servo4 low: pos3=700 pos4=200 servo3_count=1
+TRACE servo3 extend: pos3=720 pos4=200 servo3_count=2
+TRACE servo3 home: pos3=700 pos4=200
+TRACE servo4 resume: pos3=700 pos4=202
+TRACE home pose resent: pos3=700 pos4=300 pos6=500 move_time=1000
+TRACE tracking resumed, move_time=100
+ARM_RED_TRACK_PASS pos3=700 pos4=294 pos6=505 servo5_packets=2
+$finish called at time : 1066215 ns : File "[previous_source_location]/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_arm_red_track.v" Line 184
+exit
+INFO: [Common 17-206] Exiting xsim at Tue Nov  3 02:43:46 2026...
