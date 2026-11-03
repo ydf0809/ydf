@@ -46,14 +46,14 @@ python build/verify_relocation.py --vivado-bin "<vivado_install>/bin"
 | build/ | 构建与检查脚本、资源/时序/DRC 报告 | 可复现构建 |
 | board/ | 引脚、烧录入口、bit、实测记录入口 | 上板工程；实测尚缺 |
 | data/ | 模型卡、测试输入及参考输出说明 | 参考数据 |
-| skill/ | [三类踩坑清单](skill/README.md) 与检查方法 | 3.3.5.2 |
+| skill/ | [SCNN 训练部署流水线、提示词工作流与三类踩坑清单](skill/README.md) | 3.3.5.2 |
 | report/ | 设计报告、协作节选、纠错案例、验证及缺项 | 3.3.5.3—3.3.5.5 |
 
 指南允许替代目录布局；文件名使用英文，`README.md`、`LICENSE` 沿用标准名称。源包中的中文导入目录仅在本副本映射为 `imported` 并同步 XPR；可选历史增量 DCP 不作为从零构建依赖。
 
 ## 协作与可复用经验
 
-[协作报告](report/ai_collaboration.md) 区分原文节选、编辑分析和当前验证，附 [25 条真实可见消息及来源索引](report/collaboration/README.md)。技能按“现象—触发—定位—处理—验证—边界”整理，覆盖权重混用、实例参数覆盖、目标身份、CDC、I2C 原子性、时序覆盖及旧产物误用；不编造多智能体过程或优化收益。
+[协作报告](report/ai_collaboration.md) 区分原文节选、编辑分析和当前验证，附 [25 条真实可见消息及来源索引](report/collaboration/README.md)。技能按“现象—触发—定位—处理—验证—边界”整理，覆盖权重混用、实例参数覆盖、目标身份、CDC、I2C 原子性、时序覆盖及旧产物误用；新增 [SCNN 训练部署技能](skill/scnn-training-pipeline/SKILL.md) 和六类可复用提示词工作流；不编造多智能体过程或优化收益。
 
 ## 来源、许可与发布
 

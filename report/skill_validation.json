@@ -1,0 +1,53 @@
+{
+  "status": "PASS",
+  "completed_at": "2026-11-03T19:04:53.320657+08:00",
+  "script_sha256": "a1713725a57dbaeed8cbdb77997a0673b69caa93875788e8320432b59febd696",
+  "reference_root": "training/scnn",
+  "model_spec": {
+    "input_shape_chw": [
+      3,
+      64,
+      64
+    ],
+    "input_channel_order": [
+      "B",
+      "G",
+      "R"
+    ],
+    "class_names": [
+      "not_drone",
+      "drone"
+    ],
+    "kernel_size": 3,
+    "padding": 1,
+    "bias": false,
+    "weight_bits": 16,
+    "weight_fraction_bits": 12,
+    "membrane_bits": 26,
+    "time_steps": 50,
+    "lif_tau": 2,
+    "lif_threshold_q": 4096,
+    "lif_reset_q": 0
+  },
+  "verification_record": "PASS",
+  "commands": [
+    {
+      "command": [
+        "python",
+        "verify.py"
+      ],
+      "exit_code": 0,
+      "passed": true
+    },
+    {
+      "command": [
+        "python",
+        "train.py",
+        "--smoke-test"
+      ],
+      "exit_code": 0,
+      "passed": true
+    }
+  ],
+  "errors": []
+}

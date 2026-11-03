@@ -89,7 +89,7 @@ def audit(root):
     for path in files:
         rel = path.relative_to(root)
         for part in rel.parts:
-            if part in ['README.md', 'LICENSE']:
+            if part in ['README.md', 'LICENSE', 'SKILL.md']:
                 continue
             if not re.fullmatch('[a-z0-9_.-]+', part):
                 errors.append({'kind': 'filename', 'path': rel.as_posix()})

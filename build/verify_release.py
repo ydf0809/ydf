@@ -14,6 +14,14 @@ def verify():
     for relative, digest in checker.get('script_sha256', {}).items():
         if not (ROOT / relative).is_file() or sha256(ROOT / relative) != digest:
             errors.append('checker self-test is stale: ' + relative)
+    skill = json.loads((ROOT / 'report/skill_validation.json').read_text(encoding='utf-8'))
+    skill_checker = 'skill/scnn-training-pipeline/scripts/check_reference.py'
+    if (skill.get('status') != 'PASS'
+            or sha256(ROOT / skill_checker)
+            != skill.get('script_sha256')
+            or not skill.get('commands')
+            or not all(item.get('passed') for item in skill['commands'])):
+        errors.append('SCNN skill validation is failed or stale')
     summary = json.loads((ROOT / 'sim/results/summary.json').read_text(encoding='utf-8'))
     for board, info in BOARDS.items():
         project = ROOT / info['directory']

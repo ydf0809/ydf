@@ -1,0 +1,3 @@
+interface:
+  display_name: "FPGA SCNN Training Pipeline"
+  short_description: "Train, quantize, verify, and deploy SCNN models to FPGA ROMs"
