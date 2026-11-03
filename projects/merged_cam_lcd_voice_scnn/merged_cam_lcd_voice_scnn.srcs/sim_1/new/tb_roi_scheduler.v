@@ -115,6 +115,7 @@ module tb_roi_scheduler;
             errors = errors + 1;
         end
 
+        // Three positive results in a five-result window enter TRACK.
         pulse_label(1'b1);
         if (tracking || verifying) begin
             $display("ERROR: incomplete SEARCH history entered TRACK");
@@ -129,6 +130,8 @@ module tb_roi_scheduler;
             errors = errors + 1;
         end
 
+        // Brief misses retain lock.  After 45 misses, the last ROI is checked
+        // again by the network before SEARCH can resume.
         motion_valid = 1'b0;
         for (i = 0; i < 44; i = i + 1) pulse_frame;
         if (!tracking || roi_x0 != 236 || roi_y0 != 136) begin
@@ -152,7 +155,7 @@ module tb_roi_scheduler;
             errors = errors + 1;
         end
 
-        pulse_frame;
+        pulse_frame; // clear the old TRACK candidate before re-arming SEARCH
         set_motion(9'd80, 9'd99, 8'd60, 8'd79);
         pulse_frame;
         if (tracking || !verifying || roi_x0 != 116 || roi_y0 != 76) begin
@@ -173,6 +176,7 @@ module tb_roi_scheduler;
             errors = errors + 1;
         end
 
+        // A local motion update follows immediately.
         set_motion(9'd85, 9'd104, 8'd60, 8'd79);
         roi_hold = 1'b1;
         pulse_frame;
@@ -192,6 +196,7 @@ module tb_roi_scheduler;
             errors = errors + 1;
         end
 
+        // A single remote candidate must not move the red ROI.
         set_motion(9'd220, 9'd239, 8'd150, 8'd169);
         pulse_frame;
         if (!tracking || roi_x0 != 126 || roi_y0 != 76) begin
@@ -209,12 +214,15 @@ module tb_roi_scheduler;
             errors = errors + 1;
         end
 
+        // Failed remote verification (only two positives) restores the old ROI.
         pulse_three_of_five(0);
         if (!tracking || verifying || roi_x0 != 126 || roi_y0 != 76) begin
             $display("ERROR: failed REACQUIRE did not restore previous ROI");
             errors = errors + 1;
         end
 
+        // A persistent remote candidate that passes 3-of-5 classifications may
+        // replace the old target.
         pulse_frame;
         pulse_frame;
         pulse_frame;
@@ -228,6 +236,7 @@ module tb_roi_scheduler;
             errors = errors + 1;
         end
 
+        // Classification flicker while motion exists cannot end TRACK.
         for (i = 0; i < 20; i = i + 1)
             pulse_label(1'b0);
         if (!tracking) begin
@@ -235,6 +244,8 @@ module tb_roi_scheduler;
             errors = errors + 1;
         end
 
+        // At a noncentral ROI, the same recheck keeps the previous coordinates
+        // while the classifier decides whether the target was truly lost.
         motion_valid = 1'b0;
         for (i = 0; i < 44; i = i + 1) pulse_frame;
         if (!tracking) begin
@@ -257,7 +268,7 @@ module tb_roi_scheduler;
             $display("ERROR: idle global SEARCH recentered the last tracked ROI");
             errors = errors + 1;
         end
-
+        // VERIFY is abandoned when its motion candidate disappears.
         set_motion(9'd80, 9'd99, 8'd60, 8'd79);
         pulse_frame;
         pulse_label(1'b1);
@@ -274,6 +285,8 @@ module tb_roi_scheduler;
             errors = errors + 1;
         end
 
+        // A result for the old crop must arrive before VERIFY can switch to
+        // a new motion candidate.
         set_motion(9'd80, 9'd99, 8'd60, 8'd79);
         pulse_frame;
         if (!verifying || roi_x0 != 116 || roi_y0 != 76) begin

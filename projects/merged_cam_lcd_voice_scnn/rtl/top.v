@@ -1,38 +1,69 @@
-// Upper-board camera, SCNN, voice and inter-board control integration.
 `timescale 1ns / 1ps
-
+//============================================================================
+// top.v  （合并工程：上层 摄像头+语音+板间链路 + 无人机版 SCNN 识别）
+//
+//  两个老工程都只读不动，这个文件是它们顶层功能的合并版：
+//
+//  A. 上层原有通路（一字未改的行为）
+//     sys_clk 33.333MHz -> i2c -> OV5640 中央 600x400 窗口 -> 帧缓存 -> LCD
+//     LU-ASR02 语音 -> mode[2:0] -> 发板间链路给下层板
+//     五路循迹 + 目标框 -> upper_link_send -> board_link
+//     目标框 = SCNN 锁定无人机的 ROI 中心（锁定才发，彩色目标跟踪已删除）
+//
+//  B. 无人机识别、全局搜索、锁定与追随采用 04a 功能
+//     300x200 帧差检测、移动候选优先、5 次确认、局部跟随/重新捕获
+//     锁定后每 2 秒复核；连续 5 次原始无人机脉冲数 <=10 才按此通道脱锁
+//     roi_resampler 从 600x400 原始像素取 ROI，2x2 平均缩成 64x64
+//     snn_cnn_top 两分类脉冲网络 -> DRONE / NOT DRONE 脉冲计数
+//
+//  C. 为了塞进 xc7z020 的 140 块 BRAM，唯一的改动：帧缓存 600x400 -> 300x200
+//     600x400 RGB565 一项就 128 块（全片 91%），加 SCNN(41)+帧差(32) 必然超；
+//     预览降到 300x200（32 块）后总占用 32+32+41+2=107 块，识别精度不受影响
+//     （roi_resampler 吃的是摄像头全分辨率像素，不经过帧缓存）。
+//     显示端按 2x2 放大回 600x400 窗口，另加文字/框叠加。
+//
+//  D. 显示（lcd_cam_text_scnn.v）
+//     左上："DRONE LOCK"（仅锁定无人机时）
+//     右上两行："DRONE: nn" / "NOT DRONE: nn"
+//     画面里只有一个框：全局搜索/验证绿、锁定红，与 SCNN ROI 同位置
+//============================================================================
 module top(
+    // ------- 系统 -------
+    input  wire        sys_clk,        // N18  33.333MHz 板载晶振
+    input  wire        sys_rst_n,      // W9  KEY, 低有效复位
+    output wire        led,            // R19  调试灯：初始化完成后闪烁
 
-    input  wire        sys_clk,
-    input  wire        sys_rst_n,
-    output wire        led,
+    // ------- OV5640 摄像头 (板载接口, LVCMOS33) -------
+    input  wire        cam_pclk,       // V15  像素时钟
+    input  wire        cam_vsync,      // T10
+    input  wire        cam_href,       // T12
+    input  wire [7:0]  cam_data,       // W13/U13/V13/W14/Y14/D18/W15/F17
+    output wire        cam_rst_n,      // V12  OV5640 RESETB(低有效)，拉高=工作
+    output wire        cam_pwdn,       // W16  电源掉电，0=工作
+    output wire        cam_scl,        // T11  SCCB SCL
+    inout  wire        cam_sda,        // U12  SCCB SDA
 
-    input  wire        cam_pclk,
-    input  wire        cam_vsync,
-    input  wire        cam_href,
-    input  wire [7:0]  cam_data,
-    output wire        cam_rst_n,
-    output wire        cam_pwdn,
-    output wire        cam_scl,
-    inout  wire        cam_sda,
+    // ------- ATK-4384 RGB888 800x480 (板载 RGB LCD 座) -------
+    output wire        lcd_clk,        // U18  33.333MHz 像素时钟
+    output wire        lcd_hs,         // U19
+    output wire        lcd_vs,         // T17
+    output wire        lcd_de,         // R18
+    output wire        lcd_bl,         // N17  背光，高=亮
+    output wire        lcd_rst,        // U20  屏复位，高=工作
+    output wire [23:0] lcd_rgb,        // U14..L20  {R[7:0], G[7:0], B[7:0]}
 
-    output wire        lcd_clk,
-    output wire        lcd_hs,
-    output wire        lcd_vs,
-    output wire        lcd_de,
-    output wire        lcd_bl,
-    output wire        lcd_rst,
-    output wire [23:0] lcd_rgb,
+    // ------- LU-ASR02 语音模块 (UART 115200 8N1) -------
+    input  wire        asr_rxd,        // P18  <- LU-ASR02 的 TXD
+    output wire        asr_txd,        // T20  -> LU-ASR02 的 RXD
+    output wire [2:0]  mode,           // E17/E18/F16  当前模式号 1~5
+    output wire        mode_upd,       // E19  模式更新脉冲
+    output wire        frame_err_flag, // A20  坏帧指示（语音或链路）
 
-    input  wire        asr_rxd,
-    output wire        asr_txd,
-    output wire [2:0]  mode,
-    output wire        mode_upd,
-    output wire        frame_err_flag,
+    // ------- 板间串口链路：接下层板（115200 8N1，2 个脚，交叉接）-------
+    output wire        link_tx,        // Y17  -> 下层板 link_rx(D20)
+    input  wire        link_rx,        // V16  <- 下层板 link_tx(F20)
 
-    output wire        link_tx,
-    input  wire        link_rx,
-
+    // ------- 五路循迹传感器 -------
     input  wire        track_l2,
     input  wire        track_l1,
     input  wire        track_m,
@@ -40,11 +71,17 @@ module top(
     input  wire        track_r2
 );
 
+    //============================================================
+    // 摄像头参数（照 42_ov5640_udp_pc：OV5640 640x480 RGB565）
+    //============================================================
     localparam CMOS_H_PIXEL  = 13'd640;
     localparam CMOS_V_PIXEL  = 13'd480;
     localparam TOTAL_H_PIXEL = 13'd1856;
     localparam TOTAL_V_PIXEL = 13'd984;
 
+    //============================================================
+    // 内部线网
+    //============================================================
     wire        clk_33m;
     wire        sys_init_done;
 
@@ -62,24 +99,33 @@ module top(
     wire        cmos_frame_valid;
     wire [15:0] cmos_frame_data;
 
-    wire        bbox_valid_now;
+    // 给下层的框：只在锁定无人机后发送，坐标 = SCNN ROI 中心（摄像头窗口坐标）
+    wire        bbox_valid_now;                 // = roi_tracking，锁定/丢框保持期内为 1
     wire [9:0]  bbox_x, bbox_y, bbox_w, bbox_h;
     wire        bbox_frame_tgl;
 
+    // 预览缓冲
     wire [15:0] bram_dout;
     wire [15:0] preview_addr;
     wire [15:0] preview_rd_addr;
 
+    // 板间链路 / 横幅
     wire [7:0]  link_peer_cmd;
     wire        link_peer_valid;
     wire        link_err_flag;
     wire        asr_frame_err_flag;
 
+    //============================================================
+    // 时钟 / 复位
+    //============================================================
     BUFG u_bufg_sys (.I(sys_clk), .O(clk_33m));
 
     assign sys_init_done = sys_rst_n;
     assign lcd_clk = clk_33m;
 
+    //============================================================
+    // OV5640 SCCB 初始化
+    //============================================================
     assign cam_rst_n = 1'b1;
     assign cam_pwdn  = 1'b0;
 
@@ -118,6 +164,9 @@ module top(
         .init_done      (cfg_done)
     );
 
+    //============================================================
+    // 摄像头采集（中央 600x400 窗口）
+    //============================================================
     ov5640_capture #(
         .PIX_W   (640),
         .PIX_H   (480),
@@ -138,6 +187,13 @@ module top(
         .cmos_frame_data   (cmos_frame_data)
     );
 
+    // 彩色目标跟踪已删除：机械臂改为锁定无人机后才跟随，见下方 bbox 逻辑
+
+    //============================================================
+    // 画面栅格计数 + 300x200 预览写入（cam_pclk 域）
+    //   img_x：窗口内已收像素数 0..599（行首清零）
+    //   img_y：整帧行计数 0..479（帧首清零，crop_y = img_y - 40）
+    //============================================================
     reg vsync_d0, vsync_d1;
     reg href_d0,  href_d1;
     reg [9:0] img_x, img_y;
@@ -171,10 +227,11 @@ module top(
         end
     end
 
+    // 2x2 抽点写入 300x200 缓冲（每 2x2 块只存左上角那个像素）
     wire        preview_we    = cmos_frame_valid && ~img_x[0] && ~img_y[0];
-    wire [7:0]  preview_y     = (img_y - 10'd40) >> 1;
-    wire [8:0]  preview_x     = img_x[9:1];
-    wire [8:0]  crop_y        = img_y - 10'd40;
+    wire [7:0]  preview_y     = (img_y - 10'd40) >> 1;      // 0..199
+    wire [8:0]  preview_x     = img_x[9:1];                 // 0..299
+    wire [8:0]  crop_y        = img_y - 10'd40;             // 0..399
     wire [15:0] preview_waddr = preview_y * 16'd300 + {7'b0, preview_x};
 
     frame_buffer #(
@@ -191,6 +248,11 @@ module top(
         .rd_data (bram_dout)
     );
 
+    //============================================================
+    // 无人机版识别通路（原样搬入）
+    //============================================================
+    // Only ASR mode 03 (air defence) may run the drone pipeline.
+    // Assert reset on mode exit, release synchronously in each clock domain.
     wire drone_mode_sys = (mode == 3'd3);
     wire drone_restart_command = mode_upd && (mode==3'd3);
     reg [3:0] tracker_restart_count;
@@ -222,7 +284,7 @@ module top(
     end
     wire tracker_sys_rst_n = tracker_sys_release[1];
     wire tracker_cam_rst_n = tracker_cam_release[1];
-    localparam [5:0] RECHECK_SPIKE_THRESHOLD = 6'd15;
+    localparam [5:0] RECHECK_SPIKE_THRESHOLD = 6'd10;
     wire        motion_valid;
     wire        track_found;
     wire [8:0]  motion_x0;
@@ -268,6 +330,7 @@ module top(
     wire snn_drone_margin=({1'b0,snn_all_counts[11:6]} >=
                            {1'b0,snn_all_counts[5:0]}+7'd8);
 
+    // Category result from the 33 MHz SCNN domain to the camera domain.
     reg        label_toggle_33;
     reg        label_drone_33;
     reg        label_low_33;
@@ -281,7 +344,9 @@ module top(
             label_low_33   <= 1'b0;
         end else if (snn_label_valid) begin
             label_toggle_33 <= ~label_toggle_33;
-
+            // Use the same margin-qualified decision for the tracker and the
+            // displayed result.  Otherwise the screen and ROI lock can
+            // disagree on borderline classifications.
             label_drone_33  <= snn_drone_margin;
             label_low_33   <= (snn_all_counts[11:6] <= RECHECK_SPIKE_THRESHOLD);
         end
@@ -327,7 +392,7 @@ module top(
         end
     end
     assign tracking_for_recheck = tracker_sys_rst_n && roi_tracking_sys1;
-    periodic_recheck_timer #(.INTERVAL_CYCLES(33333333)) u_periodic_recheck_timer (
+    periodic_recheck_timer #(.INTERVAL_CYCLES(66666666)) u_periodic_recheck_timer (
         .clk(clk_33m), .rst_n(tracker_sys_rst_n),
         .tracking(tracking_for_recheck), .request_toggle(periodic_recheck_toggle)
     );
@@ -352,7 +417,8 @@ module top(
         .clk          (cam_pclk),
         .rst_n        (tracker_cam_rst_n),
         .frame_sync   (vsync_pos),
-
+        // Any in-flight RGB crop is held: capture, SCNN busy, and result wait.
+        // A timeout can therefore mark a late classifier result stale.
         .roi_hold     (roi_result_pending || roi_capture_active || snn_busy_cam1),
         .label_valid  (label_pulse_cam),
         .is_drone     (label_drone_cam),
@@ -378,7 +444,7 @@ module top(
             snn_busy_cam1 <= snn_busy_cam0;
         end
     end
-
+    // While locked, classify only for scheduled or lost-target verification.
     assign net_capture_en = tracker_cam_rst_n && cfg_done && !snn_busy_cam1 && !roi_result_pending &&
                             (!roi_tracking || roi_verifying);
 
@@ -390,6 +456,8 @@ module top(
     reg write_bank;
     reg ready_bank;
 
+
+    // Hold the complete capture/inference transaction, including capture start.
     always @(posedge cam_pclk or negedge tracker_cam_rst_n) begin
         if (!tracker_cam_rst_n) begin
             roi_result_pending <= 1'b0;
@@ -437,6 +505,7 @@ module top(
     wire        frame_new;
     reg         ready_b0, ready_b1, ready_b2;
 
+    // Toggle synchronizer from camera clock to the 33.333 MHz SCNN clock.
     reg frame_t0, frame_t1, frame_t2;
     always @(posedge clk_33m or negedge tracker_sys_rst_n) begin
         if (!tracker_sys_rst_n) begin
@@ -458,6 +527,9 @@ module top(
     assign frame_new = frame_t1 ^ frame_t2;
     assign start_pulse = tracker_sys_rst_n && frame_new && !snn_busy;
     assign read_bank = ready_b2;
+
+    // Treat a result as DRONE only when it leads by a real margin.  A near tie
+    // is kept as NOT DRONE so the tracker does not lock onto ambiguous objects.
 
     reg        result_is_drone;
     reg [5:0]  result_drone_count;
@@ -504,6 +576,8 @@ module top(
         .i_frame_data(net_rgb)
     );
 
+    // Snapshot the ROI top-left in the camera domain. One toggle per frame (or
+    // lock transition) gives upper_link_send a stable multi-bit CDC payload.
     reg [9:0] bbox_x_cam, bbox_y_cam;
     reg bbox_valid_cam, bbox_tgl_r, bbox_lock_d;
     assign bbox_x = bbox_x_cam;
@@ -531,6 +605,9 @@ module top(
         end
     end
 
+    //============================================================
+    // LCD 驱动 + 2x2 放大 + 文字/框叠加
+    //============================================================
     lcd_cam_text_scnn u_lcd (
         .clk             (clk_33m),
         .rst_n           (sys_init_done),
@@ -548,6 +625,9 @@ module top(
         .fb_rd_addr      (preview_rd_addr)
     );
 
+    //============================================================
+    // 语音识别：AA 55 <cmd> 55 AA -> mode
+    //============================================================
     top_asr_voice #(
         .CLK_FREQ (33_333_333),
         .UART_BPS (115200),
@@ -562,6 +642,9 @@ module top(
         .frame_err_flag (asr_frame_err_flag)
     );
 
+    //============================================================
+    // 五路循迹 + 目标框 -> 板间链路
+    //============================================================
     wire [7:0] link_local_cmd;
     wire       link_local_send;
     wire       link_local_busy;
@@ -614,6 +697,9 @@ module top(
     assign lcd_bl  = 1'b1;
     assign lcd_rst = 1'b1;
 
+    //============================================================
+    // 调试 LED：cfg_done 后约 1Hz 闪；识别到 DRONE 时常亮便于观察
+    //============================================================
     reg [24:0] blink_cnt;
     reg        blink;
     always @(posedge clk_33m or negedge sys_rst_n) begin
@@ -633,6 +719,7 @@ module top(
         end
     end
 
+    // 识别到 DRONE 常亮，其它时候 1Hz 闪（肉眼区分"初始化成功"和"识别中"）
     wire drone_flag = result_valid && result_is_drone;
     assign led = drone_flag ? 1'b1 : blink;
 

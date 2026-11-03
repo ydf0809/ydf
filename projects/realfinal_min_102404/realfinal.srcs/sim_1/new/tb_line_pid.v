@@ -1,5 +1,11 @@
 `timescale 1ns / 1ps
-
+//============================================================================
+// tb_line_pid.v -- self-check for line_pid_ctrl
+// Runs at 1MHz with a 1ms control period; production uses 33.333MHz/20ms.
+// STEER_REVERSE=1: bit 0 is far left, bit 4 is far right.
+// Checks P/I/D, curve speed, deadband, exact left4/right8/left4 search,
+// external validity, hard-turn loss, reacquisition, timeout and mode restart.
+//============================================================================
 module tb_line_pid;
     parameter CLK_FREQ = 1000000;
     localparam PERIOD_MS = 1;
@@ -112,6 +118,7 @@ module tb_line_pid;
         end
     endtask
 
+    // Returns immediately after output index 0, the first left-search tick.
     task start_loss;
         input [4:0] invalid_pat;
         integer held_l, held_r;
@@ -268,7 +275,7 @@ module tb_line_pid;
         search_tick;
         full_scan("mode restart: left4/right8/left4");
         reacquire(5'b00100, 8, 8);
-
+        // All-one/all-zero patterns are invalid and must not reacquire PID.
         s_pat = 5'b11111;
         s_valid = 1'b1;
         search_tick;

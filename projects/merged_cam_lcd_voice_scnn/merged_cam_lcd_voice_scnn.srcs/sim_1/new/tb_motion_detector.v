@@ -64,13 +64,13 @@ module tb_motion_detector;
                     pix_rgb565 = gray565(bg_luma[7:0]);
                     if (obj_on && (x >= obj_x) && (x < obj_x + 20) &&
                         (y >= obj_y) && (y < obj_y + 20))
-                        pix_rgb565 = 16'h0000;
+                        pix_rgb565 = 16'h0000; // dark moving candidate
                     if (white_on && (x >= white_x) && (x < white_x + 20) &&
                         (y >= white_y) && (y < white_y + 20))
-                        pix_rgb565 = 16'hFFFF;
+                        pix_rgb565 = 16'hFFFF; // bright moving distractor
                     if (dark2_on && (x >= dark2_x) && (x < dark2_x + 8) &&
                         (y >= dark2_y) && (y < dark2_y + 8))
-                        pix_rgb565 = 16'h0000;
+                        pix_rgb565 = 16'h0000; // isolated dark background patch
                     pix_we = 1'b1;
                     pix_x = x[8:0];
                     pix_y = y[7:0];
@@ -166,6 +166,7 @@ module tb_motion_detector;
         pix_x = 9'd0;
         pix_y = 8'd0;
 
+        // First frame is the reference.
         drive_frame;
         pix_x = 9'd299;
         pix_y = 8'd199;
@@ -183,6 +184,8 @@ module tb_motion_detector;
             errors = errors + 1;
         end
 
+        // AEC brightness step: the first step is a one-frame full-screen
+        // candidate, and the next frame validates compensation.
         bg_luma = 90;
         drive_frame;
         $display("MOTION_DBG aec1 valid=%b best=%0d total=%0d found=%b prev_cand=%b mean=%0d haves=%b sums=%0d/%0d",
@@ -197,6 +200,7 @@ module tb_motion_detector;
             errors = errors + 1;
         end
 
+        // First displacement only arms a candidate.
         obj_x = 40;
         drive_frame;
         $display("MOTION_DBG move1 valid=%b best=%0d total=%0d found=%b prev_cand=%b",
@@ -206,10 +210,12 @@ module tb_motion_detector;
             errors = errors + 1;
         end
 
+        // Second consecutive displacement confirms the dark moving block.
         obj_x = 60;
         drive_frame;
         check_box_near("dark-motion", 60, 30);
 
+        // The held box may persist briefly after the object becomes static.
         drive_frame;
         if (!box_valid) begin
             $display("ERROR: tracking hold did not retain the box");
@@ -221,6 +227,8 @@ module tb_motion_detector;
             errors = errors + 1;
         end
 
+        // Move a dark and a bright block in parallel.  The dark block has a
+        // two-vote confidence weight and must define the selected cluster.
         obj_x = 100;
         obj_y = 100;
         white_on = 1;
@@ -243,6 +251,9 @@ module tb_motion_detector;
         drive_frame;
         check_box_near("dark-over-bright", 140, 140);
 
+        // Pixel-stream integration: a stronger patch flickers at one fixed
+        // location while a weaker 8x8 target travels across the image.
+        // Mature coherent motion must eventually win the global candidate.
         do_reset;
         track_enable = 0;
         bg_luma = 120;
@@ -264,6 +275,8 @@ module tb_motion_detector;
             errors=errors+1;
         end
 
+        // Locked tracking uses a dense central dark patch.  A sparse dark
+        // distractor in another ROI cell must not pull the box away.
         do_reset;
         track_enable = 1;
         track_x0 = 10'd200;
@@ -286,6 +299,8 @@ module tb_motion_detector;
         locked_cx = (box_x0 + box_x1 + 1) / 2;
         locked_cy = (box_y0 + box_y1 + 1) / 2;
 
+        // An equally dark background patch must not steal an established
+        // target simply because its grid cell is scanned first.
         dark2_on = 1;
         dark2_x = 108;
         dark2_y = 88;
@@ -321,6 +336,8 @@ module tb_motion_detector;
             errors = errors + 1;
         end
 
+        // ROI y0 may be 272 in a 400-pixel picture.  The tracking input must
+        // preserve the ninth bit or it will inspect the wrong rows.
         do_reset;
         dark2_on = 0;
         obj_on = 1;

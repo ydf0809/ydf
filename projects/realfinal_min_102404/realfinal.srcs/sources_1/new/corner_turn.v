@@ -1,22 +1,39 @@
 `timescale 1ns / 1ps
+//============================================================================
+// corner_turn.v -- 直角弯状态机（抢在 PID 前面接管轮速）
+//
+// 触发：左侧三路同时压线（且右边两路是白的）
+//   正常循迹 ----> 直行 FORWARD_MS ----> 原地旋转 ----> 冷却 ----> 交还 PID
+//
+// 旋转什么时候停：
+//   STOP_ON_LINE=1（默认）：至少转 MIN_SPIN_MS，转弯侧最外探头先离开黑线、
+//                           再重新检测到黑线后，交回 PID；TIMEOUT_MS 兜底。
+//   STOP_ON_LINE=0        ：纯定时，转满 SPIN_MS 就停，就是你说的"定时 90 度"。
+//
+// busy=1 期间 xunbi_core 会把 PID 的 run_en 拉低，PID 输出清零、积分和微分历史
+// 一起清掉；转完回来 PID 从干净状态重新开始，不会因为转的时候积分攒满而猛地一冲。
+//
+// 注意：pat 用的是和 line_pid_ctrl 完全相同的左右映射（STEER_REVERSE=1），
+// 所以 pat[4] 是 PID 认定"物理最左"的那一路，pat[0] 是最右。
+//============================================================================
 
 module corner_turn #(
     parameter integer      CLK_FREQ_HZ  = 33_333_333,
-    parameter integer      FORWARD_MS   = 1000,
-    parameter integer      SPIN_MS      = 700,
-    parameter integer      MIN_SPIN_MS  = 250,
-    parameter integer      TIMEOUT_MS   = 2000,
-    parameter integer      COOLDOWN_MS  = 500,
-    parameter integer      CONFIRM_MS   = 3,
+    parameter integer      FORWARD_MS   = 1000,      // 进弯前直行多久
+    parameter integer      SPIN_MS      = 700,      // STOP_ON_LINE=0 时的旋转时长
+    parameter integer      MIN_SPIN_MS  = 250,      // 至少转多久（跳过拐角那块黑）
+    parameter integer      TIMEOUT_MS   = 2000,     // 旋转兜底超时
+    parameter integer      COOLDOWN_MS  = 500,      // 转完多久内不再触发同一个弯
+    parameter integer      CONFIRM_MS   = 3,        // 三路压线要连续确认几毫秒
     parameter signed [7:0] FORWARD_SPEED= 8'sd16,
     parameter signed [7:0] SPIN_SPEED   = 8'sd20,
     parameter              STOP_ON_LINE = 1
 )(
     input  wire              clk,
     input  wire              rst_n,
-    input  wire              run_en,
-    input  wire [4:0]        pat,
-    input  wire              line_valid,
+    input  wire              run_en,       // 忙时由 xunbi_core 拉低 PID 的 run_en
+    input  wire [4:0]        pat,          // 1 = 压黑线，pat[4]=最左 ... pat[0]=最右
+    input  wire              line_valid,   // 消抖后的"看得到线"
     input  wire signed [7:0] pid_left,
     input  wire signed [7:0] pid_right,
     output reg  signed [7:0] out_left,
@@ -36,8 +53,9 @@ module corner_turn #(
     reg [15:0] t_ms;
     reg [2:0]  det_cnt;
     reg        dir_left;
-    reg        outer_seen_off;
+    reg        outer_seen_off; // 转弯侧最外探头已经离开过拐角黑线
 
+    // 三路同时压线，另外两路必须是白的（避免十字/大块黑误触发）
     wire left3  = pat[4] & pat[3] & pat[2] & ~pat[1] & ~pat[0];
     wire right3 = pat[0] & pat[1] & pat[2] & ~pat[3] & ~pat[4];
     wire pattern_valid = (pat != 5'b00000) && (pat != 5'b11111);
@@ -92,7 +110,8 @@ module corner_turn #(
                     end
 
                     S_SPIN: begin
-
+                        // 先确认转弯侧最外探头离开拐角黑线，
+                        // 再等待它重新压线，避免刚进弯就立即交回 PID。
                         if (turn_outer_off) outer_seen_off <= 1'b1;
 
                         if (STOP_ON_LINE) begin

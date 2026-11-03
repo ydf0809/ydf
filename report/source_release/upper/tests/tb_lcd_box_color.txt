@@ -1,17 +1,43 @@
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "[repository]/projects/merged_cam_lcd_voice_scnn/rtl/font_rom.v" into library work
+INFO: [VRFC 10-311] analyzing module font_rom
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "[repository]/projects/merged_cam_lcd_voice_scnn/rtl/lcd_cam_text_scnn.v" into library work
+INFO: [VRFC 10-311] analyzing module lcd_cam_text_scnn
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "[repository]/projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/tb_lcd_box_color.v" into library work
+INFO: [VRFC 10-311] analyzing module tb_lcd_box_color
+
+Vivado Simulator v2026.1
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: D:/vivado2026.1/2026.1/Vivado/bin/unwrapped/win64.o/xelab.exe -L unisims_ver --timescale 1ns/1ps tb_lcd_box_color -s upper_tb_lcd_box_color 
+Multi-threading is on. Using 14 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+WARNING: [XSIM 43-4328] File: [repository]/projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/tb_lcd_box_color.v Line: 7 : Sensitivity on input argument "h" of task "sample" may never get triggered.
+WARNING: [XSIM 43-4328] File: [repository]/projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/tb_lcd_box_color.v Line: 7 : Sensitivity on input argument "v" of task "sample" may never get triggered.
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module work.font_rom
+Compiling module work.lcd_cam_text_scnn_default
+Compiling module work.tb_lcd_box_color
+Built simulation snapshot upper_tb_lcd_box_color
+
 
 ****** xsim v2026.1 (64-bit)
   **** SW Build 6511674 on Tue Jun 16 11:02:23 MDT 2026
   **** IP Build 6504888 on Tue Jun 09 09:05:25 MDT 2026
   **** SharedData Build 6501428 on Mon Jun 08 17:34:18 MDT 2026
-  **** Start of session at: Tue Nov  3 02:27:41 2026
+  **** Start of session at: Wed Nov  4 00:20:29 2026
     ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
     ** Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
 
-source xsim.dir/tb_lcd_box_color_sim/xsim_script.tcl
-# xsim {tb_lcd_box_color_sim} -autoloadwcfg -runall
+source xsim.dir/upper_tb_lcd_box_color/xsim_script.tcl
+# xsim {upper_tb_lcd_box_color} -autoloadwcfg -tclbatch {run_all.tcl}
 Time resolution is 1 ps
-run -all
+source run_all.tcl
+## run all
 LCD_BOX_COLOR_TEST: PASS
-$finish called at time : 1530 ns : File "[previous_source_location]/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/tb_lcd_box_color.v" Line 18
-exit
-INFO: [Common 17-206] Exiting xsim at Tue Nov  3 02:27:43 2026...
+$finish called at time : 1530 ns : File "[repository]/projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/tb_lcd_box_color.v" Line 18
+## quit
+INFO: [Common 17-206] Exiting xsim at Wed Nov  4 00:20:30 2026...

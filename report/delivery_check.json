@@ -3,15 +3,15 @@
   "errors": [],
   "tests": {
     "upper": {
-      "passed": 11,
-      "total": 11
+      "passed": 10,
+      "total": 10
     },
     "lower": {
-      "passed": 15,
-      "total": 15
+      "passed": 13,
+      "total": 13
     }
   },
-  "completed_at": "2026-11-03T19:47:49+08:00",
+  "completed_at": "2026-11-04T01:09:37+08:00",
   "physical_board_validation": "not_performed",
   "scope": "Current local simulation, conversion, main-XPR build and artifact provenance."
 }

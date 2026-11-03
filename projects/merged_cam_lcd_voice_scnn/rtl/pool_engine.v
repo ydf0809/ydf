@@ -1,4 +1,24 @@
 `timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer: 
+// 
+// Create Date: 2026/06/28 22:53:30
+// Design Name: 
+// Module Name: pool_engine
+// Project Name: 
+// Target Devices: 
+// Tool Versions: 
+// Description: 
+// 
+// Dependencies: 
+// 
+// Revision:
+// Revision 0.01 - File Created
+// Additional Comments:
+// 
+//////////////////////////////////////////////////////////////////////////////////
+
 
 module pool_engine #(
     parameter P_IN_H  = 8,
@@ -12,9 +32,11 @@ module pool_engine #(
     output wire                                  o_busy,
     output reg                                   o_done,
 
+    // 输入脉冲 RAM (组合读)
     output wire [$clog2(P_IN_H*P_IN_W)-1:0]      o_in_raddr,
     input  wire [P_CH-1:0]                       i_in_rdata,
 
+    // 输出脉冲 RAM (同步写)
     output reg                                   o_out_we,
     output reg  [$clog2((P_IN_H/P_POOL)*(P_IN_W/P_POOL))-1:0] o_out_waddr,
     output reg  [P_CH-1:0]                        o_out_wdata
@@ -29,13 +51,14 @@ module pool_engine #(
     localparam S_IDLE=2'd0, S_ACC=2'd1, S_WRITE=2'd2, S_DONE=2'd3;
     reg [1:0] state;
 
-    reg [$clog2(OUT_H)-1:0] orr;
-    reg [$clog2(OUT_W)-1:0] occ;
-    reg [TAPW:0]            j;
+    reg [$clog2(OUT_H)-1:0] orr;   // 输出行
+    reg [$clog2(OUT_W)-1:0] occ;   // 输出列
+    reg [TAPW:0]            j;      // 窗内 tap 0..TAPS-1
     reg [P_CH-1:0]          acc;
 
     assign o_busy = (state != S_IDLE);
 
+    // 组合: 当前 tap 对应的输入地址
     integer dr_i, dc_i, inr_i, inc_i;
     reg [IN_AW-1:0] in_addr_c;
     always @(*) begin
@@ -64,7 +87,7 @@ module pool_engine #(
                     end
                 end
                 S_ACC: begin
-                    acc <= acc | i_in_rdata;
+                    acc <= acc | i_in_rdata;           // 窗内 OR
                     if (j == TAPS-1) state <= S_WRITE;
                     else             j     <= j + 1'b1;
                 end
@@ -72,7 +95,7 @@ module pool_engine #(
                     o_out_we    <= 1'b1;
                     o_out_waddr <= orr*OUT_W + occ;
                     o_out_wdata <= acc;
-
+                    // 推进到下一输出位置
                     if (orr == OUT_H-1 && occ == OUT_W-1) begin
                         state <= S_DONE;
                     end else begin
@@ -92,3 +115,4 @@ module pool_engine #(
         end
     end
 endmodule
+

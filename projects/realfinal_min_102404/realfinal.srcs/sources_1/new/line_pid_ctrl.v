@@ -1,5 +1,26 @@
-// Five-sensor line control; invalid patterns and disabled operation request a stop.
 `timescale 1ns / 1ps
+//============================================================================
+// line_pid_ctrl.v -- 五路循迹 -> 位置式 PID -> 左右轮差速
+//
+// 误差怎么算：
+//   五个探头权重 -2 -1 0 +1 +2，对压线探头求加权重心并归一化。
+//   误差使用 Q8 定点：1.0 个探头间距 = 256。
+//
+// 控制律：
+//   turn      = Kp*err + Ki*积分 + Kd*误差变化，再限幅到 ±TURN_MAX
+//   base_eff  = SPEED_BASE - |turn|/2^CURVE_SHIFT
+//   left/right = base_eff ± turn
+//
+// 丢线搜索：连续 LOST_CONFIRM 拍 line_valid=0 后进入搜索；全亮/全灭
+//   由外部 line_valid 判断。固定先左 T、再右 2T、再左 T 回中，完整扫描为 4T。
+//   时间向上取整到控制周期；默认周期 20ms、T=150ms，按拍量化后完整扫描为640ms。
+//   左右轮始终输出相反的 ±SEARCH_SPEED，不受丢线前转向影响。
+//   控制周期发现有效线立即恢复 PID，并重新建立积分/微分历史；超时则停车。
+//
+// 三个增益都是 2 的幂（移位实现，不占乘法器）：
+//   Kp = 1/2^KP_SHIFT，Ki = 1/2^KI_SHIFT，Kd = 1/2^KD_SHIFT
+//   KI_SHIFT / KD_SHIFT 写 0 表示关闭该项。默认只开 P。
+//============================================================================
 
 module line_pid_ctrl #(
     parameter integer      CLK_FREQ_HZ   = 33_333_333,
@@ -46,7 +67,8 @@ module line_pid_ctrl #(
     wire s_r1 = pat[1];
     wire s_r2 = pat[0];
     wire [2:0] cnt = s_l2 + s_l1 + s_m + s_r1 + s_r2;
-
+    // 全白/全黑都是无效循迹状态。不要只依赖外部 line_valid，
+    // 否则在消抖窗口内会继续沿用上一个直行/转弯速度。
     wire pattern_valid = (track_pat != 5'b00000) && (track_pat != 5'b11111);
     wire line_now_valid = line_valid && pattern_valid;
 
@@ -159,7 +181,7 @@ module line_pid_ctrl #(
             search_cnt  <= 32'd0;
         end else if (period_cnt < PERIOD_CYCLES - 1) begin
             period_cnt <= period_cnt + 1'b1;
-
+            // Stop stale PID motion immediately; keep the original search cadence.
             if (!line_now_valid && !searching) begin
                 left_speed  <= 8'sd0;
                 right_speed <= 8'sd0;
@@ -217,7 +239,8 @@ module line_pid_ctrl #(
                     end
                 end else begin
                     lost_cnt <= lost_cnt + 1'b1;
-
+                    // 无效状态先停车一个控制周期，再进入搜索，
+                    // 防止五灯全亮/全灭时残留上一拍速度继续前进。
                     left_speed  <= 8'sd0;
                     right_speed <= 8'sd0;
                 end

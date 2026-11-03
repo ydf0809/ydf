@@ -1,8 +1,8 @@
 tool_version=2026.1
 top=top
 part=xc7z020clg400-1
-wns=6.916
-whs=0.032
+wns=5.815
+whs=0.017
 drc_errors=0
 loop_warning_present=0
 clock_coverage_failed=0

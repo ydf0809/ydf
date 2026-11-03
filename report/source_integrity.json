@@ -1,9 +1,12 @@
 {
   "status": "PASS",
-  "checked_at": "2026-11-03T14:14:24.238499+08:00",
+  "checked_at": "2026-11-04T00:50:43.510249+08:00",
   "selected_source_label": "xiegithub",
-  "source_files_and_bits_checked": 161,
+  "source_files_and_bits_checked": 158,
+  "hardware_entries_checked": 132,
+  "hardware_inputs_byte_identical": 117,
+  "adapted_hardware_entries": 11,
+  "repository_extensions": 4,
   "changed_source_inputs": [],
-  "hardware_inputs_byte_identical": 126,
-  "method": "SHA-256 against frozen selected-source bytes; original paths not published"
+  "method": "SHA-256 against final xiegithub projects; adaptations and repository extensions listed in source_manifest.json"
 }

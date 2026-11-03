@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2026.1 (win64) Build 6511674 Tue Jun 16 11:02:23 MDT 2026
-| Date         : Tue Nov  3 14:01:19 2026
+| Date         : Wed Nov  4 00:41:51 2026
 | Host         : YDF running 64-bit major release  (build 9200)
 | Command      : report_timing_summary -delay_type min_max -report_unconstrained -file {[repository]/build/reports/lower/timing.rpt}
 | Design       : super_top
@@ -47,6 +47,7 @@ DPIR-1     Warning   Asynchronous driver check                   7
 HPDR-1     Warning   Port pin direction inconsistency            1           
 LUTAR-1    Warning   LUT drives async reset alert                2           
 SYNTH-6    Warning   Timing of a RAM block might be sub-optimal  64          
+TIMING-9   Warning   Unknown CDC Logic                           1           
 TIMING-10  Warning   Missing property on synchronizer            1           
 TIMING-18  Warning   Missing input or output delay               46          
 
@@ -147,7 +148,7 @@ Table of Contents
 
     WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
     -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
-      3.591        0.000                      0                10270        0.019        0.000                      0                10270        6.167        0.000                       0                  3450  
+      4.295        0.000                      0                10080        0.063        0.000                      0                10080        6.167        0.000                       0                  3346  
 
 
 All user specified timing constraints are met.
@@ -174,9 +175,9 @@ sys_clk               {0.000 15.000}     30.000          33.333
 
 Clock                     WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
 -----                     -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
-ov_pclk                     3.591        0.000                      0                 4756        0.019        0.000                      0                 4756        9.436        0.000                       0                  1623  
-sys_clk                     5.179        0.000                      0                 4822        0.117        0.000                      0                 4822       10.000        0.000                       0                  1707  
-  clk_out1_clk_wiz_0        6.824        0.000                      0                  203        0.164        0.000                      0                  203        6.167        0.000                       0                   114  
+ov_pclk                     4.295        0.000                      0                 4647        0.065        0.000                      0                 4647        9.436        0.000                       0                  1566  
+sys_clk                     5.410        0.000                      0                 4741        0.063        0.000                      0                 4741       10.000        0.000                       0                  1660  
+  clk_out1_clk_wiz_0        6.677        0.000                      0                  203        0.197        0.000                      0                  203        6.167        0.000                       0                   114  
   clk_out2_clk_wiz_0                                                                                                                                                   39.511        0.000                       0                     3  
   clkfbout_clk_wiz_0                                                                                                                                                   27.845        0.000                       0                     3  
 
@@ -197,7 +198,7 @@ From Clock    To Clock          WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS
 
 Path Group         From Clock         To Clock               WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints  
 ----------         ----------         --------               -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------  
-**async_default**  sys_clk            sys_clk                 20.437        0.000                      0                  489        0.588        0.000                      0                  489  
+**async_default**  sys_clk            sys_clk                 22.276        0.000                      0                  489        0.636        0.000                      0                  489  
 
 
 ------------------------------------------------------------------------------------------------
@@ -236,28 +237,28 @@ Path Group          From Clock          To Clock
 From Clock:  ov_pclk
   To Clock:  ov_pclk
 
-Setup :            0  Failing Endpoints,  Worst Slack        3.591ns,  Total Violation        0.000ns
-Hold  :            0  Failing Endpoints,  Worst Slack        0.019ns,  Total Violation        0.000ns
+Setup :            0  Failing Endpoints,  Worst Slack        4.295ns,  Total Violation        0.000ns
+Hold  :            0  Failing Endpoints,  Worst Slack        0.065ns,  Total Violation        0.000ns
 PW    :            0  Failing Endpoints,  Worst Slack        9.436ns,  Total Violation        0.000ns
 ---------------------------------------------------------------------------------------------------
 
 
 Max Delay Paths
 --------------------------------------------------------------------------------------
-Slack (MET) :             3.591ns  (required time - arrival time)
-  Source:                 u_shijue_arm_core/u_capture/dout_reg[2]/C
+Slack (MET) :             4.295ns  (required time - arrival time)
+  Source:                 u_shijue_arm_core/u_capture/temp_high_reg[6]/C
                             (rising edge-triggered cell FDRE clocked by ov_pclk  {rise@0.000ns fall@10.417ns period=20.833ns})
-  Destination:            u_shijue_arm_core/u_tracker/u_rgb2hsv/hn_reg[12][13]_srl13_u_shijue_arm_core_u_tracker_u_rgb2hsv_valid_reg_c_11/D
+  Destination:            u_shijue_arm_core/u_tracker/u_rgb2hsv/hn_reg[5][13]_srl6_u_shijue_arm_core_u_tracker_u_rgb2hsv_valid_reg_c_4/D
                             (rising edge-triggered cell SRL16E clocked by ov_pclk  {rise@0.000ns fall@10.417ns period=20.833ns})
   Path Group:             ov_pclk
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            20.833ns  (ov_pclk rise@20.833ns - ov_pclk rise@0.000ns)
-  Data Path Delay:        16.928ns  (logic 7.580ns (44.777%)  route 9.348ns (55.223%))
+  Data Path Delay:        16.459ns  (logic 7.442ns (45.214%)  route 9.017ns (54.786%))
   Logic Levels:           16  (CARRY4=5 DSP48E1=1 LUT2=3 LUT4=2 LUT5=2 LUT6=3)
-  Clock Path Skew:        -0.026ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    5.767ns = ( 26.600 - 20.833 ) 
-    Source Clock Delay      (SCD):    6.465ns
-    Clock Pessimism Removal (CPR):    0.672ns
+  Clock Path Skew:        0.001ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    5.812ns = ( 26.645 - 20.833 ) 
+    Source Clock Delay      (SCD):    6.448ns
+    Clock Pessimism Removal (CPR):    0.637ns
   Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
     Total System Jitter     (TSJ):    0.071ns
     Total Input Jitter      (TIJ):    0.000ns
@@ -272,50 +273,50 @@ Slack (MET) :             3.591ns  (required time - arrival time)
     Y16                  IBUF (Prop_ibuf_I_O)         1.569     1.569 r  ov_pclk_IBUF_inst/O
                          net (fo=1, routed)           3.066     4.635    ov_pclk_IBUF
     BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.101     4.736 r  ov_pclk_IBUF_BUFG_inst/O
-                         net (fo=1622, routed)        1.729     6.465    u_shijue_arm_core/u_capture/ov_pclk_IBUF_BUFG
-    SLICE_X60Y47         FDRE                                         r  u_shijue_arm_core/u_capture/dout_reg[2]/C
+                         net (fo=1565, routed)        1.712     6.448    u_shijue_arm_core/u_capture/ov_pclk_IBUF_BUFG
+    SLICE_X88Y70         FDRE                                         r  u_shijue_arm_core/u_capture/temp_high_reg[6]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X60Y47         FDRE (Prop_fdre_C_Q)         0.456     6.921 r  u_shijue_arm_core/u_capture/dout_reg[2]/Q
-                         net (fo=40, routed)          1.660     8.581    u_shijue_arm_core/u_capture/track_data[2]
-    SLICE_X46Y52         LUT4 (Prop_lut4_I0_O)        0.124     8.705 r  u_shijue_arm_core/u_capture/sd[0][0]_i_16/O
-                         net (fo=1, routed)           0.000     8.705    u_shijue_arm_core/u_capture/sd[0][0]_i_16_n_0
-    SLICE_X46Y52         CARRY4 (Prop_carry4_S[0]_CO[3])
-                                                      0.513     9.218 f  u_shijue_arm_core/u_capture/sd_reg[0][0]_i_8/CO[3]
-                         net (fo=2, routed)           0.863    10.081    u_shijue_arm_core/u_capture/u_tracker/u_rgb2hsv/p_9_in
-    SLICE_X43Y52         LUT2 (Prop_lut2_I0_O)        0.124    10.205 r  u_shijue_arm_core/u_capture/value[0][2]_i_2/O
-                         net (fo=16, routed)          0.497    10.703    u_shijue_arm_core/u_capture/value[0][2]_i_2_n_0
-    SLICE_X45Y50         LUT6 (Prop_lut6_I2_O)        0.124    10.827 r  u_shijue_arm_core/u_capture/sd[0][0]_i_2/O
-                         net (fo=4, routed)           0.555    11.381    u_shijue_arm_core/u_capture/sd[0][0]_i_2_n_0
-    SLICE_X45Y51         LUT4 (Prop_lut4_I0_O)        0.124    11.505 f  u_shijue_arm_core/u_capture/base_reg[14][7]_srl15_u_shijue_arm_core_u_tracker_u_rgb2hsv_valid_reg_c_13_i_7/O
-                         net (fo=1, routed)           0.403    11.908    u_shijue_arm_core/u_capture/base_reg[14][7]_srl15_u_shijue_arm_core_u_tracker_u_rgb2hsv_valid_reg_c_13_i_7_n_0
-    SLICE_X45Y51         LUT6 (Prop_lut6_I5_O)        0.124    12.032 f  u_shijue_arm_core/u_capture/base_reg[14][7]_srl15_u_shijue_arm_core_u_tracker_u_rgb2hsv_valid_reg_c_13_i_4/O
-                         net (fo=1, routed)           0.405    12.438    u_shijue_arm_core/u_capture/base_reg[14][7]_srl15_u_shijue_arm_core_u_tracker_u_rgb2hsv_valid_reg_c_13_i_4_n_0
-    SLICE_X45Y50         LUT5 (Prop_lut5_I0_O)        0.124    12.562 f  u_shijue_arm_core/u_capture/base_reg[14][7]_srl15_u_shijue_arm_core_u_tracker_u_rgb2hsv_valid_reg_c_13_i_2/O
-                         net (fo=18, routed)          1.090    13.652    u_shijue_arm_core/u_capture/base_reg[14][7]_srl15_u_shijue_arm_core_u_tracker_u_rgb2hsv_valid_reg_c_13_i_2_n_0
-    SLICE_X52Y47         LUT2 (Prop_lut2_I1_O)        0.153    13.805 r  u_shijue_arm_core/u_capture/subtract_reg[14]_srl15_u_shijue_arm_core_u_tracker_u_rgb2hsv_valid_reg_c_13_i_2/O
-                         net (fo=4, routed)           0.455    14.260    u_shijue_arm_core/u_capture/subtract_reg[14]_srl15_u_shijue_arm_core_u_tracker_u_rgb2hsv_valid_reg_c_13_i_2_n_0
-    SLICE_X51Y46         LUT6 (Prop_lut6_I2_O)        0.327    14.587 r  u_shijue_arm_core/u_capture/hn0_i_35/O
-                         net (fo=2, routed)           0.513    15.100    u_shijue_arm_core/u_capture/hn0_i_35_n_0
-    SLICE_X50Y45         LUT5 (Prop_lut5_I1_O)        0.124    15.224 r  u_shijue_arm_core/u_capture/hn0_i_26/O
-                         net (fo=1, routed)           0.000    15.224    u_shijue_arm_core/u_capture/hn0_i_26_n_0
-    SLICE_X50Y45         CARRY4 (Prop_carry4_S[1]_CO[3])
-                                                      0.533    15.757 r  u_shijue_arm_core/u_capture/hn0_i_4/CO[3]
-                         net (fo=1, routed)           0.000    15.757    u_shijue_arm_core/u_capture/hn0_i_4_n_0
-    SLICE_X50Y46         CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117    15.874 r  u_shijue_arm_core/u_capture/hn0_i_3/CO[3]
-                         net (fo=1, routed)           0.000    15.874    u_shijue_arm_core/u_capture/hn0_i_3_n_0
-    SLICE_X50Y47         CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117    15.991 r  u_shijue_arm_core/u_capture/hn0_i_2/CO[3]
-                         net (fo=1, routed)           0.000    15.991    u_shijue_arm_core/u_capture/hn0_i_2_n_0
-    SLICE_X50Y48         CARRY4 (Prop_carry4_CI_O[1])
-                                                      0.323    16.314 r  u_shijue_arm_core/u_capture/hn0_i_1/O[1]
-                         net (fo=1, routed)           0.892    17.206    u_shijue_arm_core/u_tracker/u_rgb2hsv/A[13]
-    DSP48_X2Y19          DSP48E1 (Prop_dsp48e1_A[13]_P[1])
-                                                      4.023    21.229 r  u_shijue_arm_core/u_tracker/u_rgb2hsv/hn0/P[1]
-                         net (fo=1, routed)           1.378    22.607    u_shijue_arm_core/u_tracker/u_rgb2hsv/hn0_n_104
-    SLICE_X55Y45         LUT2 (Prop_lut2_I0_O)        0.150    22.757 r  u_shijue_arm_core/u_tracker/u_rgb2hsv/hn_reg[12][13]_srl13_u_shijue_arm_core_u_tracker_u_rgb2hsv_valid_reg_c_11_i_1/O
-                         net (fo=1, routed)           0.637    23.393    u_shijue_arm_core/u_tracker/u_rgb2hsv/hn[1]
-    SLICE_X62Y45         SRL16E                                       r  u_shijue_arm_core/u_tracker/u_rgb2hsv/hn_reg[12][13]_srl13_u_shijue_arm_core_u_tracker_u_rgb2hsv_valid_reg_c_11/D
+    SLICE_X88Y70         FDRE (Prop_fdre_C_Q)         0.456     6.904 r  u_shijue_arm_core/u_capture/temp_high_reg[6]/Q
+                         net (fo=47, routed)          1.266     8.170    u_shijue_arm_core/u_capture/track_data[14]
+    SLICE_X91Y74         LUT4 (Prop_lut4_I0_O)        0.124     8.294 r  u_shijue_arm_core/u_capture/hn0_i_48/O
+                         net (fo=1, routed)           0.000     8.294    u_shijue_arm_core/u_capture/hn0_i_48_n_0
+    SLICE_X91Y74         CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.532     8.826 f  u_shijue_arm_core/u_capture/hn0_i_28/CO[3]
+                         net (fo=22, routed)          0.828     9.654    u_shijue_arm_core/u_capture/u_tracker/u_rgb2hsv/p_10_in
+    SLICE_X90Y74         LUT2 (Prop_lut2_I1_O)        0.124     9.778 r  u_shijue_arm_core/u_capture/value[0][2]_i_2/O
+                         net (fo=16, routed)          0.607    10.385    u_shijue_arm_core/u_capture/value[0][2]_i_2_n_0
+    SLICE_X89Y74         LUT6 (Prop_lut6_I4_O)        0.124    10.509 r  u_shijue_arm_core/u_capture/sd[0][0]_i_7/O
+                         net (fo=4, routed)           0.593    11.102    u_shijue_arm_core/u_capture/sd[0][0]_i_7_n_0
+    SLICE_X89Y73         LUT4 (Prop_lut4_I2_O)        0.124    11.226 f  u_shijue_arm_core/u_capture/base_reg[14][7]_srl15_u_shijue_arm_core_u_tracker_u_rgb2hsv_valid_reg_c_13_i_8/O
+                         net (fo=1, routed)           0.649    11.875    u_shijue_arm_core/u_capture/base_reg[14][7]_srl15_u_shijue_arm_core_u_tracker_u_rgb2hsv_valid_reg_c_13_i_8_n_0
+    SLICE_X90Y73         LUT6 (Prop_lut6_I4_O)        0.124    11.999 f  u_shijue_arm_core/u_capture/base_reg[14][7]_srl15_u_shijue_arm_core_u_tracker_u_rgb2hsv_valid_reg_c_13_i_5/O
+                         net (fo=1, routed)           0.488    12.487    u_shijue_arm_core/u_capture/base_reg[14][7]_srl15_u_shijue_arm_core_u_tracker_u_rgb2hsv_valid_reg_c_13_i_5_n_0
+    SLICE_X91Y73         LUT5 (Prop_lut5_I4_O)        0.124    12.611 f  u_shijue_arm_core/u_capture/base_reg[14][7]_srl15_u_shijue_arm_core_u_tracker_u_rgb2hsv_valid_reg_c_13_i_3/O
+                         net (fo=27, routed)          0.723    13.334    u_shijue_arm_core/u_capture/base_reg[14][7]_srl15_u_shijue_arm_core_u_tracker_u_rgb2hsv_valid_reg_c_13_i_3_n_0
+    SLICE_X91Y70         LUT2 (Prop_lut2_I1_O)        0.118    13.452 r  u_shijue_arm_core/u_capture/base_reg[14][8]_srl15_u_shijue_arm_core_u_tracker_u_rgb2hsv_valid_reg_c_13_i_2/O
+                         net (fo=5, routed)           0.984    14.435    u_shijue_arm_core/u_capture/base_reg[14][8]_srl15_u_shijue_arm_core_u_tracker_u_rgb2hsv_valid_reg_c_13_i_2_n_0
+    SLICE_X98Y70         LUT6 (Prop_lut6_I0_O)        0.326    14.761 r  u_shijue_arm_core/u_capture/hn0_i_36/O
+                         net (fo=2, routed)           0.492    15.254    u_shijue_arm_core/u_capture/hn0_i_36_n_0
+    SLICE_X99Y70         LUT5 (Prop_lut5_I1_O)        0.124    15.378 r  u_shijue_arm_core/u_capture/hn0_i_27/O
+                         net (fo=1, routed)           0.000    15.378    u_shijue_arm_core/u_capture/hn0_i_27_n_0
+    SLICE_X99Y70         CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.532    15.910 r  u_shijue_arm_core/u_capture/hn0_i_4/CO[3]
+                         net (fo=1, routed)           0.000    15.910    u_shijue_arm_core/u_capture/hn0_i_4_n_0
+    SLICE_X99Y71         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    16.024 r  u_shijue_arm_core/u_capture/hn0_i_3/CO[3]
+                         net (fo=1, routed)           0.000    16.024    u_shijue_arm_core/u_capture/hn0_i_3_n_0
+    SLICE_X99Y72         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    16.138 r  u_shijue_arm_core/u_capture/hn0_i_2/CO[3]
+                         net (fo=1, routed)           0.000    16.138    u_shijue_arm_core/u_capture/hn0_i_2_n_0
+    SLICE_X99Y73         CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.239    16.377 r  u_shijue_arm_core/u_capture/hn0_i_1/O[2]
+                         net (fo=1, routed)           0.702    17.079    u_shijue_arm_core/u_tracker/u_rgb2hsv/A[14]
+    DSP48_X3Y28          DSP48E1 (Prop_dsp48e1_A[14]_P[8])
+                                                      4.019    21.098 r  u_shijue_arm_core/u_tracker/u_rgb2hsv/hn0/P[8]
+                         net (fo=1, routed)           1.028    22.126    u_shijue_arm_core/u_tracker/u_rgb2hsv/hn0_n_97
+    SLICE_X98Y73         LUT2 (Prop_lut2_I0_O)        0.124    22.250 r  u_shijue_arm_core/u_tracker/u_rgb2hsv/hn_reg[5][13]_srl6_u_shijue_arm_core_u_tracker_u_rgb2hsv_valid_reg_c_4_i_1/O
+                         net (fo=1, routed)           0.657    22.908    u_shijue_arm_core/u_tracker/u_rgb2hsv/hn[8]
+    SLICE_X100Y71        SRL16E                                       r  u_shijue_arm_core/u_tracker/u_rgb2hsv/hn_reg[5][13]_srl6_u_shijue_arm_core_u_tracker_u_rgb2hsv_valid_reg_c_4/D
   -------------------------------------------------------------------    -------------------
 
                          (clock ov_pclk rise edge)   20.833    20.833 r  <hidden>
@@ -324,17 +325,17 @@ Slack (MET) :             3.591ns  (required time - arrival time)
     Y16                  IBUF (Prop_ibuf_I_O)         1.498    22.331 r  ov_pclk_IBUF_inst/O
                          net (fo=1, routed)           2.625    24.956    ov_pclk_IBUF
     BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.091    25.047 r  ov_pclk_IBUF_BUFG_inst/O
-                         net (fo=1622, routed)        1.553    26.600    u_shijue_arm_core/u_tracker/u_rgb2hsv/ov_pclk_IBUF_BUFG
-    SLICE_X62Y45         SRL16E                                       r  u_shijue_arm_core/u_tracker/u_rgb2hsv/hn_reg[12][13]_srl13_u_shijue_arm_core_u_tracker_u_rgb2hsv_valid_reg_c_11/CLK
-                         clock pessimism              0.672    27.272    <hidden>
-                         clock uncertainty           -0.035    27.237    <hidden>
-    SLICE_X62Y45         SRL16E (Setup_srl16e_CLK_D)
-                                                     -0.252    26.985    u_shijue_arm_core/u_tracker/u_rgb2hsv/hn_reg[12][13]_srl13_u_shijue_arm_core_u_tracker_u_rgb2hsv_valid_reg_c_11
+                         net (fo=1565, routed)        1.599    26.645    u_shijue_arm_core/u_tracker/u_rgb2hsv/ov_pclk_IBUF_BUFG
+    SLICE_X100Y71        SRL16E                                       r  u_shijue_arm_core/u_tracker/u_rgb2hsv/hn_reg[5][13]_srl6_u_shijue_arm_core_u_tracker_u_rgb2hsv_valid_reg_c_4/CLK
+                         clock pessimism              0.637    27.282    <hidden>
+                         clock uncertainty           -0.035    27.247    <hidden>
+    SLICE_X100Y71        SRL16E (Setup_srl16e_CLK_D)
+                                                     -0.044    27.203    u_shijue_arm_core/u_tracker/u_rgb2hsv/hn_reg[5][13]_srl6_u_shijue_arm_core_u_tracker_u_rgb2hsv_valid_reg_c_4
   -------------------------------------------------------------------
-                         required time                         26.985    <hidden>
-                         arrival time                         -23.393    <hidden>
+                         required time                         27.203    <hidden>
+                         arrival time                         -22.908    <hidden>
   -------------------------------------------------------------------
-                         slack                                  3.591    <hidden>
+                         slack                                  4.295    <hidden>
 
 
 
@@ -342,19 +343,19 @@ Slack (MET) :             3.591ns  (required time - arrival time)
 
 Min Delay Paths
 --------------------------------------------------------------------------------------
-Slack (MET) :             0.019ns  (arrival time - required time)
-  Source:                 u_shijue_arm_core/u_tracker/y_acc_reg[15]/C
-                            (rising edge-triggered cell FDCE clocked by ov_pclk  {rise@0.000ns fall@10.417ns period=20.833ns})
-  Destination:            u_shijue_arm_core/u_tracker/y_latch_reg[15]/D
-                            (rising edge-triggered cell FDCE clocked by ov_pclk  {rise@0.000ns fall@10.417ns period=20.833ns})
+Slack (MET) :             0.065ns  (arrival time - required time)
+  Source:                 u_shijue_arm_core/u_capture/waddr_reg[2]_rep__3/C
+                            (rising edge-triggered cell FDRE clocked by ov_pclk  {rise@0.000ns fall@10.417ns period=20.833ns})
+  Destination:            u_shijue_arm_core/u_bram/ram_reg_0_15/ADDRARDADDR[2]
+                            (rising edge-triggered cell RAMB36E1 clocked by ov_pclk  {rise@0.000ns fall@10.417ns period=20.833ns})
   Path Group:             ov_pclk
   Path Type:              Hold (Min at Fast Process Corner)
   Requirement:            0.000ns  (ov_pclk rise@0.000ns - ov_pclk rise@0.000ns)
-  Data Path Delay:        0.359ns  (logic 0.141ns (39.286%)  route 0.218ns (60.714%))
+  Data Path Delay:        0.558ns  (logic 0.164ns (29.403%)  route 0.394ns (70.597%))
   Logic Levels:           0  
-  Clock Path Skew:        0.270ns (DCD - SCD - CPR)
-    Destination Clock Delay (DCD):    2.894ns
-    Source Clock Delay      (SCD):    2.231ns
+  Clock Path Skew:        0.310ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    2.926ns
+    Source Clock Delay      (SCD):    2.224ns
     Clock Pessimism Removal (CPR):    0.393ns
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
@@ -365,12 +366,12 @@ Slack (MET) :             0.019ns  (arrival time - required time)
     Y16                  IBUF (Prop_ibuf_I_O)         0.336     0.336 r  ov_pclk_IBUF_inst/O
                          net (fo=1, routed)           1.283     1.619    ov_pclk_IBUF
     BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.026     1.645 r  ov_pclk_IBUF_BUFG_inst/O
-                         net (fo=1622, routed)        0.586     2.231    u_shijue_arm_core/u_tracker/ov_pclk_IBUF_BUFG
-    SLICE_X80Y50         FDCE                                         r  u_shijue_arm_core/u_tracker/y_acc_reg[15]/C
+                         net (fo=1565, routed)        0.579     2.224    u_shijue_arm_core/u_capture/ov_pclk_IBUF_BUFG
+    SLICE_X54Y42         FDRE                                         r  u_shijue_arm_core/u_capture/waddr_reg[2]_rep__3/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X80Y50         FDCE (Prop_fdce_C_Q)         0.141     2.372 r  u_shijue_arm_core/u_tracker/y_acc_reg[15]/Q
-                         net (fo=2, routed)           0.218     2.590    u_shijue_arm_core/u_tracker/y_acc_reg[15]
-    SLICE_X76Y48         FDCE                                         r  u_shijue_arm_core/u_tracker/y_latch_reg[15]/D
+    SLICE_X54Y42         FDRE (Prop_fdre_C_Q)         0.164     2.388 r  u_shijue_arm_core/u_capture/waddr_reg[2]_rep__3/Q
+                         net (fo=8, routed)           0.394     2.782    u_shijue_arm_core/u_bram/ram_reg_6_15_0[2]
+    RAMB36_X3Y11         RAMB36E1                                     r  u_shijue_arm_core/u_bram/ram_reg_0_15/ADDRARDADDR[2]
   -------------------------------------------------------------------    -------------------
 
                          (clock ov_pclk rise edge)    0.000     0.000 r  <hidden>
@@ -379,15 +380,16 @@ Slack (MET) :             0.019ns  (arrival time - required time)
     Y16                  IBUF (Prop_ibuf_I_O)         0.525     0.525 r  ov_pclk_IBUF_inst/O
                          net (fo=1, routed)           1.484     2.009    ov_pclk_IBUF
     BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.029     2.038 r  ov_pclk_IBUF_BUFG_inst/O
-                         net (fo=1622, routed)        0.856     2.894    u_shijue_arm_core/u_tracker/ov_pclk_IBUF_BUFG
-    SLICE_X76Y48         FDCE                                         r  u_shijue_arm_core/u_tracker/y_latch_reg[15]/C
-                         clock pessimism             -0.393     2.501    <hidden>
-    SLICE_X76Y48         FDCE (Hold_fdce_C_D)         0.070     2.571    u_shijue_arm_core/u_tracker/y_latch_reg[15]
+                         net (fo=1565, routed)        0.888     2.926    u_shijue_arm_core/u_bram/ov_pclk_IBUF_BUFG
+    RAMB36_X3Y11         RAMB36E1                                     r  u_shijue_arm_core/u_bram/ram_reg_0_15/CLKARDCLK
+                         clock pessimism             -0.393     2.534    <hidden>
+    RAMB36_X3Y11         RAMB36E1 (Hold_ramb36e1_CLKARDCLK_ADDRARDADDR[2])
+                                                      0.183     2.717    u_shijue_arm_core/u_bram/ram_reg_0_15
   -------------------------------------------------------------------
-                         required time                         -2.571    <hidden>
-                         arrival time                           2.590    <hidden>
+                         required time                         -2.717    <hidden>
+                         arrival time                           2.782    <hidden>
   -------------------------------------------------------------------
-                         slack                                  0.019    <hidden>
+                         slack                                  0.065    <hidden>
 
 
 
@@ -401,9 +403,9 @@ Period(ns):         20.833
 Sources:            { ov_pclk }
 
 Check Type        Corner  Lib Pin             Reference Pin  Required(ns)  Actual(ns)  Slack(ns)  Location      Pin
-Min Period        n/a     RAMB36E1/CLKARDCLK  n/a            2.892         20.833      17.941     RAMB36_X4Y2   u_shijue_arm_core/u_bram/ram_reg_0_0/CLKARDCLK
-Low Pulse Width   Slow    SRL16E/CLK          n/a            0.980         10.416      9.436      SLICE_X62Y45  u_shijue_arm_core/u_tracker/vsync_align_reg[14]_srl15_u_shijue_arm_core_u_tracker_u_rgb2hsv_valid_reg_c_13/CLK
-High Pulse Width  Slow    SRL16E/CLK          n/a            0.980         10.417      9.437      SLICE_X62Y45  u_shijue_arm_core/u_tracker/vsync_align_reg[14]_srl15_u_shijue_arm_core_u_tracker_u_rgb2hsv_valid_reg_c_13/CLK
+Min Period        n/a     RAMB36E1/CLKARDCLK  n/a            2.892         20.833      17.941     RAMB36_X2Y6   u_shijue_arm_core/u_bram/ram_reg_0_0/CLKARDCLK
+Low Pulse Width   Slow    SRL16E/CLK          n/a            0.980         10.417      9.437      SLICE_X62Y57  u_shijue_arm_core/u_tracker/vsync_align_reg[14]_srl15_u_shijue_arm_core_u_tracker_u_rgb2hsv_valid_reg_c_13/CLK
+High Pulse Width  Slow    SRL16E/CLK          n/a            0.980         10.416      9.436      SLICE_X62Y57  u_shijue_arm_core/u_tracker/vsync_align_reg[14]_srl15_u_shijue_arm_core_u_tracker_u_rgb2hsv_valid_reg_c_13/CLK
 
 
 
@@ -411,27 +413,27 @@ High Pulse Width  Slow    SRL16E/CLK          n/a            0.980         10.41
 From Clock:  sys_clk
   To Clock:  sys_clk
 
-Setup :            0  Failing Endpoints,  Worst Slack        5.179ns,  Total Violation        0.000ns
-Hold  :            0  Failing Endpoints,  Worst Slack        0.117ns,  Total Violation        0.000ns
+Setup :            0  Failing Endpoints,  Worst Slack        5.410ns,  Total Violation        0.000ns
+Hold  :            0  Failing Endpoints,  Worst Slack        0.063ns,  Total Violation        0.000ns
 PW    :            0  Failing Endpoints,  Worst Slack       10.000ns,  Total Violation        0.000ns
 ---------------------------------------------------------------------------------------------------
 
 
 Max Delay Paths
 --------------------------------------------------------------------------------------
-Slack (MET) :             5.179ns  (required time - arrival time)
-  Source:                 u_xunbi_core/u_obstacle_avoid_ctrl/echo_cnt_reg[5]/C
+Slack (MET) :             5.410ns  (required time - arrival time)
+  Source:                 u_xunbi_core/u_obstacle_avoid_ctrl/echo_cnt_reg[2]/C
                             (rising edge-triggered cell FDCE clocked by sys_clk  {rise@0.000ns fall@15.000ns period=30.000ns})
   Destination:            u_xunbi_core/u_obstacle_avoid_ctrl/avoid_active_reg/D
                             (rising edge-triggered cell FDCE clocked by sys_clk  {rise@0.000ns fall@15.000ns period=30.000ns})
   Path Group:             sys_clk
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            30.000ns  (sys_clk rise@30.000ns - sys_clk rise@0.000ns)
-  Data Path Delay:        24.637ns  (logic 10.562ns (42.871%)  route 14.075ns (57.129%))
-  Logic Levels:           37  (CARRY4=20 LUT2=2 LUT3=6 LUT4=4 LUT6=5)
-  Clock Path Skew:        -0.059ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    5.082ns = ( 35.082 - 30.000 ) 
-    Source Clock Delay      (SCD):    5.534ns
+  Data Path Delay:        24.317ns  (logic 10.707ns (44.032%)  route 13.610ns (55.968%))
+  Logic Levels:           37  (CARRY4=19 LUT1=1 LUT2=2 LUT3=6 LUT4=4 LUT6=5)
+  Clock Path Skew:        -0.148ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    5.080ns = ( 35.080 - 30.000 ) 
+    Source Clock Delay      (SCD):    5.621ns
     Clock Pessimism Removal (CPR):    0.394ns
   Clock Uncertainty:      0.154ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
     Total System Jitter     (TSJ):    0.071ns
@@ -447,106 +449,105 @@ Slack (MET) :             5.179ns  (required time - arrival time)
     N18                  IBUF (Prop_ibuf_I_O)         1.461     1.461 r  sys_clk_pin_IBUF_inst/O
                          net (fo=1, routed)           2.205     3.666    sys_clk_pin_IBUF
     BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.101     3.767 r  u_sys_clk_bufg/O
-                         net (fo=1707, routed)        1.767     5.534    u_xunbi_core/u_obstacle_avoid_ctrl/lcd_clk_OBUF
-    SLICE_X90Y71         FDCE                                         r  u_xunbi_core/u_obstacle_avoid_ctrl/echo_cnt_reg[5]/C
+                         net (fo=1660, routed)        1.854     5.621    u_xunbi_core/u_obstacle_avoid_ctrl/lcd_clk_OBUF
+    SLICE_X107Y67        FDCE                                         r  u_xunbi_core/u_obstacle_avoid_ctrl/echo_cnt_reg[2]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X90Y71         FDCE (Prop_fdce_C_Q)         0.478     6.012 r  u_xunbi_core/u_obstacle_avoid_ctrl/echo_cnt_reg[5]/Q
-                         net (fo=3, routed)           0.643     6.655    u_xunbi_core/u_obstacle_avoid_ctrl/echo_cnt_reg_n_0_[5]
-    SLICE_X95Y71         CARRY4 (Prop_carry4_S[1]_CO[3])
-                                                      0.845     7.500 r  u_xunbi_core/u_obstacle_avoid_ctrl/far_cnt_reg[1]_i_196/CO[3]
-                         net (fo=1, routed)           0.000     7.500    u_xunbi_core/u_obstacle_avoid_ctrl/far_cnt_reg[1]_i_196_n_0
-    SLICE_X95Y72         CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.114     7.614 r  u_xunbi_core/u_obstacle_avoid_ctrl/far_cnt_reg[1]_i_156/CO[3]
-                         net (fo=1, routed)           0.000     7.614    u_xunbi_core/u_obstacle_avoid_ctrl/far_cnt_reg[1]_i_156_n_0
-    SLICE_X95Y73         CARRY4 (Prop_carry4_CI_O[1])
-                                                      0.334     7.948 r  u_xunbi_core/u_obstacle_avoid_ctrl/far_cnt_reg[1]_i_118/O[1]
-                         net (fo=33, routed)          1.447     9.395    u_xunbi_core/u_obstacle_avoid_ctrl/count_to_cm3[13]
-    SLICE_X105Y71        LUT3 (Prop_lut3_I2_O)        0.333     9.728 r  u_xunbi_core/u_obstacle_avoid_ctrl/far_cnt[1]_i_322/O
-                         net (fo=2, routed)           0.477    10.205    u_xunbi_core/u_obstacle_avoid_ctrl/far_cnt[1]_i_322_n_0
-    SLICE_X103Y72        LUT4 (Prop_lut4_I3_O)        0.327    10.532 r  u_xunbi_core/u_obstacle_avoid_ctrl/far_cnt[1]_i_326/O
-                         net (fo=1, routed)           0.000    10.532    u_xunbi_core/u_obstacle_avoid_ctrl/far_cnt[1]_i_326_n_0
-    SLICE_X103Y72        CARRY4 (Prop_carry4_S[1]_CO[3])
-                                                      0.550    11.082 r  u_xunbi_core/u_obstacle_avoid_ctrl/far_cnt_reg[1]_i_288/CO[3]
-                         net (fo=1, routed)           0.000    11.082    u_xunbi_core/u_obstacle_avoid_ctrl/far_cnt_reg[1]_i_288_n_0
-    SLICE_X103Y73        CARRY4 (Prop_carry4_CI_O[2])
-                                                      0.239    11.321 r  u_xunbi_core/u_obstacle_avoid_ctrl/far_cnt_reg[1]_i_238/O[2]
-                         net (fo=2, routed)           0.842    12.163    u_xunbi_core/u_obstacle_avoid_ctrl/far_cnt_reg[1]_i_238_n_5
-    SLICE_X106Y73        LUT3 (Prop_lut3_I0_O)        0.302    12.465 r  u_xunbi_core/u_obstacle_avoid_ctrl/far_cnt[1]_i_191/O
-                         net (fo=2, routed)           0.664    13.128    u_xunbi_core/u_obstacle_avoid_ctrl/far_cnt[1]_i_191_n_0
-    SLICE_X104Y74        LUT4 (Prop_lut4_I3_O)        0.124    13.252 r  u_xunbi_core/u_obstacle_avoid_ctrl/far_cnt[1]_i_195/O
-                         net (fo=1, routed)           0.000    13.252    u_xunbi_core/u_obstacle_avoid_ctrl/far_cnt[1]_i_195_n_0
-    SLICE_X104Y74        CARRY4 (Prop_carry4_S[0]_CO[3])
-                                                      0.513    13.765 r  u_xunbi_core/u_obstacle_avoid_ctrl/far_cnt_reg[1]_i_138/CO[3]
-                         net (fo=1, routed)           0.009    13.774    u_xunbi_core/u_obstacle_avoid_ctrl/far_cnt_reg[1]_i_138_n_0
-    SLICE_X104Y75        CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117    13.891 r  u_xunbi_core/u_obstacle_avoid_ctrl/far_cnt_reg[1]_i_92/CO[3]
-                         net (fo=1, routed)           0.000    13.891    u_xunbi_core/u_obstacle_avoid_ctrl/far_cnt_reg[1]_i_92_n_0
-    SLICE_X104Y76        CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117    14.008 r  u_xunbi_core/u_obstacle_avoid_ctrl/far_cnt_reg[1]_i_49/CO[3]
-                         net (fo=1, routed)           0.000    14.008    u_xunbi_core/u_obstacle_avoid_ctrl/far_cnt_reg[1]_i_49_n_0
-    SLICE_X104Y77        CARRY4 (Prop_carry4_CI_O[0])
-                                                      0.219    14.227 r  u_xunbi_core/u_obstacle_avoid_ctrl/far_cnt_reg[1]_i_46/O[0]
-                         net (fo=2, routed)           1.182    15.409    u_xunbi_core/u_obstacle_avoid_ctrl/far_cnt_reg[1]_i_46_n_7
-    SLICE_X95Y76         LUT3 (Prop_lut3_I0_O)        0.323    15.732 r  u_xunbi_core/u_obstacle_avoid_ctrl/far_cnt[1]_i_17/O
-                         net (fo=2, routed)           0.507    16.239    u_xunbi_core/u_obstacle_avoid_ctrl/far_cnt[1]_i_17_n_0
-    SLICE_X99Y76         LUT4 (Prop_lut4_I3_O)        0.326    16.565 r  u_xunbi_core/u_obstacle_avoid_ctrl/far_cnt[1]_i_21/O
-                         net (fo=1, routed)           0.000    16.565    u_xunbi_core/u_obstacle_avoid_ctrl/far_cnt[1]_i_21_n_0
-    SLICE_X99Y76         CARRY4 (Prop_carry4_S[3]_CO[3])
-                                                      0.401    16.966 r  u_xunbi_core/u_obstacle_avoid_ctrl/far_cnt_reg[1]_i_7/CO[3]
-                         net (fo=1, routed)           0.000    16.966    u_xunbi_core/u_obstacle_avoid_ctrl/far_cnt_reg[1]_i_7_n_0
-    SLICE_X99Y77         CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.114    17.080 r  u_xunbi_core/u_obstacle_avoid_ctrl/far_cnt_reg[1]_i_26/CO[3]
-                         net (fo=1, routed)           0.000    17.080    u_xunbi_core/u_obstacle_avoid_ctrl/far_cnt_reg[1]_i_26_n_0
-    SLICE_X99Y78         CARRY4 (Prop_carry4_CI_O[1])
-                                                      0.334    17.414 r  u_xunbi_core/u_obstacle_avoid_ctrl/far_cnt_reg[1]_i_30/O[1]
-                         net (fo=16, routed)          1.351    18.765    u_xunbi_core/u_obstacle_avoid_ctrl/far_cnt_reg[1]_i_30_n_6
-    SLICE_X101Y71        LUT3 (Prop_lut3_I2_O)        0.329    19.094 r  u_xunbi_core/u_obstacle_avoid_ctrl/near_cnt[0]_i_170/O
-                         net (fo=1, routed)           0.523    19.617    u_xunbi_core/u_obstacle_avoid_ctrl/near_cnt[0]_i_170_n_0
-    SLICE_X100Y71        CARRY4 (Prop_carry4_DI[2]_CO[3])
-                                                      0.612    20.229 r  u_xunbi_core/u_obstacle_avoid_ctrl/near_cnt_reg[0]_i_141/CO[3]
-                         net (fo=1, routed)           0.000    20.229    u_xunbi_core/u_obstacle_avoid_ctrl/near_cnt_reg[0]_i_141_n_0
-    SLICE_X100Y72        CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117    20.346 r  u_xunbi_core/u_obstacle_avoid_ctrl/near_cnt_reg[0]_i_109/CO[3]
-                         net (fo=1, routed)           0.000    20.346    u_xunbi_core/u_obstacle_avoid_ctrl/near_cnt_reg[0]_i_109_n_0
-    SLICE_X100Y73        CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117    20.463 r  u_xunbi_core/u_obstacle_avoid_ctrl/near_cnt_reg[0]_i_78/CO[3]
-                         net (fo=1, routed)           0.000    20.463    u_xunbi_core/u_obstacle_avoid_ctrl/near_cnt_reg[0]_i_78_n_0
-    SLICE_X100Y74        CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117    20.580 r  u_xunbi_core/u_obstacle_avoid_ctrl/near_cnt_reg[0]_i_52/CO[3]
-                         net (fo=1, routed)           0.009    20.589    u_xunbi_core/u_obstacle_avoid_ctrl/near_cnt_reg[0]_i_52_n_0
-    SLICE_X100Y75        CARRY4 (Prop_carry4_CI_O[0])
-                                                      0.219    20.808 r  u_xunbi_core/u_obstacle_avoid_ctrl/near_cnt_reg[0]_i_29/O[0]
-                         net (fo=2, routed)           0.775    21.583    u_xunbi_core/u_obstacle_avoid_ctrl/near_cnt_reg[0]_i_29_n_7
-    SLICE_X100Y80        LUT3 (Prop_lut3_I1_O)        0.290    21.873 r  u_xunbi_core/u_obstacle_avoid_ctrl/near_cnt[0]_i_23/O
-                         net (fo=2, routed)           0.816    22.689    u_xunbi_core/u_obstacle_avoid_ctrl/near_cnt[0]_i_23_n_0
-    SLICE_X100Y81        LUT4 (Prop_lut4_I3_O)        0.355    23.044 r  u_xunbi_core/u_obstacle_avoid_ctrl/near_cnt[0]_i_27/O
-                         net (fo=1, routed)           0.000    23.044    u_xunbi_core/u_obstacle_avoid_ctrl/near_cnt[0]_i_27_n_0
-    SLICE_X100Y81        CARRY4 (Prop_carry4_S[0]_CO[3])
-                                                      0.513    23.557 r  u_xunbi_core/u_obstacle_avoid_ctrl/near_cnt_reg[0]_i_8/CO[3]
-                         net (fo=1, routed)           0.000    23.557    u_xunbi_core/u_obstacle_avoid_ctrl/near_cnt_reg[0]_i_8_n_0
-    SLICE_X100Y82        CARRY4 (Prop_carry4_CI_O[0])
-                                                      0.219    23.776 r  u_xunbi_core/u_obstacle_avoid_ctrl/near_cnt_reg[0]_i_5/O[0]
-                         net (fo=11, routed)          0.651    24.426    u_xunbi_core/u_obstacle_avoid_ctrl/near_cnt_reg[0]_i_5_n_7
-    SLICE_X101Y79        LUT2 (Prop_lut2_I1_O)        0.295    24.721 r  u_xunbi_core/u_obstacle_avoid_ctrl/near_cnt[0]_i_9/O
-                         net (fo=1, routed)           0.000    24.721    u_xunbi_core/u_obstacle_avoid_ctrl/near_cnt[0]_i_9_n_0
-    SLICE_X101Y79        CARRY4 (Prop_carry4_S[3]_CO[3])
-                                                      0.401    25.122 r  u_xunbi_core/u_obstacle_avoid_ctrl/near_cnt_reg[0]_i_4/CO[3]
-                         net (fo=10, routed)          1.118    26.240    u_xunbi_core/u_obstacle_avoid_ctrl/near_cnt_reg[0]_i_4_n_0
-    SLICE_X105Y77        LUT2 (Prop_lut2_I0_O)        0.124    26.364 r  u_xunbi_core/u_obstacle_avoid_ctrl/far_cnt[1]_i_6/O
-                         net (fo=5, routed)           0.595    26.960    u_xunbi_core/u_obstacle_avoid_ctrl/far_cnt[1]_i_6_n_0
-    SLICE_X103Y79        LUT6 (Prop_lut6_I1_O)        0.124    27.084 r  u_xunbi_core/u_obstacle_avoid_ctrl/far_cnt[1]_i_12/O
-                         net (fo=1, routed)           0.619    27.702    u_xunbi_core/u_obstacle_avoid_ctrl/far_cnt[1]_i_12_n_0
-    SLICE_X103Y78        LUT6 (Prop_lut6_I3_O)        0.124    27.826 r  u_xunbi_core/u_obstacle_avoid_ctrl/far_cnt[1]_i_4/O
-                         net (fo=2, routed)           0.655    28.481    u_xunbi_core/u_obstacle_avoid_ctrl/far_cnt[1]_i_4_n_0
-    SLICE_X96Y78         LUT6 (Prop_lut6_I0_O)        0.124    28.605 f  u_xunbi_core/u_obstacle_avoid_ctrl/near_cnt[0]_i_2/O
-                         net (fo=3, routed)           0.307    28.912    u_xunbi_core/u_obstacle_avoid_ctrl/near_cnt[0]_i_2_n_0
-    SLICE_X95Y78         LUT3 (Prop_lut3_I2_O)        0.124    29.036 r  u_xunbi_core/u_obstacle_avoid_ctrl/avoid_active_i_2/O
-                         net (fo=3, routed)           0.454    29.490    u_xunbi_core/u_obstacle_avoid_ctrl/avoid_active_i_2_n_0
-    SLICE_X95Y77         LUT6 (Prop_lut6_I5_O)        0.124    29.614 r  u_xunbi_core/u_obstacle_avoid_ctrl/avoid_active_i_4/O
-                         net (fo=1, routed)           0.433    30.047    u_xunbi_core/u_obstacle_avoid_ctrl/avoid_active_i_4_n_0
-    SLICE_X95Y77         LUT6 (Prop_lut6_I4_O)        0.124    30.171 r  u_xunbi_core/u_obstacle_avoid_ctrl/avoid_active_i_1/O
-                         net (fo=1, routed)           0.000    30.171    u_xunbi_core/u_obstacle_avoid_ctrl/avoid_active_i_1_n_0
-    SLICE_X95Y77         FDCE                                         r  u_xunbi_core/u_obstacle_avoid_ctrl/avoid_active_reg/D
+    SLICE_X107Y67        FDCE (Prop_fdce_C_Q)         0.419     6.040 f  u_xunbi_core/u_obstacle_avoid_ctrl/echo_cnt_reg[2]/Q
+                         net (fo=4, routed)           0.449     6.490    u_xunbi_core/u_obstacle_avoid_ctrl/echo_cnt_reg_n_0_[2]
+    SLICE_X108Y67        LUT1 (Prop_lut1_I0_O)        0.299     6.789 r  u_xunbi_core/u_obstacle_avoid_ctrl/far_cnt[1]_i_278/O
+                         net (fo=1, routed)           0.000     6.789    u_xunbi_core/u_obstacle_avoid_ctrl/far_cnt[1]_i_278_n_0
+    SLICE_X108Y67        CARRY4 (Prop_carry4_S[2]_CO[3])
+                                                      0.380     7.169 r  u_xunbi_core/u_obstacle_avoid_ctrl/far_cnt_reg[1]_i_228/CO[3]
+                         net (fo=1, routed)           0.000     7.169    u_xunbi_core/u_obstacle_avoid_ctrl/far_cnt_reg[1]_i_228_n_0
+    SLICE_X108Y68        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     7.286 r  u_xunbi_core/u_obstacle_avoid_ctrl/far_cnt_reg[1]_i_196/CO[3]
+                         net (fo=1, routed)           0.000     7.286    u_xunbi_core/u_obstacle_avoid_ctrl/far_cnt_reg[1]_i_196_n_0
+    SLICE_X108Y69        CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.323     7.609 r  u_xunbi_core/u_obstacle_avoid_ctrl/far_cnt_reg[1]_i_156/O[1]
+                         net (fo=33, routed)          1.400     9.009    u_xunbi_core/u_obstacle_avoid_ctrl/count_to_cm3[9]
+    SLICE_X113Y75        LUT3 (Prop_lut3_I0_O)        0.332     9.341 r  u_xunbi_core/u_obstacle_avoid_ctrl/far_cnt[1]_i_322/O
+                         net (fo=2, routed)           0.761    10.102    u_xunbi_core/u_obstacle_avoid_ctrl/far_cnt[1]_i_322_n_0
+    SLICE_X112Y71        LUT4 (Prop_lut4_I3_O)        0.326    10.428 r  u_xunbi_core/u_obstacle_avoid_ctrl/far_cnt[1]_i_326/O
+                         net (fo=1, routed)           0.000    10.428    u_xunbi_core/u_obstacle_avoid_ctrl/far_cnt[1]_i_326_n_0
+    SLICE_X112Y71        CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    10.961 r  u_xunbi_core/u_obstacle_avoid_ctrl/far_cnt_reg[1]_i_288/CO[3]
+                         net (fo=1, routed)           0.000    10.961    u_xunbi_core/u_obstacle_avoid_ctrl/far_cnt_reg[1]_i_288_n_0
+    SLICE_X112Y72        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    11.078 r  u_xunbi_core/u_obstacle_avoid_ctrl/far_cnt_reg[1]_i_238/CO[3]
+                         net (fo=1, routed)           0.000    11.078    u_xunbi_core/u_obstacle_avoid_ctrl/far_cnt_reg[1]_i_238_n_0
+    SLICE_X112Y73        CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.239    11.317 r  u_xunbi_core/u_obstacle_avoid_ctrl/far_cnt_reg[1]_i_202/O[2]
+                         net (fo=2, routed)           0.885    12.201    u_xunbi_core/u_obstacle_avoid_ctrl/far_cnt_reg[1]_i_202_n_5
+    SLICE_X112Y75        LUT3 (Prop_lut3_I0_O)        0.325    12.526 r  u_xunbi_core/u_obstacle_avoid_ctrl/far_cnt[1]_i_151/O
+                         net (fo=2, routed)           0.616    13.143    u_xunbi_core/u_obstacle_avoid_ctrl/far_cnt[1]_i_151_n_0
+    SLICE_X110Y74        LUT4 (Prop_lut4_I3_O)        0.328    13.471 r  u_xunbi_core/u_obstacle_avoid_ctrl/far_cnt[1]_i_155/O
+                         net (fo=1, routed)           0.000    13.471    u_xunbi_core/u_obstacle_avoid_ctrl/far_cnt[1]_i_155_n_0
+    SLICE_X110Y74        CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.532    14.003 r  u_xunbi_core/u_obstacle_avoid_ctrl/far_cnt_reg[1]_i_92/CO[3]
+                         net (fo=1, routed)           0.009    14.012    u_xunbi_core/u_obstacle_avoid_ctrl/far_cnt_reg[1]_i_92_n_0
+    SLICE_X110Y75        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    14.126 r  u_xunbi_core/u_obstacle_avoid_ctrl/far_cnt_reg[1]_i_49/CO[3]
+                         net (fo=1, routed)           0.000    14.126    u_xunbi_core/u_obstacle_avoid_ctrl/far_cnt_reg[1]_i_49_n_0
+    SLICE_X110Y76        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    14.240 r  u_xunbi_core/u_obstacle_avoid_ctrl/far_cnt_reg[1]_i_46/CO[3]
+                         net (fo=1, routed)           0.000    14.240    u_xunbi_core/u_obstacle_avoid_ctrl/far_cnt_reg[1]_i_46_n_0
+    SLICE_X110Y77        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    14.354 r  u_xunbi_core/u_obstacle_avoid_ctrl/far_cnt_reg[1]_i_124/CO[3]
+                         net (fo=1, routed)           0.000    14.354    u_xunbi_core/u_obstacle_avoid_ctrl/far_cnt_reg[1]_i_124_n_0
+    SLICE_X110Y78        CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.334    14.688 r  u_xunbi_core/u_obstacle_avoid_ctrl/far_cnt_reg[1]_i_126/O[1]
+                         net (fo=2, routed)           0.998    15.686    u_xunbi_core/u_obstacle_avoid_ctrl/far_cnt_reg[1]_i_126_n_6
+    SLICE_X112Y78        LUT3 (Prop_lut3_I1_O)        0.331    16.017 r  u_xunbi_core/u_obstacle_avoid_ctrl/far_cnt[1]_i_62/O
+                         net (fo=2, routed)           0.325    16.341    u_xunbi_core/u_obstacle_avoid_ctrl/far_cnt[1]_i_62_n_0
+    SLICE_X111Y79        LUT4 (Prop_lut4_I3_O)        0.348    16.689 r  u_xunbi_core/u_obstacle_avoid_ctrl/far_cnt[1]_i_66/O
+                         net (fo=1, routed)           0.000    16.689    u_xunbi_core/u_obstacle_avoid_ctrl/far_cnt[1]_i_66_n_0
+    SLICE_X111Y79        CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.532    17.221 r  u_xunbi_core/u_obstacle_avoid_ctrl/far_cnt_reg[1]_i_28/CO[3]
+                         net (fo=1, routed)           0.000    17.221    u_xunbi_core/u_obstacle_avoid_ctrl/far_cnt_reg[1]_i_28_n_0
+    SLICE_X111Y80        CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.223    17.444 r  u_xunbi_core/u_obstacle_avoid_ctrl/far_cnt_reg[1]_i_32/O[0]
+                         net (fo=16, routed)          0.828    18.273    u_xunbi_core/u_obstacle_avoid_ctrl/far_cnt_reg[1]_i_32_n_7
+    SLICE_X110Y81        LUT3 (Prop_lut3_I2_O)        0.328    18.601 r  u_xunbi_core/u_obstacle_avoid_ctrl/near_cnt[0]_i_112/O
+                         net (fo=1, routed)           0.760    19.361    u_xunbi_core/u_obstacle_avoid_ctrl/near_cnt[0]_i_112_n_0
+    SLICE_X109Y81        CARRY4 (Prop_carry4_DI[1]_CO[3])
+                                                      0.710    20.071 r  u_xunbi_core/u_obstacle_avoid_ctrl/near_cnt_reg[0]_i_78/CO[3]
+                         net (fo=1, routed)           0.000    20.071    u_xunbi_core/u_obstacle_avoid_ctrl/near_cnt_reg[0]_i_78_n_0
+    SLICE_X109Y82        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    20.185 r  u_xunbi_core/u_obstacle_avoid_ctrl/near_cnt_reg[0]_i_52/CO[3]
+                         net (fo=1, routed)           0.000    20.185    u_xunbi_core/u_obstacle_avoid_ctrl/near_cnt_reg[0]_i_52_n_0
+    SLICE_X109Y83        CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.222    20.407 r  u_xunbi_core/u_obstacle_avoid_ctrl/near_cnt_reg[0]_i_29/O[0]
+                         net (fo=2, routed)           0.725    21.132    u_xunbi_core/u_obstacle_avoid_ctrl/near_cnt_reg[0]_i_29_n_7
+    SLICE_X107Y80        LUT3 (Prop_lut3_I1_O)        0.324    21.456 r  u_xunbi_core/u_obstacle_avoid_ctrl/near_cnt[0]_i_23/O
+                         net (fo=2, routed)           0.810    22.266    u_xunbi_core/u_obstacle_avoid_ctrl/near_cnt[0]_i_23_n_0
+    SLICE_X107Y81        LUT4 (Prop_lut4_I3_O)        0.332    22.598 r  u_xunbi_core/u_obstacle_avoid_ctrl/near_cnt[0]_i_27/O
+                         net (fo=1, routed)           0.000    22.598    u_xunbi_core/u_obstacle_avoid_ctrl/near_cnt[0]_i_27_n_0
+    SLICE_X107Y81        CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.532    23.130 r  u_xunbi_core/u_obstacle_avoid_ctrl/near_cnt_reg[0]_i_8/CO[3]
+                         net (fo=1, routed)           0.000    23.130    u_xunbi_core/u_obstacle_avoid_ctrl/near_cnt_reg[0]_i_8_n_0
+    SLICE_X107Y82        CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.222    23.352 r  u_xunbi_core/u_obstacle_avoid_ctrl/near_cnt_reg[0]_i_5/O[0]
+                         net (fo=11, routed)          0.613    23.965    u_xunbi_core/u_obstacle_avoid_ctrl/near_cnt_reg[0]_i_5_n_7
+    SLICE_X108Y81        LUT2 (Prop_lut2_I1_O)        0.299    24.264 r  u_xunbi_core/u_obstacle_avoid_ctrl/near_cnt[0]_i_9/O
+                         net (fo=1, routed)           0.000    24.264    u_xunbi_core/u_obstacle_avoid_ctrl/near_cnt[0]_i_9_n_0
+    SLICE_X108Y81        CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.376    24.640 r  u_xunbi_core/u_obstacle_avoid_ctrl/near_cnt_reg[0]_i_4/CO[3]
+                         net (fo=10, routed)          1.283    25.923    u_xunbi_core/u_obstacle_avoid_ctrl/near_cnt_reg[0]_i_4_n_0
+    SLICE_X104Y78        LUT2 (Prop_lut2_I0_O)        0.124    26.047 r  u_xunbi_core/u_obstacle_avoid_ctrl/far_cnt[1]_i_6/O
+                         net (fo=5, routed)           0.591    26.637    u_xunbi_core/u_obstacle_avoid_ctrl/far_cnt[1]_i_6_n_0
+    SLICE_X103Y80        LUT6 (Prop_lut6_I1_O)        0.124    26.761 r  u_xunbi_core/u_obstacle_avoid_ctrl/far_cnt[1]_i_12/O
+                         net (fo=1, routed)           0.680    27.442    u_xunbi_core/u_obstacle_avoid_ctrl/far_cnt[1]_i_12_n_0
+    SLICE_X104Y79        LUT6 (Prop_lut6_I3_O)        0.124    27.566 r  u_xunbi_core/u_obstacle_avoid_ctrl/far_cnt[1]_i_4/O
+                         net (fo=2, routed)           0.321    27.887    u_xunbi_core/u_obstacle_avoid_ctrl/far_cnt[1]_i_4_n_0
+    SLICE_X104Y77        LUT6 (Prop_lut6_I0_O)        0.124    28.011 f  u_xunbi_core/u_obstacle_avoid_ctrl/near_cnt[0]_i_2/O
+                         net (fo=3, routed)           0.637    28.648    u_xunbi_core/u_obstacle_avoid_ctrl/near_cnt[0]_i_2_n_0
+    SLICE_X103Y74        LUT3 (Prop_lut3_I2_O)        0.124    28.772 r  u_xunbi_core/u_obstacle_avoid_ctrl/avoid_active_i_2/O
+                         net (fo=3, routed)           0.485    29.257    u_xunbi_core/u_obstacle_avoid_ctrl/avoid_active_i_2_n_0
+    SLICE_X103Y75        LUT6 (Prop_lut6_I5_O)        0.124    29.381 r  u_xunbi_core/u_obstacle_avoid_ctrl/avoid_active_i_4/O
+                         net (fo=1, routed)           0.433    29.814    u_xunbi_core/u_obstacle_avoid_ctrl/avoid_active_i_4_n_0
+    SLICE_X103Y75        LUT6 (Prop_lut6_I4_O)        0.124    29.938 r  u_xunbi_core/u_obstacle_avoid_ctrl/avoid_active_i_1/O
+                         net (fo=1, routed)           0.000    29.938    u_xunbi_core/u_obstacle_avoid_ctrl/avoid_active_i_1_n_0
+    SLICE_X103Y75        FDCE                                         r  u_xunbi_core/u_obstacle_avoid_ctrl/avoid_active_reg/D
   -------------------------------------------------------------------    -------------------
 
                          (clock sys_clk rise edge)   30.000    30.000 r  <hidden>
@@ -555,16 +556,16 @@ Slack (MET) :             5.179ns  (required time - arrival time)
     N18                  IBUF (Prop_ibuf_I_O)         1.391    31.391 r  sys_clk_pin_IBUF_inst/O
                          net (fo=1, routed)           2.006    33.397    sys_clk_pin_IBUF
     BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.091    33.488 r  u_sys_clk_bufg/O
-                         net (fo=1707, routed)        1.594    35.082    u_xunbi_core/u_obstacle_avoid_ctrl/lcd_clk_OBUF
-    SLICE_X95Y77         FDCE                                         r  u_xunbi_core/u_obstacle_avoid_ctrl/avoid_active_reg/C
-                         clock pessimism              0.394    35.475    <hidden>
-                         clock uncertainty           -0.154    35.321    <hidden>
-    SLICE_X95Y77         FDCE (Setup_fdce_C_D)        0.029    35.350    u_xunbi_core/u_obstacle_avoid_ctrl/avoid_active_reg
+                         net (fo=1660, routed)        1.592    35.080    u_xunbi_core/u_obstacle_avoid_ctrl/lcd_clk_OBUF
+    SLICE_X103Y75        FDCE                                         r  u_xunbi_core/u_obstacle_avoid_ctrl/avoid_active_reg/C
+                         clock pessimism              0.394    35.473    <hidden>
+                         clock uncertainty           -0.154    35.319    <hidden>
+    SLICE_X103Y75        FDCE (Setup_fdce_C_D)        0.029    35.348    u_xunbi_core/u_obstacle_avoid_ctrl/avoid_active_reg
   -------------------------------------------------------------------
-                         required time                         35.350    <hidden>
-                         arrival time                         -30.171    <hidden>
+                         required time                         35.348    <hidden>
+                         arrival time                         -29.938    <hidden>
   -------------------------------------------------------------------
-                         slack                                  5.179    <hidden>
+                         slack                                  5.410    <hidden>
 
 
 
@@ -572,20 +573,20 @@ Slack (MET) :             5.179ns  (required time - arrival time)
 
 Min Delay Paths
 --------------------------------------------------------------------------------------
-Slack (MET) :             0.117ns  (arrival time - required time)
-  Source:                 u_board_link/u_link_rx/u_uart_rx/rxd_d1_reg/C
-                            (rising edge-triggered cell FDPE clocked by sys_clk  {rise@0.000ns fall@15.000ns period=30.000ns})
-  Destination:            u_board_link/u_link_rx/u_uart_rx/rx_busy_reg/D
+Slack (MET) :             0.063ns  (arrival time - required time)
+  Source:                 u_arm_red_track/u_packet/u_bus_servo_uart_tx/shift_reg_reg[4]/C
+                            (rising edge-triggered cell FDCE clocked by sys_clk  {rise@0.000ns fall@15.000ns period=30.000ns})
+  Destination:            u_arm_red_track/u_packet/u_bus_servo_uart_tx/shift_reg_reg[3]/D
                             (rising edge-triggered cell FDCE clocked by sys_clk  {rise@0.000ns fall@15.000ns period=30.000ns})
   Path Group:             sys_clk
   Path Type:              Hold (Min at Fast Process Corner)
   Requirement:            0.000ns  (sys_clk rise@0.000ns - sys_clk rise@0.000ns)
-  Data Path Delay:        0.251ns  (logic 0.186ns (74.103%)  route 0.065ns (25.897%))
-  Logic Levels:           1  (LUT4=1)
-  Clock Path Skew:        0.013ns (DCD - SCD - CPR)
-    Destination Clock Delay (DCD):    2.025ns
-    Source Clock Delay      (SCD):    1.508ns
-    Clock Pessimism Removal (CPR):    0.504ns
+  Data Path Delay:        0.366ns  (logic 0.186ns (50.884%)  route 0.180ns (49.116%))
+  Logic Levels:           1  (LUT5=1)
+  Clock Path Skew:        0.182ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    2.030ns
+    Source Clock Delay      (SCD):    1.595ns
+    Clock Pessimism Removal (CPR):    0.253ns
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
@@ -595,14 +596,14 @@ Slack (MET) :             0.117ns  (arrival time - required time)
     N18                  IBUF (Prop_ibuf_I_O)         0.229     0.229 r  sys_clk_pin_IBUF_inst/O
                          net (fo=1, routed)           0.674     0.903    sys_clk_pin_IBUF
     BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.026     0.929 r  u_sys_clk_bufg/O
-                         net (fo=1707, routed)        0.579     1.508    u_board_link/u_link_rx/u_uart_rx/lcd_clk_OBUF
-    SLICE_X67Y95         FDPE                                         r  u_board_link/u_link_rx/u_uart_rx/rxd_d1_reg/C
+                         net (fo=1660, routed)        0.666     1.595    u_arm_red_track/u_packet/u_bus_servo_uart_tx/lcd_clk_OBUF
+    SLICE_X83Y100        FDCE                                         r  u_arm_red_track/u_packet/u_bus_servo_uart_tx/shift_reg_reg[4]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X67Y95         FDPE (Prop_fdpe_C_Q)         0.141     1.649 f  u_board_link/u_link_rx/u_uart_rx/rxd_d1_reg/Q
-                         net (fo=2, routed)           0.065     1.714    u_board_link/u_link_rx/u_uart_rx/rxd_d1
-    SLICE_X66Y95         LUT4 (Prop_lut4_I1_O)        0.045     1.759 r  u_board_link/u_link_rx/u_uart_rx/rx_busy_i_1/O
-                         net (fo=1, routed)           0.000     1.759    u_board_link/u_link_rx/u_uart_rx/rx_busy_i_1_n_0
-    SLICE_X66Y95         FDCE                                         r  u_board_link/u_link_rx/u_uart_rx/rx_busy_reg/D
+    SLICE_X83Y100        FDCE (Prop_fdce_C_Q)         0.141     1.736 r  u_arm_red_track/u_packet/u_bus_servo_uart_tx/shift_reg_reg[4]/Q
+                         net (fo=1, routed)           0.180     1.916    u_arm_red_track/u_packet/u_bus_servo_uart_tx/shift_reg_reg_n_0_[4]
+    SLICE_X82Y99         LUT5 (Prop_lut5_I0_O)        0.045     1.961 r  u_arm_red_track/u_packet/u_bus_servo_uart_tx/shift_reg[3]_i_1__1/O
+                         net (fo=1, routed)           0.000     1.961    u_arm_red_track/u_packet/u_bus_servo_uart_tx/p_1_in[3]
+    SLICE_X82Y99         FDCE                                         r  u_arm_red_track/u_packet/u_bus_servo_uart_tx/shift_reg_reg[3]/D
   -------------------------------------------------------------------    -------------------
 
                          (clock sys_clk rise edge)    0.000     0.000 r  <hidden>
@@ -611,15 +612,15 @@ Slack (MET) :             0.117ns  (arrival time - required time)
     N18                  IBUF (Prop_ibuf_I_O)         0.417     0.417 r  sys_clk_pin_IBUF_inst/O
                          net (fo=1, routed)           0.731     1.148    sys_clk_pin_IBUF
     BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.029     1.177 r  u_sys_clk_bufg/O
-                         net (fo=1707, routed)        0.848     2.025    u_board_link/u_link_rx/u_uart_rx/lcd_clk_OBUF
-    SLICE_X66Y95         FDCE                                         r  u_board_link/u_link_rx/u_uart_rx/rx_busy_reg/C
-                         clock pessimism             -0.504     1.521    <hidden>
-    SLICE_X66Y95         FDCE (Hold_fdce_C_D)         0.121     1.642    u_board_link/u_link_rx/u_uart_rx/rx_busy_reg
+                         net (fo=1660, routed)        0.853     2.030    u_arm_red_track/u_packet/u_bus_servo_uart_tx/lcd_clk_OBUF
+    SLICE_X82Y99         FDCE                                         r  u_arm_red_track/u_packet/u_bus_servo_uart_tx/shift_reg_reg[3]/C
+                         clock pessimism             -0.253     1.777    <hidden>
+    SLICE_X82Y99         FDCE (Hold_fdce_C_D)         0.121     1.898    u_arm_red_track/u_packet/u_bus_servo_uart_tx/shift_reg_reg[3]
   -------------------------------------------------------------------
-                         required time                         -1.642    <hidden>
-                         arrival time                           1.759    <hidden>
+                         required time                         -1.898    <hidden>
+                         arrival time                           1.961    <hidden>
   -------------------------------------------------------------------
-                         slack                                  0.117    <hidden>
+                         slack                                  0.063    <hidden>
 
 
 
@@ -633,7 +634,7 @@ Period(ns):         30.000
 Sources:            { sys_clk_pin }
 
 Check Type        Corner  Lib Pin             Reference Pin  Required(ns)  Actual(ns)  Slack(ns)  Location         Pin
-Min Period        n/a     RAMB36E1/CLKBWRCLK  n/a            2.892         30.000      27.108     RAMB36_X4Y2      u_shijue_arm_core/u_bram/ram_reg_0_0/CLKBWRCLK
+Min Period        n/a     RAMB36E1/CLKBWRCLK  n/a            2.892         30.000      27.108     RAMB36_X2Y6      u_shijue_arm_core/u_bram/ram_reg_0_0/CLKBWRCLK
 Max Period        n/a     MMCME2_ADV/CLKIN1   n/a            100.000       30.000      70.000     MMCME2_ADV_X1Y0  u_clock/inst/mmcm_adv_inst/CLKIN1
 Low Pulse Width   Slow    MMCME2_ADV/CLKIN1   n/a            5.000         15.000      10.000     MMCME2_ADV_X1Y0  u_clock/inst/mmcm_adv_inst/CLKIN1
 High Pulse Width  Slow    MMCME2_ADV/CLKIN1   n/a            5.000         15.000      10.000     MMCME2_ADV_X1Y0  u_clock/inst/mmcm_adv_inst/CLKIN1
@@ -644,15 +645,15 @@ High Pulse Width  Slow    MMCME2_ADV/CLKIN1   n/a            5.000         15.00
 From Clock:  clk_out1_clk_wiz_0
   To Clock:  clk_out1_clk_wiz_0
 
-Setup :            0  Failing Endpoints,  Worst Slack        6.824ns,  Total Violation        0.000ns
-Hold  :            0  Failing Endpoints,  Worst Slack        0.164ns,  Total Violation        0.000ns
+Setup :            0  Failing Endpoints,  Worst Slack        6.677ns,  Total Violation        0.000ns
+Hold  :            0  Failing Endpoints,  Worst Slack        0.197ns,  Total Violation        0.000ns
 PW    :            0  Failing Endpoints,  Worst Slack        6.167ns,  Total Violation        0.000ns
 ---------------------------------------------------------------------------------------------------
 
 
 Max Delay Paths
 --------------------------------------------------------------------------------------
-Slack (MET) :             6.824ns  (required time - arrival time)
+Slack (MET) :             6.677ns  (required time - arrival time)
   Source:                 u_shijue_arm_core/u_ov7670_init/idx_reg_rep[1]/C
                             (rising edge-triggered cell FDCE clocked by clk_out1_clk_wiz_0  {rise@0.000ns fall@6.667ns period=13.333ns})
   Destination:            u_shijue_arm_core/u_ov7670_init/state_reg[0]/D
@@ -660,11 +661,11 @@ Slack (MET) :             6.824ns  (required time - arrival time)
   Path Group:             clk_out1_clk_wiz_0
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            13.333ns  (clk_out1_clk_wiz_0 rise@13.333ns - clk_out1_clk_wiz_0 rise@0.000ns)
-  Data Path Delay:        6.476ns  (logic 1.909ns (29.478%)  route 4.567ns (70.522%))
+  Data Path Delay:        6.567ns  (logic 1.852ns (28.203%)  route 4.715ns (71.797%))
   Logic Levels:           8  (LUT5=1 LUT6=6 MUXF7=1)
-  Clock Path Skew:        -0.021ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    5.167ns = ( 18.500 - 13.333 ) 
-    Source Clock Delay      (SCD):    5.622ns
+  Clock Path Skew:        -0.025ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    5.175ns = ( 18.508 - 13.333 ) 
+    Source Clock Delay      (SCD):    5.634ns
     Clock Pessimism Removal (CPR):    0.435ns
   Clock Uncertainty:      0.093ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
     Total System Jitter     (TSJ):    0.071ns
@@ -680,33 +681,33 @@ Slack (MET) :             6.824ns  (required time - arrival time)
     N18                  IBUF (Prop_ibuf_I_O)         1.461     1.461 r  sys_clk_pin_IBUF_inst/O
                          net (fo=1, routed)           2.205     3.666    sys_clk_pin_IBUF
     BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.101     3.767 r  u_sys_clk_bufg/O
-                         net (fo=1707, routed)        1.806     5.573    u_clock/inst/clk_in1
+                         net (fo=1660, routed)        1.806     5.573    u_clock/inst/clk_in1
     MMCME2_ADV_X1Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
                                                      -3.793     1.780 r  u_clock/inst/mmcm_adv_inst/CLKOUT0
                          net (fo=1, routed)           1.889     3.669    u_clock/inst/clk_out1_clk_wiz_0
     BUFGCTRL_X0Y2        BUFG (Prop_bufg_I_O)         0.101     3.770 r  u_clock/inst/clkout1_buf/O
-                         net (fo=112, routed)         1.852     5.622    u_shijue_arm_core/u_ov7670_init/clk_out1
-    SLICE_X108Y71        FDCE                                         r  u_shijue_arm_core/u_ov7670_init/idx_reg_rep[1]/C
+                         net (fo=112, routed)         1.864     5.634    u_shijue_arm_core/u_ov7670_init/clk_out1
+    SLICE_X107Y60        FDCE                                         r  u_shijue_arm_core/u_ov7670_init/idx_reg_rep[1]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X108Y71        FDCE (Prop_fdce_C_Q)         0.478     6.100 r  u_shijue_arm_core/u_ov7670_init/idx_reg_rep[1]/Q
-                         net (fo=38, routed)          1.368     7.468    u_shijue_arm_core/u_ov7670_init/idx_reg_rep[1]
-    SLICE_X110Y68        LUT6 (Prop_lut6_I1_O)        0.295     7.763 f  u_shijue_arm_core/u_ov7670_init/g1_b14/O
-                         net (fo=1, routed)           0.000     7.763    u_shijue_arm_core/u_ov7670_init/g1_b14_n_0
-    SLICE_X110Y68        MUXF7 (Prop_muxf7_I1_O)      0.217     7.980 f  u_shijue_arm_core/u_ov7670_init/reg_addr_reg[6]_i_1/O
-                         net (fo=2, routed)           1.046     9.026    u_shijue_arm_core/u_ov7670_init/p_0_in__0[6]
-    SLICE_X108Y69        LUT6 (Prop_lut6_I0_O)        0.299     9.325 r  u_shijue_arm_core/u_ov7670_init/init_done_i_5/O
-                         net (fo=1, routed)           0.437     9.762    u_shijue_arm_core/u_ov7670_init/init_done_i_5_n_0
-    SLICE_X109Y70        LUT6 (Prop_lut6_I5_O)        0.124     9.886 r  u_shijue_arm_core/u_ov7670_init/init_done_i_2/O
-                         net (fo=3, routed)           0.424    10.310    u_shijue_arm_core/u_ov7670_init/init_done_i_2_n_0
-    SLICE_X109Y70        LUT6 (Prop_lut6_I5_O)        0.124    10.434 r  u_shijue_arm_core/u_ov7670_init/reg_data[7]_i_5/O
-                         net (fo=2, routed)           0.584    11.018    u_shijue_arm_core/u_ov7670_init/u_sccb/state__0__0[0]
-    SLICE_X109Y68        LUT6 (Prop_lut6_I0_O)        0.124    11.142 r  u_shijue_arm_core/u_ov7670_init/u_sccb/state[2]_i_3__0/O
-                         net (fo=1, routed)           0.263    11.405    u_shijue_arm_core/u_ov7670_init/u_sccb/state[2]_i_3__0_n_0
-    SLICE_X109Y68        LUT6 (Prop_lut6_I2_O)        0.124    11.529 r  u_shijue_arm_core/u_ov7670_init/u_sccb/state[2]_i_2__0/O
-                         net (fo=3, routed)           0.445    11.974    u_shijue_arm_core/u_ov7670_init/u_sccb/state[2]_i_2__0_n_0
-    SLICE_X108Y68        LUT5 (Prop_lut5_I3_O)        0.124    12.098 r  u_shijue_arm_core/u_ov7670_init/u_sccb/state[0]_i_1__0/O
-                         net (fo=1, routed)           0.000    12.098    u_shijue_arm_core/u_ov7670_init/u_sccb_n_6
-    SLICE_X108Y68        FDCE                                         r  u_shijue_arm_core/u_ov7670_init/state_reg[0]/D
+    SLICE_X107Y60        FDCE (Prop_fdce_C_Q)         0.419     6.053 f  u_shijue_arm_core/u_ov7670_init/idx_reg_rep[1]/Q
+                         net (fo=38, routed)          1.404     7.457    u_shijue_arm_core/u_ov7670_init/idx_reg_rep[1]
+    SLICE_X107Y62        LUT6 (Prop_lut6_I1_O)        0.297     7.754 r  u_shijue_arm_core/u_ov7670_init/g1_b14/O
+                         net (fo=1, routed)           0.000     7.754    u_shijue_arm_core/u_ov7670_init/g1_b14_n_0
+    SLICE_X107Y62        MUXF7 (Prop_muxf7_I1_O)      0.217     7.971 r  u_shijue_arm_core/u_ov7670_init/reg_addr_reg[6]_i_1/O
+                         net (fo=2, routed)           1.008     8.979    u_shijue_arm_core/u_ov7670_init/p_0_in__0[6]
+    SLICE_X109Y62        LUT6 (Prop_lut6_I0_O)        0.299     9.278 f  u_shijue_arm_core/u_ov7670_init/init_done_i_5/O
+                         net (fo=1, routed)           0.323     9.601    u_shijue_arm_core/u_ov7670_init/init_done_i_5_n_0
+    SLICE_X110Y61        LUT6 (Prop_lut6_I5_O)        0.124     9.725 f  u_shijue_arm_core/u_ov7670_init/init_done_i_2/O
+                         net (fo=3, routed)           0.709    10.435    u_shijue_arm_core/u_ov7670_init/init_done_i_2_n_0
+    SLICE_X108Y60        LUT6 (Prop_lut6_I5_O)        0.124    10.559 r  u_shijue_arm_core/u_ov7670_init/state[0]_i_2__0/O
+                         net (fo=3, routed)           0.319    10.878    u_shijue_arm_core/u_ov7670_init/u_sccb/state_reg[0]_0
+    SLICE_X109Y60        LUT6 (Prop_lut6_I1_O)        0.124    11.002 r  u_shijue_arm_core/u_ov7670_init/u_sccb/state[2]_i_3__0/O
+                         net (fo=1, routed)           0.303    11.305    u_shijue_arm_core/u_ov7670_init/u_sccb/state[2]_i_3__0_n_0
+    SLICE_X110Y60        LUT6 (Prop_lut6_I2_O)        0.124    11.429 r  u_shijue_arm_core/u_ov7670_init/u_sccb/state[2]_i_2__0/O
+                         net (fo=3, routed)           0.648    12.077    u_shijue_arm_core/u_ov7670_init/u_sccb/state[2]_i_2__0_n_0
+    SLICE_X109Y59        LUT5 (Prop_lut5_I3_O)        0.124    12.201 r  u_shijue_arm_core/u_ov7670_init/u_sccb/state[0]_i_1__0/O
+                         net (fo=1, routed)           0.000    12.201    u_shijue_arm_core/u_ov7670_init/u_sccb_n_6
+    SLICE_X109Y59        FDCE                                         r  u_shijue_arm_core/u_ov7670_init/state_reg[0]/D
   -------------------------------------------------------------------    -------------------
 
                          (clock clk_out1_clk_wiz_0 rise edge)
@@ -716,21 +717,21 @@ Slack (MET) :             6.824ns  (required time - arrival time)
     N18                  IBUF (Prop_ibuf_I_O)         1.391    14.724 r  sys_clk_pin_IBUF_inst/O
                          net (fo=1, routed)           2.006    16.730    sys_clk_pin_IBUF
     BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.091    16.821 r  u_sys_clk_bufg/O
-                         net (fo=1707, routed)        1.612    18.434    u_clock/inst/clk_in1
+                         net (fo=1660, routed)        1.612    18.434    u_clock/inst/clk_in1
     MMCME2_ADV_X1Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
                                                      -3.425    15.008 r  u_clock/inst/mmcm_adv_inst/CLKOUT0
                          net (fo=1, routed)           1.725    16.733    u_clock/inst/clk_out1_clk_wiz_0
     BUFGCTRL_X0Y2        BUFG (Prop_bufg_I_O)         0.091    16.824 r  u_clock/inst/clkout1_buf/O
-                         net (fo=112, routed)         1.676    18.500    u_shijue_arm_core/u_ov7670_init/clk_out1
-    SLICE_X108Y68        FDCE                                         r  u_shijue_arm_core/u_ov7670_init/state_reg[0]/C
-                         clock pessimism              0.435    18.935    <hidden>
-                         clock uncertainty           -0.093    18.841    <hidden>
-    SLICE_X108Y68        FDCE (Setup_fdce_C_D)        0.081    18.922    u_shijue_arm_core/u_ov7670_init/state_reg[0]
+                         net (fo=112, routed)         1.684    18.508    u_shijue_arm_core/u_ov7670_init/clk_out1
+    SLICE_X109Y59        FDCE                                         r  u_shijue_arm_core/u_ov7670_init/state_reg[0]/C
+                         clock pessimism              0.435    18.943    <hidden>
+                         clock uncertainty           -0.093    18.849    <hidden>
+    SLICE_X109Y59        FDCE (Setup_fdce_C_D)        0.029    18.878    u_shijue_arm_core/u_ov7670_init/state_reg[0]
   -------------------------------------------------------------------
-                         required time                         18.922    <hidden>
-                         arrival time                         -12.098    <hidden>
+                         required time                         18.878    <hidden>
+                         arrival time                         -12.201    <hidden>
   -------------------------------------------------------------------
-                         slack                                  6.824    <hidden>
+                         slack                                  6.677    <hidden>
 
 
 
@@ -738,20 +739,20 @@ Slack (MET) :             6.824ns  (required time - arrival time)
 
 Min Delay Paths
 --------------------------------------------------------------------------------------
-Slack (MET) :             0.164ns  (arrival time - required time)
-  Source:                 u_shijue_arm_core/u_ov7670_init/reg_data_reg[2]/C
-                            (rising edge-triggered cell FDRE clocked by clk_out1_clk_wiz_0  {rise@0.000ns fall@6.667ns period=13.333ns})
-  Destination:            u_shijue_arm_core/u_ov7670_init/u_sccb/shift_reg_reg[2]/D
+Slack (MET) :             0.197ns  (arrival time - required time)
+  Source:                 u_shijue_arm_core/u_ov7670_init/idx_reg_rep[0]/C
+                            (rising edge-triggered cell FDCE clocked by clk_out1_clk_wiz_0  {rise@0.000ns fall@6.667ns period=13.333ns})
+  Destination:            u_shijue_arm_core/u_ov7670_init/idx_reg_rep[5]/D
                             (rising edge-triggered cell FDCE clocked by clk_out1_clk_wiz_0  {rise@0.000ns fall@6.667ns period=13.333ns})
   Path Group:             clk_out1_clk_wiz_0
   Path Type:              Hold (Min at Fast Process Corner)
   Requirement:            0.000ns  (clk_out1_clk_wiz_0 rise@0.000ns - clk_out1_clk_wiz_0 rise@0.000ns)
-  Data Path Delay:        0.293ns  (logic 0.186ns (63.464%)  route 0.107ns (36.536%))
-  Logic Levels:           1  (LUT4=1)
-  Clock Path Skew:        0.037ns (DCD - SCD - CPR)
-    Destination Clock Delay (DCD):    2.079ns
-    Source Clock Delay      (SCD):    1.560ns
-    Clock Pessimism Removal (CPR):    0.482ns
+  Data Path Delay:        0.301ns  (logic 0.186ns (61.829%)  route 0.115ns (38.171%))
+  Logic Levels:           1  (LUT6=1)
+  Clock Path Skew:        0.013ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    2.084ns
+    Source Clock Delay      (SCD):    1.566ns
+    Clock Pessimism Removal (CPR):    0.505ns
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
@@ -762,19 +763,19 @@ Slack (MET) :             0.164ns  (arrival time - required time)
     N18                  IBUF (Prop_ibuf_I_O)         0.229     0.229 r  sys_clk_pin_IBUF_inst/O
                          net (fo=1, routed)           0.674     0.903    sys_clk_pin_IBUF
     BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.026     0.929 r  u_sys_clk_bufg/O
-                         net (fo=1707, routed)        0.597     1.526    u_clock/inst/clk_in1
+                         net (fo=1660, routed)        0.597     1.526    u_clock/inst/clk_in1
     MMCME2_ADV_X1Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
                                                      -1.150     0.376 r  u_clock/inst/mmcm_adv_inst/CLKOUT0
                          net (fo=1, routed)           0.529     0.905    u_clock/inst/clk_out1_clk_wiz_0
     BUFGCTRL_X0Y2        BUFG (Prop_bufg_I_O)         0.026     0.931 r  u_clock/inst/clkout1_buf/O
-                         net (fo=112, routed)         0.629     1.560    u_shijue_arm_core/u_ov7670_init/clk_out1
-    SLICE_X109Y69        FDRE                                         r  u_shijue_arm_core/u_ov7670_init/reg_data_reg[2]/C
+                         net (fo=112, routed)         0.635     1.566    u_shijue_arm_core/u_ov7670_init/clk_out1
+    SLICE_X107Y60        FDCE                                         r  u_shijue_arm_core/u_ov7670_init/idx_reg_rep[0]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X109Y69        FDRE (Prop_fdre_C_Q)         0.141     1.701 r  u_shijue_arm_core/u_ov7670_init/reg_data_reg[2]/Q
-                         net (fo=1, routed)           0.107     1.808    u_shijue_arm_core/u_ov7670_init/u_sccb/shift_reg_reg[7]_0[2]
-    SLICE_X111Y69        LUT4 (Prop_lut4_I0_O)        0.045     1.853 r  u_shijue_arm_core/u_ov7670_init/u_sccb/shift_reg[2]_i_1__0/O
-                         net (fo=1, routed)           0.000     1.853    u_shijue_arm_core/u_ov7670_init/u_sccb/shift_reg[2]_i_1__0_n_0
-    SLICE_X111Y69        FDCE                                         r  u_shijue_arm_core/u_ov7670_init/u_sccb/shift_reg_reg[2]/D
+    SLICE_X107Y60        FDCE (Prop_fdce_C_Q)         0.141     1.707 r  u_shijue_arm_core/u_ov7670_init/idx_reg_rep[0]/Q
+                         net (fo=39, routed)          0.115     1.822    u_shijue_arm_core/u_ov7670_init/idx_reg_rep[0]
+    SLICE_X106Y60        LUT6 (Prop_lut6_I3_O)        0.045     1.867 r  u_shijue_arm_core/u_ov7670_init/idx_rep[5]_i_2/O
+                         net (fo=1, routed)           0.000     1.867    u_shijue_arm_core/u_ov7670_init/idx_rep[5]_i_2_n_0
+    SLICE_X106Y60        FDCE                                         r  u_shijue_arm_core/u_ov7670_init/idx_reg_rep[5]/D
   -------------------------------------------------------------------    -------------------
 
                          (clock clk_out1_clk_wiz_0 rise edge)
@@ -784,20 +785,20 @@ Slack (MET) :             0.164ns  (arrival time - required time)
     N18                  IBUF (Prop_ibuf_I_O)         0.417     0.417 r  sys_clk_pin_IBUF_inst/O
                          net (fo=1, routed)           0.731     1.148    sys_clk_pin_IBUF
     BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.029     1.177 r  u_sys_clk_bufg/O
-                         net (fo=1707, routed)        0.864     2.041    u_clock/inst/clk_in1
+                         net (fo=1660, routed)        0.864     2.041    u_clock/inst/clk_in1
     MMCME2_ADV_X1Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
                                                      -1.467     0.574 r  u_clock/inst/mmcm_adv_inst/CLKOUT0
                          net (fo=1, routed)           0.576     1.150    u_clock/inst/clk_out1_clk_wiz_0
     BUFGCTRL_X0Y2        BUFG (Prop_bufg_I_O)         0.029     1.179 r  u_clock/inst/clkout1_buf/O
-                         net (fo=112, routed)         0.900     2.079    u_shijue_arm_core/u_ov7670_init/u_sccb/clk_out1
-    SLICE_X111Y69        FDCE                                         r  u_shijue_arm_core/u_ov7670_init/u_sccb/shift_reg_reg[2]/C
-                         clock pessimism             -0.482     1.597    <hidden>
-    SLICE_X111Y69        FDCE (Hold_fdce_C_D)         0.092     1.689    u_shijue_arm_core/u_ov7670_init/u_sccb/shift_reg_reg[2]
+                         net (fo=112, routed)         0.905     2.084    u_shijue_arm_core/u_ov7670_init/clk_out1
+    SLICE_X106Y60        FDCE                                         r  u_shijue_arm_core/u_ov7670_init/idx_reg_rep[5]/C
+                         clock pessimism             -0.505     1.579    <hidden>
+    SLICE_X106Y60        FDCE (Hold_fdce_C_D)         0.091     1.670    u_shijue_arm_core/u_ov7670_init/idx_reg_rep[5]
   -------------------------------------------------------------------
-                         required time                         -1.689    <hidden>
-                         arrival time                           1.853    <hidden>
+                         required time                         -1.670    <hidden>
+                         arrival time                           1.867    <hidden>
   -------------------------------------------------------------------
-                         slack                                  0.164    <hidden>
+                         slack                                  0.197    <hidden>
 
 
 
@@ -813,8 +814,8 @@ Sources:            { u_clock/inst/mmcm_adv_inst/CLKOUT0 }
 Check Type        Corner  Lib Pin             Reference Pin  Required(ns)  Actual(ns)  Slack(ns)  Location         Pin
 Min Period        n/a     BUFG/I              n/a            2.155         13.333      11.178     BUFGCTRL_X0Y2    u_clock/inst/clkout1_buf/I
 Max Period        n/a     MMCME2_ADV/CLKOUT0  n/a            213.360       13.333      200.027    MMCME2_ADV_X1Y0  u_clock/inst/mmcm_adv_inst/CLKOUT0
-Low Pulse Width   Slow    FDCE/C              n/a            0.500         6.667       6.167      SLICE_X109Y63    u_shijue_arm_core/u_ov7670_init/delay_cnt_reg[0]/C
-High Pulse Width  Slow    FDCE/C              n/a            0.500         6.667       6.167      SLICE_X109Y63    u_shijue_arm_core/u_ov7670_init/delay_cnt_reg[0]/C
+Low Pulse Width   Slow    FDCE/C              n/a            0.500         6.667       6.167      SLICE_X102Y59    u_shijue_arm_core/u_ov7670_init/delay_cnt_reg[0]/C
+High Pulse Width  Slow    FDCE/C              n/a            0.500         6.667       6.167      SLICE_X102Y59    u_shijue_arm_core/u_ov7670_init/delay_cnt_reg[0]/C
 
 
 
@@ -869,26 +870,26 @@ Path Group:  **async_default**
 From Clock:  sys_clk
   To Clock:  sys_clk
 
-Setup :            0  Failing Endpoints,  Worst Slack       20.437ns,  Total Violation        0.000ns
-Hold  :            0  Failing Endpoints,  Worst Slack        0.588ns,  Total Violation        0.000ns
+Setup :            0  Failing Endpoints,  Worst Slack       22.276ns,  Total Violation        0.000ns
+Hold  :            0  Failing Endpoints,  Worst Slack        0.636ns,  Total Violation        0.000ns
 ---------------------------------------------------------------------------------------------------
 
 
 Max Delay Paths
 --------------------------------------------------------------------------------------
-Slack (MET) :             20.437ns  (required time - arrival time)
-  Source:                 u_voice_mode_select/voice_mode_reg[2]/C
+Slack (MET) :             22.276ns  (required time - arrival time)
+  Source:                 u_voice_mode_select/voice_mode_reg[0]/C
                             (rising edge-triggered cell FDCE clocked by sys_clk  {rise@0.000ns fall@15.000ns period=30.000ns})
-  Destination:            u_arm_red_track/u_packet/byte_index_reg[3]/CLR
+  Destination:            u_arm_red_track/u_packet/u_bus_servo_uart_tx/baud_cnt_reg[0]/CLR
                             (recovery check against rising-edge clock sys_clk  {rise@0.000ns fall@15.000ns period=30.000ns})
   Path Group:             **async_default**
   Path Type:              Recovery (Max at Slow Process Corner)
   Requirement:            30.000ns  (sys_clk rise@30.000ns - sys_clk rise@0.000ns)
-  Data Path Delay:        8.989ns  (logic 0.580ns (6.452%)  route 8.409ns (93.548%))
+  Data Path Delay:        7.040ns  (logic 0.580ns (8.238%)  route 6.460ns (91.762%))
   Logic Levels:           1  (LUT4=1)
-  Clock Path Skew:        -0.059ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    5.025ns = ( 35.025 - 30.000 ) 
-    Source Clock Delay      (SCD):    5.477ns
+  Clock Path Skew:        -0.124ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    5.034ns = ( 35.034 - 30.000 ) 
+    Source Clock Delay      (SCD):    5.551ns
     Clock Pessimism Removal (CPR):    0.394ns
   Clock Uncertainty:      0.154ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
     Total System Jitter     (TSJ):    0.071ns
@@ -904,14 +905,14 @@ Slack (MET) :             20.437ns  (required time - arrival time)
     N18                  IBUF (Prop_ibuf_I_O)         1.461     1.461 r  sys_clk_pin_IBUF_inst/O
                          net (fo=1, routed)           2.205     3.666    sys_clk_pin_IBUF
     BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.101     3.767 r  u_sys_clk_bufg/O
-                         net (fo=1707, routed)        1.710     5.477    u_voice_mode_select/lcd_clk_OBUF
-    SLICE_X65Y86         FDCE                                         r  u_voice_mode_select/voice_mode_reg[2]/C
+                         net (fo=1660, routed)        1.784     5.551    u_voice_mode_select/lcd_clk_OBUF
+    SLICE_X101Y91        FDCE                                         r  u_voice_mode_select/voice_mode_reg[0]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X65Y86         FDCE (Prop_fdce_C_Q)         0.456     5.933 f  u_voice_mode_select/voice_mode_reg[2]/Q
-                         net (fo=127, routed)         2.881     8.814    u_voice_mode_select/voice_mode[2]
-    SLICE_X80Y77         LUT4 (Prop_lut4_I1_O)        0.124     8.938 f  u_voice_mode_select/FSM_onehot_state[3]_i_3/O
-                         net (fo=324, routed)         5.528    14.466    u_arm_red_track/u_packet/shift_reg_reg[0]
-    SLICE_X58Y96         FDCE                                         f  u_arm_red_track/u_packet/byte_index_reg[3]/CLR
+    SLICE_X101Y91        FDCE (Prop_fdce_C_Q)         0.456     6.007 r  u_voice_mode_select/voice_mode_reg[0]/Q
+                         net (fo=114, routed)         1.290     7.297    u_voice_mode_select/voice_mode[0]
+    SLICE_X106Y94        LUT4 (Prop_lut4_I1_O)        0.124     7.421 f  u_voice_mode_select/FSM_onehot_state[3]_i_3/O
+                         net (fo=324, routed)         5.171    12.592    u_arm_red_track/u_packet/u_bus_servo_uart_tx/shift_reg_reg[0]_0
+    SLICE_X80Y99         FDCE                                         f  u_arm_red_track/u_packet/u_bus_servo_uart_tx/baud_cnt_reg[0]/CLR
   -------------------------------------------------------------------    -------------------
 
                          (clock sys_clk rise edge)   30.000    30.000 r  <hidden>
@@ -920,16 +921,16 @@ Slack (MET) :             20.437ns  (required time - arrival time)
     N18                  IBUF (Prop_ibuf_I_O)         1.391    31.391 r  sys_clk_pin_IBUF_inst/O
                          net (fo=1, routed)           2.006    33.397    sys_clk_pin_IBUF
     BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.091    33.488 r  u_sys_clk_bufg/O
-                         net (fo=1707, routed)        1.537    35.025    u_arm_red_track/u_packet/lcd_clk_OBUF
-    SLICE_X58Y96         FDCE                                         r  u_arm_red_track/u_packet/byte_index_reg[3]/C
-                         clock pessimism              0.394    35.418    <hidden>
-                         clock uncertainty           -0.154    35.264    <hidden>
-    SLICE_X58Y96         FDCE (Recov_fdce_C_CLR)     -0.361    34.903    u_arm_red_track/u_packet/byte_index_reg[3]
+                         net (fo=1660, routed)        1.546    35.034    u_arm_red_track/u_packet/u_bus_servo_uart_tx/lcd_clk_OBUF
+    SLICE_X80Y99         FDCE                                         r  u_arm_red_track/u_packet/u_bus_servo_uart_tx/baud_cnt_reg[0]/C
+                         clock pessimism              0.394    35.427    <hidden>
+                         clock uncertainty           -0.154    35.273    <hidden>
+    SLICE_X80Y99         FDCE (Recov_fdce_C_CLR)     -0.405    34.868    u_arm_red_track/u_packet/u_bus_servo_uart_tx/baud_cnt_reg[0]
   -------------------------------------------------------------------
-                         required time                         34.903    <hidden>
-                         arrival time                         -14.466    <hidden>
+                         required time                         34.868    <hidden>
+                         arrival time                         -12.592    <hidden>
   -------------------------------------------------------------------
-                         slack                                 20.437    <hidden>
+                         slack                                 22.276    <hidden>
 
 
 
@@ -937,20 +938,20 @@ Slack (MET) :             20.437ns  (required time - arrival time)
 
 Min Delay Paths
 --------------------------------------------------------------------------------------
-Slack (MET) :             0.588ns  (arrival time - required time)
+Slack (MET) :             0.636ns  (arrival time - required time)
   Source:                 u_arm_voice_trigger/arm_rst_n_reg/C
                             (rising edge-triggered cell FDPE clocked by sys_clk  {rise@0.000ns fall@15.000ns period=30.000ns})
-  Destination:            u_arm_core/startup_cnt_reg[0]/CLR
+  Destination:            u_arm_core/u_bus_servo_packet_tx/u_bus_servo_uart_tx/busy_reg/CLR
                             (removal check against rising-edge clock sys_clk  {rise@0.000ns fall@15.000ns period=30.000ns})
   Path Group:             **async_default**
   Path Type:              Removal (Min at Fast Process Corner)
   Requirement:            0.000ns  (sys_clk rise@0.000ns - sys_clk rise@0.000ns)
-  Data Path Delay:        0.531ns  (logic 0.186ns (35.007%)  route 0.345ns (64.993%))
+  Data Path Delay:        0.859ns  (logic 0.187ns (21.757%)  route 0.672ns (78.243%))
   Logic Levels:           1  (LUT2=1)
-  Clock Path Skew:        0.035ns (DCD - SCD - CPR)
-    Destination Clock Delay (DCD):    2.025ns
-    Source Clock Delay      (SCD):    1.508ns
-    Clock Pessimism Removal (CPR):    0.482ns
+  Clock Path Skew:        0.352ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    2.142ns
+    Source Clock Delay      (SCD):    1.537ns
+    Clock Pessimism Removal (CPR):    0.253ns
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
@@ -960,14 +961,14 @@ Slack (MET) :             0.588ns  (arrival time - required time)
     N18                  IBUF (Prop_ibuf_I_O)         0.229     0.229 r  sys_clk_pin_IBUF_inst/O
                          net (fo=1, routed)           0.674     0.903    sys_clk_pin_IBUF
     BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.026     0.929 r  u_sys_clk_bufg/O
-                         net (fo=1707, routed)        0.579     1.508    u_arm_voice_trigger/lcd_clk_OBUF
-    SLICE_X83Y86         FDPE                                         r  u_arm_voice_trigger/arm_rst_n_reg/C
+                         net (fo=1660, routed)        0.608     1.537    u_arm_voice_trigger/lcd_clk_OBUF
+    SLICE_X103Y95        FDPE                                         r  u_arm_voice_trigger/arm_rst_n_reg/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X83Y86         FDPE (Prop_fdpe_C_Q)         0.141     1.649 r  u_arm_voice_trigger/arm_rst_n_reg/Q
-                         net (fo=1, routed)           0.158     1.807    u_arm_voice_trigger/arm_voice_rst_n
-    SLICE_X83Y86         LUT2 (Prop_lut2_I1_O)        0.045     1.852 f  u_arm_voice_trigger/FSM_onehot_state[3]_i_3__0/O
-                         net (fo=165, routed)         0.187     2.039    u_arm_core/txd_reg
-    SLICE_X87Y85         FDCE                                         f  u_arm_core/startup_cnt_reg[0]/CLR
+    SLICE_X103Y95        FDPE (Prop_fdpe_C_Q)         0.141     1.678 r  u_arm_voice_trigger/arm_rst_n_reg/Q
+                         net (fo=1, routed)           0.248     1.926    u_arm_voice_trigger/arm_voice_rst_n
+    SLICE_X101Y96        LUT2 (Prop_lut2_I0_O)        0.046     1.972 f  u_arm_voice_trigger/FSM_onehot_state[3]_i_3__0/O
+                         net (fo=165, routed)         0.425     2.397    u_arm_core/u_bus_servo_packet_tx/u_bus_servo_uart_tx/txd_reg_0
+    SLICE_X100Y100       FDCE                                         f  u_arm_core/u_bus_servo_packet_tx/u_bus_servo_uart_tx/busy_reg/CLR
   -------------------------------------------------------------------    -------------------
 
                          (clock sys_clk rise edge)    0.000     0.000 r  <hidden>
@@ -976,15 +977,15 @@ Slack (MET) :             0.588ns  (arrival time - required time)
     N18                  IBUF (Prop_ibuf_I_O)         0.417     0.417 r  sys_clk_pin_IBUF_inst/O
                          net (fo=1, routed)           0.731     1.148    sys_clk_pin_IBUF
     BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.029     1.177 r  u_sys_clk_bufg/O
-                         net (fo=1707, routed)        0.848     2.025    u_arm_core/lcd_clk_OBUF
-    SLICE_X87Y85         FDCE                                         r  u_arm_core/startup_cnt_reg[0]/C
-                         clock pessimism             -0.482     1.543    <hidden>
-    SLICE_X87Y85         FDCE (Remov_fdce_C_CLR)     -0.092     1.451    u_arm_core/startup_cnt_reg[0]
+                         net (fo=1660, routed)        0.965     2.142    u_arm_core/u_bus_servo_packet_tx/u_bus_servo_uart_tx/lcd_clk_OBUF
+    SLICE_X100Y100       FDCE                                         r  u_arm_core/u_bus_servo_packet_tx/u_bus_servo_uart_tx/busy_reg/C
+                         clock pessimism             -0.253     1.889    <hidden>
+    SLICE_X100Y100       FDCE (Remov_fdce_C_CLR)     -0.129     1.760    u_arm_core/u_bus_servo_packet_tx/u_bus_servo_uart_tx/busy_reg
   -------------------------------------------------------------------
-                         required time                         -1.451    <hidden>
-                         arrival time                           2.039    <hidden>
+                         required time                         -1.760    <hidden>
+                         arrival time                           2.397    <hidden>
   -------------------------------------------------------------------
-                         slack                                  0.588    <hidden>
+                         slack                                  0.636    <hidden>
 
 
 
@@ -995,25 +996,25 @@ Path Group:  (none)
 From Clock:  sys_clk
   To Clock:  ov_pclk
 
-Max Delay             3 Endpoints
-Min Delay             3 Endpoints
+Max Delay           412 Endpoints
+Min Delay           412 Endpoints
 --------------------------------------------------------------------------------------
 
 
 Max Delay Paths
 --------------------------------------------------------------------------------------
 Slack:                    inf
-  Source:                 u_voice_mode_select/voice_mode_reg[1]/C
+  Source:                 u_voice_mode_select/voice_mode_reg[2]/C
                             (rising edge-triggered cell FDCE clocked by sys_clk  {rise@0.000ns fall@15.000ns period=30.000ns})
-  Destination:            u_shijue_arm_core/vision_meta_reg/D
-                            (rising edge-triggered cell FDCE clocked by ov_pclk  {rise@0.000ns fall@10.417ns period=20.833ns})
+  Destination:            u_shijue_arm_core/u_tracker/div_rq_w_reg[26]/CE
+                            (rising edge-triggered cell FDRE clocked by ov_pclk  {rise@0.000ns fall@10.417ns period=20.833ns})
   Path Group:             (none)
   Path Type:              Setup (Max at Slow Process Corner)
-  Data Path Delay:        7.051ns  (logic 0.574ns (8.141%)  route 6.477ns (91.859%))
-  Logic Levels:           1  (LUT3=1)
-  Clock Path Skew:        0.342ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    5.819ns
-    Source Clock Delay      (SCD):    5.477ns
+  Data Path Delay:        9.847ns  (logic 1.250ns (12.694%)  route 8.597ns (87.306%))
+  Logic Levels:           4  (LUT2=1 LUT3=1 LUT6=2)
+  Clock Path Skew:        0.211ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    5.761ns
+    Source Clock Delay      (SCD):    5.550ns
     Clock Pessimism Removal (CPR):    0.000ns
   Clock Uncertainty:      0.154ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
     Total System Jitter     (TSJ):    0.071ns
@@ -1030,14 +1031,20 @@ Slack:                    inf
     N18                  IBUF (Prop_ibuf_I_O)         1.461     1.461 r  sys_clk_pin_IBUF_inst/O
                          net (fo=1, routed)           2.205     3.666    sys_clk_pin_IBUF
     BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.101     3.767 r  u_sys_clk_bufg/O
-                         net (fo=1707, routed)        1.710     5.477    u_voice_mode_select/lcd_clk_OBUF
-    SLICE_X65Y86         FDCE                                         r  u_voice_mode_select/voice_mode_reg[1]/C
+                         net (fo=1660, routed)        1.783     5.550    u_voice_mode_select/lcd_clk_OBUF
+    SLICE_X104Y90        FDCE                                         r  u_voice_mode_select/voice_mode_reg[2]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X65Y86         FDCE (Prop_fdce_C_Q)         0.456     5.933 r  u_voice_mode_select/voice_mode_reg[1]/Q
-                         net (fo=127, routed)         3.745     9.679    u_voice_mode_select/voice_mode[1]
-    SLICE_X89Y86         LUT3 (Prop_lut3_I1_O)        0.118     9.797 r  u_voice_mode_select/sw_d0_i_1/O
-                         net (fo=85, routed)          2.732    12.528    u_shijue_arm_core/sw_d0_reg
-    SLICE_X90Y59         FDCE                                         r  u_shijue_arm_core/vision_meta_reg/D
+    SLICE_X104Y90        FDCE (Prop_fdce_C_Q)         0.518     6.068 f  u_voice_mode_select/voice_mode_reg[2]/Q
+                         net (fo=114, routed)         1.082     7.150    u_voice_mode_select/voice_mode[2]
+    SLICE_X106Y91        LUT3 (Prop_lut3_I2_O)        0.152     7.302 r  u_voice_mode_select/sw2_d0_i_1/O
+                         net (fo=90, routed)          2.655     9.957    u_shijue_arm_core/u_tracker/vision_en
+    SLICE_X101Y73        LUT6 (Prop_lut6_I4_O)        0.332    10.289 r  u_shijue_arm_core/u_tracker/target_x[10]_i_3/O
+                         net (fo=2, routed)           0.163    10.452    u_shijue_arm_core/u_tracker/div_done
+    SLICE_X101Y73        LUT6 (Prop_lut6_I5_O)        0.124    10.576 r  u_shijue_arm_core/u_tracker/div_rq_x[27]_i_3/O
+                         net (fo=8, routed)           1.249    11.824    u_shijue_arm_core/u_tracker/div_rq_h[0]
+    SLICE_X105Y62        LUT2 (Prop_lut2_I1_O)        0.124    11.948 r  u_shijue_arm_core/u_tracker/div_rq_x[27]_i_1/O
+                         net (fo=220, routed)         3.449    15.397    u_shijue_arm_core/u_tracker/div_rq_x[0]
+    SLICE_X87Y57         FDRE                                         r  u_shijue_arm_core/u_tracker/div_rq_w_reg[26]/CE
   -------------------------------------------------------------------    -------------------
 
                          (clock ov_pclk rise edge)    0.000     0.000 r  <hidden>
@@ -1046,8 +1053,8 @@ Slack:                    inf
     Y16                  IBUF (Prop_ibuf_I_O)         1.498     1.498 r  ov_pclk_IBUF_inst/O
                          net (fo=1, routed)           2.625     4.123    ov_pclk_IBUF
     BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.091     4.214 r  ov_pclk_IBUF_BUFG_inst/O
-                         net (fo=1622, routed)        1.606     5.819    u_shijue_arm_core/ov_pclk_IBUF_BUFG
-    SLICE_X90Y59         FDCE                                         r  u_shijue_arm_core/vision_meta_reg/C
+                         net (fo=1565, routed)        1.548     5.761    u_shijue_arm_core/u_tracker/ov_pclk_IBUF_BUFG
+    SLICE_X87Y57         FDRE                                         r  u_shijue_arm_core/u_tracker/div_rq_w_reg[26]/C
 
 
 
@@ -1056,17 +1063,17 @@ Slack:                    inf
 Min Delay Paths
 --------------------------------------------------------------------------------------
 Slack:                    inf
-  Source:                 u_shijue_arm_core/box_ack_reg/C
+  Source:                 u_shijue_arm_core/u_lcd_driver/lcd_rd_page_reg/C
                             (rising edge-triggered cell FDCE clocked by sys_clk  {rise@0.000ns fall@15.000ns period=30.000ns})
-  Destination:            u_shijue_arm_core/ack_meta_reg/D
-                            (rising edge-triggered cell FDCE clocked by ov_pclk  {rise@0.000ns fall@10.417ns period=20.833ns})
+  Destination:            u_shijue_arm_core/u_capture/rd_page_r1_reg/D
+                            (rising edge-triggered cell FDRE clocked by ov_pclk  {rise@0.000ns fall@10.417ns period=20.833ns})
   Path Group:             (none)
   Path Type:              Hold (Min at Fast Process Corner)
-  Data Path Delay:        0.329ns  (logic 0.141ns (42.890%)  route 0.188ns (57.110%))
+  Data Path Delay:        0.540ns  (logic 0.141ns (26.119%)  route 0.399ns (73.881%))
   Logic Levels:           0  
   Clock Path Skew:        1.377ns (DCD - SCD - CPR)
-    Destination Clock Delay (DCD):    2.919ns
-    Source Clock Delay      (SCD):    1.542ns
+    Destination Clock Delay (DCD):    2.889ns
+    Source Clock Delay      (SCD):    1.512ns
     Clock Pessimism Removal (CPR):    -0.000ns
   Clock Uncertainty:      0.154ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
     Total System Jitter     (TSJ):    0.071ns
@@ -1083,12 +1090,12 @@ Slack:                    inf
     N18                  IBUF (Prop_ibuf_I_O)         0.229     0.229 r  sys_clk_pin_IBUF_inst/O
                          net (fo=1, routed)           0.674     0.903    sys_clk_pin_IBUF
     BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.026     0.929 r  u_sys_clk_bufg/O
-                         net (fo=1707, routed)        0.613     1.542    u_shijue_arm_core/lcd_clk_OBUF
-    SLICE_X95Y45         FDCE                                         r  u_shijue_arm_core/box_ack_reg/C
+                         net (fo=1660, routed)        0.583     1.512    u_shijue_arm_core/u_lcd_driver/lcd_clk_OBUF
+    SLICE_X80Y53         FDCE                                         r  u_shijue_arm_core/u_lcd_driver/lcd_rd_page_reg/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X95Y45         FDCE (Prop_fdce_C_Q)         0.141     1.683 r  u_shijue_arm_core/box_ack_reg/Q
-                         net (fo=2, routed)           0.188     1.871    u_shijue_arm_core/box_ack
-    SLICE_X96Y45         FDCE                                         r  u_shijue_arm_core/ack_meta_reg/D
+    SLICE_X80Y53         FDCE (Prop_fdce_C_Q)         0.141     1.653 r  u_shijue_arm_core/u_lcd_driver/lcd_rd_page_reg/Q
+                         net (fo=8, routed)           0.399     2.052    u_shijue_arm_core/u_capture/lcd_rd_page
+    SLICE_X61Y51         FDRE                                         r  u_shijue_arm_core/u_capture/rd_page_r1_reg/D
   -------------------------------------------------------------------    -------------------
 
                          (clock ov_pclk rise edge)    0.000     0.000 r  <hidden>
@@ -1097,8 +1104,8 @@ Slack:                    inf
     Y16                  IBUF (Prop_ibuf_I_O)         0.525     0.525 r  ov_pclk_IBUF_inst/O
                          net (fo=1, routed)           1.484     2.009    ov_pclk_IBUF
     BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.029     2.038 r  ov_pclk_IBUF_BUFG_inst/O
-                         net (fo=1622, routed)        0.881     2.919    u_shijue_arm_core/ov_pclk_IBUF_BUFG
-    SLICE_X96Y45         FDCE                                         r  u_shijue_arm_core/ack_meta_reg/C
+                         net (fo=1565, routed)        0.851     2.889    u_shijue_arm_core/u_capture/ov_pclk_IBUF_BUFG
+    SLICE_X61Y51         FDRE                                         r  u_shijue_arm_core/u_capture/rd_page_r1_reg/C
 
 
 
@@ -1109,25 +1116,25 @@ Path Group:  (none)
 From Clock:  ov_pclk
   To Clock:  sys_clk
 
-Max Delay            46 Endpoints
-Min Delay            46 Endpoints
+Max Delay           126 Endpoints
+Min Delay           126 Endpoints
 --------------------------------------------------------------------------------------
 
 
 Max Delay Paths
 --------------------------------------------------------------------------------------
 Slack:                    inf
-  Source:                 u_shijue_arm_core/box_hold_reg[11]/C
-                            (rising edge-triggered cell FDCE clocked by ov_pclk  {rise@0.000ns fall@10.417ns period=20.833ns})
-  Destination:            u_shijue_arm_core/box_system_reg[11]/D
+  Source:                 u_shijue_arm_core/u_tracker/target_h_reg[2]/C
+                            (rising edge-triggered cell FDPE clocked by ov_pclk  {rise@0.000ns fall@10.417ns period=20.833ns})
+  Destination:            u_shijue_arm_core/u_chassis/cal_m2_reg[11]/D
                             (rising edge-triggered cell FDCE clocked by sys_clk  {rise@0.000ns fall@15.000ns period=30.000ns})
   Path Group:             (none)
   Path Type:              Setup (Max at Slow Process Corner)
-  Data Path Delay:        1.594ns  (logic 0.518ns (32.507%)  route 1.076ns (67.493%))
-  Logic Levels:           0  
-  Clock Path Skew:        -1.423ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    5.110ns
-    Source Clock Delay      (SCD):    6.533ns
+  Data Path Delay:        14.357ns  (logic 4.699ns (32.729%)  route 9.658ns (67.271%))
+  Logic Levels:           13  (CARRY4=6 LUT2=2 LUT3=2 LUT4=1 LUT5=1 LUT6=1)
+  Clock Path Skew:        -1.439ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    5.085ns
+    Source Clock Delay      (SCD):    6.523ns
     Clock Pessimism Removal (CPR):    0.000ns
   Clock Uncertainty:      0.154ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
     Total System Jitter     (TSJ):    0.071ns
@@ -1144,12 +1151,44 @@ Slack:                    inf
     Y16                  IBUF (Prop_ibuf_I_O)         1.569     1.569 r  ov_pclk_IBUF_inst/O
                          net (fo=1, routed)           3.066     4.635    ov_pclk_IBUF
     BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.101     4.736 r  ov_pclk_IBUF_BUFG_inst/O
-                         net (fo=1622, routed)        1.797     6.533    u_shijue_arm_core/ov_pclk_IBUF_BUFG
-    SLICE_X90Y43         FDCE                                         r  u_shijue_arm_core/box_hold_reg[11]/C
+                         net (fo=1565, routed)        1.787     6.523    u_shijue_arm_core/u_tracker/ov_pclk_IBUF_BUFG
+    SLICE_X95Y54         FDPE                                         r  u_shijue_arm_core/u_tracker/target_h_reg[2]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X90Y43         FDCE (Prop_fdce_C_Q)         0.518     7.051 r  u_shijue_arm_core/box_hold_reg[11]/Q
-                         net (fo=2, routed)           1.076     8.127    u_shijue_arm_core/box_hold[11]
-    SLICE_X91Y45         FDCE                                         r  u_shijue_arm_core/box_system_reg[11]/D
+    SLICE_X95Y54         FDPE (Prop_fdpe_C_Q)         0.456     6.979 r  u_shijue_arm_core/u_tracker/target_h_reg[2]/Q
+                         net (fo=24, routed)          1.988     8.967    u_shijue_arm_core/u_tracker/target_h_reg[10]_0[1]
+    SLICE_X94Y59         LUT4 (Prop_lut4_I2_O)        0.124     9.091 r  u_shijue_arm_core/u_tracker/cur_size1_carry_i_7/O
+                         net (fo=1, routed)           0.000     9.091    u_shijue_arm_core/u_chassis/cur_size1_carry__0_1[1]
+    SLICE_X94Y59         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533     9.624 r  u_shijue_arm_core/u_chassis/cur_size1_carry/CO[3]
+                         net (fo=1, routed)           0.000     9.624    u_shijue_arm_core/u_chassis/cur_size1_carry_n_0
+    SLICE_X94Y60         CARRY4 (Prop_carry4_CI_CO[1])
+                                                      0.157     9.781 r  u_shijue_arm_core/u_chassis/cur_size1_carry__0/CO[1]
+                         net (fo=48, routed)          2.341    12.122    u_shijue_arm_core/u_tracker/ref_size_reg[0][0]
+    SLICE_X98Y59         LUT3 (Prop_lut3_I1_O)        0.354    12.476 r  u_shijue_arm_core/u_tracker/ref_size[3]_i_1/O
+                         net (fo=9, routed)           0.918    13.394    u_shijue_arm_core/u_chassis/p_0_in[3]
+    SLICE_X100Y60        LUT5 (Prop_lut5_I1_O)        0.328    13.722 r  u_shijue_arm_core/u_chassis/ef_step0__0_carry__0_i_4/O
+                         net (fo=2, routed)           0.807    14.530    u_shijue_arm_core/u_chassis/ef_step0__0_carry__0_i_4_n_0
+    SLICE_X101Y62        LUT6 (Prop_lut6_I0_O)        0.124    14.654 r  u_shijue_arm_core/u_chassis/ef_step0__0_carry__0_i_8/O
+                         net (fo=1, routed)           0.000    14.654    u_shijue_arm_core/u_chassis/ef_step0__0_carry__0_i_8_n_0
+    SLICE_X101Y62        CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.532    15.186 r  u_shijue_arm_core/u_chassis/ef_step0__0_carry__0/CO[3]
+                         net (fo=1, routed)           0.000    15.186    u_shijue_arm_core/u_chassis/ef_step0__0_carry__0_n_0
+    SLICE_X101Y63        CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.313    15.499 r  u_shijue_arm_core/u_chassis/ef_step0__0_carry__1/O[3]
+                         net (fo=9, routed)           0.833    16.332    u_shijue_arm_core/u_chassis/ef_step0
+    SLICE_X100Y64        LUT2 (Prop_lut2_I0_O)        0.306    16.638 r  u_shijue_arm_core/u_chassis/ef_n_carry__1_i_4/O
+                         net (fo=1, routed)           0.000    16.638    u_shijue_arm_core/u_chassis/ef_n_carry__1_i_4_n_0
+    SLICE_X100Y64        CARRY4 (Prop_carry4_S[1]_O[3])
+                                                      0.643    17.281 r  u_shijue_arm_core/u_chassis/ef_n_carry__1/O[3]
+                         net (fo=8, routed)           1.476    18.756    u_shijue_arm_core/u_chassis/ef_n[11]
+    SLICE_X101Y78        LUT3 (Prop_lut3_I2_O)        0.307    19.063 r  u_shijue_arm_core/u_chassis/cal_m20__0_carry__1_i_3/O
+                         net (fo=1, routed)           0.000    19.063    u_shijue_arm_core/u_chassis/cal_m20__0_carry__1_i_3_n_0
+    SLICE_X101Y78        CARRY4 (Prop_carry4_S[2]_CO[3])
+                                                      0.398    19.461 f  u_shijue_arm_core/u_chassis/cal_m20__0_carry__1/CO[3]
+                         net (fo=1, routed)           1.295    20.757    u_shijue_arm_core/u_tracker/cal_m2_reg[11][0]
+    SLICE_X103Y78        LUT2 (Prop_lut2_I1_O)        0.124    20.881 r  u_shijue_arm_core/u_tracker/cal_m2[11]_i_1/O
+                         net (fo=1, routed)           0.000    20.881    u_shijue_arm_core/u_chassis/D[0]
+    SLICE_X103Y78        FDCE                                         r  u_shijue_arm_core/u_chassis/cal_m2_reg[11]/D
   -------------------------------------------------------------------    -------------------
 
                          (clock sys_clk rise edge)    0.000     0.000 r  <hidden>
@@ -1158,8 +1197,8 @@ Slack:                    inf
     N18                  IBUF (Prop_ibuf_I_O)         1.391     1.391 r  sys_clk_pin_IBUF_inst/O
                          net (fo=1, routed)           2.006     3.397    sys_clk_pin_IBUF
     BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.091     3.488 r  u_sys_clk_bufg/O
-                         net (fo=1707, routed)        1.622     5.110    u_shijue_arm_core/lcd_clk_OBUF
-    SLICE_X91Y45         FDCE                                         r  u_shijue_arm_core/box_system_reg[11]/C
+                         net (fo=1660, routed)        1.597     5.085    u_shijue_arm_core/u_chassis/lcd_clk_OBUF
+    SLICE_X103Y78        FDCE                                         r  u_shijue_arm_core/u_chassis/cal_m2_reg[11]/C
 
 
 
@@ -1168,17 +1207,17 @@ Slack:                    inf
 Min Delay Paths
 --------------------------------------------------------------------------------------
 Slack:                    inf
-  Source:                 u_shijue_arm_core/box_hold_reg[1]/C
+  Source:                 u_shijue_arm_core/u_tracker/target_w_reg[8]/C
                             (rising edge-triggered cell FDCE clocked by ov_pclk  {rise@0.000ns fall@10.417ns period=20.833ns})
-  Destination:            u_shijue_arm_core/box_system_reg[1]/D
-                            (rising edge-triggered cell FDCE clocked by sys_clk  {rise@0.000ns fall@15.000ns period=30.000ns})
+  Destination:            u_shijue_arm_core/u_lcd_driver/box_w_r1_reg[8]/D
+                            (rising edge-triggered cell FDRE clocked by sys_clk  {rise@0.000ns fall@15.000ns period=30.000ns})
   Path Group:             (none)
   Path Type:              Hold (Min at Fast Process Corner)
-  Data Path Delay:        0.226ns  (logic 0.164ns (72.490%)  route 0.062ns (27.510%))
+  Data Path Delay:        0.281ns  (logic 0.128ns (45.552%)  route 0.153ns (54.448%))
   Logic Levels:           0  
-  Clock Path Skew:        -0.197ns (DCD - SCD - CPR)
-    Destination Clock Delay (DCD):    2.058ns
-    Source Clock Delay      (SCD):    2.255ns
+  Clock Path Skew:        -0.199ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    2.055ns
+    Source Clock Delay      (SCD):    2.254ns
     Clock Pessimism Removal (CPR):    -0.000ns
   Clock Uncertainty:      0.154ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
     Total System Jitter     (TSJ):    0.071ns
@@ -1195,12 +1234,12 @@ Slack:                    inf
     Y16                  IBUF (Prop_ibuf_I_O)         0.336     0.336 r  ov_pclk_IBUF_inst/O
                          net (fo=1, routed)           1.283     1.619    ov_pclk_IBUF
     BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.026     1.645 r  ov_pclk_IBUF_BUFG_inst/O
-                         net (fo=1622, routed)        0.610     2.255    u_shijue_arm_core/ov_pclk_IBUF_BUFG
-    SLICE_X90Y43         FDCE                                         r  u_shijue_arm_core/box_hold_reg[1]/C
+                         net (fo=1565, routed)        0.609     2.254    u_shijue_arm_core/u_tracker/ov_pclk_IBUF_BUFG
+    SLICE_X97Y53         FDCE                                         r  u_shijue_arm_core/u_tracker/target_w_reg[8]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X90Y43         FDCE (Prop_fdce_C_Q)         0.164     2.419 r  u_shijue_arm_core/box_hold_reg[1]/Q
-                         net (fo=2, routed)           0.062     2.481    u_shijue_arm_core/box_hold[1]
-    SLICE_X91Y43         FDCE                                         r  u_shijue_arm_core/box_system_reg[1]/D
+    SLICE_X97Y53         FDCE (Prop_fdce_C_Q)         0.128     2.382 r  u_shijue_arm_core/u_tracker/target_w_reg[8]/Q
+                         net (fo=29, routed)          0.153     2.535    u_shijue_arm_core/u_lcd_driver/Q[7]
+    SLICE_X96Y52         FDRE                                         r  u_shijue_arm_core/u_lcd_driver/box_w_r1_reg[8]/D
   -------------------------------------------------------------------    -------------------
 
                          (clock sys_clk rise edge)    0.000     0.000 r  <hidden>
@@ -1209,8 +1248,8 @@ Slack:                    inf
     N18                  IBUF (Prop_ibuf_I_O)         0.417     0.417 r  sys_clk_pin_IBUF_inst/O
                          net (fo=1, routed)           0.731     1.148    sys_clk_pin_IBUF
     BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.029     1.177 r  u_sys_clk_bufg/O
-                         net (fo=1707, routed)        0.881     2.058    u_shijue_arm_core/lcd_clk_OBUF
-    SLICE_X91Y43         FDCE                                         r  u_shijue_arm_core/box_system_reg[1]/C
+                         net (fo=1660, routed)        0.878     2.055    u_shijue_arm_core/u_lcd_driver/lcd_clk_OBUF
+    SLICE_X96Y52         FDRE                                         r  u_shijue_arm_core/u_lcd_driver/box_w_r1_reg[8]/C
 
 
 
@@ -1229,13 +1268,13 @@ Min Delay             2 Endpoints
 Max Delay Paths
 --------------------------------------------------------------------------------------
 Slack:                    inf
-  Source:                 u_shijue_arm_core/u_ov7670_init/u_sccb/sda_out_reg/C
-                            (rising edge-triggered cell FDPE clocked by clk_out1_clk_wiz_0  {rise@0.000ns fall@6.667ns period=13.333ns})
+  Source:                 u_shijue_arm_core/u_ov7670_init/u_sccb/sda_dir_reg/C
+                            (rising edge-triggered cell FDCE clocked by clk_out1_clk_wiz_0  {rise@0.000ns fall@6.667ns period=13.333ns})
   Destination:            ov_sio_d
                             (output port)
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        5.886ns  (logic 4.072ns (69.170%)  route 1.815ns (30.830%))
+  Data Path Delay:        5.933ns  (logic 4.163ns (70.160%)  route 1.770ns (29.840%))
   Logic Levels:           1  (OBUFT=1)
   Clock Uncertainty:      0.266ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
     Total System Jitter     (TSJ):    0.050ns
@@ -1251,18 +1290,19 @@ Slack:                    inf
     N18                  IBUF (Prop_ibuf_I_O)         1.461     1.461 r  sys_clk_pin_IBUF_inst/O
                          net (fo=1, routed)           2.205     3.666    sys_clk_pin_IBUF
     BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.101     3.767 r  u_sys_clk_bufg/O
-                         net (fo=1707, routed)        1.806     5.573    u_clock/inst/clk_in1
+                         net (fo=1660, routed)        1.806     5.573    u_clock/inst/clk_in1
     MMCME2_ADV_X1Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
                                                      -3.793     1.780 r  u_clock/inst/mmcm_adv_inst/CLKOUT0
                          net (fo=1, routed)           1.889     3.669    u_clock/inst/clk_out1_clk_wiz_0
     BUFGCTRL_X0Y2        BUFG (Prop_bufg_I_O)         0.101     3.770 r  u_clock/inst/clkout1_buf/O
                          net (fo=112, routed)         1.863     5.633    u_shijue_arm_core/u_ov7670_init/u_sccb/clk_out1
-    SLICE_X112Y64        FDPE                                         r  u_shijue_arm_core/u_ov7670_init/u_sccb/sda_out_reg/C
+    SLICE_X111Y64        FDCE                                         r  u_shijue_arm_core/u_ov7670_init/u_sccb/sda_dir_reg/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X112Y64        FDPE (Prop_fdpe_C_Q)         0.518     6.151 r  u_shijue_arm_core/u_ov7670_init/u_sccb/sda_out_reg/Q
-                         net (fo=2, routed)           1.815     7.966    ov_sio_d_OBUF
-    W16                  OBUFT (Prop_obuft_I_O)       3.554    11.519 r  ov_sio_d_OBUFT_inst/O
-                         net (fo=0)                   0.000    11.519    ov_sio_d
+    SLICE_X111Y64        FDCE (Prop_fdce_C_Q)         0.419     6.052 f  u_shijue_arm_core/u_ov7670_init/u_sccb/sda_dir_reg/Q
+                         net (fo=2, routed)           1.770     7.823    ov_sio_d_TRI
+    W16                  OBUFT (TriStatE_obuft_T_O)
+                                                      3.744    11.567 r  ov_sio_d_OBUFT_inst/O
+                         net (fo=0)                   0.000    11.567    ov_sio_d
     W16                                                               r  ov_sio_d
   -------------------------------------------------------------------    -------------------
 
@@ -1279,7 +1319,7 @@ Slack:                    inf
                             (output port)
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
-  Data Path Delay:        1.623ns  (logic 1.025ns (63.152%)  route 0.598ns (36.848%))
+  Data Path Delay:        1.650ns  (logic 1.006ns (60.952%)  route 0.644ns (39.048%))
   Logic Levels:           1  (OBUFT=1)
   Clock Uncertainty:      0.266ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
     Total System Jitter     (TSJ):    0.050ns
@@ -1295,19 +1335,19 @@ Slack:                    inf
     N18                  IBUF (Prop_ibuf_I_O)         0.229     0.229 r  sys_clk_pin_IBUF_inst/O
                          net (fo=1, routed)           0.674     0.903    sys_clk_pin_IBUF
     BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.026     0.929 r  u_sys_clk_bufg/O
-                         net (fo=1707, routed)        0.597     1.526    u_clock/inst/clk_in1
+                         net (fo=1660, routed)        0.597     1.526    u_clock/inst/clk_in1
     MMCME2_ADV_X1Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
                                                      -1.150     0.376 r  u_clock/inst/mmcm_adv_inst/CLKOUT0
                          net (fo=1, routed)           0.529     0.905    u_clock/inst/clk_out1_clk_wiz_0
     BUFGCTRL_X0Y2        BUFG (Prop_bufg_I_O)         0.026     0.931 r  u_clock/inst/clkout1_buf/O
                          net (fo=112, routed)         0.634     1.565    u_shijue_arm_core/u_ov7670_init/u_sccb/clk_out1
-    SLICE_X112Y64        FDCE                                         r  u_shijue_arm_core/u_ov7670_init/u_sccb/sda_dir_reg/C
+    SLICE_X111Y64        FDCE                                         r  u_shijue_arm_core/u_ov7670_init/u_sccb/sda_dir_reg/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X112Y64        FDCE (Prop_fdce_C_Q)         0.148     1.713 r  u_shijue_arm_core/u_ov7670_init/u_sccb/sda_dir_reg/Q
-                         net (fo=2, routed)           0.598     2.311    ov_sio_d_TRI
+    SLICE_X111Y64        FDCE (Prop_fdce_C_Q)         0.128     1.693 r  u_shijue_arm_core/u_ov7670_init/u_sccb/sda_dir_reg/Q
+                         net (fo=2, routed)           0.644     2.338    ov_sio_d_TRI
     W16                  OBUFT (TriStatD_obuft_T_O)
-                                                      0.877     3.188 r  ov_sio_d_OBUFT_inst/O
-                         net (fo=0)                   0.000     3.188    ov_sio_d
+                                                      0.878     3.216 r  ov_sio_d_OBUFT_inst/O
+                         net (fo=0)                   0.000     3.216    ov_sio_d
     W16                                                               r  ov_sio_d
   -------------------------------------------------------------------    -------------------
 
@@ -1350,7 +1390,7 @@ Slack:                    inf
     N18                  IBUF (Prop_ibuf_I_O)         1.461    22.295 f  sys_clk_pin_IBUF_inst/O
                          net (fo=1, routed)           2.205    24.500    sys_clk_pin_IBUF
     BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.101    24.601 f  u_sys_clk_bufg/O
-                         net (fo=1707, routed)        1.806    26.407    u_clock/inst/clk_in1
+                         net (fo=1660, routed)        1.806    26.407    u_clock/inst/clk_in1
     MMCME2_ADV_X1Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT1)
                                                      -3.793    22.614 f  u_clock/inst/mmcm_adv_inst/CLKOUT1
                          net (fo=1, routed)           1.889    24.503    u_clock/inst/clk_out2_clk_wiz_0
@@ -1394,7 +1434,7 @@ Slack:                    inf
     N18                  IBUF (Prop_ibuf_I_O)         0.229     0.229 r  sys_clk_pin_IBUF_inst/O
                          net (fo=1, routed)           0.674     0.903    sys_clk_pin_IBUF
     BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.026     0.929 r  u_sys_clk_bufg/O
-                         net (fo=1707, routed)        0.597     1.526    u_clock/inst/clk_in1
+                         net (fo=1660, routed)        0.597     1.526    u_clock/inst/clk_in1
     MMCME2_ADV_X1Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT1)
                                                      -1.150     0.376 r  u_clock/inst/mmcm_adv_inst/CLKOUT1
                          net (fo=1, routed)           0.529     0.905    u_clock/inst/clk_out2_clk_wiz_0
@@ -1448,7 +1488,7 @@ Slack:                    inf
     N18                  IBUF (Prop_ibuf_I_O)         1.461    16.461 f  sys_clk_pin_IBUF_inst/O
                          net (fo=1, routed)           2.205    18.666    sys_clk_pin_IBUF
     BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.101    18.767 f  u_sys_clk_bufg/O
-                         net (fo=1707, routed)        3.356    22.123    lcd_clk_OBUF
+                         net (fo=1660, routed)        3.356    22.123    lcd_clk_OBUF
     M19                  OBUF (Prop_obuf_I_O)         3.587    25.710 f  lcd_clk_OBUF_inst/O
                          net (fo=0)                   0.000    25.710    lcd_clk
     M19                                                               f  lcd_clk
@@ -1483,7 +1523,7 @@ Slack:                    inf
     N18                  IBUF (Prop_ibuf_I_O)         0.229     0.229 r  sys_clk_pin_IBUF_inst/O
                          net (fo=1, routed)           0.674     0.903    sys_clk_pin_IBUF
     BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.026     0.929 r  u_sys_clk_bufg/O
-                         net (fo=1707, routed)        0.869     1.798    lcd_clk_OBUF
+                         net (fo=1660, routed)        0.869     1.798    lcd_clk_OBUF
     M19                  OBUF (Prop_obuf_I_O)         1.288     3.086 r  lcd_clk_OBUF_inst/O
                          net (fo=0)                   0.000     3.086    lcd_clk
     M19                                                               r  lcd_clk
@@ -1508,14 +1548,14 @@ Max Delay Paths
 Slack:                    inf
   Source:                 rst_n
                             (input port)
-  Destination:            u_shijue_arm_core/u_ov7670_init/idx_reg_rep[0]/CLR
+  Destination:            u_shijue_arm_core/u_ov7670_init/idx_reg_rep[2]/CLR
                             (recovery check against rising-edge clock clk_out1_clk_wiz_0  {rise@0.000ns fall@6.667ns period=13.333ns})
   Path Group:             (none)
   Path Type:              Recovery (Max at Slow Process Corner)
-  Data Path Delay:        10.195ns  (logic 1.640ns (16.087%)  route 8.555ns (83.913%))
+  Data Path Delay:        16.234ns  (logic 1.640ns (10.103%)  route 14.594ns (89.897%))
   Logic Levels:           2  (IBUF=1 LUT1=1)
-  Clock Path Skew:        5.165ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    5.165ns
+  Clock Path Skew:        5.175ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    5.175ns
     Source Clock Delay      (SCD):    0.000ns
     Clock Pessimism Removal (CPR):    0.000ns
   Clock Uncertainty:      0.266ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
@@ -1528,10 +1568,10 @@ Slack:                    inf
     W9                                                0.000     0.000 r  rst_n
                          net (fo=0)                   0.000     0.000    rst_n
     W9                   IBUF (Prop_ibuf_I_O)         1.516     1.516 r  rst_n_IBUF_inst/O
-                         net (fo=10, routed)          6.615     8.131    u_shijue_arm_core/u_tracker/u_rgb2hsv/rst_n_IBUF
-    SLICE_X107Y62        LUT1 (Prop_lut1_I0_O)        0.124     8.255 f  u_shijue_arm_core/u_tracker/u_rgb2hsv/rst_cnt[31]_i_3/O
-                         net (fo=2073, routed)        1.940    10.195    u_shijue_arm_core/u_ov7670_init/sio_c_reg
-    SLICE_X108Y71        FDCE                                         f  u_shijue_arm_core/u_ov7670_init/idx_reg_rep[0]/CLR
+                         net (fo=10, routed)          8.363     9.879    u_shijue_arm_core/u_tracker/u_rgb2hsv/rst_n_IBUF
+    SLICE_X101Y96        LUT1 (Prop_lut1_I0_O)        0.124    10.003 f  u_shijue_arm_core/u_tracker/u_rgb2hsv/rst_cnt[31]_i_3/O
+                         net (fo=1957, routed)        6.231    16.234    u_shijue_arm_core/u_ov7670_init/sio_c_reg
+    SLICE_X106Y60        FDCE                                         f  u_shijue_arm_core/u_ov7670_init/idx_reg_rep[2]/CLR
   -------------------------------------------------------------------    -------------------
 
                          (clock clk_out1_clk_wiz_0 rise edge)
@@ -1541,13 +1581,13 @@ Slack:                    inf
     N18                  IBUF (Prop_ibuf_I_O)         1.391     1.391 r  sys_clk_pin_IBUF_inst/O
                          net (fo=1, routed)           2.006     3.397    sys_clk_pin_IBUF
     BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.091     3.488 r  u_sys_clk_bufg/O
-                         net (fo=1707, routed)        1.612     5.100    u_clock/inst/clk_in1
+                         net (fo=1660, routed)        1.612     5.100    u_clock/inst/clk_in1
     MMCME2_ADV_X1Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
                                                      -3.425     1.675 r  u_clock/inst/mmcm_adv_inst/CLKOUT0
                          net (fo=1, routed)           1.725     3.400    u_clock/inst/clk_out1_clk_wiz_0
     BUFGCTRL_X0Y2        BUFG (Prop_bufg_I_O)         0.091     3.491 r  u_clock/inst/clkout1_buf/O
-                         net (fo=112, routed)         1.674     5.165    u_shijue_arm_core/u_ov7670_init/clk_out1
-    SLICE_X108Y71        FDCE                                         r  u_shijue_arm_core/u_ov7670_init/idx_reg_rep[0]/C
+                         net (fo=112, routed)         1.684     5.175    u_shijue_arm_core/u_ov7670_init/clk_out1
+    SLICE_X106Y60        FDCE                                         r  u_shijue_arm_core/u_ov7670_init/idx_reg_rep[2]/C
 
 
 
@@ -1558,14 +1598,14 @@ Min Delay Paths
 Slack:                    inf
   Source:                 rst_n
                             (input port)
-  Destination:            u_shijue_arm_core/u_ov7670_init/reg_addr_reg[4]/CE
+  Destination:            u_shijue_arm_core/u_ov7670_init/reg_addr_reg[2]/CE
                             (rising edge-triggered cell FDRE clocked by clk_out1_clk_wiz_0  {rise@0.000ns fall@6.667ns period=13.333ns})
   Path Group:             (none)
   Path Type:              Hold (Min at Fast Process Corner)
-  Data Path Delay:        3.494ns  (logic 0.329ns (9.402%)  route 3.166ns (90.598%))
+  Data Path Delay:        3.418ns  (logic 0.329ns (9.612%)  route 3.089ns (90.388%))
   Logic Levels:           2  (IBUF=1 LUT6=1)
-  Clock Path Skew:        2.076ns (DCD - SCD - CPR)
-    Destination Clock Delay (DCD):    2.076ns
+  Clock Path Skew:        2.084ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    2.084ns
     Source Clock Delay      (SCD):    0.000ns
     Clock Pessimism Removal (CPR):    -0.000ns
 
@@ -1574,10 +1614,10 @@ Slack:                    inf
     W9                                                0.000     0.000 r  rst_n
                          net (fo=0)                   0.000     0.000    rst_n
     W9                   IBUF (Prop_ibuf_I_O)         0.284     0.284 r  rst_n_IBUF_inst/O
-                         net (fo=10, routed)          3.020     3.303    u_shijue_arm_core/u_ov7670_init/u_sccb/rst_n_IBUF
-    SLICE_X108Y68        LUT6 (Prop_lut6_I2_O)        0.045     3.348 r  u_shijue_arm_core/u_ov7670_init/u_sccb/reg_data[7]_i_1/O
-                         net (fo=16, routed)          0.146     3.494    u_shijue_arm_core/u_ov7670_init/u_sccb_n_2
-    SLICE_X108Y69        FDRE                                         r  u_shijue_arm_core/u_ov7670_init/reg_addr_reg[4]/CE
+                         net (fo=10, routed)          2.941     3.225    u_shijue_arm_core/u_ov7670_init/u_sccb/rst_n_IBUF
+    SLICE_X109Y60        LUT6 (Prop_lut6_I2_O)        0.045     3.270 r  u_shijue_arm_core/u_ov7670_init/u_sccb/reg_data[7]_i_1/O
+                         net (fo=16, routed)          0.148     3.418    u_shijue_arm_core/u_ov7670_init/u_sccb_n_2
+    SLICE_X108Y61        FDRE                                         r  u_shijue_arm_core/u_ov7670_init/reg_addr_reg[2]/CE
   -------------------------------------------------------------------    -------------------
 
                          (clock clk_out1_clk_wiz_0 rise edge)
@@ -1587,13 +1627,13 @@ Slack:                    inf
     N18                  IBUF (Prop_ibuf_I_O)         0.417     0.417 r  sys_clk_pin_IBUF_inst/O
                          net (fo=1, routed)           0.731     1.148    sys_clk_pin_IBUF
     BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.029     1.177 r  u_sys_clk_bufg/O
-                         net (fo=1707, routed)        0.864     2.041    u_clock/inst/clk_in1
+                         net (fo=1660, routed)        0.864     2.041    u_clock/inst/clk_in1
     MMCME2_ADV_X1Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
                                                      -1.467     0.574 r  u_clock/inst/mmcm_adv_inst/CLKOUT0
                          net (fo=1, routed)           0.576     1.150    u_clock/inst/clk_out1_clk_wiz_0
     BUFGCTRL_X0Y2        BUFG (Prop_bufg_I_O)         0.029     1.179 r  u_clock/inst/clkout1_buf/O
-                         net (fo=112, routed)         0.897     2.076    u_shijue_arm_core/u_ov7670_init/clk_out1
-    SLICE_X108Y69        FDRE                                         r  u_shijue_arm_core/u_ov7670_init/reg_addr_reg[4]/C
+                         net (fo=112, routed)         0.905     2.084    u_shijue_arm_core/u_ov7670_init/clk_out1
+    SLICE_X108Y61        FDRE                                         r  u_shijue_arm_core/u_ov7670_init/reg_addr_reg[2]/C
 
 
 
@@ -1604,24 +1644,24 @@ Path Group:  (none)
 From Clock:  
   To Clock:  ov_pclk
 
-Max Delay          1349 Endpoints
-Min Delay          1349 Endpoints
+Max Delay          1363 Endpoints
+Min Delay          1363 Endpoints
 --------------------------------------------------------------------------------------
 
 
 Max Delay Paths
 --------------------------------------------------------------------------------------
 Slack:                    inf
-  Source:                 rst_n
+  Source:                 ov_data[2]
                             (input port)
-  Destination:            u_shijue_arm_core/u_tracker/u_rgb2hsv/hr_reg[12][5]/CLR
-                            (recovery check against rising-edge clock ov_pclk  {rise@0.000ns fall@10.417ns period=20.833ns})
+  Destination:            u_shijue_arm_core/u_tracker/u_rgb2hsv/hn_reg[5][13]_srl6_u_shijue_arm_core_u_tracker_u_rgb2hsv_valid_reg_c_4/D
+                            (rising edge-triggered cell SRL16E clocked by ov_pclk  {rise@0.000ns fall@10.417ns period=20.833ns})
   Path Group:             (none)
-  Path Type:              Recovery (Max at Slow Process Corner)
-  Data Path Delay:        18.115ns  (logic 1.640ns (9.054%)  route 16.475ns (90.946%))
-  Logic Levels:           2  (IBUF=1 LUT1=1)
-  Clock Path Skew:        5.694ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    5.694ns
+  Path Type:              Setup (Max at Slow Process Corner)
+  Data Path Delay:        20.683ns  (logic 8.498ns (41.089%)  route 12.184ns (58.911%))
+  Logic Levels:           17  (CARRY4=5 DSP48E1=1 IBUF=1 LUT2=3 LUT4=2 LUT5=2 LUT6=3)
+  Clock Path Skew:        5.812ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    5.812ns
     Source Clock Delay      (SCD):    0.000ns
     Clock Pessimism Removal (CPR):    0.000ns
   Clock Uncertainty:      0.025ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
@@ -1632,13 +1672,49 @@ Slack:                    inf
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    W9                                                0.000     0.000 r  rst_n
-                         net (fo=0)                   0.000     0.000    rst_n
-    W9                   IBUF (Prop_ibuf_I_O)         1.516     1.516 r  rst_n_IBUF_inst/O
-                         net (fo=10, routed)          6.615     8.131    u_shijue_arm_core/u_tracker/u_rgb2hsv/rst_n_IBUF
-    SLICE_X107Y62        LUT1 (Prop_lut1_I0_O)        0.124     8.255 f  u_shijue_arm_core/u_tracker/u_rgb2hsv/rst_cnt[31]_i_3/O
-                         net (fo=2073, routed)        9.860    18.115    u_shijue_arm_core/u_tracker/u_rgb2hsv/rst_n
-    SLICE_X53Y49         FDCE                                         f  u_shijue_arm_core/u_tracker/u_rgb2hsv/hr_reg[12][5]/CLR
+    W13                                               0.000     0.000 r  ov_data[2]
+                         net (fo=0)                   0.000     0.000    ov_data[2]
+    W13                  IBUF (Prop_ibuf_I_O)         1.531     1.531 r  ov_data_IBUF[2]_inst/O
+                         net (fo=34, routed)          4.607     6.139    u_shijue_arm_core/u_capture/ov_data_IBUF[2]
+    SLICE_X90Y75         LUT4 (Prop_lut4_I0_O)        0.124     6.263 r  u_shijue_arm_core/u_capture/sd[0][0]_i_16/O
+                         net (fo=1, routed)           0.000     6.263    u_shijue_arm_core/u_capture/sd[0][0]_i_16_n_0
+    SLICE_X90Y75         CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.513     6.776 f  u_shijue_arm_core/u_capture/sd_reg[0][0]_i_8/CO[3]
+                         net (fo=2, routed)           0.653     7.429    u_shijue_arm_core/u_capture/u_tracker/u_rgb2hsv/p_9_in
+    SLICE_X90Y74         LUT2 (Prop_lut2_I0_O)        0.124     7.553 r  u_shijue_arm_core/u_capture/value[0][2]_i_2/O
+                         net (fo=16, routed)          0.607     8.160    u_shijue_arm_core/u_capture/value[0][2]_i_2_n_0
+    SLICE_X89Y74         LUT6 (Prop_lut6_I4_O)        0.124     8.284 r  u_shijue_arm_core/u_capture/sd[0][0]_i_7/O
+                         net (fo=4, routed)           0.593     8.877    u_shijue_arm_core/u_capture/sd[0][0]_i_7_n_0
+    SLICE_X89Y73         LUT4 (Prop_lut4_I2_O)        0.124     9.001 f  u_shijue_arm_core/u_capture/base_reg[14][7]_srl15_u_shijue_arm_core_u_tracker_u_rgb2hsv_valid_reg_c_13_i_8/O
+                         net (fo=1, routed)           0.649     9.650    u_shijue_arm_core/u_capture/base_reg[14][7]_srl15_u_shijue_arm_core_u_tracker_u_rgb2hsv_valid_reg_c_13_i_8_n_0
+    SLICE_X90Y73         LUT6 (Prop_lut6_I4_O)        0.124     9.774 f  u_shijue_arm_core/u_capture/base_reg[14][7]_srl15_u_shijue_arm_core_u_tracker_u_rgb2hsv_valid_reg_c_13_i_5/O
+                         net (fo=1, routed)           0.488    10.262    u_shijue_arm_core/u_capture/base_reg[14][7]_srl15_u_shijue_arm_core_u_tracker_u_rgb2hsv_valid_reg_c_13_i_5_n_0
+    SLICE_X91Y73         LUT5 (Prop_lut5_I4_O)        0.124    10.386 f  u_shijue_arm_core/u_capture/base_reg[14][7]_srl15_u_shijue_arm_core_u_tracker_u_rgb2hsv_valid_reg_c_13_i_3/O
+                         net (fo=27, routed)          0.723    11.109    u_shijue_arm_core/u_capture/base_reg[14][7]_srl15_u_shijue_arm_core_u_tracker_u_rgb2hsv_valid_reg_c_13_i_3_n_0
+    SLICE_X91Y70         LUT2 (Prop_lut2_I1_O)        0.118    11.227 r  u_shijue_arm_core/u_capture/base_reg[14][8]_srl15_u_shijue_arm_core_u_tracker_u_rgb2hsv_valid_reg_c_13_i_2/O
+                         net (fo=5, routed)           0.984    12.211    u_shijue_arm_core/u_capture/base_reg[14][8]_srl15_u_shijue_arm_core_u_tracker_u_rgb2hsv_valid_reg_c_13_i_2_n_0
+    SLICE_X98Y70         LUT6 (Prop_lut6_I0_O)        0.326    12.537 r  u_shijue_arm_core/u_capture/hn0_i_36/O
+                         net (fo=2, routed)           0.492    13.029    u_shijue_arm_core/u_capture/hn0_i_36_n_0
+    SLICE_X99Y70         LUT5 (Prop_lut5_I1_O)        0.124    13.153 r  u_shijue_arm_core/u_capture/hn0_i_27/O
+                         net (fo=1, routed)           0.000    13.153    u_shijue_arm_core/u_capture/hn0_i_27_n_0
+    SLICE_X99Y70         CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.532    13.685 r  u_shijue_arm_core/u_capture/hn0_i_4/CO[3]
+                         net (fo=1, routed)           0.000    13.685    u_shijue_arm_core/u_capture/hn0_i_4_n_0
+    SLICE_X99Y71         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    13.799 r  u_shijue_arm_core/u_capture/hn0_i_3/CO[3]
+                         net (fo=1, routed)           0.000    13.799    u_shijue_arm_core/u_capture/hn0_i_3_n_0
+    SLICE_X99Y72         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    13.913 r  u_shijue_arm_core/u_capture/hn0_i_2/CO[3]
+                         net (fo=1, routed)           0.000    13.913    u_shijue_arm_core/u_capture/hn0_i_2_n_0
+    SLICE_X99Y73         CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.239    14.152 r  u_shijue_arm_core/u_capture/hn0_i_1/O[2]
+                         net (fo=1, routed)           0.702    14.855    u_shijue_arm_core/u_tracker/u_rgb2hsv/A[14]
+    DSP48_X3Y28          DSP48E1 (Prop_dsp48e1_A[14]_P[8])
+                                                      4.019    18.874 r  u_shijue_arm_core/u_tracker/u_rgb2hsv/hn0/P[8]
+                         net (fo=1, routed)           1.028    19.902    u_shijue_arm_core/u_tracker/u_rgb2hsv/hn0_n_97
+    SLICE_X98Y73         LUT2 (Prop_lut2_I0_O)        0.124    20.026 r  u_shijue_arm_core/u_tracker/u_rgb2hsv/hn_reg[5][13]_srl6_u_shijue_arm_core_u_tracker_u_rgb2hsv_valid_reg_c_4_i_1/O
+                         net (fo=1, routed)           0.657    20.683    u_shijue_arm_core/u_tracker/u_rgb2hsv/hn[8]
+    SLICE_X100Y71        SRL16E                                       r  u_shijue_arm_core/u_tracker/u_rgb2hsv/hn_reg[5][13]_srl6_u_shijue_arm_core_u_tracker_u_rgb2hsv_valid_reg_c_4/D
   -------------------------------------------------------------------    -------------------
 
                          (clock ov_pclk rise edge)    0.000     0.000 r  <hidden>
@@ -1647,8 +1723,8 @@ Slack:                    inf
     Y16                  IBUF (Prop_ibuf_I_O)         1.498     1.498 r  ov_pclk_IBUF_inst/O
                          net (fo=1, routed)           2.625     4.123    ov_pclk_IBUF
     BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.091     4.214 r  ov_pclk_IBUF_BUFG_inst/O
-                         net (fo=1622, routed)        1.480     5.694    u_shijue_arm_core/u_tracker/u_rgb2hsv/ov_pclk_IBUF_BUFG
-    SLICE_X53Y49         FDCE                                         r  u_shijue_arm_core/u_tracker/u_rgb2hsv/hr_reg[12][5]/C
+                         net (fo=1565, routed)        1.599     5.812    u_shijue_arm_core/u_tracker/u_rgb2hsv/ov_pclk_IBUF_BUFG
+    SLICE_X100Y71        SRL16E                                       r  u_shijue_arm_core/u_tracker/u_rgb2hsv/hn_reg[5][13]_srl6_u_shijue_arm_core_u_tracker_u_rgb2hsv_valid_reg_c_4/CLK
 
 
 
@@ -1657,26 +1733,26 @@ Slack:                    inf
 Min Delay Paths
 --------------------------------------------------------------------------------------
 Slack:                    inf
-  Source:                 ov_href
+  Source:                 ov_data[7]
                             (input port)
-  Destination:            u_shijue_arm_core/u_capture/href_r_reg/D
+  Destination:            u_shijue_arm_core/u_capture/dout_reg[7]/D
                             (rising edge-triggered cell FDRE clocked by ov_pclk  {rise@0.000ns fall@10.417ns period=20.833ns})
   Path Group:             (none)
   Path Type:              Hold (Min at Fast Process Corner)
-  Data Path Delay:        1.843ns  (logic 0.345ns (18.713%)  route 1.498ns (81.287%))
+  Data Path Delay:        1.545ns  (logic 0.367ns (23.745%)  route 1.178ns (76.255%))
   Logic Levels:           1  (IBUF=1)
-  Clock Path Skew:        2.890ns (DCD - SCD - CPR)
-    Destination Clock Delay (DCD):    2.890ns
+  Clock Path Skew:        2.916ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    2.916ns
     Source Clock Delay      (SCD):    0.000ns
     Clock Pessimism Removal (CPR):    -0.000ns
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    V15                                               0.000     0.000 r  ov_href
-                         net (fo=0)                   0.000     0.000    ov_href
-    V15                  IBUF (Prop_ibuf_I_O)         0.345     0.345 r  ov_href_IBUF_inst/O
-                         net (fo=1, routed)           1.498     1.843    u_shijue_arm_core/u_capture/href
-    SLICE_X70Y45         FDRE                                         r  u_shijue_arm_core/u_capture/href_r_reg/D
+    W14                                               0.000     0.000 r  ov_data[7]
+                         net (fo=0)                   0.000     0.000    ov_data[7]
+    W14                  IBUF (Prop_ibuf_I_O)         0.367     0.367 r  ov_data_IBUF[7]_inst/O
+                         net (fo=23, routed)          1.178     1.545    u_shijue_arm_core/u_capture/ov_data_IBUF[7]
+    SLICE_X90Y42         FDRE                                         r  u_shijue_arm_core/u_capture/dout_reg[7]/D
   -------------------------------------------------------------------    -------------------
 
                          (clock ov_pclk rise edge)    0.000     0.000 r  <hidden>
@@ -1685,8 +1761,8 @@ Slack:                    inf
     Y16                  IBUF (Prop_ibuf_I_O)         0.525     0.525 r  ov_pclk_IBUF_inst/O
                          net (fo=1, routed)           1.484     2.009    ov_pclk_IBUF
     BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.029     2.038 r  ov_pclk_IBUF_BUFG_inst/O
-                         net (fo=1622, routed)        0.852     2.890    u_shijue_arm_core/u_capture/ov_pclk_IBUF_BUFG
-    SLICE_X70Y45         FDRE                                         r  u_shijue_arm_core/u_capture/href_r_reg/C
+                         net (fo=1565, routed)        0.878     2.916    u_shijue_arm_core/u_capture/ov_pclk_IBUF_BUFG
+    SLICE_X90Y42         FDRE                                         r  u_shijue_arm_core/u_capture/dout_reg[7]/C
 
 
 
@@ -1697,8 +1773,8 @@ Path Group:  (none)
 From Clock:  
   To Clock:  sys_clk
 
-Max Delay          1485 Endpoints
-Min Delay          1485 Endpoints
+Max Delay          1418 Endpoints
+Min Delay          1418 Endpoints
 --------------------------------------------------------------------------------------
 
 
@@ -1707,14 +1783,14 @@ Max Delay Paths
 Slack:                    inf
   Source:                 rst_n
                             (input port)
-  Destination:            u_shijue_arm_core/u_lcd_driver/h_cnt_reg[3]/CLR
+  Destination:            u_shijue_arm_core/u_lcd_driver/h_cnt_reg[0]/CLR
                             (recovery check against rising-edge clock sys_clk  {rise@0.000ns fall@15.000ns period=30.000ns})
   Path Group:             (none)
   Path Type:              Recovery (Max at Slow Process Corner)
-  Data Path Delay:        18.106ns  (logic 1.640ns (9.058%)  route 16.466ns (90.942%))
+  Data Path Delay:        20.247ns  (logic 1.640ns (8.100%)  route 18.607ns (91.900%))
   Logic Levels:           2  (IBUF=1 LUT1=1)
-  Clock Path Skew:        5.044ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    5.044ns
+  Clock Path Skew:        5.113ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    5.113ns
     Source Clock Delay      (SCD):    0.000ns
     Clock Pessimism Removal (CPR):    0.000ns
   Clock Uncertainty:      0.152ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
@@ -1728,10 +1804,10 @@ Slack:                    inf
     W9                                                0.000     0.000 r  rst_n
                          net (fo=0)                   0.000     0.000    rst_n
     W9                   IBUF (Prop_ibuf_I_O)         1.516     1.516 r  rst_n_IBUF_inst/O
-                         net (fo=10, routed)          6.615     8.131    u_shijue_arm_core/u_tracker/u_rgb2hsv/rst_n_IBUF
-    SLICE_X107Y62        LUT1 (Prop_lut1_I0_O)        0.124     8.255 f  u_shijue_arm_core/u_tracker/u_rgb2hsv/rst_cnt[31]_i_3/O
-                         net (fo=2073, routed)        9.850    18.106    u_shijue_arm_core/u_lcd_driver/lcd_hs_reg_0
-    SLICE_X72Y38         FDCE                                         f  u_shijue_arm_core/u_lcd_driver/h_cnt_reg[3]/CLR
+                         net (fo=10, routed)          8.363     9.879    u_shijue_arm_core/u_tracker/u_rgb2hsv/rst_n_IBUF
+    SLICE_X101Y96        LUT1 (Prop_lut1_I0_O)        0.124    10.003 f  u_shijue_arm_core/u_tracker/u_rgb2hsv/rst_cnt[31]_i_3/O
+                         net (fo=1957, routed)       10.244    20.247    u_shijue_arm_core/u_lcd_driver/lcd_hs_reg_0
+    SLICE_X100Y43        FDCE                                         f  u_shijue_arm_core/u_lcd_driver/h_cnt_reg[0]/CLR
   -------------------------------------------------------------------    -------------------
 
                          (clock sys_clk rise edge)    0.000     0.000 r  <hidden>
@@ -1740,8 +1816,8 @@ Slack:                    inf
     N18                  IBUF (Prop_ibuf_I_O)         1.391     1.391 r  sys_clk_pin_IBUF_inst/O
                          net (fo=1, routed)           2.006     3.397    sys_clk_pin_IBUF
     BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.091     3.488 r  u_sys_clk_bufg/O
-                         net (fo=1707, routed)        1.556     5.044    u_shijue_arm_core/u_lcd_driver/lcd_clk_OBUF
-    SLICE_X72Y38         FDCE                                         r  u_shijue_arm_core/u_lcd_driver/h_cnt_reg[3]/C
+                         net (fo=1660, routed)        1.625     5.113    u_shijue_arm_core/u_lcd_driver/lcd_clk_OBUF
+    SLICE_X100Y43        FDCE                                         r  u_shijue_arm_core/u_lcd_driver/h_cnt_reg[0]/C
 
 
 
@@ -1750,26 +1826,28 @@ Slack:                    inf
 Min Delay Paths
 --------------------------------------------------------------------------------------
 Slack:                    inf
-  Source:                 us_echo
+  Source:                 motor_sda
                             (input port)
-  Destination:            u_xunbi_core/u_obstacle_avoid_ctrl/echo_d1_reg/D
+  Destination:            u_motor_iic/iic_write_inst/sack_flag_reg/D
                             (rising edge-triggered cell FDCE clocked by sys_clk  {rise@0.000ns fall@15.000ns period=30.000ns})
   Path Group:             (none)
   Path Type:              Hold (Min at Fast Process Corner)
-  Data Path Delay:        1.063ns  (logic 0.352ns (33.082%)  route 0.711ns (66.918%))
-  Logic Levels:           1  (IBUF=1)
-  Clock Path Skew:        2.038ns (DCD - SCD - CPR)
-    Destination Clock Delay (DCD):    2.038ns
+  Data Path Delay:        0.786ns  (logic 0.342ns (43.585%)  route 0.443ns (56.415%))
+  Logic Levels:           2  (IBUF=1 LUT6=1)
+  Clock Path Skew:        2.075ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    2.075ns
     Source Clock Delay      (SCD):    0.000ns
     Clock Pessimism Removal (CPR):    -0.000ns
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    U15                                               0.000     0.000 r  us_echo
-                         net (fo=0)                   0.000     0.000    us_echo
-    U15                  IBUF (Prop_ibuf_I_O)         0.352     0.352 r  us_echo_IBUF_inst/O
-                         net (fo=1, routed)           0.711     1.063    u_xunbi_core/u_obstacle_avoid_ctrl/echo
-    SLICE_X95Y75         FDCE                                         r  u_xunbi_core/u_obstacle_avoid_ctrl/echo_d1_reg/D
+    T16                                               0.000     0.000 f  motor_sda
+                         net (fo=1, unset)            0.000     0.000    motor_sda_IOBUF_inst/IO
+    T16                  IBUF (Prop_ibuf_I_O)         0.297     0.297 f  motor_sda_IOBUF_inst/IBUF/O
+                         net (fo=1, routed)           0.443     0.741    u_motor_iic/iic_write_inst/motor_sda_IBUF
+    SLICE_X108Y83        LUT6 (Prop_lut6_I0_O)        0.045     0.786 r  u_motor_iic/iic_write_inst/sack_flag_i_1/O
+                         net (fo=1, routed)           0.000     0.786    u_motor_iic/iic_write_inst/sack_flag_i_1_n_0
+    SLICE_X108Y83        FDCE                                         r  u_motor_iic/iic_write_inst/sack_flag_reg/D
   -------------------------------------------------------------------    -------------------
 
                          (clock sys_clk rise edge)    0.000     0.000 r  <hidden>
@@ -1778,8 +1856,8 @@ Slack:                    inf
     N18                  IBUF (Prop_ibuf_I_O)         0.417     0.417 r  sys_clk_pin_IBUF_inst/O
                          net (fo=1, routed)           0.731     1.148    sys_clk_pin_IBUF
     BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.029     1.177 r  u_sys_clk_bufg/O
-                         net (fo=1707, routed)        0.861     2.038    u_xunbi_core/u_obstacle_avoid_ctrl/lcd_clk_OBUF
-    SLICE_X95Y75         FDCE                                         r  u_xunbi_core/u_obstacle_avoid_ctrl/echo_d1_reg/C
+                         net (fo=1660, routed)        0.898     2.075    u_motor_iic/iic_write_inst/lcd_clk_OBUF
+    SLICE_X108Y83        FDCE                                         r  u_motor_iic/iic_write_inst/sack_flag_reg/C
 
 
 

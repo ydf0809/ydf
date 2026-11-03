@@ -1,6 +1,16 @@
-// Frame-difference and local-contrast candidates use the half-resolution detector grid.
 `timescale 1ns / 1ps
 
+// Frame-difference detector with dark-pixel confidence weighting.
+//
+// Input is a 300x200 luminance map sampled every two source pixels.  Motion is
+// measured against the previous frame after compensating the global brightness
+// change caused by camera AEC/AWB.  "Dark" does not gate motion: it doubles the
+// vote of a moving sample, so a bright or partially reflective drone can still
+// produce a candidate.
+//
+// A 5x5-cell block vote rejects isolated noise.  The strongest block defines a
+// local cluster; the centre of that cluster is the weighted centroid of every
+// qualifying cell, followed by a small dead-band and 1/4-rate IIR smoothing.
 module motion_detector #(
     parameter integer W = 300,
     parameter integer H = 200,
@@ -35,11 +45,11 @@ module motion_detector #(
     output reg  [6:0]  dbg_best,
     output reg  [15:0] dbg_total
 );
-    localparam integer SAMPLES = W * H;
-    localparam integer NBX = W / BLK;
-    localparam integer NBY = H / BLK;
-    localparam integer NB  = NBX * NBY;
-    localparam integer BOX_HALF = 32;
+    localparam integer SAMPLES = W * H;       // 60000
+    localparam integer NBX = W / BLK;         // 60
+    localparam integer NBY = H / BLK;         // 40
+    localparam integer NB  = NBX * NBY;       // 2400
+    localparam integer BOX_HALF = 32;         // 64 samples = 128 display px
 
     localparam [3:0] ST_IDLE     = 4'd0;
     localparam [3:0] ST_PASS1    = 4'd1;
@@ -64,6 +74,7 @@ module motion_detector #(
     reg [8:0] prev_hit_x;
     reg [7:0] prev_hit_y;
 
+    // The pass-2 scan also clears these counters for the next frame.
     reg [6:0] blk_count [0:NB-1];
     reg [15:0] motion_total;
 
@@ -114,7 +125,9 @@ module motion_detector #(
     reg       track_enable_lat;
     reg [8:0] track_x0_lat;
     reg [7:0] track_y0_lat;
-
+    // A 6x6 search area leaves an 8-sample guard at each ROI edge.  The old
+    // 4x4 centre-only search could lose an accelerating target before the ROI
+    // had time to catch up.
     reg [6:0] dark_bin_count [0:35];
     reg [5:0] dark_bin_min_x [0:35];
     reg [5:0] dark_bin_max_x [0:35];
@@ -183,6 +196,8 @@ module motion_detector #(
     wire [16:0] frame_wr_addr = write_bank ? banked_addr : {1'b0, addr};
     wire [16:0] frame_rd_addr = write_bank ? {1'b0, addr} : banked_addr;
 
+    // Divide the 60000-pixel frame sum by 65536; this underestimates the
+    // average brightness change by about 8.4%.
     wire signed [24:0] sum_diff = {1'b0, sum_cur} - {1'b0, sum_last};
     wire signed [8:0] delta = {1'b0, pipe_luma} - {1'b0, prev_q};
     wire signed [9:0] corr = {delta[8], delta} - {mean_shift[8], mean_shift};
@@ -237,6 +252,9 @@ module motion_detector #(
     wire [14:0] rem_x_shift = {rem_x[13:0], div_num_x[22]};
     wire [15:0] rem_y_shift = {rem_y[14:0], div_num_y[22]};
 
+    // Ping-pong luminance banks.  The write bank is never read in the same
+    // frame, avoiding read-during-write ambiguity and giving an unambiguous
+    // previous frame for every comparison.
     always @(posedge clk) begin
         if (pix_we) begin
             frame_mem[frame_wr_addr] <= luma;
@@ -319,11 +337,14 @@ module motion_detector #(
             dbg_total     <= 16'd0;
         end else begin
             if (frame_sync) begin
-
+                // Keep the best dark cell incrementally while pixels arrive.
+                // A single 36-cell priority chain would not meet camera timing.
                 best_dark_count <= 7'd0;
                 best_dark_bin <= 6'd0;
                 best_dark_score <= -9'sd255;
-
+                // A held TRACK box is not a fresh SEARCH candidate.  Clear it
+                // as soon as tracking ends so the full-frame detector can
+                // accept the next two actual motion frames.
                 if (track_enable_lat && !track_enable) begin
                     box_valid    <= 1'b0;
                     prev_cand    <= 1'b0;
@@ -612,7 +633,7 @@ module motion_detector #(
                     end
 
                     if (candidate_now && prev_cand && (manhattan <= 48)) begin
-
+                        // quot_x/y average (2*block+1), so multiply by BLK/2.
                         if (!center_valid) begin
                             smooth_x = cx;
                             smooth_y = cy;

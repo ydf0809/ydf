@@ -45,7 +45,7 @@ module tb_motion_candidate_priority;
     endtask
     initial begin
         reset;
-
+        // Stronger static jitter versus a weaker coherently translating target.
         for(i=0;i<8;i=i+1) begin
             px=50+(i%2); sx=150+4*i;
             sample;
@@ -53,6 +53,7 @@ module tb_motion_candidate_priority;
         end
         check(valid && secondary && preferred && cx==178,"weaker moving candidate did not outrank static flicker");
 
+        // Rank swaps must preserve spatial identity and motion history.
         px=182; py=120; sx=50; sy=40;
         sample;
         check(valid && !secondary && preferred && cx==182,"strength swap lost the moving target identity");

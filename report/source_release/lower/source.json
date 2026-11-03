@@ -1,11 +1,11 @@
 {
   "selected_source": "realfinal_min_102404",
-  "source_xpr_sha256": "2909a85699b89167cc55bd4c74c77b5ea24ac159b33632831d07199757da6ba9",
+  "source_xpr_sha256": "daea535c491f20b12d9d90e1786bfbae691093f6c6a5986be3d0f5112e8d3b2b",
   "source_bitstream": {
     "path": "realfinal.runs/impl_1/super_top.bit",
     "bytes": 4045764,
-    "sha256": "aebd4004da50f6ee2cb19d249d9c5ac25a5d636019f8b3c76bf22c8aedaec233",
-    "modified_time": "2026-11-03T02:59:54.284064+08:00"
+    "sha256": "9d1afb8abf4089d1b9e1baea4d6f36c80a3f506701b762d16b54d002f98c12a1",
+    "modified_time": "2026-11-03T22:06:32+08:00"
   },
   "registered_input_hashes_checked": 47,
   "source_recorded_timing": {
@@ -28,9 +28,22 @@
     }
   },
   "source_recorded_regression": {
-    "passed": 15,
-    "total": 15
+    "passed": 13,
+    "total": 13
   },
   "physical_board_validation": "NOT_PERFORMED",
-  "status": "source_evidence_only_repository_rebuild_required"
+  "status": "source_evidence_and_repository_rebuild_pass",
+  "repository_rebuild": {
+    "status": "preview_build_candidate",
+    "xpr": "projects/realfinal_min_102404/realfinal.xpr",
+    "top": "super_top",
+    "part": "xc7z020clg400-1",
+    "WNS_ns": 4.295,
+    "WHS_ns": 0.063,
+    "DRC_errors": 0,
+    "bit": "board/bitstreams/lower/super_top.bit",
+    "bit_sha256": "888f1b1bde28812eac15d66b3261173b01b25e737db220c3aca8278693f5977f",
+    "bit_bytes": 4045764,
+    "completed_at": "2026-11-04T00:43:32+08:00"
+  }
 }

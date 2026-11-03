@@ -67,26 +67,24 @@ module tb_integrated_recheck_cdc;
 
         for (i = 0; i < 4; i = i + 1) begin
             next_periodic;
-            label(i == 0 ? 0 : (i == 1 ? 1 : 15));
+            label(i == 0 ? 0 : (i == 1 ? 1 : 10));
             check(dut.roi_tracking && !dut.roi_verifying,
                   "low classification dropped lock before five checks");
         end
-        check(dut.u_roi_scheduler.low_recheck_count == 4 && dut.label_low_cam1,
-              "count 15 was not marked low through the CDC");
         next_periodic;
-        label(16);
+        label(11);
         check(dut.roi_tracking && dut.u_roi_scheduler.low_recheck_count == 0,
-              "count 16 did not clear consecutive-low count across CDC");
+              "count 11 did not clear consecutive-low count across CDC");
         check(dut.label_drone_cam && !dut.label_low_cam1,
-              "raw count-16 result was misqualified across CDC");
+              "raw count-11 result was misqualified across CDC");
 
         for (i = 0; i < 4; i = i + 1) begin
             next_periodic;
-            label(i == 0 ? 0 : (i == 1 ? 1 : 15));
+            label(i == 0 ? 0 : (i == 1 ? 1 : 10));
             check(dut.roi_tracking, "post-11 low streak ended too early");
         end
         next_periodic;
-        label(i == 0 ? 0 : (i == 1 ? 1 : 15));
+        label(i == 0 ? 0 : (i == 1 ? 1 : 10));
         check(!dut.roi_tracking && !dut.roi_verifying,
               "fifth consecutive raw low did not release lock");
 

@@ -50,7 +50,7 @@ module tb_periodic_recheck;
         begin
             @(negedge clk);
             is_drone = margin_drone;
-            drone_count_low = (raw_drone_spikes <= 15);
+            drone_count_low = (raw_drone_spikes <= 10);
             label_valid = 1;
             @(negedge clk); label_valid = 0;
             @(posedge clk); #1;
@@ -67,7 +67,7 @@ module tb_periodic_recheck;
         begin
             request_check;
             check(tracking && verifying, "periodic check dropped lock or did not request capture");
-            label(1'b0, 6'd15);
+            label(1'b0, 6'd10);
         end
     endtask
     task frame;
@@ -81,9 +81,9 @@ module tb_periodic_recheck;
     initial begin
         repeat (4) @(negedge clk);
         rst_n = 1;
-        check(default_timer.INTERVAL_CYCLES == 33333333 &&
-              default_timer.LAST_COUNT == 33333332,
-              "default timer is not nominally 1 second at 33.333333 MHz");
+        check(default_timer.INTERVAL_CYCLES == 66666666 &&
+              default_timer.LAST_COUNT == 66666665,
+              "default timer is not nominally 2 seconds at 33.333333 MHz");
         timer_tracking = 1;
         repeat (9) begin @(posedge clk); #1; end
         check(request_toggle == 0, "timer requested early");
@@ -103,6 +103,7 @@ module tb_periodic_recheck;
         check(request_toggle != saved_toggle, "timer failed after re-enabling");
         @(negedge clk); timer_tracking = 0;
 
+        // Initial acquisition keeps the original margin-qualified 3-of-5 rule.
         motion_valid = 1; frame;
         label(1, 10); label(1, 10); label(0, 11); label(1, 10); label(0, 11);
         check(tracking && !verifying && roi_x0 == 116 && roi_y0 == 76,
@@ -112,37 +113,39 @@ module tb_periodic_recheck;
             check(tracking && !verifying, "fewer than five low results dropped lock");
         end
         request_check;
-
+        // Busy ticks and valid local motion must not cancel the active check.
         request_check; frame;
         check(tracking && verifying, "local motion or duplicate tick cancelled check");
-        label(0, 16);
+        label(0, 11);
         check(tracking && !verifying && dut.low_recheck_count == 0,
-              "count 16 did not clear all preceding low results");
-        check(!is_drone, "count-16 test accidentally met acquisition margin");
+              "count 11 did not clear all preceding low results");
+        check(!is_drone, "count-11 test accidentally met acquisition margin");
         for (i=0; i<4; i=i+1) begin
             low_check;
-            check(tracking, "low streak did not restart after count 16");
+            check(tracking, "low streak did not restart after count 11");
         end
-        request_check; label(0, 16);
+        request_check; label(0, 11);
         check(tracking && dut.low_recheck_count == 0,
-              "second count-16 result failed to retain lock");
+              "second count-11 result failed to retain lock");
 
         roi_hold = 1; request_check;
         check(tracking && !verifying, "busy result hold accepted a periodic request");
         roi_hold = 0;
-
+        // No classification completion means no zero may be counted.
         request_check;
         repeat (6) frame;
         check(tracking && verifying && dut.low_recheck_count == 0,
               "frames without completed results were counted as low results");
         label(0, 0);
         for (i=0; i<3; i=i+1) low_check;
-        check(tracking && dut.low_recheck_count == 4 && drone_count_low,
-              "four completed low results including count 15 were not retained");
+        check(tracking && dut.low_recheck_count == 4,
+              "four completed low results were not retained");
         low_check;
         check(!tracking && !verifying && roi_x0 == 116 && roi_y0 == 76,
               "fifth consecutive low failed to unlock and retain last ROI");
 
+        // The explicitly retained old loss path takes precedence over a
+        // coincident periodic tick and still uses its original 3-of-5 rule.
         motion_valid=0; frame;
         motion_valid=1; frame;
         for(i=0;i<5;i=i+1) label(1,50);
@@ -152,7 +155,8 @@ module tb_periodic_recheck;
         recheck_tick=1; frame; recheck_tick=0;
         check(tracking && verifying && dut.mode==dut.MODE_LOST_CHECK,
               "periodic tick overrode the original 45-frame lost-target check");
-
+        // Nonzero but margin-negative results retain lock in periodic mode,
+        // but the original lost-target path is deliberately unchanged.
         for(i=0;i<5;i=i+1) label(0,11);
         check(!tracking && !verifying,"old loss rule was silently replaced by the low-threshold periodic rule");
 

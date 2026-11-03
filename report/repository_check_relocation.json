@@ -1,5 +1,7 @@
 {
-  "files_checked": 310,
+  "files_checked": 315,
+  "collaboration_records_checked": 25,
+  "formal_report_checked": true,
   "xpr_checks": [
     {
       "xpr": "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.xpr",

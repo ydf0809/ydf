@@ -1,6 +1,6 @@
 # 从零复现
 
-本文给出竞赛指南 §3.3.5 所需的完整操作顺序。适用版本为 2026-11-03 本地快照，目标器件为 `xc7z020clg400-1`。软件与仿真通过不等于实板验收；上板结果须按 [measurements.md](../board/measurements.md) 单独采集。
+本文给出竞赛指南 §3.3.5 所需的完整操作顺序。适用版本为 2026-11-04 最终工程快照，目标器件为 `xc7z020clg400-1`。软件与仿真通过不等于实板验收；上板结果须按 [measurements.md](../board/measurements.md) 单独采集。
 
 ## 1. 环境
 
@@ -43,7 +43,7 @@ python build/check_weights.py
 python sim/run.py --vivado-bin "<vivado-bin>" --board all
 ~~~
 
-预期结果：上层 11/11、下层 15/15，共 26/26。每个测试必须同时满足工具退出码为 0、出现该测试的明确完成标记、无 `FAIL`/`FATAL`/`ERROR`。结果写入 [summary.json](../sim/results/summary.json)，首次依赖失败仍保留在 [attempts](../sim/results/attempts/initial_snapshot_summary.json)。
+预期结果：上层 10/10、下层 13/13，共 23/23。每个测试必须同时满足工具退出码为 0、出现该测试的明确完成标记、无 `FAIL`/`FATAL`/`ERROR`。结果写入 [summary.json](../sim/results/summary.json)，历史依赖失败仍保留在 [attempts](../sim/results/attempts/initial_snapshot_summary.json)。
 
 单板调试可把 `--board all` 改为 `--board upper` 或 `--board lower`。
 
@@ -66,7 +66,7 @@ python build/verify_release.py
 python build/verify_relocation.py --vivado-bin "<vivado-bin>" --jobs 4
 ~~~
 
-该命令在临时目录下创建带空格的新路径，解压 Git 索引，执行仓库检查、26 项仿真、双板主 XPR 构建和证据时效检查。结果写入 [relocation.json](relocation.json)、[relocation_simulation.json](relocation_simulation.json) 和 [repository_check_relocation.json](repository_check_relocation.json)。脚本要求暂存区与工作树中的已跟踪文件一致；不要从工作目录直接手工压缩来替代此检查。
+该命令在临时目录下创建带空格的新路径，解压 Git 索引，执行仓库检查、23 项仿真、双板主 XPR 构建和证据时效检查。结果写入 [relocation.json](relocation.json)、[relocation_simulation.json](relocation_simulation.json) 和 [repository_check_relocation.json](repository_check_relocation.json)。脚本要求暂存区与工作树中的已跟踪文件一致；不要从工作目录直接手工压缩来替代此检查。
 
 ## 7. 上板
 
@@ -86,7 +86,7 @@ vivado -mode batch -source board/program.tcl -tclargs lower <exact-hw-target> <e
 | 项目 | 通过条件 | 当前状态 |
 | --- | --- | --- |
 | 静态检查 | 检查器与仓库检查 PASS | PASS |
-| 仿真 | 26/26 且日志未过期 | PASS |
+| 仿真 | 23/23 且日志未过期 | PASS |
 | 主 XPR 构建 | 两板 bit、时序、DRC、来源哈希一致 | PASS，保留工具诊断 |
 | 异路径复现 | 归档检查、仿真、构建、交付检查 PASS | PASS |
 | 实板功能 | 按测试表有输入、输出、次数和原始证据 | 未执行 |

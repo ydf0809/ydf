@@ -1,7 +1,15 @@
-// Serialize mode commands, atomic bbox bursts and active-high line status.
-// Bbox payload: 40 xL xH yL yH wL wH hL hH flags xor; each byte uses one UART frame.
 `timescale 1ns / 1ps
 
+// Upper-board link scheduler.
+//
+// One UART frame carries one byte. This module serializes the three producers
+// that share that link:
+//   1. mode command (AA 55 cmd 55 AA),
+//   2. a complete 11-frame bbox burst,
+//   3. periodic five-sensor status (bit7=1).
+//
+// A bbox burst is kept contiguous on the wire. link_busy is the transmitter's
+// real busy signal; no byte is requested until the previous UART frame is over.
 module upper_link_send #(
     parameter integer CLK_FREQ        = 33_333_333,
     parameter integer TRACK_PERIOD_US = 1000
@@ -152,7 +160,7 @@ module upper_link_send #(
             end
 
             if(restart_command)begin
-
+                // Finish an active burst atomically, but discard queued old targets.
                 cap_x<=10'd236;cap_y<=10'd136;cap_w<=10'd128;cap_h<=10'd128;
                 cap_valid<=1'b0;bbox_pending<=1'b1;bbox_wait_invalid<=1'b1;
             end

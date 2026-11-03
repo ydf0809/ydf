@@ -1,16 +1,40 @@
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "[repository]/projects/merged_cam_lcd_voice_scnn/rtl/motion_candidate_priority.v" into library work
+INFO: [VRFC 10-311] analyzing module motion_candidate_priority
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "[repository]/projects/merged_cam_lcd_voice_scnn/rtl/motion_detector.v" into library work
+INFO: [VRFC 10-311] analyzing module motion_detector
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "[repository]/projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/tb_motion_detector.v" into library work
+INFO: [VRFC 10-311] analyzing module tb_motion_detector
+
+Vivado Simulator v2026.1
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: D:/vivado2026.1/2026.1/Vivado/bin/unwrapped/win64.o/xelab.exe -L unisims_ver --timescale 1ns/1ps tb_motion_detector -s upper_tb_motion_detector 
+Multi-threading is on. Using 14 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module work.motion_candidate_priority_defaul...
+Compiling module work.motion_detector_default
+Compiling module work.tb_motion_detector
+Built simulation snapshot upper_tb_motion_detector
+
 
 ****** xsim v2026.1 (64-bit)
   **** SW Build 6511674 on Tue Jun 16 11:02:23 MDT 2026
   **** IP Build 6504888 on Tue Jun 09 09:05:25 MDT 2026
   **** SharedData Build 6501428 on Mon Jun 08 17:34:18 MDT 2026
-  **** Start of session at: Tue Nov  3 02:27:57 2026
+  **** Start of session at: Wed Nov  4 00:20:44 2026
     ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
     ** Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
 
-source xsim.dir/tb_motion_detector_sim/xsim_script.tcl
-# xsim {tb_motion_detector_sim} -autoloadwcfg -runall
+source xsim.dir/upper_tb_motion_detector/xsim_script.tcl
+# xsim {upper_tb_motion_detector} -autoloadwcfg -tclbatch {run_all.tcl}
 Time resolution is 1 ps
-run -all
+source run_all.tcl
+## run all
 MOTION_DBG aec1 valid=0 best=100 total=59379 found=1 prev_cand=0 mean=44 haves=1 sums=0/5304311
 MOTION_DBG aec2 valid=0 best=110 total=60199 found=1 prev_cand=0 mean=0 haves=1 sums=0/5304400
 MOTION_DBG move1 valid=0 best=100 total=1180 found=1 prev_cand=1
@@ -21,6 +45,6 @@ MOTION_DBG weight=504 sumx=13864 sumy=13680 qx=54 qy=36
 MOTION locked-dark-patch valid=1 centre=(135,115) box=x103..166 y83..146 best=0 total=0
 MOTION_DBG weight=0 sumx=0 sumy=0 qx=0 qy=0
 TEST_RESULT: PASS
-$finish called at time : 119507025 ns : File "[previous_source_location]/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/tb_motion_detector.v" Line 350
-exit
-INFO: [Common 17-206] Exiting xsim at Tue Nov  3 02:28:02 2026...
+$finish called at time : 119507025 ns : File "[repository]/projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/tb_motion_detector.v" Line 367
+## quit
+INFO: [Common 17-206] Exiting xsim at Wed Nov  4 00:20:50 2026...

@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2026.1 (win64) Build 6511674 Tue Jun 16 11:02:23 MDT 2026
-| Date         : Tue Nov  3 14:01:28 2026
+| Date         : Wed Nov  4 00:42:00 2026
 | Host         : YDF running 64-bit major release  (build 9200)
 | Command      : report_cdc -details -file {[repository]/build/reports/lower/cdc.rpt}
 | Design       : super_top
@@ -13,72 +13,523 @@ Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2026 Advanc
 CDC Report
 
 ID      Severity  Count  Description
-------  --------  -----  --------------------------------------------------
+------  --------  -----  ------------------------------------------------------
+CDC-1   Critical    296  1-bit unknown CDC circuitry
 CDC-2   Warning       2  1-bit synchronized with missing ASYNC_REG property
-CDC-3   Info          2  1-bit synchronized with ASYNC_REG property
-CDC-10  Critical      1  Combinational logic detected before a synchronizer
-CDC-15  Warning      44  Clock enable controlled CDC structure detected
+CDC-5   Warning       4  Multi-bit synchronized with missing ASYNC_REG property
+CDC-15  Warning     198  Clock enable controlled CDC structure detected
 
 Source Clock: sys_clk
 Destination Clock: ov_pclk
 CDC Type: No Common Primary Clock
 
 Row  ID      Severity  Description                                         Depth  Exception            Source (From)                                     Destination (To)
----  ------  --------  --------------------------------------------------  -----  -------------------  ------------------------------------------------  --------------------------------------------
-  1  CDC-3   Info      1-bit synchronized with ASYNC_REG property              2  Asynch Clock Groups  u_shijue_arm_core/box_ack_reg/C                   u_shijue_arm_core/ack_meta_reg/D
-  2  CDC-2   Warning   1-bit synchronized with missing ASYNC_REG property      2  Asynch Clock Groups  u_shijue_arm_core/u_lcd_driver/lcd_rd_page_reg/C  u_shijue_arm_core/u_capture/rd_page_r1_reg/D
-  3  CDC-10  Critical  Combinational logic detected before a synchronizer      2  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[1]/C           u_shijue_arm_core/vision_meta_reg/D
+---  ------  --------  --------------------------------------------------  -----  -------------------  ------------------------------------------------  ---------------------------------------------------------
+  1  CDC-2   Warning   1-bit synchronized with missing ASYNC_REG property      2  Asynch Clock Groups  u_shijue_arm_core/u_lcd_driver/lcd_rd_page_reg/C  u_shijue_arm_core/u_capture/rd_page_r1_reg/D
+  2  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/FSM_sequential_state_reg[0]/D
+  3  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/FSM_sequential_state_reg[1]/D
+  4  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_done_reg/D
+  5  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_h_reg[0]/CE
+  6  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_h_reg[1]/CE
+  7  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_h_reg[2]/CE
+  8  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_h_reg[3]/CE
+  9  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_h_reg[4]/CE
+ 10  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_h_reg[5]/CE
+ 11  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_h_reg[6]/CE
+ 12  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_h_reg[7]/CE
+ 13  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_h_reg[8]/CE
+ 14  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_h_reg[9]/CE
+ 15  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_h_reg[10]/CE
+ 16  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_h_reg[11]/CE
+ 17  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_h_reg[12]/CE
+ 18  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_h_reg[13]/CE
+ 19  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_h_reg[14]/CE
+ 20  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_h_reg[15]/CE
+ 21  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_h_reg[16]/CE
+ 22  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_h_reg[17]/CE
+ 23  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_h_reg[18]/CE
+ 24  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_h_reg[19]/CE
+ 25  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_h_reg[20]/CE
+ 26  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_h_reg[21]/CE
+ 27  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_h_reg[22]/CE
+ 28  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_h_reg[23]/CE
+ 29  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_h_reg[24]/CE
+ 30  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_h_reg[25]/CE
+ 31  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_h_reg[26]/CE
+ 32  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_h_reg[27]/CE
+ 33  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_h_reg[27]/R
+ 34  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_h_reg[28]/CE
+ 35  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_h_reg[28]/R
+ 36  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_h_reg[29]/CE
+ 37  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_h_reg[29]/R
+ 38  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_h_reg[30]/CE
+ 39  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_h_reg[30]/R
+ 40  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_h_reg[31]/CE
+ 41  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_h_reg[31]/R
+ 42  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_h_reg[32]/CE
+ 43  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_h_reg[32]/R
+ 44  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_h_reg[33]/CE
+ 45  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_h_reg[33]/R
+ 46  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_h_reg[34]/CE
+ 47  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_h_reg[34]/R
+ 48  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_h_reg[35]/CE
+ 49  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_h_reg[35]/R
+ 50  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_h_reg[36]/CE
+ 51  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_h_reg[36]/R
+ 52  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_h_reg[37]/CE
+ 53  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_h_reg[37]/R
+ 54  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_h_reg[38]/CE
+ 55  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_h_reg[38]/R
+ 56  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_h_reg[39]/CE
+ 57  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_h_reg[39]/R
+ 58  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_h_reg[40]/CE
+ 59  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_h_reg[40]/R
+ 60  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_h_reg[41]/CE
+ 61  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_h_reg[41]/R
+ 62  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_h_reg[42]/CE
+ 63  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_h_reg[42]/R
+ 64  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_h_reg[43]/CE
+ 65  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_h_reg[43]/R
+ 66  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_h_reg[44]/CE
+ 67  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_h_reg[44]/R
+ 68  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_h_reg[45]/CE
+ 69  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_h_reg[45]/R
+ 70  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_h_reg[46]/CE
+ 71  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_h_reg[46]/R
+ 72  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_h_reg[47]/CE
+ 73  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_h_reg[47]/R
+ 74  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_h_reg[48]/CE
+ 75  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_h_reg[48]/R
+ 76  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_h_reg[49]/CE
+ 77  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_h_reg[49]/R
+ 78  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_h_reg[50]/CE
+ 79  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_h_reg[50]/R
+ 80  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_h_reg[51]/CE
+ 81  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_h_reg[51]/R
+ 82  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_h_reg[52]/CE
+ 83  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_h_reg[52]/R
+ 84  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_h_reg[53]/CE
+ 85  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_h_reg[53]/R
+ 86  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_h_reg[54]/CE
+ 87  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_h_reg[54]/R
+ 88  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_w_reg[0]/CE
+ 89  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_w_reg[1]/CE
+ 90  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_w_reg[2]/CE
+ 91  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_w_reg[3]/CE
+ 92  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_w_reg[4]/CE
+ 93  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_w_reg[5]/CE
+ 94  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_w_reg[6]/CE
+ 95  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_w_reg[7]/CE
+ 96  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_w_reg[8]/CE
+ 97  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_w_reg[9]/CE
+ 98  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_w_reg[10]/CE
+ 99  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_w_reg[11]/CE
+100  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_w_reg[12]/CE
+101  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_w_reg[13]/CE
+102  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_w_reg[14]/CE
+103  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_w_reg[15]/CE
+104  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_w_reg[16]/CE
+105  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_w_reg[17]/CE
+106  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_w_reg[18]/CE
+107  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_w_reg[19]/CE
+108  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_w_reg[20]/CE
+109  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_w_reg[21]/CE
+110  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_w_reg[22]/CE
+111  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_w_reg[23]/CE
+112  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_w_reg[24]/CE
+113  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_w_reg[25]/CE
+114  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_w_reg[26]/CE
+115  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_w_reg[27]/CE
+116  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_w_reg[27]/R
+117  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_w_reg[28]/CE
+118  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_w_reg[28]/R
+119  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_w_reg[29]/CE
+120  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_w_reg[29]/R
+121  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_w_reg[30]/CE
+122  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_w_reg[30]/R
+123  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_w_reg[31]/CE
+124  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_w_reg[31]/R
+125  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_w_reg[32]/CE
+126  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_w_reg[32]/R
+127  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_w_reg[33]/CE
+128  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_w_reg[33]/R
+129  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_w_reg[34]/CE
+130  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_w_reg[34]/R
+131  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_w_reg[35]/CE
+132  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_w_reg[35]/R
+133  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_w_reg[36]/CE
+134  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_w_reg[36]/R
+135  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_w_reg[37]/CE
+136  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_w_reg[37]/R
+137  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_w_reg[38]/CE
+138  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_w_reg[38]/R
+139  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_w_reg[39]/CE
+140  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_w_reg[39]/R
+141  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_w_reg[40]/CE
+142  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_w_reg[40]/R
+143  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_w_reg[41]/CE
+144  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_w_reg[41]/R
+145  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_w_reg[42]/CE
+146  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_w_reg[42]/R
+147  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_w_reg[43]/CE
+148  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_w_reg[43]/R
+149  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_w_reg[44]/CE
+150  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_w_reg[44]/R
+151  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_w_reg[45]/CE
+152  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_w_reg[45]/R
+153  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_w_reg[46]/CE
+154  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_w_reg[46]/R
+155  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_w_reg[47]/CE
+156  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_w_reg[47]/R
+157  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_w_reg[48]/CE
+158  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_w_reg[48]/R
+159  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_w_reg[49]/CE
+160  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_w_reg[49]/R
+161  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_w_reg[50]/CE
+162  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_w_reg[50]/R
+163  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_w_reg[51]/CE
+164  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_w_reg[51]/R
+165  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_w_reg[52]/CE
+166  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_w_reg[52]/R
+167  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_w_reg[53]/CE
+168  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_w_reg[53]/R
+169  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_w_reg[54]/CE
+170  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_w_reg[54]/R
+171  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_x_reg[0]/CE
+172  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_x_reg[1]/CE
+173  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_x_reg[2]/CE
+174  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_x_reg[3]/CE
+175  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_x_reg[4]/CE
+176  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_x_reg[5]/CE
+177  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_x_reg[6]/CE
+178  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_x_reg[7]/CE
+179  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_x_reg[8]/CE
+180  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_x_reg[9]/CE
+181  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_x_reg[10]/CE
+182  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_x_reg[11]/CE
+183  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_x_reg[12]/CE
+184  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_x_reg[13]/CE
+185  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_x_reg[14]/CE
+186  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_x_reg[15]/CE
+187  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_x_reg[16]/CE
+188  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_x_reg[17]/CE
+189  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_x_reg[18]/CE
+190  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_x_reg[19]/CE
+191  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_x_reg[20]/CE
+192  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_x_reg[21]/CE
+193  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_x_reg[22]/CE
+194  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_x_reg[23]/CE
+195  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_x_reg[24]/CE
+196  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_x_reg[25]/CE
+197  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_x_reg[26]/CE
+198  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_x_reg[27]/CE
+199  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_x_reg[28]/CE
+200  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_x_reg[28]/R
+201  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_x_reg[29]/CE
+202  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_x_reg[29]/R
+203  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_x_reg[30]/CE
+204  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_x_reg[30]/R
+205  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_x_reg[31]/CE
+206  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_x_reg[31]/R
+207  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_x_reg[32]/CE
+208  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_x_reg[32]/R
+209  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_x_reg[33]/CE
+210  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_x_reg[33]/R
+211  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_x_reg[34]/CE
+212  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_x_reg[34]/R
+213  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_x_reg[35]/CE
+214  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_x_reg[35]/R
+215  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_x_reg[36]/CE
+216  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_x_reg[36]/R
+217  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_x_reg[37]/CE
+218  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_x_reg[37]/R
+219  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_x_reg[38]/CE
+220  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_x_reg[38]/R
+221  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_x_reg[39]/CE
+222  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_x_reg[39]/R
+223  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_x_reg[40]/CE
+224  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_x_reg[40]/R
+225  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_x_reg[41]/CE
+226  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_x_reg[41]/R
+227  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_x_reg[42]/CE
+228  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_x_reg[42]/R
+229  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_x_reg[43]/CE
+230  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_x_reg[43]/R
+231  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_x_reg[44]/CE
+232  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_x_reg[44]/R
+233  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_x_reg[45]/CE
+234  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_x_reg[45]/R
+235  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_x_reg[46]/CE
+236  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_x_reg[46]/R
+237  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_x_reg[47]/CE
+238  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_x_reg[47]/R
+239  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_x_reg[48]/CE
+240  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_x_reg[48]/R
+241  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_x_reg[49]/CE
+242  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_x_reg[49]/R
+243  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_x_reg[50]/CE
+244  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_x_reg[50]/R
+245  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_x_reg[51]/CE
+246  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_x_reg[51]/R
+247  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_x_reg[52]/CE
+248  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_x_reg[52]/R
+249  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_x_reg[53]/CE
+250  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_x_reg[53]/R
+251  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_x_reg[54]/CE
+252  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_x_reg[54]/R
+253  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_y_reg[0]/CE
+254  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_y_reg[1]/CE
+255  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_y_reg[2]/CE
+256  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_y_reg[3]/CE
+257  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_y_reg[4]/CE
+258  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_y_reg[5]/CE
+259  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_y_reg[6]/CE
+260  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_y_reg[7]/CE
+261  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_y_reg[8]/CE
+262  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_y_reg[9]/CE
+263  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_y_reg[10]/CE
+264  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_y_reg[11]/CE
+265  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_y_reg[12]/CE
+266  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_y_reg[13]/CE
+267  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_y_reg[14]/CE
+268  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_y_reg[15]/CE
+269  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_y_reg[16]/CE
+270  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_y_reg[17]/CE
+271  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_y_reg[18]/CE
+272  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_y_reg[19]/CE
+273  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_y_reg[20]/CE
+274  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_y_reg[21]/CE
+275  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_y_reg[22]/CE
+276  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_y_reg[23]/CE
+277  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_y_reg[24]/CE
+278  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_y_reg[25]/CE
+279  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_y_reg[26]/CE
+280  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_y_reg[27]/CE
+281  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_y_reg[27]/R
+282  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_y_reg[28]/CE
+283  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_y_reg[28]/R
+284  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_y_reg[29]/CE
+285  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_y_reg[29]/R
+286  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_y_reg[30]/CE
+287  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_y_reg[30]/R
+288  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_y_reg[31]/CE
+289  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_y_reg[31]/R
+290  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_y_reg[32]/CE
+291  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_y_reg[32]/R
+292  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_y_reg[33]/CE
+293  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_y_reg[33]/R
+294  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_y_reg[34]/CE
+295  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_y_reg[34]/R
+296  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_y_reg[35]/CE
+297  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_y_reg[35]/R
+298  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_y_reg[36]/CE
+299  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_y_reg[36]/R
+300  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_y_reg[37]/CE
+301  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_y_reg[37]/R
+302  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_y_reg[38]/CE
+303  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_y_reg[38]/R
+304  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_y_reg[39]/CE
+305  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_y_reg[39]/R
+306  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_y_reg[40]/CE
+307  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_y_reg[40]/R
+308  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_y_reg[41]/CE
+309  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_y_reg[41]/R
+310  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_y_reg[42]/CE
+311  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_y_reg[42]/R
+312  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_y_reg[43]/CE
+313  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_y_reg[43]/R
+314  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_y_reg[44]/CE
+315  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_y_reg[44]/R
+316  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_y_reg[45]/CE
+317  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_y_reg[45]/R
+318  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_y_reg[46]/CE
+319  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_y_reg[46]/R
+320  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_y_reg[47]/CE
+321  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_y_reg[47]/R
+322  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_y_reg[48]/CE
+323  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_y_reg[48]/R
+324  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_y_reg[49]/CE
+325  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_y_reg[49]/R
+326  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_y_reg[50]/CE
+327  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_y_reg[50]/R
+328  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_y_reg[51]/CE
+329  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_y_reg[51]/R
+330  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_y_reg[52]/CE
+331  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_y_reg[52]/R
+332  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_y_reg[53]/CE
+333  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_y_reg[53]/R
+334  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_y_reg[54]/CE
+335  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_rq_y_reg[54]/R
+336  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_step_reg[0]/CE
+337  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_step_reg[1]/CE
+338  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_step_reg[2]/CE
+339  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_step_reg[3]/CE
+340  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_step_reg[4]/CE
+341  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/div_step_reg[5]/CE
+342  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/divisor_reg[0]/CE
+343  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/divisor_reg[1]/CE
+344  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/divisor_reg[2]/CE
+345  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/divisor_reg[3]/CE
+346  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/divisor_reg[4]/CE
+347  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/divisor_reg[5]/CE
+348  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/divisor_reg[6]/CE
+349  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/divisor_reg[7]/CE
+350  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/divisor_reg[8]/CE
+351  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/divisor_reg[9]/CE
+352  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/divisor_reg[10]/CE
+353  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/divisor_reg[11]/CE
+354  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/divisor_reg[12]/CE
+355  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/divisor_reg[13]/CE
+356  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/divisor_reg[14]/CE
+357  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/divisor_reg[15]/CE
+358  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/divisor_reg[16]/CE
+359  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/divisor_reg[17]/CE
+360  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[1]/C           u_shijue_arm_core/u_tracker/lost_timer_reg[0]/CE
+361  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[0]/C           u_shijue_arm_core/u_tracker/lost_timer_reg[0]/D
+362  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[1]/C           u_shijue_arm_core/u_tracker/lost_timer_reg[1]/CE
+363  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[0]/C           u_shijue_arm_core/u_tracker/lost_timer_reg[1]/D
+364  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[1]/C           u_shijue_arm_core/u_tracker/lost_timer_reg[2]/CE
+365  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[0]/C           u_shijue_arm_core/u_tracker/lost_timer_reg[2]/D
+366  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[1]/C           u_shijue_arm_core/u_tracker/lost_timer_reg[3]/CE
+367  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[0]/C           u_shijue_arm_core/u_tracker/lost_timer_reg[3]/D
+368  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/sw2_d0_reg/D
+369  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/target_h_reg[0]/CE
+370  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/target_h_reg[1]/CE
+371  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/target_h_reg[2]/CE
+372  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/target_h_reg[3]/CE
+373  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/target_h_reg[4]/CE
+374  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/target_h_reg[5]/CE
+375  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/target_h_reg[6]/CE
+376  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/target_h_reg[7]/CE
+377  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/target_h_reg[8]/CE
+378  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/target_h_reg[9]/CE
+379  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/target_h_reg[10]/CE
+380  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/target_w_reg[0]/CE
+381  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/target_w_reg[1]/CE
+382  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/target_w_reg[2]/CE
+383  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/target_w_reg[3]/CE
+384  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/target_w_reg[4]/CE
+385  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/target_w_reg[5]/CE
+386  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/target_w_reg[6]/CE
+387  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/target_w_reg[7]/CE
+388  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/target_w_reg[8]/CE
+389  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/target_w_reg[9]/CE
+390  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/target_w_reg[10]/CE
+391  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/target_x_reg[0]/CE
+392  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/target_x_reg[1]/CE
+393  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/target_x_reg[2]/CE
+394  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/target_x_reg[3]/CE
+395  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/target_x_reg[4]/CE
+396  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/target_x_reg[5]/CE
+397  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/target_x_reg[6]/CE
+398  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/target_x_reg[7]/CE
+399  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/target_x_reg[8]/CE
+400  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/target_x_reg[9]/CE
+401  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/target_x_reg[10]/CE
+402  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/target_y_reg[0]/CE
+403  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/target_y_reg[1]/CE
+404  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/target_y_reg[2]/CE
+405  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/target_y_reg[3]/CE
+406  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/target_y_reg[4]/CE
+407  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/target_y_reg[5]/CE
+408  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/target_y_reg[6]/CE
+409  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/target_y_reg[7]/CE
+410  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/target_y_reg[8]/CE
+411  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/target_y_reg[9]/CE
+412  CDC-1   Critical  1-bit unknown CDC circuitry                             0  Asynch Clock Groups  u_voice_mode_select/voice_mode_reg[2]/C           u_shijue_arm_core/u_tracker/target_y_reg[10]/CE
 
 Source Clock: ov_pclk
 Destination Clock: sys_clk
 CDC Type: No Common Primary Clock
 
-Row  ID      Severity  Description                                         Depth  Exception            Source (From)                                      Destination (To)
----  ------  --------  --------------------------------------------------  -----  -------------------  -------------------------------------------------  -------------------------------------------------
-  1  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_shijue_arm_core/box_hold_reg[0]/C                u_shijue_arm_core/box_system_reg[0]/D
-  2  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_shijue_arm_core/box_hold_reg[1]/C                u_shijue_arm_core/box_system_reg[1]/D
-  3  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_shijue_arm_core/box_hold_reg[2]/C                u_shijue_arm_core/box_system_reg[2]/D
-  4  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_shijue_arm_core/box_hold_reg[3]/C                u_shijue_arm_core/box_system_reg[3]/D
-  5  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_shijue_arm_core/box_hold_reg[4]/C                u_shijue_arm_core/box_system_reg[4]/D
-  6  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_shijue_arm_core/box_hold_reg[5]/C                u_shijue_arm_core/box_system_reg[5]/D
-  7  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_shijue_arm_core/box_hold_reg[6]/C                u_shijue_arm_core/box_system_reg[6]/D
-  8  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_shijue_arm_core/box_hold_reg[7]/C                u_shijue_arm_core/box_system_reg[7]/D
-  9  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_shijue_arm_core/box_hold_reg[8]/C                u_shijue_arm_core/box_system_reg[8]/D
- 10  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_shijue_arm_core/box_hold_reg[9]/C                u_shijue_arm_core/box_system_reg[9]/D
- 11  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_shijue_arm_core/box_hold_reg[10]/C               u_shijue_arm_core/box_system_reg[10]/D
- 12  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_shijue_arm_core/box_hold_reg[11]/C               u_shijue_arm_core/box_system_reg[11]/D
- 13  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_shijue_arm_core/box_hold_reg[12]/C               u_shijue_arm_core/box_system_reg[12]/D
- 14  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_shijue_arm_core/box_hold_reg[13]/C               u_shijue_arm_core/box_system_reg[13]/D
- 15  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_shijue_arm_core/box_hold_reg[14]/C               u_shijue_arm_core/box_system_reg[14]/D
- 16  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_shijue_arm_core/box_hold_reg[15]/C               u_shijue_arm_core/box_system_reg[15]/D
- 17  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_shijue_arm_core/box_hold_reg[16]/C               u_shijue_arm_core/box_system_reg[16]/D
- 18  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_shijue_arm_core/box_hold_reg[17]/C               u_shijue_arm_core/box_system_reg[17]/D
- 19  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_shijue_arm_core/box_hold_reg[18]/C               u_shijue_arm_core/box_system_reg[18]/D
- 20  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_shijue_arm_core/box_hold_reg[19]/C               u_shijue_arm_core/box_system_reg[19]/D
- 21  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_shijue_arm_core/box_hold_reg[20]/C               u_shijue_arm_core/box_system_reg[20]/D
- 22  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_shijue_arm_core/box_hold_reg[21]/C               u_shijue_arm_core/box_system_reg[21]/D
- 23  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_shijue_arm_core/box_hold_reg[22]/C               u_shijue_arm_core/box_system_reg[22]/D
- 24  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_shijue_arm_core/box_hold_reg[23]/C               u_shijue_arm_core/box_system_reg[23]/D
- 25  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_shijue_arm_core/box_hold_reg[24]/C               u_shijue_arm_core/box_system_reg[24]/D
- 26  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_shijue_arm_core/box_hold_reg[25]/C               u_shijue_arm_core/box_system_reg[25]/D
- 27  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_shijue_arm_core/box_hold_reg[26]/C               u_shijue_arm_core/box_system_reg[26]/D
- 28  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_shijue_arm_core/box_hold_reg[27]/C               u_shijue_arm_core/box_system_reg[27]/D
- 29  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_shijue_arm_core/box_hold_reg[28]/C               u_shijue_arm_core/box_system_reg[28]/D
- 30  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_shijue_arm_core/box_hold_reg[29]/C               u_shijue_arm_core/box_system_reg[29]/D
- 31  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_shijue_arm_core/box_hold_reg[30]/C               u_shijue_arm_core/box_system_reg[30]/D
- 32  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_shijue_arm_core/box_hold_reg[31]/C               u_shijue_arm_core/box_system_reg[31]/D
- 33  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_shijue_arm_core/box_hold_reg[32]/C               u_shijue_arm_core/box_system_reg[32]/D
- 34  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_shijue_arm_core/box_hold_reg[33]/C               u_shijue_arm_core/box_system_reg[33]/D
- 35  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_shijue_arm_core/box_hold_reg[34]/C               u_shijue_arm_core/box_system_reg[34]/D
- 36  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_shijue_arm_core/box_hold_reg[35]/C               u_shijue_arm_core/box_system_reg[35]/D
- 37  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_shijue_arm_core/box_hold_reg[36]/C               u_shijue_arm_core/box_system_reg[36]/D
- 38  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_shijue_arm_core/box_hold_reg[37]/C               u_shijue_arm_core/box_system_reg[37]/D
- 39  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_shijue_arm_core/box_hold_reg[38]/C               u_shijue_arm_core/box_system_reg[38]/D
- 40  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_shijue_arm_core/box_hold_reg[39]/C               u_shijue_arm_core/box_system_reg[39]/D
- 41  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_shijue_arm_core/box_hold_reg[40]/C               u_shijue_arm_core/box_system_reg[40]/D
- 42  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_shijue_arm_core/box_hold_reg[41]/C               u_shijue_arm_core/box_system_reg[41]/D
- 43  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_shijue_arm_core/box_hold_reg[42]/C               u_shijue_arm_core/box_system_reg[42]/D
- 44  CDC-15  Warning   Clock enable controlled CDC structure detected          0  Asynch Clock Groups  u_shijue_arm_core/box_hold_reg[43]/C               u_shijue_arm_core/box_system_reg[43]/D
- 45  CDC-3   Info      1-bit synchronized with ASYNC_REG property              2  Asynch Clock Groups  u_shijue_arm_core/box_request_reg/C                u_shijue_arm_core/request_meta_reg/D
- 46  CDC-2   Warning   1-bit synchronized with missing ASYNC_REG property      2  Asynch Clock Groups  u_shijue_arm_core/u_capture/cam_latest_page_reg/C  u_shijue_arm_core/u_lcd_driver/ack_synced_1_reg/D
+Row  ID      Severity  Description                                             Depth  Exception            Source (From)                                      Destination (To)
+---  ------  --------  ------------------------------------------------------  -----  -------------------  -------------------------------------------------  ---------------------------------------------------
+  1  CDC-15  Warning   Clock enable controlled CDC structure detected              0  Asynch Clock Groups  u_shijue_arm_core/u_tracker/target_h_reg[2]/C      u_shijue_arm_core/u_chassis/cal_m1_reg[0]/D
+  2  CDC-15  Warning   Clock enable controlled CDC structure detected              0  Asynch Clock Groups  u_shijue_arm_core/u_tracker/target_h_reg[2]/C      u_shijue_arm_core/u_chassis/cal_m1_reg[1]/D
+  3  CDC-15  Warning   Clock enable controlled CDC structure detected              0  Asynch Clock Groups  u_shijue_arm_core/u_tracker/target_h_reg[2]/C      u_shijue_arm_core/u_chassis/cal_m1_reg[2]/D
+  4  CDC-15  Warning   Clock enable controlled CDC structure detected              0  Asynch Clock Groups  u_shijue_arm_core/u_tracker/target_h_reg[2]/C      u_shijue_arm_core/u_chassis/cal_m1_reg[3]/D
+  5  CDC-15  Warning   Clock enable controlled CDC structure detected              0  Asynch Clock Groups  u_shijue_arm_core/u_tracker/target_h_reg[2]/C      u_shijue_arm_core/u_chassis/cal_m1_reg[4]/D
+  6  CDC-15  Warning   Clock enable controlled CDC structure detected              0  Asynch Clock Groups  u_shijue_arm_core/u_tracker/target_h_reg[2]/C      u_shijue_arm_core/u_chassis/cal_m1_reg[5]/D
+  7  CDC-15  Warning   Clock enable controlled CDC structure detected              0  Asynch Clock Groups  u_shijue_arm_core/u_tracker/target_h_reg[2]/C      u_shijue_arm_core/u_chassis/cal_m1_reg[6]/D
+  8  CDC-15  Warning   Clock enable controlled CDC structure detected              0  Asynch Clock Groups  u_shijue_arm_core/u_tracker/target_h_reg[2]/C      u_shijue_arm_core/u_chassis/cal_m1_reg[7]/D
+  9  CDC-15  Warning   Clock enable controlled CDC structure detected              0  Asynch Clock Groups  u_shijue_arm_core/u_tracker/target_h_reg[2]/C      u_shijue_arm_core/u_chassis/cal_m1_reg[8]/D
+ 10  CDC-15  Warning   Clock enable controlled CDC structure detected              0  Asynch Clock Groups  u_shijue_arm_core/u_tracker/target_h_reg[2]/C      u_shijue_arm_core/u_chassis/cal_m1_reg[9]/D
+ 11  CDC-15  Warning   Clock enable controlled CDC structure detected              0  Asynch Clock Groups  u_shijue_arm_core/u_tracker/target_h_reg[2]/C      u_shijue_arm_core/u_chassis/cal_m1_reg[10]/D
+ 12  CDC-15  Warning   Clock enable controlled CDC structure detected              0  Asynch Clock Groups  u_shijue_arm_core/u_tracker/target_h_reg[2]/C      u_shijue_arm_core/u_chassis/cal_m1_reg[11]/D
+ 13  CDC-15  Warning   Clock enable controlled CDC structure detected              0  Asynch Clock Groups  u_shijue_arm_core/u_tracker/target_h_reg[2]/C      u_shijue_arm_core/u_chassis/cal_m2_reg[0]/D
+ 14  CDC-15  Warning   Clock enable controlled CDC structure detected              0  Asynch Clock Groups  u_shijue_arm_core/u_tracker/target_h_reg[2]/C      u_shijue_arm_core/u_chassis/cal_m2_reg[1]/D
+ 15  CDC-15  Warning   Clock enable controlled CDC structure detected              0  Asynch Clock Groups  u_shijue_arm_core/u_tracker/target_h_reg[2]/C      u_shijue_arm_core/u_chassis/cal_m2_reg[2]/D
+ 16  CDC-15  Warning   Clock enable controlled CDC structure detected              0  Asynch Clock Groups  u_shijue_arm_core/u_tracker/target_h_reg[2]/C      u_shijue_arm_core/u_chassis/cal_m2_reg[3]/D
+ 17  CDC-15  Warning   Clock enable controlled CDC structure detected              0  Asynch Clock Groups  u_shijue_arm_core/u_tracker/target_h_reg[2]/C      u_shijue_arm_core/u_chassis/cal_m2_reg[4]/D
+ 18  CDC-15  Warning   Clock enable controlled CDC structure detected              0  Asynch Clock Groups  u_shijue_arm_core/u_tracker/target_h_reg[2]/C      u_shijue_arm_core/u_chassis/cal_m2_reg[5]/D
+ 19  CDC-15  Warning   Clock enable controlled CDC structure detected              0  Asynch Clock Groups  u_shijue_arm_core/u_tracker/target_h_reg[2]/C      u_shijue_arm_core/u_chassis/cal_m2_reg[6]/D
+ 20  CDC-15  Warning   Clock enable controlled CDC structure detected              0  Asynch Clock Groups  u_shijue_arm_core/u_tracker/target_h_reg[2]/C      u_shijue_arm_core/u_chassis/cal_m2_reg[7]/D
+ 21  CDC-15  Warning   Clock enable controlled CDC structure detected              0  Asynch Clock Groups  u_shijue_arm_core/u_tracker/target_h_reg[2]/C      u_shijue_arm_core/u_chassis/cal_m2_reg[8]/D
+ 22  CDC-15  Warning   Clock enable controlled CDC structure detected              0  Asynch Clock Groups  u_shijue_arm_core/u_tracker/target_h_reg[2]/C      u_shijue_arm_core/u_chassis/cal_m2_reg[9]/D
+ 23  CDC-15  Warning   Clock enable controlled CDC structure detected              0  Asynch Clock Groups  u_shijue_arm_core/u_tracker/target_h_reg[2]/C      u_shijue_arm_core/u_chassis/cal_m2_reg[10]/D
+ 24  CDC-15  Warning   Clock enable controlled CDC structure detected              0  Asynch Clock Groups  u_shijue_arm_core/u_tracker/target_h_reg[2]/C      u_shijue_arm_core/u_chassis/cal_m2_reg[11]/D
+ 25  CDC-15  Warning   Clock enable controlled CDC structure detected              0  Asynch Clock Groups  u_shijue_arm_core/u_tracker/target_h_reg[2]/C      u_shijue_arm_core/u_chassis/cal_m3_reg[0]/D
+ 26  CDC-15  Warning   Clock enable controlled CDC structure detected              0  Asynch Clock Groups  u_shijue_arm_core/u_tracker/target_h_reg[2]/C      u_shijue_arm_core/u_chassis/cal_m3_reg[1]/D
+ 27  CDC-15  Warning   Clock enable controlled CDC structure detected              0  Asynch Clock Groups  u_shijue_arm_core/u_tracker/target_h_reg[2]/C      u_shijue_arm_core/u_chassis/cal_m3_reg[2]/D
+ 28  CDC-15  Warning   Clock enable controlled CDC structure detected              0  Asynch Clock Groups  u_shijue_arm_core/u_tracker/target_h_reg[2]/C      u_shijue_arm_core/u_chassis/cal_m3_reg[3]/D
+ 29  CDC-15  Warning   Clock enable controlled CDC structure detected              0  Asynch Clock Groups  u_shijue_arm_core/u_tracker/target_h_reg[2]/C      u_shijue_arm_core/u_chassis/cal_m3_reg[4]/D
+ 30  CDC-15  Warning   Clock enable controlled CDC structure detected              0  Asynch Clock Groups  u_shijue_arm_core/u_tracker/target_h_reg[2]/C      u_shijue_arm_core/u_chassis/cal_m3_reg[5]/D
+ 31  CDC-15  Warning   Clock enable controlled CDC structure detected              0  Asynch Clock Groups  u_shijue_arm_core/u_tracker/target_h_reg[2]/C      u_shijue_arm_core/u_chassis/cal_m3_reg[6]/D
+ 32  CDC-15  Warning   Clock enable controlled CDC structure detected              0  Asynch Clock Groups  u_shijue_arm_core/u_tracker/target_h_reg[2]/C      u_shijue_arm_core/u_chassis/cal_m3_reg[7]/D
+ 33  CDC-15  Warning   Clock enable controlled CDC structure detected              0  Asynch Clock Groups  u_shijue_arm_core/u_tracker/target_h_reg[2]/C      u_shijue_arm_core/u_chassis/cal_m3_reg[8]/D
+ 34  CDC-15  Warning   Clock enable controlled CDC structure detected              0  Asynch Clock Groups  u_shijue_arm_core/u_tracker/target_h_reg[2]/C      u_shijue_arm_core/u_chassis/cal_m3_reg[9]/D
+ 35  CDC-15  Warning   Clock enable controlled CDC structure detected              0  Asynch Clock Groups  u_shijue_arm_core/u_tracker/target_h_reg[2]/C      u_shijue_arm_core/u_chassis/cal_m3_reg[10]/D
+ 36  CDC-15  Warning   Clock enable controlled CDC structure detected              0  Asynch Clock Groups  u_shijue_arm_core/u_tracker/target_h_reg[2]/C      u_shijue_arm_core/u_chassis/cal_m3_reg[11]/D
+ 37  CDC-15  Warning   Clock enable controlled CDC structure detected              0  Asynch Clock Groups  u_shijue_arm_core/u_tracker/target_h_reg[2]/C      u_shijue_arm_core/u_chassis/cal_m4_reg[0]/D
+ 38  CDC-15  Warning   Clock enable controlled CDC structure detected              0  Asynch Clock Groups  u_shijue_arm_core/u_tracker/target_h_reg[2]/C      u_shijue_arm_core/u_chassis/cal_m4_reg[1]/D
+ 39  CDC-15  Warning   Clock enable controlled CDC structure detected              0  Asynch Clock Groups  u_shijue_arm_core/u_tracker/target_h_reg[2]/C      u_shijue_arm_core/u_chassis/cal_m4_reg[2]/D
+ 40  CDC-15  Warning   Clock enable controlled CDC structure detected              0  Asynch Clock Groups  u_shijue_arm_core/u_tracker/target_h_reg[2]/C      u_shijue_arm_core/u_chassis/cal_m4_reg[3]/D
+ 41  CDC-15  Warning   Clock enable controlled CDC structure detected              0  Asynch Clock Groups  u_shijue_arm_core/u_tracker/target_h_reg[2]/C      u_shijue_arm_core/u_chassis/cal_m4_reg[4]/D
+ 42  CDC-15  Warning   Clock enable controlled CDC structure detected              0  Asynch Clock Groups  u_shijue_arm_core/u_tracker/target_h_reg[2]/C      u_shijue_arm_core/u_chassis/cal_m4_reg[5]/D
+ 43  CDC-15  Warning   Clock enable controlled CDC structure detected              0  Asynch Clock Groups  u_shijue_arm_core/u_tracker/target_h_reg[2]/C      u_shijue_arm_core/u_chassis/cal_m4_reg[6]/D
+ 44  CDC-15  Warning   Clock enable controlled CDC structure detected              0  Asynch Clock Groups  u_shijue_arm_core/u_tracker/target_h_reg[2]/C      u_shijue_arm_core/u_chassis/cal_m4_reg[7]/D
+ 45  CDC-15  Warning   Clock enable controlled CDC structure detected              0  Asynch Clock Groups  u_shijue_arm_core/u_tracker/target_h_reg[2]/C      u_shijue_arm_core/u_chassis/cal_m4_reg[8]/D
+ 46  CDC-15  Warning   Clock enable controlled CDC structure detected              0  Asynch Clock Groups  u_shijue_arm_core/u_tracker/target_h_reg[2]/C      u_shijue_arm_core/u_chassis/cal_m4_reg[9]/D
+ 47  CDC-15  Warning   Clock enable controlled CDC structure detected              0  Asynch Clock Groups  u_shijue_arm_core/u_tracker/target_h_reg[2]/C      u_shijue_arm_core/u_chassis/cal_m4_reg[10]/D
+ 48  CDC-15  Warning   Clock enable controlled CDC structure detected              0  Asynch Clock Groups  u_shijue_arm_core/u_tracker/target_h_reg[2]/C      u_shijue_arm_core/u_chassis/cal_m4_reg[11]/D
+ 49  CDC-15  Warning   Clock enable controlled CDC structure detected              0  Asynch Clock Groups  u_shijue_arm_core/u_tracker/target_h_reg[2]/C      u_shijue_arm_core/u_chassis/ef_f_reg[0]/D
+ 50  CDC-15  Warning   Clock enable controlled CDC structure detected              0  Asynch Clock Groups  u_shijue_arm_core/u_tracker/target_h_reg[2]/C      u_shijue_arm_core/u_chassis/ef_f_reg[1]/D
+ 51  CDC-15  Warning   Clock enable controlled CDC structure detected              0  Asynch Clock Groups  u_shijue_arm_core/u_tracker/target_h_reg[2]/C      u_shijue_arm_core/u_chassis/ef_f_reg[2]/D
+ 52  CDC-15  Warning   Clock enable controlled CDC structure detected              0  Asynch Clock Groups  u_shijue_arm_core/u_tracker/target_h_reg[2]/C      u_shijue_arm_core/u_chassis/ef_f_reg[3]/D
+ 53  CDC-15  Warning   Clock enable controlled CDC structure detected              0  Asynch Clock Groups  u_shijue_arm_core/u_tracker/target_h_reg[2]/C      u_shijue_arm_core/u_chassis/ef_f_reg[4]/D
+ 54  CDC-15  Warning   Clock enable controlled CDC structure detected              0  Asynch Clock Groups  u_shijue_arm_core/u_tracker/target_h_reg[2]/C      u_shijue_arm_core/u_chassis/ef_f_reg[5]/D
+ 55  CDC-15  Warning   Clock enable controlled CDC structure detected              0  Asynch Clock Groups  u_shijue_arm_core/u_tracker/target_h_reg[2]/C      u_shijue_arm_core/u_chassis/ef_f_reg[6]/D
+ 56  CDC-15  Warning   Clock enable controlled CDC structure detected              0  Asynch Clock Groups  u_shijue_arm_core/u_tracker/target_h_reg[2]/C      u_shijue_arm_core/u_chassis/ef_f_reg[7]/D
+ 57  CDC-15  Warning   Clock enable controlled CDC structure detected              0  Asynch Clock Groups  u_shijue_arm_core/u_tracker/target_h_reg[2]/C      u_shijue_arm_core/u_chassis/ef_f_reg[8]/D
+ 58  CDC-15  Warning   Clock enable controlled CDC structure detected              0  Asynch Clock Groups  u_shijue_arm_core/u_tracker/target_h_reg[2]/C      u_shijue_arm_core/u_chassis/ef_f_reg[9]/D
+ 59  CDC-15  Warning   Clock enable controlled CDC structure detected              0  Asynch Clock Groups  u_shijue_arm_core/u_tracker/target_h_reg[2]/C      u_shijue_arm_core/u_chassis/ef_f_reg[10]/D
+ 60  CDC-15  Warning   Clock enable controlled CDC structure detected              0  Asynch Clock Groups  u_shijue_arm_core/u_tracker/target_h_reg[2]/C      u_shijue_arm_core/u_chassis/ef_f_reg[11]/D
+ 61  CDC-15  Warning   Clock enable controlled CDC structure detected              0  Asynch Clock Groups  u_shijue_arm_core/u_tracker/target_y_reg[0]/C      u_shijue_arm_core/u_chassis/et_f_reg[0]/D
+ 62  CDC-15  Warning   Clock enable controlled CDC structure detected              0  Asynch Clock Groups  u_shijue_arm_core/u_tracker/target_y_reg[0]/C      u_shijue_arm_core/u_chassis/et_f_reg[1]/D
+ 63  CDC-15  Warning   Clock enable controlled CDC structure detected              0  Asynch Clock Groups  u_shijue_arm_core/u_tracker/target_y_reg[0]/C      u_shijue_arm_core/u_chassis/et_f_reg[2]/D
+ 64  CDC-15  Warning   Clock enable controlled CDC structure detected              0  Asynch Clock Groups  u_shijue_arm_core/u_tracker/target_y_reg[0]/C      u_shijue_arm_core/u_chassis/et_f_reg[3]/D
+ 65  CDC-15  Warning   Clock enable controlled CDC structure detected              0  Asynch Clock Groups  u_shijue_arm_core/u_tracker/target_y_reg[5]/C      u_shijue_arm_core/u_chassis/et_f_reg[4]/D
+ 66  CDC-15  Warning   Clock enable controlled CDC structure detected              0  Asynch Clock Groups  u_shijue_arm_core/u_tracker/target_y_reg[5]/C      u_shijue_arm_core/u_chassis/et_f_reg[5]/D
+ 67  CDC-15  Warning   Clock enable controlled CDC structure detected              0  Asynch Clock Groups  u_shijue_arm_core/u_tracker/target_y_reg[5]/C      u_shijue_arm_core/u_chassis/et_f_reg[6]/D
+ 68  CDC-15  Warning   Clock enable controlled CDC structure detected              0  Asynch Clock Groups  u_shijue_arm_core/u_tracker/target_y_reg[5]/C      u_shijue_arm_core/u_chassis/et_f_reg[7]/D
+ 69  CDC-15  Warning   Clock enable controlled CDC structure detected              0  Asynch Clock Groups  u_shijue_arm_core/u_tracker/target_y_reg[5]/C      u_shijue_arm_core/u_chassis/et_f_reg[8]/D
+ 70  CDC-15  Warning   Clock enable controlled CDC structure detected              0  Asynch Clock Groups  u_shijue_arm_core/u_tracker/target_y_reg[5]/C      u_shijue_arm_core/u_chassis/et_f_reg[9]/D
+ 71  CDC-15  Warning   Clock enable controlled CDC structure detected              0  Asynch Clock Groups  u_shijue_arm_core/u_tracker/target_y_reg[5]/C      u_shijue_arm_core/u_chassis/et_f_reg[10]/D
+ 72  CDC-15  Warning   Clock enable controlled CDC structure detected              0  Asynch Clock Groups  u_shijue_arm_core/u_tracker/target_y_reg[5]/C      u_shijue_arm_core/u_chassis/et_f_reg[11]/D
+ 73  CDC-15  Warning   Clock enable controlled CDC structure detected              0  Asynch Clock Groups  u_shijue_arm_core/u_tracker/target_h_reg[2]/C      u_shijue_arm_core/u_chassis/ref_size_reg[0]/D
+ 74  CDC-15  Warning   Clock enable controlled CDC structure detected              0  Asynch Clock Groups  u_shijue_arm_core/u_tracker/target_h_reg[2]/C      u_shijue_arm_core/u_chassis/ref_size_reg[1]/D
+ 75  CDC-15  Warning   Clock enable controlled CDC structure detected              0  Asynch Clock Groups  u_shijue_arm_core/u_tracker/target_h_reg[2]/C      u_shijue_arm_core/u_chassis/ref_size_reg[2]/D
+ 76  CDC-15  Warning   Clock enable controlled CDC structure detected              0  Asynch Clock Groups  u_shijue_arm_core/u_tracker/target_h_reg[2]/C      u_shijue_arm_core/u_chassis/ref_size_reg[3]/D
+ 77  CDC-15  Warning   Clock enable controlled CDC structure detected              0  Asynch Clock Groups  u_shijue_arm_core/u_tracker/target_h_reg[2]/C      u_shijue_arm_core/u_chassis/ref_size_reg[4]/D
+ 78  CDC-15  Warning   Clock enable controlled CDC structure detected              0  Asynch Clock Groups  u_shijue_arm_core/u_tracker/target_h_reg[2]/C      u_shijue_arm_core/u_chassis/ref_size_reg[5]/D
+ 79  CDC-15  Warning   Clock enable controlled CDC structure detected              0  Asynch Clock Groups  u_shijue_arm_core/u_tracker/target_h_reg[2]/C      u_shijue_arm_core/u_chassis/ref_size_reg[6]/D
+ 80  CDC-15  Warning   Clock enable controlled CDC structure detected              0  Asynch Clock Groups  u_shijue_arm_core/u_tracker/target_h_reg[2]/C      u_shijue_arm_core/u_chassis/ref_size_reg[7]/D
+ 81  CDC-15  Warning   Clock enable controlled CDC structure detected              0  Asynch Clock Groups  u_shijue_arm_core/u_tracker/target_h_reg[2]/C      u_shijue_arm_core/u_chassis/ref_size_reg[8]/D
+ 82  CDC-15  Warning   Clock enable controlled CDC structure detected              0  Asynch Clock Groups  u_shijue_arm_core/u_tracker/target_h_reg[2]/C      u_shijue_arm_core/u_chassis/ref_size_reg[9]/D
+ 83  CDC-15  Warning   Clock enable controlled CDC structure detected              0  Asynch Clock Groups  u_shijue_arm_core/u_tracker/target_h_reg[2]/C      u_shijue_arm_core/u_chassis/ref_size_reg[10]/D
+ 84  CDC-2   Warning   1-bit synchronized with missing ASYNC_REG property          2  Asynch Clock Groups  u_shijue_arm_core/u_capture/cam_latest_page_reg/C  u_shijue_arm_core/u_lcd_driver/ack_synced_1_reg/D
+ 85  CDC-5   Warning   Multi-bit synchronized with missing ASYNC_REG property      2  Asynch Clock Groups  u_shijue_arm_core/u_tracker/target_h_reg[10:1]/C   u_shijue_arm_core/u_lcd_driver/box_h_r1_reg[10:1]/D
+ 86  CDC-5   Warning   Multi-bit synchronized with missing ASYNC_REG property      2  Asynch Clock Groups  u_shijue_arm_core/u_tracker/target_w_reg[10:1]/C   u_shijue_arm_core/u_lcd_driver/box_w_r1_reg[10:1]/D
+ 87  CDC-5   Warning   Multi-bit synchronized with missing ASYNC_REG property      2  Asynch Clock Groups  u_shijue_arm_core/u_tracker/target_x_reg[10:0]/C   u_shijue_arm_core/u_lcd_driver/box_x_r1_reg[10:0]/D
+ 88  CDC-5   Warning   Multi-bit synchronized with missing ASYNC_REG property      2  Asynch Clock Groups  u_shijue_arm_core/u_tracker/target_y_reg[10:0]/C   u_shijue_arm_core/u_lcd_driver/box_y_r1_reg[10:0]/D
 

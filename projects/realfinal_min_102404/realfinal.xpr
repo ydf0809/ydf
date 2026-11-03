@@ -72,7 +72,7 @@
       <Filter Type="Srcs" />
       <File Path="$PSRCDIR/sources_1/imports/imported/armfinal/project_9.srcs/sources_1/new/arm_pick_place_once_top.v">
         <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../../../imported/armfinal/project_9.srcs/sources_1/new/arm_pick_place_once_top.v" />
+          <Attr Name="ImportPath" Val="$PPRDIR/../../../暂时/armfinal/project_9.srcs/sources_1/new/arm_pick_place_once_top.v" />
           <Attr Name="ImportTime" Val="1777640441" />
           <Attr Name="UsedIn" Val="synthesis" />
           <Attr Name="UsedIn" Val="implementation" />
@@ -116,7 +116,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/imports/imported/armfinal/project_9.srcs/sources_1/new/bus_servo_packet_tx.v">
         <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../../../imported/armfinal/project_9.srcs/sources_1/new/bus_servo_packet_tx.v" />
+          <Attr Name="ImportPath" Val="$PPRDIR/../../../暂时/armfinal/project_9.srcs/sources_1/new/bus_servo_packet_tx.v" />
           <Attr Name="ImportTime" Val="1777623831" />
           <Attr Name="UsedIn" Val="synthesis" />
           <Attr Name="UsedIn" Val="implementation" />
@@ -125,7 +125,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/imports/imported/armfinal/project_9.srcs/sources_1/new/bus_servo_uart_tx.v">
         <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../../../imported/armfinal/project_9.srcs/sources_1/new/bus_servo_uart_tx.v" />
+          <Attr Name="ImportPath" Val="$PPRDIR/../../../暂时/armfinal/project_9.srcs/sources_1/new/bus_servo_uart_tx.v" />
           <Attr Name="ImportTime" Val="1777623831" />
           <Attr Name="UsedIn" Val="synthesis" />
           <Attr Name="UsedIn" Val="implementation" />
@@ -134,7 +134,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/imports/imported/shijuefinal/project_7.srcs/sources_1/new/chassis_control.v">
         <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../../../imported/shijuefinal/project_7.srcs/sources_1/new/chassis_control.v" />
+          <Attr Name="ImportPath" Val="$PPRDIR/../../../暂时/shijuefinal/project_7.srcs/sources_1/new/chassis_control.v" />
           <Attr Name="ImportTime" Val="1777730268" />
           <Attr Name="UsedIn" Val="synthesis" />
           <Attr Name="UsedIn" Val="implementation" />
@@ -143,7 +143,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/imports/imported/shijuefinal/project_7.srcs/sources_1/new/color_track.v">
         <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../../../imported/shijuefinal/project_7.srcs/sources_1/new/color_track.v" />
+          <Attr Name="ImportPath" Val="$PPRDIR/../../../暂时/shijuefinal/project_7.srcs/sources_1/new/color_track.v" />
           <Attr Name="ImportTime" Val="1777730268" />
           <Attr Name="UsedIn" Val="synthesis" />
           <Attr Name="UsedIn" Val="implementation" />
@@ -166,7 +166,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/imports/imported/shijuefinal/project_7.srcs/sources_1/new/frame_buffer_bram.v">
         <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../../../imported/shijuefinal/project_7.srcs/sources_1/new/frame_buffer_bram.v" />
+          <Attr Name="ImportPath" Val="$PPRDIR/../../../暂时/shijuefinal/project_7.srcs/sources_1/new/frame_buffer_bram.v" />
           <Attr Name="ImportTime" Val="1777555640" />
           <Attr Name="UsedIn" Val="synthesis" />
           <Attr Name="UsedIn" Val="implementation" />
@@ -175,7 +175,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/imports/imported/shijuefinal/project_7.srcs/sources_1/new/iic_w_top.v">
         <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../../../imported/shijuefinal/project_7.srcs/sources_1/new/iic_w_top.v" />
+          <Attr Name="ImportPath" Val="$PPRDIR/../../../暂时/shijuefinal/project_7.srcs/sources_1/new/iic_w_top.v" />
           <Attr Name="ImportTime" Val="1777555640" />
           <Attr Name="UsedIn" Val="synthesis" />
           <Attr Name="UsedIn" Val="implementation" />
@@ -184,7 +184,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/imports/imported/shijuefinal/project_7.srcs/sources_1/new/iic_write.v">
         <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../../../imported/shijuefinal/project_7.srcs/sources_1/new/iic_write.v" />
+          <Attr Name="ImportPath" Val="$PPRDIR/../../../暂时/shijuefinal/project_7.srcs/sources_1/new/iic_write.v" />
           <Attr Name="ImportTime" Val="1777555640" />
           <Attr Name="UsedIn" Val="synthesis" />
           <Attr Name="UsedIn" Val="implementation" />
@@ -193,7 +193,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/imports/imported/xunbifinal/xunjibizhang02.srcs/sources_1/new/line_follow_ctrl.v">
         <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../../../imported/xunbifinal/xunjibizhang02.srcs/sources_1/new/line_follow_ctrl.v" />
+          <Attr Name="ImportPath" Val="$PPRDIR/../../../暂时/xunbifinal/xunjibizhang02.srcs/sources_1/new/line_follow_ctrl.v" />
           <Attr Name="ImportTime" Val="1777704244" />
           <Attr Name="UsedIn" Val="synthesis" />
           <Attr Name="UsedIn" Val="implementation" />
@@ -230,7 +230,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/imports/imported/xunbifinal/xunjibizhang02.srcs/sources_1/new/obstacle_avoid_ctrl.v">
         <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../../../imported/xunbifinal/xunjibizhang02.srcs/sources_1/new/obstacle_avoid_ctrl.v" />
+          <Attr Name="ImportPath" Val="$PPRDIR/../../../暂时/xunbifinal/xunjibizhang02.srcs/sources_1/new/obstacle_avoid_ctrl.v" />
           <Attr Name="ImportTime" Val="1777541384" />
           <Attr Name="UsedIn" Val="synthesis" />
           <Attr Name="UsedIn" Val="implementation" />
@@ -239,7 +239,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/imports/imported/shijuefinal/project_7.srcs/sources_1/new/ov7670_capture.v">
         <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../../../imported/shijuefinal/project_7.srcs/sources_1/new/ov7670_capture.v" />
+          <Attr Name="ImportPath" Val="$PPRDIR/../../../暂时/shijuefinal/project_7.srcs/sources_1/new/ov7670_capture.v" />
           <Attr Name="ImportTime" Val="1777555640" />
           <Attr Name="UsedIn" Val="synthesis" />
           <Attr Name="UsedIn" Val="implementation" />
@@ -248,7 +248,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/imports/imported/shijuefinal/project_7.srcs/sources_1/new/ov7670_init.v">
         <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../../../imported/shijuefinal/project_7.srcs/sources_1/new/ov7670_init.v" />
+          <Attr Name="ImportPath" Val="$PPRDIR/../../../暂时/shijuefinal/project_7.srcs/sources_1/new/ov7670_init.v" />
           <Attr Name="ImportTime" Val="1777823894" />
           <Attr Name="UsedIn" Val="synthesis" />
           <Attr Name="UsedIn" Val="implementation" />
@@ -257,7 +257,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/imports/imported/shijuefinal/project_7.srcs/sources_1/new/rgb2hsv.v">
         <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../../../imported/shijuefinal/project_7.srcs/sources_1/new/rgb2hsv.v" />
+          <Attr Name="ImportPath" Val="$PPRDIR/../../../暂时/shijuefinal/project_7.srcs/sources_1/new/rgb2hsv.v" />
           <Attr Name="ImportTime" Val="1777556447" />
           <Attr Name="UsedIn" Val="synthesis" />
           <Attr Name="UsedIn" Val="implementation" />
@@ -273,7 +273,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/imports/imported/shijuefinal/project_7.srcs/sources_1/new/sccb_master.v">
         <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../../../imported/shijuefinal/project_7.srcs/sources_1/new/sccb_master.v" />
+          <Attr Name="ImportPath" Val="$PPRDIR/../../../暂时/shijuefinal/project_7.srcs/sources_1/new/sccb_master.v" />
           <Attr Name="ImportTime" Val="1777823153" />
           <Attr Name="UsedIn" Val="synthesis" />
           <Attr Name="UsedIn" Val="implementation" />
@@ -347,7 +347,7 @@
       <File Path="$PSRCDIR/sources_1/imports/imported/shijuefinal/project_7.srcs/sources_1/new/atk4384_driver.v">
         <FileInfo>
           <Attr Name="AutoDisabled" Val="1" />
-          <Attr Name="ImportPath" Val="$PPRDIR/../../../imported/shijuefinal/project_7.srcs/sources_1/new/ili9488_driver.v" />
+          <Attr Name="ImportPath" Val="$PPRDIR/../../../暂时/shijuefinal/project_7.srcs/sources_1/new/ili9488_driver.v" />
           <Attr Name="ImportTime" Val="1777823153" />
           <Attr Name="UsedIn" Val="synthesis" />
           <Attr Name="UsedIn" Val="implementation" />
@@ -357,7 +357,7 @@
       <File Path="$PSRCDIR/sources_1/imports/imported/shijuefinal/project_7.srcs/sources_1/new/spi_master.v">
         <FileInfo>
           <Attr Name="AutoDisabled" Val="1" />
-          <Attr Name="ImportPath" Val="$PPRDIR/../../../imported/shijuefinal/project_7.srcs/sources_1/new/spi_master.v" />
+          <Attr Name="ImportPath" Val="$PPRDIR/../../../暂时/shijuefinal/project_7.srcs/sources_1/new/spi_master.v" />
           <Attr Name="ImportTime" Val="1777555640" />
           <Attr Name="UsedIn" Val="synthesis" />
           <Attr Name="UsedIn" Val="implementation" />
@@ -377,7 +377,6 @@
           <Attr Name="ImportTime" Val="1777702581" />
           <Attr Name="UsedIn" Val="synthesis" />
           <Attr Name="UsedIn" Val="implementation" />
-          <Attr Name="ProcessingOrder" Val="LATE" />
         </FileInfo>
       </File>
       <Config>
@@ -475,7 +474,7 @@
     <FileSet Name="clk_wiz_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/clk_wiz_0" RelGenDir="$PGENDIR/clk_wiz_0">
       <File Path="$PSRCDIR/clk_wiz_0/ip/clk_wiz_0/clk_wiz_0.xci">
         <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../../../imported/shijuefinal/project_7.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci" />
+          <Attr Name="ImportPath" Val="$PPRDIR/../../../暂时/shijuefinal/project_7.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci" />
           <Attr Name="ImportTime" Val="1777822231" />
           <Attr Name="UsedIn" Val="synthesis" />
           <Attr Name="UsedIn" Val="implementation" />

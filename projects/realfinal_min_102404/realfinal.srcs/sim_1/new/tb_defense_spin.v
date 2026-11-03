@@ -1,5 +1,13 @@
 `timescale 1ns / 1ps
 
+// 防空原地转向的检查：
+//   1) 只有"舵机6 到限位 + 框边缘贴同侧边框"同时满足并保持 300ms 才转
+//   2) 右边界用一组电机极性，左边界用相反的一组
+//   3) 至少转 1s，中途目标回中央可以提前停
+//   4) 转满 2s 一定停
+//   5) 退出防空立刻停
+//
+// 仿真用 CLK_HZ=100_000（1 ms = 100 个时钟），只影响计数长度，不影响逻辑。
 module tb_defense_spin;
 
     reg clk = 1'b0;
@@ -42,6 +50,7 @@ module tb_defense_spin;
         .cmd_update(cmd_update)
     );
 
+    // 1 ms = 100 clk -> 1 s = 100_000 clk
     localparam integer T1MS = 100;
 
     integer spin_cycles;
@@ -77,6 +86,7 @@ module tb_defense_spin;
         repeat (5) @(posedge clk);
         rst_n = 1'b1;
 
+        // ---------- 条件不满足：舵机没到限位 ----------
         defense_en   = 1'b1;
         target_valid = 1'b1;
         yaw_pos      = 16'd500;
@@ -84,11 +94,13 @@ module tb_defense_spin;
         wait_ms(600);
         if (spin_active) fail("spun although servo 6 was not at its limit");
 
+        // ---------- 条件不满足：框不在边框 ----------
         yaw_pos   = 16'd850;
         target_cx = 11'd300;
         wait_ms(600);
         if (spin_active) fail("spun although the box was centred");
 
+        // ---------- 右边界：确认后转，1s 后目标回中提前停 ----------
         target_cx = 11'd535;
         wait (spin_active);
         if (m1 !== 8'sd18 || m2 !== -8'sd18 || m3 !== 8'sd18 || m4 !== -8'sd18)
@@ -102,6 +114,7 @@ module tb_defense_spin;
         $display("right spin stopped after %0d cycles (~%0d ms)",
                  spin_cycles, spin_cycles / 100);
 
+        // ---------- 左边界：转满 2s 自己停 ----------
         wait_ms(50);
         yaw_pos   = 16'd100;
         target_cx = 11'd63;
@@ -113,6 +126,7 @@ module tb_defense_spin;
             fail("spin did not run the full 2s window");
         $display("left spin ran %0d cycles (~%0d ms)", spin_cycles, spin_cycles / 100);
 
+        // ---------- 退出防空立刻停 ----------
         wait_ms(50);
         target_cx = 11'd535;
         yaw_pos   = 16'd850;

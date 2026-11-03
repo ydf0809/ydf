@@ -1,6 +1,19 @@
-// Air-defense servo tracking; home_i queues a complete initial-pose transfer.
 `timescale 1ns / 1ps
 
+// Image-position tracker for servos 4/3 (cascaded pitch) and 6 (yaw).
+//
+// target_pitch and target_yaw are the target box CENTRE coordinates after
+// converting the upper camera image into the operator-visible LCD orientation.
+// Box width and height are not used by the controller. Servo 4 is the primary pitch axis.
+// Servo 3 starts adjusting only after servo 4 reaches its configured limit
+// while the target still drives farther in the same direction.
+// Servos 1/2/5 receive one fixed startup pose and never move while tracking.
+//
+// home_i: a one-cycle pulse asking for the air-defence initial pose again. It is
+// latched, so a pulse that arrives mid-packet is not lost; the six pose writes
+// are sent with HOME_TIME_MS (the same 1000 ms the pick-place home uses) while
+// normal tracking updates keep MOVE_TIME_MS. Saying "air defence" again while
+// already in air-defence mode re-runs this.
 module arm_red_track #(
     parameter integer CLK_HZ           = 33_333_333,
     parameter integer BAUD             = 115_200,
@@ -36,7 +49,7 @@ module arm_red_track #(
     input  wire [10:0] target_pitch,
     input  wire [10:0] target_yaw,
     input  wire        target_valid,
-    input  wire        home_i,
+    input  wire        home_i,          // one pulse: send the initial pose again
 
     output wire        arm_uart,
     output wire        tx_oe,
@@ -164,6 +177,8 @@ module arm_red_track #(
     wire [15:0] next_pos4 = clamp_pitch(pos4_with_delta);
     wire [15:0] next_pos6 = clamp_yaw(pos6_with_delta);
 
+    // Servo 3 is a secondary pitch axis. Once it takes over at a servo-4 end
+    // stop, servo 4 holds until servo 3 has returned to its 700 home position.
     wire pitch4_cascade_low =
         (pos4 <= PITCH_CASCADE_LOW) && (pitch_step < 0);
     wire pitch4_cascade_high =
@@ -192,7 +207,7 @@ module arm_red_track #(
     reg [31:0] update_wait;
     reg        startup_pending;
     reg        home_pending;
-    reg        home_seq;
+    reg        home_seq;          // 1 while the six-pose initial sequence is running
     reg        update_pending;
 
     reg [3:0] state;
@@ -275,7 +290,8 @@ module arm_red_track #(
                         if ((pitch_delta != 0) || (yaw_delta != 0) ||
                             (pitch3_delta != 0)) begin
                             if (pitch3_active || pitch3_start) begin
-
+                                // Servo 3 has priority. Hold servo 4 at the
+                                // endpoint until servo 3 reaches 700.
                                 pos3      <= next_pos3;
                                 send_pos3 <= next_pos3;
                                 send_pos4 <= pos4;
@@ -369,7 +385,8 @@ module arm_red_track #(
                 S_WAIT6: begin
                     if (pkt_done) begin
                         if (home_seq) begin
-
+                            // Servo 4 is the one axis the startup pose used to skip;
+                            // include it so the initial pose is complete.
                             send_req  <= 1'b1;
                             servo_id  <= 8'd4;
                             frame_len <= LEN_MOVE_TIME_WAIT_WRITE;

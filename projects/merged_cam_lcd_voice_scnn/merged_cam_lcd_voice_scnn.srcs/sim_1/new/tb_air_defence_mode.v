@@ -79,7 +79,7 @@ module tb_air_defence_mode;
         force dut.vsync_pos=injected_frame;
         repeat(5) @(negedge sys_clk); rst_n=1;
         check_disabled;
-
+        // Stray/late positive results cannot lock the default mode.
         for(i=0;i<5;i=i+1) label;
         check_disabled;
         set_mode(3);
@@ -89,7 +89,7 @@ module tb_air_defence_mode;
         check(dut.roi_tracking,"air defence did not acquire lock");
         repeat(12) @(negedge cam_pclk);
         check(dut.bbox_valid_now,"locked bbox was not exported");
-
+        // Repeating command 03 must start a new tracker session, even if mode stays 03.
         set_mode(3);
         repeat(24) @(negedge cam_pclk);
         check(!dut.roi_tracking && !dut.bbox_valid_now &&
@@ -114,7 +114,7 @@ module tb_air_defence_mode;
         for(i=0;i<4;i=i+1) label;
         check(!dut.roi_tracking,"air defence reused previous acquisition history");
         label; check(dut.roi_tracking,"fresh acquisition failed after re-entry");
-
+        // Mode exit during a pending capture must cancel its transaction.
         set_mode(4); check_disabled;
         set_mode(3);
         @(negedge cam_pclk); injected_frame=1;
@@ -129,7 +129,7 @@ module tb_air_defence_mode;
         set_mode(3);
         check(dut.net_capture_en && !dut.roi_result_pending,
               "cancelled capture blocked search after re-entry");
-
+        // Complete a synthetic crop and enter the actual SCNN busy state.
         @(negedge cam_pclk); injected_frame=1;
         @(negedge cam_pclk); injected_frame=0;
         force dut.net_done=1'b1;

@@ -1,10 +1,30 @@
 `timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer: 
+// 
+// Create Date: 2026/06/28 22:54:07
+// Design Name: 
+// Module Name: fc_classifier
+// Project Name: 
+// Target Devices: 
+// Tool Versions: 
+// Description: 
+// 
+// Dependencies: 
+// 
+// Revision:
+// Revision 0.01 - File Created
+// Additional Comments:
+// 
+//////////////////////////////////////////////////////////////////////////////////
+
 
 module fc_classifier #(
-    parameter P_H3        = 2,
-    parameter P_W3        = 2,
-    parameter P_FEAT_CH   = 16,
-    parameter P_NUM_OUT   = 2,
+    parameter P_H3        = 2,        // pool3 输出高
+    parameter P_W3        = 2,        // pool3 输出宽
+    parameter P_FEAT_CH   = 16,       // 特征通道 (=C2)
+    parameter P_NUM_OUT   = 2,        // 类别数
     parameter P_WBITS     = 16,
     parameter P_VBITS     = 26,
     parameter P_VFRAC     = 12,
@@ -15,13 +35,15 @@ module fc_classifier #(
     input  wire clk,
     input  wire rst_n,
     input  wire i_clear,
-    input  wire i_step_start,
-    input  wire i_decide,
+    input  wire i_step_start,         // 处理一个时间步的 FC+累加
+    input  wire i_decide,             // T 步后做 argmax
     output reg  o_step_done,
 
+    // 特征 RAM 读 (pool3 输出)
     output reg  [$clog2(P_H3*P_W3)-1:0] o_feat_raddr,
     input  wire [P_FEAT_CH-1:0]         i_feat_rdata,
 
+    // 结果
     output wire [$clog2(P_NUM_OUT)-1:0] o_label,
     output wire [$clog2(P_T_MAX+1)-1:0] o_max_count,
     output wire [P_NUM_OUT*$clog2(P_T_MAX+1)-1:0] o_all_spike_counts,
@@ -32,9 +54,11 @@ module fc_classifier #(
     localparam DEPTH    = FCIN/4;
     localparam BAW      = $clog2(DEPTH);
 
+    // ---- 展平向量 ----
     reg [FCIN-1:0] flat_vec;
-    reg [$clog2(FEAT_POS)-1:0] pp;
+    reg [$clog2(FEAT_POS)-1:0] pp;     // 特征位置计数
 
+    // ---- NPU 互联 ----
     reg                       npu_start;
     wire [BAW-1:0] a0, a1; wire ena0, ena1; wire [63:0] d0, d1;
     wire signed [P_VBITS-1:0] cur0, cur1; wire vld0, vld1;
@@ -64,6 +88,9 @@ module fc_classifier #(
         .o_bram_addr_to_issue(a1), .o_bram_ena(ena1),
         .o_output_current_I(cur1), .o_current_valid_out(vld1));
 
+    // ---- LIF 层 (2 个神经元) ----
+    // 用扁平总线 (避免二维 packed, 保证按普通 Verilog 也能编译);
+    // 位序 [n*VBITS +: VBITS] 对应 lif_neuron_layer 的 i_all_currents_I[n]。
     wire [P_NUM_OUT*P_VBITS-1:0] lif_currents;
     assign lif_currents[0*P_VBITS +: P_VBITS] = cur0;
     assign lif_currents[1*P_VBITS +: P_VBITS] = cur1;
@@ -80,6 +107,7 @@ module fc_classifier #(
         .i_all_currents_I(lif_currents),
         .o_all_spikes_out(lif_spikes), .o_all_spikes_valid(lif_valid));
 
+    // ---- 输出逻辑 (累加 + argmax) ----
     reg accum_en, dec_en;
     output_logic #(.P_NUM_OUTPUT_NEURONS(P_NUM_OUT), .P_T_MAX(P_T_MAX)) u_out (
         .clk(clk), .rst_n(rst_n),
@@ -89,6 +117,7 @@ module fc_classifier #(
         .o_all_spike_counts(o_all_spike_counts),
         .o_prediction_valid(o_label_valid));
 
+    // ---- FSM ----
     localparam S_IDLE=3'd0, S_FLAT=3'd1, S_FC=3'd2, S_FCW=3'd3,
                S_LIF=3'd4, S_LIFW=3'd5, S_ACC=3'd6, S_DONE=3'd7;
     reg [2:0] state;
@@ -105,11 +134,11 @@ module fc_classifier #(
                     if (i_step_start) begin
                         pp <= 0; o_feat_raddr <= 0; state <= S_FLAT;
                     end else if (i_decide) begin
-                        dec_en <= 1'b1;
+                        dec_en <= 1'b1;      // argmax (output_logic 下一拍出 label+valid)
                     end
                 end
                 S_FLAT: begin
-
+                    // 读 o_feat_raddr=pp 的 C2 位特征, 放到 flat_vec 对应槽位
                     for (ch = 0; ch < P_FEAT_CH; ch = ch + 1)
                         flat_vec[FCIN-1 - (ch*FEAT_POS + pp)] <= i_feat_rdata[ch];
                     if (pp == FEAT_POS-1) begin
@@ -130,3 +159,4 @@ module fc_classifier #(
         end
     end
 endmodule
+

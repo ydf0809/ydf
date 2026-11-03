@@ -9,7 +9,7 @@
 | 判定器和 XPR 检查正负反例 | checker_tests.json |
 | 作者正式报告与渲染检查 | design_report/design_report_v7.pdf、design_report/formal_report_source.json |
 | SCNN 训练部署技能结构与可运行检查 | scnn-training-pipeline、skill_validation.json |
-| 26 项和首次依赖失败 | sim/results/summary.json、attempts |
+| 23 项和首次依赖失败 | sim/results/summary.json、attempts |
 | 主 XPR、源未变、bit 对应 | build/reports 各板 manifest |
 | 时序/DRC/环/时钟覆盖与工具诊断 | validation.md、rpt/console |
 | 训练/数值/语法/部署 | training/scnn/verification、weight_alignment.json |

@@ -55,16 +55,16 @@ module tb_bbox_unpack;
         repeat (3) @(posedge clk);
 
         send_byte(8'h40);
-        send_byte(8'h0B);
-        send_byte(8'h02);
-        send_byte(8'h85);
-        send_byte(8'h01);
-        send_byte(8'h32);
-        send_byte(8'h00);
-        send_byte(8'h3C);
-        send_byte(8'h00);
-        send_byte(8'h01);
-        send_byte(8'h82);
+        send_byte(8'h0B); // xL
+        send_byte(8'h02); // xH
+        send_byte(8'h85); // yL
+        send_byte(8'h01); // yH
+        send_byte(8'h32); // wL
+        send_byte(8'h00); // wH
+        send_byte(8'h3C); // hL
+        send_byte(8'h00); // hH
+        send_byte(8'h01); // valid
+        send_byte(8'h82); // checksum
 
         repeat (3) @(posedge clk);
         if (bbox_x !== 10'd523 || bbox_y !== 10'd389 ||

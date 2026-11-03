@@ -1,6 +1,11 @@
-// Rank spatially separate motion candidates using recent displacement and path coherence.
 `timescale 1ns / 1ps
 
+// Soft ranking of two spatially separate frame-difference candidates.
+// Coordinates are in the 300x200 detector image (half the display preview).
+// Eight consecutive observations, >=24 samples displacement on one axis (48 display
+// pixels), >=3 meaningful steps and net/path >=1/2 identify coherent travel.
+// Small jitter and two-position flicker get no bonus. Without a mature moving
+// candidate, retain the original strongest-candidate choice.
 module motion_candidate_priority #(
     parameter integer HISTORY = 8,
     parameter integer MIN_DISPLACEMENT = 24,
@@ -90,7 +95,8 @@ module motion_candidate_priority #(
         end
         p_track = -1;
         s_track = -1;
-
+        // Associate by position, not strength: changing brightness/strength
+        // must not transfer one candidate's trajectory to the other.
         if (primary_valid) begin
             if ((p_distance[0] <= MAX_STEP) && (p_distance[0] <= p_distance[1]))
                 p_track = 0;

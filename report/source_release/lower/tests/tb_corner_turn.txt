@@ -1,16 +1,40 @@
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "[repository]/projects/realfinal_min_102404/realfinal.srcs/sources_1/new/corner_turn.v" into library work
+INFO: [VRFC 10-311] analyzing module corner_turn
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "[repository]/projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_corner_turn.v" into library work
+INFO: [VRFC 10-311] analyzing module tb_corner_turn
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/vivado2026.1/2026.1/data/verilog/src/glbl.v" into library work
+INFO: [VRFC 10-311] analyzing module glbl
+
+Vivado Simulator v2026.1
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: D:/vivado2026.1/2026.1/Vivado/bin/unwrapped/win64.o/xelab.exe -L unisims_ver --timescale 1ns/1ps tb_corner_turn glbl -s lower_tb_corner_turn 
+Multi-threading is on. Using 14 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module work.corner_turn(CLK_FREQ_HZ=1000000,...
+Compiling module work.tb_corner_turn
+Compiling module work.glbl
+Built simulation snapshot lower_tb_corner_turn
+
 
 ****** xsim v2026.1 (64-bit)
   **** SW Build 6511674 on Tue Jun 16 11:02:23 MDT 2026
   **** IP Build 6504888 on Tue Jun 09 09:05:25 MDT 2026
   **** SharedData Build 6501428 on Mon Jun 08 17:34:18 MDT 2026
-  **** Start of session at: Tue Nov  3 02:51:04 2026
+  **** Start of session at: Wed Nov  4 00:22:01 2026
     ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
     ** Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
 
-source xsim.dir/tb_corner_turn_sim/xsim_script.tcl
-# xsim {tb_corner_turn_sim} -autoloadwcfg -runall
+source xsim.dir/lower_tb_corner_turn/xsim_script.tcl
+# xsim {lower_tb_corner_turn} -autoloadwcfg -tclbatch {run_all.tcl}
 Time resolution is 1 ps
-run -all
+source run_all.tcl
+## run all
 == tb_corner_turn start ==
 [ OK ] idle passthrough : 5/5
 [ OK ] idle not busy : busy=0
@@ -28,6 +52,6 @@ run -all
 [ OK ] timer finished : busy=0
 [ OK ] timer back to pid : 5/5
 == tb_corner_turn PASS ==
-$finish called at time : 99020 us : File "[previous_source_location]/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_corner_turn.v" Line 146
-exit
-INFO: [Common 17-206] Exiting xsim at Tue Nov  3 02:51:06 2026...
+$finish called at time : 99020 us : File "[repository]/projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_corner_turn.v" Line 165
+## quit
+INFO: [Common 17-206] Exiting xsim at Wed Nov  4 00:22:03 2026...

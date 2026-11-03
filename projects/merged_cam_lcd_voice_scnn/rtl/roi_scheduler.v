@@ -1,6 +1,13 @@
-// Camera-domain ROI state machine. roi_hold freezes coordinates during an SCNN transaction.
 `timescale 1ns / 1ps
 
+// Sticky ROI tracking with motion continuity and re-acquisition.
+//
+// SEARCH classifies the current crop and may acquire a frame-difference
+// candidate.  Three DRONE results in five enter TRACK.  Local motion updates the ROI
+// directly; a far-away candidate must persist for three frames and pass a new
+// 3-of-5 verification before it may replace the tracked target.  TRACK is
+// held through brief local-detection gaps.  A prolonged gap returns to
+// full-frame motion search without jumping the ROI back to screen centre.
 module roi_scheduler #(
     parameter integer LOW_RECHECK_LIMIT = 5
 ) (
@@ -60,6 +67,8 @@ module roi_scheduler #(
     assign verifying = (mode == MODE_VERIFY) || (mode == MODE_REACQUIRE) ||
                        (mode == MODE_LOST_CHECK) || (mode == MODE_PERIODIC_CHECK);
 
+    // Detector coordinates are 600x400 / 2.  Convert the inclusive box centre
+    // back to the 600x400 preview coordinate system.
     wire [9:0] mx_sum = {1'b0, motion_x0} + {1'b0, motion_x1} + 1'b1;
     wire [8:0] my_sum = {1'b0, motion_y0} + {1'b0, motion_y1} + 1'b1;
     wire [9:0] motion_cx = {1'b0, mx_sum[9:1]} << 1;
@@ -103,11 +112,15 @@ module roi_scheduler #(
             if (!motion_valid)
                 motion_armed <= 1'b1;
 
+            // One snapshot per timer tick. Busy checks are skipped, never
+            // queued or replayed as a burst. The existing lost-target check
+            // below retains priority if its frame threshold is reached.
             if (recheck_tick && (mode == MODE_TRACK) && !roi_hold)
                 mode <= MODE_PERIODIC_CHECK;
 
             if (label_valid) begin
-
+                // A raw drone count above 10 breaks the consecutive-low run;
+                // this is deliberately independent of the acquire margin.
                 if (tracking && !drone_count_low)
                     low_recheck_count <= {LOW_COUNT_W{1'b0}};
                 case (mode)
@@ -184,7 +197,7 @@ module roi_scheduler #(
                             confirm_score <= 3'd0;
                             remote_count <= 2'd0;
                             lost_not_count <= 6'd0;
-
+                            // Retain the last ROI while global search resumes.
                         end else begin
                             mode <= MODE_TRACK;
                             if (drone_count_low)
@@ -195,6 +208,8 @@ module roi_scheduler #(
                 endcase
             end
 
+            // ROI selection happens at vsync before roi_resampler latches the
+            // coordinates for this camera frame.
             if (frame_sync && !roi_hold) begin
                 if (mode == MODE_TRACK) begin
                     if (motion_valid)
@@ -217,7 +232,8 @@ module roi_scheduler #(
                             confirm_score <= 3'd0;
                             drone_hist    <= 5'd0;
                             hist_count    <= 3'd0;
-
+                            // Keep the last crop while full-frame motion
+                            // search finds the next candidate; never recenter.
                         end
                         MODE_REACQUIRE: begin
                             mode           <= MODE_TRACK;
@@ -243,7 +259,7 @@ module roi_scheduler #(
 
                         MODE_VERIFY: begin
                             if (motion_far) begin
-
+                                // New location inside SEARCH; restart evidence.
                                 roi_x0        <= cand_x0;
                                 roi_y0        <= cand_y0;
                                 confirm_score <= 2'd0;
@@ -257,7 +273,7 @@ module roi_scheduler #(
 
                         MODE_TRACK: begin
                             if (motion_far) begin
-
+                                // Never jump on a single noisy motion box.
                                 if (remote_count >= REMOTE_CONFIRM_FRAMES - 1'b1) begin
                                     saved_roi_x   <= roi_x0;
                                     saved_roi_y   <= roi_y0;
@@ -291,7 +307,8 @@ module roi_scheduler #(
                             end
                         end
                         MODE_LOST_CHECK: begin
-
+                            // A valid local dark target cancels the expensive
+                            // recheck and resumes following immediately.
                             mode <= MODE_TRACK;
                             drone_hist <= 5'd0;
                             hist_count <= 3'd0;

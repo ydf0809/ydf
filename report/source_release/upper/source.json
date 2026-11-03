@@ -1,11 +1,11 @@
 {
   "selected_source": "merged_cam_lcd_voice_scnn",
-  "source_xpr_sha256": "4a1929947a2049cde9d69832ba1d6f6e501d08486b7d8fd630e23bddde4ce3f8",
+  "source_xpr_sha256": "539b7db30c14c401d9cb3e866e7300adc22f7805d215c63e385c587ed9dd97c3",
   "source_bitstream": {
-    "path": "merged_cam_lcd_voice_scnn.runs/impl_1/top.bit",
+    "path": "vivado_prj/merged_cam_lcd_voice_scnn.runs/impl_1/top.bit",
     "bytes": 4045758,
-    "sha256": "a6a27076f61adc6b35ca027db51f8ce2cb926f04a4d549dd3e7601ddeba5710d",
-    "modified_time": "2026-11-03T03:24:29.543487+08:00"
+    "sha256": "b7ac6abe9399c47d65c7f8b8005af55947c7d145caa343585b5c1dc5947b44fa",
+    "modified_time": "2026-11-02T14:22:13+08:00"
   },
   "registered_input_hashes_checked": 48,
   "source_recorded_timing": {
@@ -28,9 +28,22 @@
     }
   },
   "source_recorded_regression": {
-    "passed": 11,
-    "total": 11
+    "passed": 10,
+    "total": 10
   },
   "physical_board_validation": "NOT_PERFORMED",
-  "status": "source_evidence_only_repository_rebuild_required"
+  "status": "source_evidence_and_repository_rebuild_pass",
+  "repository_rebuild": {
+    "status": "preview_build_candidate",
+    "xpr": "projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.xpr",
+    "top": "top",
+    "part": "xc7z020clg400-1",
+    "WNS_ns": 5.815,
+    "WHS_ns": 0.017,
+    "DRC_errors": 0,
+    "bit": "board/bitstreams/upper/top.bit",
+    "bit_sha256": "fa947a84887b1c5122325621bc08ea997ad6d7d87d38158eff5c40ea39677918",
+    "bit_bytes": 4045758,
+    "completed_at": "2026-11-04T00:48:41+08:00"
+  }
 }

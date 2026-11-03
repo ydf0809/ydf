@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2026.1 (win64) Build 6511674 Tue Jun 16 11:02:23 MDT 2026
-| Date         : Tue Nov  3 14:01:27 2026
+| Date         : Wed Nov  4 00:41:59 2026
 | Host         : YDF running 64-bit major release  (build 9200)
 | Command      : report_clock_interaction -file {[repository]/build/reports/lower/clock_interaction.rpt}
 | Design       : super_top
@@ -18,10 +18,10 @@ Clock Interaction Table
                                         WNS                            TNS Failing  TNS Total    WNS Path         Clock-Pair           Inter-Clock          
 From Clock          To Clock            Clock Edges  WNS(ns)  TNS(ns)    Endpoints    Endpoints  Requirement(ns)  Classification       Constraints          
 ------------------  ------------------  -----------  -------  -------  -----------  -----------  ---------------  -------------------  -------------------  
-clk_out1_clk_wiz_0  clk_out1_clk_wiz_0  rise - rise     6.82     0.00            0          203            13.33  Clean                Timed                
-ov_pclk             ov_pclk             rise - rise     3.59     0.00            0         4756            20.83  Clean                Timed                
-ov_pclk             sys_clk                                                      0           46                   Ignored              Asynchronous Groups  
-sys_clk             ov_pclk                                                      0            3                   Ignored              Asynchronous Groups  
-sys_clk             sys_clk             rise - rise     5.18     0.00            0         5311            30.00  Clean                Timed                
+clk_out1_clk_wiz_0  clk_out1_clk_wiz_0  rise - rise     6.68     0.00            0          203            13.33  Clean                Timed                
+ov_pclk             ov_pclk             rise - rise     4.30     0.00            0         4647            20.83  Clean                Timed                
+ov_pclk             sys_clk                                                      0          126                   Ignored              Asynchronous Groups  
+sys_clk             ov_pclk                                                      0          412                   Ignored              Asynchronous Groups  
+sys_clk             sys_clk             rise - rise     5.41     0.00            0         5230            30.00  Clean                Timed                
 
 

@@ -1,5 +1,6 @@
 `timescale 1ns/1ps
-
+// Immutable 64x64 luminance template, staged only from a positive RGB result.
+// RGB pixels sent to SCNN are unchanged. Both RAMs have synchronous read ports.
 module roi_template_guard #(
     parameter [20:0] SAD_LIMIT = 21'd180000
 )(
@@ -26,6 +27,8 @@ module roi_template_guard #(
     wire [20:0] sad_next=sad+((we_d && template_valid)?abs_diff:9'd0);
     assign commit_busy=copy_active || copy_write_valid;
 
+    // No reset on either RAM. The locked template never shares the SCNN
+    // ping-pong bank selector, so later crops cannot overwrite its pixels.
     always @(posedge clk) begin
         if(capture_we) begin
             crop_mem[capture_addr]<=luma;
@@ -47,7 +50,8 @@ module roi_template_guard #(
             if(capture_start) begin pixel_count<=0; sad<=0; end
             if(capture_we) pixel_count<=pixel_count+1'b1;
             if(we_d && template_valid) sad<=sad_next;
-
+            // Only add a delayed pixel when its valid flag is asserted. This
+            // handles both coincident and separated last-pixel/done pulses.
             if(done_d)
                 match_ok<=template_valid && pixel_count==4096 && sad_next<=SAD_LIMIT;
 
@@ -60,7 +64,8 @@ module roi_template_guard #(
             if(copy_write_valid && copy_write_addr==4095) begin
                 template_valid<=1; match_ok<=1;
             end
-
+            // The label belongs to the held crop RAM. If the fifth VERIFY
+            // result is negative, the last positive template remains intact.
             if(label_valid && label_positive && !tracking &&
                !commit_busy && pixel_count==4096) begin
                 copy_active<=1; copy_index<=0;

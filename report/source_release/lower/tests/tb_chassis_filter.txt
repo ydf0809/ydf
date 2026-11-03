@@ -1,16 +1,40 @@
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "[repository]/projects/realfinal_min_102404/realfinal.srcs/sources_1/imports/imported/shijuefinal/project_7.srcs/sources_1/new/chassis_control.v" into library work
+INFO: [VRFC 10-311] analyzing module chassis_control
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "[repository]/projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_chassis_filter.v" into library work
+INFO: [VRFC 10-311] analyzing module tb_chassis_filter
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/vivado2026.1/2026.1/data/verilog/src/glbl.v" into library work
+INFO: [VRFC 10-311] analyzing module glbl
+
+Vivado Simulator v2026.1
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: D:/vivado2026.1/2026.1/Vivado/bin/unwrapped/win64.o/xelab.exe -L unisims_ver --timescale 1ns/1ps tb_chassis_filter glbl -s lower_tb_chassis_filter 
+Multi-threading is on. Using 14 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module work.chassis_control(REF_DELAY=2000)
+Compiling module work.tb_chassis_filter
+Compiling module work.glbl
+Built simulation snapshot lower_tb_chassis_filter
+
 
 ****** xsim v2026.1 (64-bit)
   **** SW Build 6511674 on Tue Jun 16 11:02:23 MDT 2026
   **** IP Build 6504888 on Tue Jun 09 09:05:25 MDT 2026
   **** SharedData Build 6501428 on Mon Jun 08 17:34:18 MDT 2026
-  **** Start of session at: Tue Nov  3 02:44:18 2026
+  **** Start of session at: Wed Nov  4 00:21:37 2026
     ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
     ** Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
 
-source xsim.dir/tb_chassis_filter_sim/xsim_script.tcl
-# xsim {tb_chassis_filter_sim} -autoloadwcfg -runall
+source xsim.dir/lower_tb_chassis_filter/xsim_script.tcl
+# xsim {lower_tb_chassis_filter} -autoloadwcfg -tclbatch {run_all.tcl}
 Time resolution is 1 ps
-run -all
+source run_all.tcl
+## run all
 ==================================================
  tb_chassis_filter: CLK_FREQ=33333333
 ==================================================
@@ -35,7 +59,7 @@ run -all
 ==================================================
  RESULT: all passed (errors=0)
 ==================================================
-$finish called at time : 2900000836 ns : File "[previous_source_location]/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_chassis_filter.v" Line 150
-run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:21 . Memory (MB): peak = 229.457 ; gain = 0.000
-exit
-INFO: [Common 17-206] Exiting xsim at Tue Nov  3 02:44:41 2026...
+$finish called at time : 2900000836 ns : File "[repository]/projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_chassis_filter.v" Line 177
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:19 . Memory (MB): peak = 230.645 ; gain = 0.000
+## quit
+INFO: [Common 17-206] Exiting xsim at Wed Nov  4 00:21:58 2026...

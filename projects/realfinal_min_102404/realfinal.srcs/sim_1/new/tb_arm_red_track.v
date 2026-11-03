@@ -88,6 +88,7 @@ module tb_arm_red_track;
             (servo3_count != 1) || (servo5_count != 1))
             $fatal(1, "fixed air-defence pose was not sent exactly once");
 
+        // Target is below and to the right in the camera image.
         target_pitch = 11'd220;
         target_yaw = 11'd340;
         wait (servo6_count >= 2);
@@ -110,6 +111,8 @@ module tb_arm_red_track;
         if (servo5_count != 1)
             $fatal(1, "servo 5 must remain unchanged after startup");
 
+        // Drive the target far above centre until servo 4 reaches its low
+        // threshold. Servo 3 must then start moving as the secondary pitch axis.
         target_pitch = 11'd0;
         wait (pos4 == 16'd200);
         $display("TRACE servo4 low: pos3=%0d pos4=%0d servo3_count=%0d",
@@ -120,16 +123,21 @@ module tb_arm_red_track;
         if (pos3 <= 16'd700)
             $fatal(1, "servo 3 did not extend after servo 4 reached threshold");
 
+        // Return the target to centre. Servo 3 must return home first while
+        // servo 4 remains at 300.
         target_pitch = 11'd200;
         wait (pos3 == 16'd700);
         $display("TRACE servo3 home: pos3=%0d pos4=%0d", pos3, pos4);
         if (pos4 != 16'd200)
             $fatal(1, "servo 4 moved before servo 3 returned home: %0d", pos4);
 
+        // Only after servo 3 is home may servo 4 resume tracking.
         target_pitch = 11'd220;
         wait (pos4 > 16'd200);
         $display("TRACE servo4 resume: pos3=%0d pos4=%0d", pos3, pos4);
 
+        // Symmetric high-end cascade: servo 4 reaches 400, then servo 3 moves
+        // below 700 and must return home before servo 4 leaves 400.
         target_pitch = 11'd400;
         wait (pos4 == 16'd400);
         wait (pos3 < 16'd700);
@@ -144,11 +152,12 @@ module tb_arm_red_track;
         target_pitch = 11'd180;
         wait (pos4 < 16'd400);
 
+        // 需求 1/2：跟踪中再说一次"防空" -> 6 个舵机重发初始姿态，时间 1000ms
         if (last_move_time !== 16'd100)
             $fatal(1, "tracking packets must keep MOVE_TIME_MS=100: %0d", last_move_time);
 
         target_valid = 1'b0;
-        wait (!busy);
+        wait (!busy);               // 等上一轮跟踪的收尾包全部发完再记基线
         repeat (4) @(posedge clk);
         s1_b = servo1_count; s2_b = servo2_count; s3_b = servo3_count;
         s4_b = servo4_count; s5_b = servo5_count; s6_b = servo6_count;
@@ -171,6 +180,7 @@ module tb_arm_red_track;
         $display("TRACE home pose resent: pos3=%0d pos4=%0d pos6=%0d move_time=%0d",
                  pos3, pos4, pos6, last_move_time);
 
+        // 回位结束后跟踪照常恢复，并且仍用 100ms
         s6_b = servo6_count;
         target_valid = 1'b1;
         target_yaw = 11'd340;

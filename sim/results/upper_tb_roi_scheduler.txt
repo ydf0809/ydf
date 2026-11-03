@@ -23,7 +23,7 @@ Built simulation snapshot upper_tb_roi_scheduler
   **** SW Build 6511674 on Tue Jun 16 11:02:23 MDT 2026
   **** IP Build 6504888 on Tue Jun 09 09:05:25 MDT 2026
   **** SharedData Build 6501428 on Mon Jun 08 17:34:18 MDT 2026
-  **** Start of session at: Tue Nov  3 14:03:08 2026
+  **** Start of session at: Wed Nov  4 00:20:57 2026
     ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
     ** Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
 
@@ -33,6 +33,6 @@ Time resolution is 1 ps
 source run_all.tcl
 ## run all
 ROI_TEST: PASS (local sticky follow)
-$finish called at time : 13126 ns : File "[repository]/projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/tb_roi_scheduler.v" Line 302
+$finish called at time : 13126 ns : File "[repository]/projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/tb_roi_scheduler.v" Line 315
 ## quit
-INFO: [Common 17-206] Exiting xsim at Tue Nov  3 14:03:10 2026...
+INFO: [Common 17-206] Exiting xsim at Wed Nov  4 00:20:59 2026...

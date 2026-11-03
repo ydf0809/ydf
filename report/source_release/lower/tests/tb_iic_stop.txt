@@ -1,21 +1,48 @@
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "[repository]/projects/realfinal_min_102404/realfinal.srcs/sources_1/imports/imported/shijuefinal/project_7.srcs/sources_1/new/iic_w_top.v" into library work
+INFO: [VRFC 10-311] analyzing module iic_w_top
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "[repository]/projects/realfinal_min_102404/realfinal.srcs/sources_1/imports/imported/shijuefinal/project_7.srcs/sources_1/new/iic_write.v" into library work
+INFO: [VRFC 10-311] analyzing module iic_write
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "[repository]/projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_iic_stop.v" into library work
+INFO: [VRFC 10-311] analyzing module tb_iic_stop
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/vivado2026.1/2026.1/data/verilog/src/glbl.v" into library work
+INFO: [VRFC 10-311] analyzing module glbl
+
+Vivado Simulator v2026.1
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: D:/vivado2026.1/2026.1/Vivado/bin/unwrapped/win64.o/xelab.exe -L unisims_ver --timescale 1ns/1ps tb_iic_stop glbl -s lower_tb_iic_stop 
+Multi-threading is on. Using 14 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module work.iic_write
+Compiling module work.iic_w_top
+Compiling module work.tb_iic_stop
+Compiling module work.glbl
+Built simulation snapshot lower_tb_iic_stop
+
 
 ****** xsim v2026.1 (64-bit)
   **** SW Build 6511674 on Tue Jun 16 11:02:23 MDT 2026
   **** IP Build 6504888 on Tue Jun 09 09:05:25 MDT 2026
   **** SharedData Build 6501428 on Mon Jun 08 17:34:18 MDT 2026
-  **** Start of session at: Tue Nov  3 02:51:10 2026
+  **** Start of session at: Wed Nov  4 00:22:10 2026
     ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
     ** Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
 
-source xsim.dir/tb_iic_stop_sim/xsim_script.tcl
-# xsim {tb_iic_stop_sim} -autoloadwcfg -runall
+source xsim.dir/lower_tb_iic_stop/xsim_script.tcl
+# xsim {lower_tb_iic_stop} -autoloadwcfg -tclbatch {run_all.tcl}
 Time resolution is 1 ps
-run -all
+source run_all.tcl
+## run all
 == tb_iic_stop start ==
 [ OK ] uninterrupted motion packet decoded on I2C bus
 [ OK ] stop arriving during configuration reaches motor register: stop=1 motion=1
 [ OK ] stop during motor packet queues an intact stop packet: stop=1 motion=1
 == tb_iic_stop PASS ==
-$finish called at time : 18695205 ns : File "[previous_source_location]/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_iic_stop.v" Line 101
-exit
-INFO: [Common 17-206] Exiting xsim at Tue Nov  3 02:51:13 2026...
+$finish called at time : 18695205 ns : File "[repository]/projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_iic_stop.v" Line 101
+## quit
+INFO: [Common 17-206] Exiting xsim at Wed Nov  4 00:22:12 2026...

@@ -38,7 +38,7 @@ Built simulation snapshot lower_tb_xunbi_tracking
   **** SW Build 6511674 on Tue Jun 16 11:02:23 MDT 2026
   **** IP Build 6504888 on Tue Jun 09 09:05:25 MDT 2026
   **** SharedData Build 6501428 on Mon Jun 08 17:34:18 MDT 2026
-  **** Start of session at: Tue Nov  3 13:58:03 2026
+  **** Start of session at: Wed Nov  4 00:22:35 2026
     ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
     ** Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
 
@@ -76,8 +76,7 @@ source run_all.tcl
 [ OK ] right spin reaches four motor outputs
 [ OK ] mode exit cancels corner and stops motors
 == tb_xunbi_tracking PASS ==
-$finish called at time : 2463975466 ns : File "[repository]/projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_xunbi_tracking.v" Line 131
-run: Time (s): cpu = 00:00:00 ; elapsed = 00:01:17 . Memory (MB): peak = 228.602 ; gain = 0.000
+$finish called at time : 2463975466 ns : File "[repository]/projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_xunbi_tracking.v" Line 132
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:57 . Memory (MB): peak = 229.531 ; gain = 0.000
 ## quit
-INFO: xsimkernel Simulation Memory Usage: 19504 KB (Peak: 19504 KB), Simulation CPU Usage: 25577 ms
-INFO: [Common 17-206] Exiting xsim at Tue Nov  3 13:59:22 2026...
+INFO: [Common 17-206] Exiting xsim at Wed Nov  4 00:23:34 2026...

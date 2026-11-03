@@ -9,7 +9,7 @@ compat_arm_red_track #(
         .CENTER_YAW(300),
         .PITCH_MIN(200),
         .PITCH_MAX(400),
-        .YAW_MIN(210),
+        .YAW_MIN(210),          
         .YAW_MAX(750),
         .PITCH3_MIN(600),
         .PITCH3_MAX(800),
@@ -23,10 +23,10 @@ compat_arm_red_track #(
         .POS5_AIR(400),
         .DEADBAND(16),
         .KP_SHIFT(3),
-
+        
         .STEP_MAX(14),
-        .MOVE_TIME_MS(100),
-        .HOME_TIME_MS(1000),
+        .MOVE_TIME_MS(100),     
+        .HOME_TIME_MS(1000),    
         .UPDATE_PERIOD_MS(0),
         .PITCH_SIGN(1),
         .PITCH3_SIGN(-1),

@@ -28,9 +28,9 @@
   "bitstream_provenance": {
     "report_upper_sha256": "a6a27076f61adc6b35ca027db51f8ce2cb926f04a4d549dd3e7601ddeba5710d",
     "report_lower_sha256": "aebd4004da50f6ee2cb19d249d9c5ac25a5d636019f8b3c76bf22c8aedaec233",
-    "repository_upper_sha256": "3822d7b6b398c6304d12f5ec6bcb4a163b91a73ea6a1a0e284a8d547b2f05dcc",
-    "repository_lower_sha256": "8911d7eee5fcab0bfe1b4b313eb99dffd1d2b3782bfea487405700b4d01266c6",
-    "note": "The formal report cites the selected xiegithub release bits. The repository bits were regenerated from the copied main XPRs and are tracked separately."
+    "repository_upper_sha256": "fa947a84887b1c5122325621bc08ea997ad6d7d87d38158eff5c40ea39677918",
+    "repository_lower_sha256": "888f1b1bde28812eac15d66b3261173b01b25e737db220c3aca8278693f5977f",
+    "note": "The formal report cites the selected xiegithub release bits. The repository bits were regenerated from the final synchronized main XPRs and are tracked separately."
   },
   "notes": [
     "The PDF was exported read-only from the supplied DOCX; the author narrative was not rewritten.",

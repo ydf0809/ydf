@@ -1,9 +1,9 @@
 board,resource,used,available,utilization_percent
-upper,Slice LUTs,23316,53200,43.83
-upper,Slice Registers,12149,106400,11.42
+upper,Slice LUTs,23304,53200,43.80
+upper,Slice Registers,12150,106400,11.42
 upper,Block RAM Tile,109.5,140,78.21
 upper,DSPs,0,220,0.00
-lower,Slice LUTs,4573,53200,8.60
-lower,Slice Registers,3136,106400,2.95
+lower,Slice LUTs,4541,53200,8.54
+lower,Slice Registers,3032,106400,2.85
 lower,Block RAM Tile,128,140,91.43
 lower,DSPs,4,220,1.82

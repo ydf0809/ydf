@@ -1,4 +1,3 @@
-// Arbitrate line following, corner turns and obstacle avoidance before motor-command output.
 `timescale 1ns / 1ps
 
 module xunbi_core(
@@ -38,7 +37,7 @@ module xunbi_core(
     wire                   pid_search_active;
     wire [4:0]             track_phys = {track_r2, track_r1, track_m, track_l1, track_l2};
     wire                   track_invalid = (track_phys == 5'b00000) || (track_phys == 5'b11111);
-
+    // A confirmed corner owns its 1000ms approach; ordinary loss must stop first.
     wire                   stop_for_loss = track_invalid & ~corner_busy & ~pid_search_active;
     wire                   avoid_active;
     wire                   pid_run    = run_en & ~corner_busy & ~avoid_active;
@@ -88,6 +87,9 @@ module xunbi_core(
         .left_speed(), .right_speed()
     );
 
+    // ===== 循迹 PID 调速 =====
+    //   SEARCH_SWING_MS 是从中心转到一侧的 T；一次搜索按左 T、右 2T、左 T 扫描。
+    //   生产参数 T=80ms、SEARCH_MS=320ms，正好完成一轮扫描后回中停车。
     line_pid_ctrl #(
         .CLK_FREQ_HZ  (CLK_FREQ),
         .PERIOD_MS    (10),
@@ -113,6 +115,7 @@ module xunbi_core(
         .active(pid_active), .search_active(pid_search_active)
     );
 
+    // ===== 直角确认后继续直行 1000ms，再开始旋转 =====
     corner_turn #(
         .CLK_FREQ_HZ  (CLK_FREQ),
         .FORWARD_MS   (1000),
@@ -225,7 +228,7 @@ module xunbi_core(
                     startup_cnt <= startup_cnt + 1'b1;
                 end
             end else if (stop_for_loss && target_changed) begin
-
+                // Publish the zero-speed command now, not on the next 10ms tick.
                 out_m1 <= motor1_target; out_m2 <= motor2_target;
                 out_m3 <= motor3_target; out_m4 <= motor4_target;
                 cmd_update <= 1'b1;

@@ -74,6 +74,6 @@ python check_xpr.py --root "<delivery_root>" --xpr "<project/main.xpr>"
 python build/verify_relocation.py --vivado-bin "<vivado-bin>" --jobs 4
 ~~~
 
-- **验证**：脚本从 Git 索引建立 ZIP，解压到其他盘符且带空格的目录，依次执行仓库检查、26 项仿真、双板主 XPR 构建和交付检查。汇总见 report/relocation.json，详细仿真见 report/relocation_simulation.json。
+- **验证**：脚本从 Git 索引建立 ZIP，解压到其他盘符且带空格的目录，依次执行仓库检查、23 项仿真、双板主 XPR 构建和交付检查。汇总见 report/relocation.json，详细仿真见 report/relocation_simulation.json。
 - **失效条件**：任一会话或工具版本变化、归档来源不是当前索引、仿真/构建/交付检查任一失败。
 - **边界**：异路径 bit 不要求与原 bit 全文件相等；分别记录主 run 与 SHA-256，不据此宣称实板通过。

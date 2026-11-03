@@ -1,10 +1,10 @@
 # 当前验证状态
 
-2026-11-03；源包 xiegithub；工程预览。
+2026-11-04；源包 xiegithub；工程预览。
 
 ## 1. RTL 仿真
 
-Vivado/XSim 2026.1，26/26：上层 11/11、下层 15/15。输入及日志哈希见 [summary](../sim/results/summary.json)。首次 3 项辅助模块漏编的展开失败保留，修正入口重跑，不改生产断言。旧提交 745a0bd 的 15/16 不再是当前结论；当前 tb_arm_stop 通过。
+Vivado/XSim 2026.1，23/23：上层 10/10、下层 13/13。最终源包测试为上层 10 项、下层 12 项；仓库为 HSV 流水线时序修复增加了 `tb_rgb2hsv_pipeline`。输入及日志哈希见 [summary](../sim/results/summary.json)。首次兼容测试依赖失败仍保留，当前 `tb_arm_stop` 与 65536 样本 HSV 对照均通过。
 
 [检查器自测](checker_tests.json) 11/11：覆盖成功、`FAIL`、`FATAL`、`ERROR`、非零失败计数、缺少完成标记、非零退出码，以及 XPR 文件存在、缺失与越界引用。
 
@@ -12,15 +12,15 @@ Vivado/XSim 2026.1，26/26：上层 11/11、下层 15/15。输入及日志哈希
 
 | 板 | WNS ns | WHS ns | DRC error | loops/no_clock/未约束内部端点 |
 | --- | ---: | ---: | ---: | --- |
-| 上层 | 6.916 | 0.032 | 0 | 均 0 |
-| 下层 | 3.591 | 0.019 | 0 | 均 0 |
+| 上层 | 5.815 | 0.017 | 0 | 均 0 |
+| 下层 | 4.295 | 0.063 | 0 | 均 0 |
 
 两板综合、布局布线及 write_bitstream 实际完成，输入哈希未变，发布 bit 匹配各自主 run。资源见 [resources](resources.csv)，完整证据见 [上层](../build/reports/upper/manifest.json)、[下层](../build/reports/lower/manifest.json)。
 
 当前发布 SHA-256：
 
-- 上层 top.bit：3822d7b6b398c6304d12f5ec6bcb4a163b91a73ea6a1a0e284a8d547b2f05dcc
-- 下层 super_top.bit：8911d7eee5fcab0bfe1b4b313eb99dffd1d2b3782bfea487405700b4d01266c6
+- 上层 top.bit：fa947a84887b1c5122325621bc08ea997ad6d7d87d38158eff5c40ea39677918
+- 下层 super_top.bit：888f1b1bde28812eac15d66b3261173b01b25e737db220c3aca8278693f5977f
 
 上层 18 输入/37 输出、下层 14 输入/35 输出仍缺 I/O delay，另有时钟路由、复位、CDC、RAM 警告；方法学无 Critical Warning 不等于全板签核。
 

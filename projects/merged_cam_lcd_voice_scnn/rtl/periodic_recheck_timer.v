@@ -1,7 +1,10 @@
 `timescale 1ns / 1ps
 
+// The 33.333333 MHz system clock supplies a wall-clock interval independent
+// of camera frame rate.  66,666,666 cycles are nominally two seconds.
+// Keep the toggle unchanged while disabled: disabling is not a new request.
 module periodic_recheck_timer #(
-    parameter integer INTERVAL_CYCLES = 33333333
+    parameter integer INTERVAL_CYCLES = 66666666
 ) (
     input  wire clk,
     input  wire rst_n,

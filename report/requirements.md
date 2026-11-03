@@ -5,7 +5,7 @@
 | 要求 | 材料 | 边界 |
 | --- | --- | --- |
 | 3.3.5.1 完整工程/源码 | projects、training/scnn | 直接取指定源包 |
-| 仿真/验证 | sim/results、训练 verification | 26 项及软件检查；非实板 |
+| 仿真/验证 | sim/results、训练 verification | 23 项及软件检查；非实板 |
 | 资源/时序/关键指标 | build/reports、resources.csv | 保留警告，实测性能缺 |
 | 上板工程/运行/实测对照 | board | 有 bit/引脚/入口，实测缺 |
 | 可复现构建 | build、relocation.json | 主 XPR 与异路径复现 |
