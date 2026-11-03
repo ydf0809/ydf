@@ -86,6 +86,6 @@ flowchart LR
 
 ## 7. 协作与技能提炼
 
-[19 条原文节选](collaboration/README.md) 包含真实提示词、模型可见回答和索引；[协作报告](ai_collaboration.md) 记录自我纠错及实际单智能体流程。技能从权重混用、实例覆盖、定位身份、CDC/I2C、构建误判提炼，见 [skill](../skill/README.md)。
+[25 条原文节选](collaboration/README.md) 包含真实提示词、模型可见回答和索引；[协作报告](ai_collaboration.md) 记录自我纠错及实际单智能体流程。技能从权重混用、实例覆盖、定位身份、CDC/I2C、构建误判提炼，见 [skill](../skill/README.md)。
 
 不补造原始训练记录、性能数字或多智能体过程。缺项见 [owner_inputs](owner_inputs.md)，预览不等于完整参赛验收；GitHub 继续暂停。

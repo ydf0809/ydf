@@ -53,7 +53,7 @@ python build/verify_relocation.py --vivado-bin "<vivado_install>/bin"
 
 ## 协作与可复用经验
 
-[协作报告](report/ai_collaboration.md) 区分原文节选、编辑分析和当前验证，附 [19 条真实可见消息及来源索引](report/collaboration/README.md)。技能按“现象—触发—定位—处理—验证—边界”整理，覆盖权重混用、实例参数覆盖、目标身份、CDC、I2C 原子性、时序覆盖及旧产物误用；不编造多智能体过程或优化收益。
+[协作报告](report/ai_collaboration.md) 区分原文节选、编辑分析和当前验证，附 [25 条真实可见消息及来源索引](report/collaboration/README.md)。技能按“现象—触发—定位—处理—验证—边界”整理，覆盖权重混用、实例参数覆盖、目标身份、CDC、I2C 原子性、时序覆盖及旧产物误用；不编造多智能体过程或优化收益。
 
 ## 来源、许可与发布
 

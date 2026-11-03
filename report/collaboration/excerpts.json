@@ -1,6 +1,6 @@
 {
   "schema": "visible-collaboration-excerpts-v1",
-  "captured_at": "2026-11-03T13:59:00.870184+08:00",
+  "captured_at": "2026-11-03T15:31:29.4840549+08:00",
   "scope": "Selected outward messages only. Internal reasoning, hidden analysis, credentials, and unrelated content excluded.",
   "sources": [
     {
@@ -26,6 +26,24 @@
       "source_filename": "rollout-2026-11-02T02-06-49-01a1984a-ec58-7082-8c9d-0bee8f996569.jsonl",
       "captured_bytes": 5397509,
       "sha256_at_capture": "9119c1b0571dfea4ae1b62ef286706c6193eaec7e866407d32e6eedfbc59e560"
+    },
+    {
+      "session_id": "01a19ff4-64b1-7d61-911a-852116266ccf",
+      "source_filename": "rollout-2026-11-03T13-49-16-01a19ff4-64b1-7d61-911a-852116266ccf.jsonl",
+      "captured_bytes": 1526280,
+      "sha256_at_capture": "24089d814679fad5c43d264d7b0882c58608fbc6cb2619adb557d617ed02b407"
+    },
+    {
+      "session_id": "01a17d82-b89c-7902-a480-8c6c298c51d9",
+      "source_filename": "rollout-2026-10-27T21-18-01-01a17d82-b89c-7902-a480-8c6c298c51d9.jsonl",
+      "captured_bytes": 15055222,
+      "sha256_at_capture": "988309098f28bab11d91c68dd6c1f233f1bb4875612605facc3bc7364d5e4b62"
+    },
+    {
+      "session_id": "01a19a3a-db6a-7242-91ec-e8b890c20cb7",
+      "source_filename": "rollout-2026-11-02T11-08-30-01a19a3a-db6a-7242-91ec-e8b890c20cb7.jsonl",
+      "captured_bytes": 796034,
+      "sha256_at_capture": "d01b46f6598e745c2d484bf4fc74c7365c23cf9cf7b66490c8689c11ab34a405"
     }
   ],
   "records": [
@@ -88,7 +106,7 @@
       "topic": "weight_sync",
       "session_id": "01a1982d-0909-70f0-977c-afd3503c679e",
       "jsonl_line": 874,
-      "timestamp": "2026-11-02T15:48:31.650Z",
+      "timestamp": "2026-11-02T15:48:31.65Z",
       "role": "user",
       "phase": null,
       "model_from_turn_context": "gpt-6.1-sol",
@@ -114,7 +132,7 @@
       "topic": "locking",
       "session_id": "01a197f0-307c-7972-940f-15799aa7c31f",
       "jsonl_line": 338,
-      "timestamp": "2026-11-02T04:27:40.810Z",
+      "timestamp": "2026-11-02T04:27:40.81Z",
       "role": "user",
       "phase": null,
       "model_from_turn_context": "gpt-6.1-sol",
@@ -282,6 +300,95 @@
       "is_excerpt": false,
       "redactions": [
         "local_path"
+      ]
+    },
+    {
+      "id": "excerpt_20",
+      "topic": "implementation_details",
+      "session_id": "01a19ff4-64b1-7d61-911a-852116266ccf",
+      "jsonl_line": 11,
+      "timestamp": "2026-11-03T05:49:17.423Z",
+      "role": "user",
+      "phase": null,
+      "model_from_turn_context": "gpt-6.1-terra",
+      "text": "详细的各功能逻辑和所用的知识、实现方式，",
+      "is_excerpt": false,
+      "redactions": []
+    },
+    {
+      "id": "excerpt_21",
+      "topic": "implementation_details",
+      "session_id": "01a19ff4-64b1-7d61-911a-852116266ccf",
+      "jsonl_line": 249,
+      "timestamp": "2026-11-03T06:14:21.996Z",
+      "role": "assistant",
+      "phase": "final_answer",
+      "model_from_turn_context": "gpt-6.1-sol",
+      "text": "包含 16 部分的功能逻辑、知识点、实现方式和验证范围，并附系统流程图。55 个源码及记录链接均采用相对路径，已检查有效。",
+      "is_excerpt": true,
+      "redactions": [
+        "local_path",
+        "message_truncated"
+      ]
+    },
+    {
+      "id": "excerpt_22",
+      "topic": "engineering_first",
+      "session_id": "01a17d82-b89c-7902-a480-8c6c298c51d9",
+      "jsonl_line": 3972,
+      "timestamp": "2026-10-31T08:18:27.492Z",
+      "role": "user",
+      "phase": null,
+      "model_from_turn_context": "gpt-6.1-sol",
+      "text": "以工程落地为优先，减少复核的程度，继续修改",
+      "is_excerpt": false,
+      "redactions": []
+    },
+    {
+      "id": "excerpt_23",
+      "topic": "engineering_first",
+      "session_id": "01a17d82-b89c-7902-a480-8c6c298c51d9",
+      "jsonl_line": 4674,
+      "timestamp": "2026-10-31T10:03:26.022Z",
+      "role": "assistant",
+      "phase": "final_answer",
+      "model_from_turn_context": "gpt-6.1-sol",
+      "text": "本次下层板循迹修改已完成，原 XPR 对应的新 bit 已生成。五灯全亮/全灭：首个无效控制周期先停车；直角弯：转弯侧最外探头先离线、再检测到黑线，满足最小转弯时间后交回 PID。两项仿真均 PASS，综合、实现、bit 生成成功；尚未进行实车烧录测试。",
+      "is_excerpt": true,
+      "redactions": [
+        "local_path",
+        "message_truncated"
+      ]
+    },
+    {
+      "id": "excerpt_24",
+      "topic": "defense_control",
+      "session_id": "01a19a3a-db6a-7242-91ec-e8b890c20cb7",
+      "jsonl_line": 4,
+      "timestamp": "2026-11-02T03:08:30.959Z",
+      "role": "user",
+      "phase": null,
+      "model_from_turn_context": null,
+      "text": "读取[workspace]/realfinal_min_102404与[workspace]/merged_cam_lcd_voice_scnn是我的主要工程。防空模式中再次说出防空模式时，机械臂需要回到初始位置；回位速度参考追随模式的自动复位；锁定无人机时，舵机6达到100和850阈值且目标接近左右边框30像素时，麦轮原地转向2秒。",
+      "is_excerpt": true,
+      "redactions": [
+        "local_path"
+      ]
+    },
+    {
+      "id": "excerpt_25",
+      "topic": "defense_control",
+      "session_id": "01a19a3a-db6a-7242-91ec-e8b890c20cb7",
+      "jsonl_line": 762,
+      "timestamp": "2026-11-02T03:08:30.989Z",
+      "role": "assistant",
+      "phase": null,
+      "model_from_turn_context": null,
+      "text": "两块 bit 已重出，并且确认上层综合用的就是改后的代码：在实现后的网表里查 center_i 引脚数量为 0，说明旧的 center_i 端口已经不存在。",
+      "is_excerpt": true,
+      "redactions": [
+        "local_path",
+        "message_truncated"
       ]
     }
   ]

@@ -11,6 +11,42 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'skill/project_repro'))
 from check_xpr import check
 
+
+def audit_collaboration(root, errors):
+    path = root / 'report/collaboration/excerpts.json'
+    if not path.is_file():
+        errors.append({'kind': 'collaboration_missing', 'path': path.relative_to(root).as_posix()})
+        return 0
+    data = json.loads(path.read_text(encoding='utf-8'))
+    sources = data.get('sources', [])
+    records = data.get('records', [])
+    source_ids = [item.get('session_id') for item in sources]
+    if len(source_ids) != len(set(source_ids)):
+        errors.append({'kind': 'collaboration_duplicate_source'})
+    for source in sources:
+        digest = source.get('sha256_at_capture', '')
+        if (not source.get('session_id') or not source.get('source_filename')
+                or not isinstance(source.get('captured_bytes'), int)
+                or source['captured_bytes'] <= 0
+                or not re.fullmatch('[0-9a-f]{64}', digest)):
+            errors.append({'kind': 'collaboration_source_schema',
+                           'session_id': source.get('session_id')})
+    record_ids = [item.get('id') for item in records]
+    if len(record_ids) != len(set(record_ids)):
+        errors.append({'kind': 'collaboration_duplicate_record'})
+    for record in records:
+        text = record.get('text', '')
+        if (not record.get('id') or record.get('session_id') not in source_ids
+                or record.get('role') not in {'user', 'assistant'}
+                or not isinstance(record.get('jsonl_line'), int)
+                or record['jsonl_line'] <= 0 or not text
+                or re.search(r'[A-Za-z]:[\\/]', text)
+                or not isinstance(record.get('redactions'), list)):
+            errors.append({'kind': 'collaboration_record_schema',
+                           'record_id': record.get('id')})
+    return len(records)
+
+
 def tracked_candidates(root):
     if (root / '.git').exists():
         command = subprocess.run(['git', '-C', str(root), 'ls-files', '-z',
@@ -29,6 +65,7 @@ def tracked_candidates(root):
 def audit(root):
     files = tracked_candidates(root)
     errors = []
+    collaboration_records = audit_collaboration(root, errors)
     for path in files:
         rel = path.relative_to(root)
         for part in rel.parts:
@@ -68,7 +105,9 @@ def audit(root):
     for item in checks:
         if not item['passed']:
             errors.append({'kind': 'xpr_dependency', 'detail': item})
-    return {'files_checked': len(files), 'xpr_checks': checks,
+    return {'files_checked': len(files),
+            'collaboration_records_checked': collaboration_records,
+            'xpr_checks': checks,
             'errors': errors, 'passed': not errors}
 
 def main():
