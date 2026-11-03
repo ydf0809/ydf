@@ -4,7 +4,7 @@
 
 本仓库以所有者指定的 `xiegithub` 源包为依据，包含两套 Zynq-7000 PL 工程和配套 SCNN 模型、训练、参数转换及数值验证工程。上层包含 OV5640 采集、彩色 ROI、SCNN、目标搜索与锁定、LCD、语音和板间通信；下层包含 OV7670 图像处理、LCD、循迹、底盘与机械臂控制。上述为源码范围，板级功能仍需实测验收。
 
-本仓库按 AMD 竞赛指南第 3.3.5 节组织交付。先阅读 [从零复现](report/reproduction.md)、[验证状态](report/validation.md)、[已知限制](report/limitations.md) 和 [待补材料](report/owner_inputs.md)。当前不报告真实数据集准确率，也不把仿真或 bit 生成等同于实板通过。
+本仓库按 AMD 竞赛指南第 3.3.5 节组织交付。先阅读 [设计报告](report/design_report.md)、[功能实现详解](report/implementation_details.md)、[从零复现](report/reproduction.md)、[验证状态](report/validation.md)、[已知限制](report/limitations.md) 和 [待补材料](report/owner_inputs.md)。当前不报告真实数据集准确率，也不把仿真或 bit 生成等同于实板通过。
 
 ## 主工程与权重
 

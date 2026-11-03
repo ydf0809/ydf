@@ -10,7 +10,7 @@
 | 上板工程/运行/实测对照 | board | 有 bit/引脚/入口，实测缺 |
 | 可复现构建 | build、relocation.json | 主 XPR 与异路径复现 |
 | 3.3.5.2 技能 | skill 三类踩坑及检查器 | 来源/用法/效果/失效条件；非 PYNQ |
-| 3.3.5.3 原理/框图/划分/接口 | design_report.md | 创新/相关工作待补 |
+| 3.3.5.3 原理/框图/划分/接口 | design_report.md、implementation_details.md | 内部前序工程与工程特点已写；外部相关工作待所有者补充 |
 | 优化前后对比 | 设计报告第 4 节 | 无同条件数据，不计算收益 |
 | 协作/纠错/工作流 | collaboration、ai_collaboration.md | 19 条节选，不是完整历史 |
 | 从零复现 | reproduction.md、README、build/sim/board | 环境、命令、预期结果与失败边界 |
