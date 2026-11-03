@@ -8,10 +8,13 @@
     "郭康帅"
   ],
   "source_filename": "基于FPGA的多模态感知移动作业平台_设计报告_v7.docx",
-  "exported": "report/design_report_v7.docx",
-  "exported_sha256": "380f4bcc1b4e5a7bce8aeae4ca81ca41407e45557002fea2e927c735eccc6b04",
-  "bytes": 4461627,
-  "copy_status": "byte_identical",
+  "source_docx_sha256": "380f4bcc1b4e5a7bce8aeae4ca81ca41407e45557002fea2e927c735eccc6b04",
+  "source_docx_bytes": 4461627,
+  "exported": "report/design/design_report_v7.pdf",
+  "exported_sha256": "e033612f6f5cf9230c83a822d8f7e730b87ce4d87207e266a47415b708358741",
+  "bytes": 4046572,
+  "format": "pdf",
+  "copy_status": "derived_pdf",
   "render": {
     "pages": 48,
     "page_size": "A4",
@@ -30,7 +33,8 @@
     "note": "The formal report cites the selected xiegithub release bits. The repository bits were regenerated from the copied main XPRs and are tracked separately."
   },
   "notes": [
-    "The DOCX is copied byte-for-byte; the author narrative was not rewritten.",
+    "The PDF was exported read-only from the supplied DOCX; the author narrative was not rewritten.",
+    "The DOCX remains outside the published repository and is not required to open the PDF preview.",
     "Two figure placeholder areas remain in the supplied v7 report.",
     "The report says offline scripts were not supplied, while this repository now includes training/scnn; the repository version is authoritative for delivered tooling."
   ]

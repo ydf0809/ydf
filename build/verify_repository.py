@@ -48,7 +48,7 @@ def audit_collaboration(root, errors):
 
 
 def audit_formal_report(root, errors):
-    path = root / 'report/formal_report_source.json'
+    path = root / 'report/design/formal_report_source.json'
     if not path.is_file():
         errors.append({'kind': 'formal_report_metadata_missing',
                        'path': path.relative_to(root).as_posix()})
@@ -59,7 +59,7 @@ def audit_formal_report(root, errors):
             or hashlib.sha256(report.read_bytes()).hexdigest()
             != data.get('exported_sha256')
             or report.stat().st_size != data.get('bytes')
-            or data.get('copy_status') != 'byte_identical'):
+            or data.get('copy_status') not in {'byte_identical', 'derived_pdf'}):
         errors.append({'kind': 'formal_report_changed',
                        'path': data.get('exported')})
         return False
