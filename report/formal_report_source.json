@@ -1,0 +1,37 @@
+{
+  "schema": "owner-supplied-formal-report-v1",
+  "received_at": "2026-11-03",
+  "title": "基于FPGA的多模态低空空前预警战备车",
+  "authors": [
+    "罗欣言",
+    "聂明飞",
+    "郭康帅"
+  ],
+  "source_filename": "基于FPGA的多模态感知移动作业平台_设计报告_v7.docx",
+  "exported": "report/design_report_v7.docx",
+  "exported_sha256": "380f4bcc1b4e5a7bce8aeae4ca81ca41407e45557002fea2e927c735eccc6b04",
+  "bytes": 4461627,
+  "copy_status": "byte_identical",
+  "render": {
+    "pages": 48,
+    "page_size": "A4",
+    "paragraphs": 348,
+    "tables": 17,
+    "inline_shapes": 46,
+    "tracked_changes": 0,
+    "comments": 0,
+    "figure_placeholders": 2
+  },
+  "bitstream_provenance": {
+    "report_upper_sha256": "a6a27076f61adc6b35ca027db51f8ce2cb926f04a4d549dd3e7601ddeba5710d",
+    "report_lower_sha256": "aebd4004da50f6ee2cb19d249d9c5ac25a5d636019f8b3c76bf22c8aedaec233",
+    "repository_upper_sha256": "3822d7b6b398c6304d12f5ec6bcb4a163b91a73ea6a1a0e284a8d547b2f05dcc",
+    "repository_lower_sha256": "8911d7eee5fcab0bfe1b4b313eb99dffd1d2b3782bfea487405700b4d01266c6",
+    "note": "The formal report cites the selected xiegithub release bits. The repository bits were regenerated from the copied main XPRs and are tracked separately."
+  },
+  "notes": [
+    "The DOCX is copied byte-for-byte; the author narrative was not rewritten.",
+    "Two figure placeholder areas remain in the supplied v7 report.",
+    "The report says offline scripts were not supplied, while this repository now includes training/scnn; the repository version is authoritative for delivered tooling."
+  ]
+}

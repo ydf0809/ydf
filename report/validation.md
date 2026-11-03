@@ -43,3 +43,7 @@ source_manifest.json 记录来源及适配，source_integrity.json 记录原源�
 ## 5. 物理状态
 
 本次未接硬件、烧录或上板验收。相机、语音、电机、机械臂、供电与动作成功率按 board/measurements.md 采集；不能从仿真或 bit 推出实板通过。
+
+## 6. 作者正式报告
+
+作者提供的 [设计报告 V7](design_report_v7.docx) 已按原字节纳入仓库，SHA-256 为 `380f4bcc1b4e5a7bce8eaeae4ca81ca41407e45557002fea2e927c735eccc6b04`。渲染检查共 48 页，无批注或修订；报告中仍有两处图片占位。报告引用 xiegithub 原始发布 bit 的哈希，仓库 `board/bitstreams/` 则记录从主 XPR 重建的 bit，两者已分别在 [formal_report_source.json](formal_report_source.json) 中登记，不能互换。

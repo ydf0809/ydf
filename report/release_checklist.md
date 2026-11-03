@@ -7,6 +7,7 @@
 | 来源、映射与适配哈希 | source_manifest.json、source_integrity.json |
 | 名称、依赖、链接、明显凭据模式 | repository_check.json |
 | 判定器和 XPR 检查正负反例 | checker_tests.json |
+| 作者正式报告与渲染检查 | design_report_v7.docx、formal_report_source.json |
 | 26 项和首次依赖失败 | sim/results/summary.json、attempts |
 | 主 XPR、源未变、bit 对应 | build/reports 各板 manifest |
 | 时序/DRC/环/时钟覆盖与工具诊断 | validation.md、rpt/console |

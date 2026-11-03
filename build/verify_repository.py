@@ -47,6 +47,25 @@ def audit_collaboration(root, errors):
     return len(records)
 
 
+def audit_formal_report(root, errors):
+    path = root / 'report/formal_report_source.json'
+    if not path.is_file():
+        errors.append({'kind': 'formal_report_metadata_missing',
+                       'path': path.relative_to(root).as_posix()})
+        return False
+    data = json.loads(path.read_text(encoding='utf-8'))
+    report = root / data.get('exported', '__missing__')
+    if (not report.is_file()
+            or hashlib.sha256(report.read_bytes()).hexdigest()
+            != data.get('exported_sha256')
+            or report.stat().st_size != data.get('bytes')
+            or data.get('copy_status') != 'byte_identical'):
+        errors.append({'kind': 'formal_report_changed',
+                       'path': data.get('exported')})
+        return False
+    return True
+
+
 def tracked_candidates(root):
     if (root / '.git').exists():
         command = subprocess.run(['git', '-C', str(root), 'ls-files', '-z',
@@ -66,6 +85,7 @@ def audit(root):
     files = tracked_candidates(root)
     errors = []
     collaboration_records = audit_collaboration(root, errors)
+    formal_report_checked = audit_formal_report(root, errors)
     for path in files:
         rel = path.relative_to(root)
         for part in rel.parts:
@@ -107,6 +127,7 @@ def audit(root):
             errors.append({'kind': 'xpr_dependency', 'detail': item})
     return {'files_checked': len(files),
             'collaboration_records_checked': collaboration_records,
+            'formal_report_checked': formal_report_checked,
             'xpr_checks': checks,
             'errors': errors, 'passed': not errors}
 
