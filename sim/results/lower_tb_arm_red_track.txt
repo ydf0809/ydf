@@ -32,7 +32,7 @@ Built simulation snapshot lower_tb_arm_red_track
   **** SW Build 6511674 on Tue Jun 16 11:02:23 MDT 2026
   **** IP Build 6504888 on Tue Jun 09 09:05:25 MDT 2026
   **** SharedData Build 6501428 on Mon Jun 08 17:34:18 MDT 2026
-  **** Start of session at: Wed Nov  4 00:21:17 2026
+  **** Start of session at: Wed Nov  4 14:49:04 2026
     ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
     ** Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
 
@@ -51,4 +51,4 @@ TRACE tracking resumed, move_time=100
 ARM_RED_TRACK_PASS pos3=700 pos4=294 pos6=505 servo5_packets=2
 $finish called at time : 1066215 ns : File "[repository]/projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_arm_red_track.v" Line 194
 ## quit
-INFO: [Common 17-206] Exiting xsim at Wed Nov  4 00:21:19 2026...
+INFO: [Common 17-206] Exiting xsim at Wed Nov  4 14:49:06 2026...

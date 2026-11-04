@@ -1,5 +1,5 @@
 {
-  "completed_at": "2026-11-04T00:23:34+08:00",
+  "completed_at": "2026-11-04T14:51:48+08:00",
   "source_sha256": {
     "upper": {
       "projects/merged_cam_lcd_voice_scnn/constraints/impl_route.xdc": "9c750238599c9358b1d8c8f128e46715c21975d0238deddddee7595fbedd0c66",
@@ -184,7 +184,7 @@
       ],
       "failure_markers": [],
       "log": "sim/results/upper_tb_air_defence_mode.txt",
-      "log_sha256": "6450fcbc6d8d08805de14ca5db203b8a3ee60c10446e9a46856bb79207e44f38",
+      "log_sha256": "786e9eb4081873b047c761cdc8d875a04a7542344a4b181a2101f070f8ee185a",
       "inputs_unchanged": true
     },
     {
@@ -240,7 +240,7 @@
       ],
       "failure_markers": [],
       "log": "sim/results/upper_tb_integrated_recheck_cdc.txt",
-      "log_sha256": "57d90d00b087524ee8e3f6d34c5354aadd56674ef50599ca4ece6badef67a2a4",
+      "log_sha256": "82bf9a9cb17067ca7edb47554b3f108d8c3022b79ca2cc8e4d6aec4dead61c84",
       "inputs_unchanged": true
     },
     {
@@ -260,7 +260,7 @@
       ],
       "failure_markers": [],
       "log": "sim/results/upper_tb_lcd_box_color.txt",
-      "log_sha256": "85538972e1b5c3205b49be3ed272cf11c4033ad1b3b0376ba9bbb6b7fa7a5e06",
+      "log_sha256": "7c18375c841e82875d0f856a38c36eac7cba6a293f8fb47648aba1875fbdbf4b",
       "inputs_unchanged": true
     },
     {
@@ -282,7 +282,7 @@
       ],
       "failure_markers": [],
       "log": "sim/results/upper_tb_lower_display_compat.txt",
-      "log_sha256": "ed2fc89bbaf20eb0fcf154b9044a9ea00cbc32b9aab147aeb9963ff8d22f730a",
+      "log_sha256": "97e30c326dfcbf6747377594117b09ebb1569e9a0cf549dd13ecd0f3b30a9a1c",
       "inputs_unchanged": true
     },
     {
@@ -301,7 +301,7 @@
       ],
       "failure_markers": [],
       "log": "sim/results/upper_tb_motion_candidate_priority.txt",
-      "log_sha256": "d63a6cf440bf46c615b1d44d797e889cd7a3aa606d057d34bbe4854b3b0544ea",
+      "log_sha256": "de651f9abe170afe26579084477acc0986e32cd4c461d57d4f21e9ee80508a83",
       "inputs_unchanged": true
     },
     {
@@ -321,7 +321,7 @@
       ],
       "failure_markers": [],
       "log": "sim/results/upper_tb_motion_detector.txt",
-      "log_sha256": "301a25793e7c8fd583c3859aa991b3945a7a2258b9a867dc3935f68d00ae2386",
+      "log_sha256": "959a009b109d32088ed25eb8ed0f813dc1d5ef5ef71996e822da1fcd0278b277",
       "inputs_unchanged": true
     },
     {
@@ -341,7 +341,7 @@
       ],
       "failure_markers": [],
       "log": "sim/results/upper_tb_periodic_recheck.txt",
-      "log_sha256": "0870ef862c149ea11abb6c8a1525908ca4f7a961174e7a468400bf4bc7e70089",
+      "log_sha256": "251e2fe4ab3a0462cc252da6b77b79d6d4ee14d5c4b4109a41dc13d7d6d39f42",
       "inputs_unchanged": true
     },
     {
@@ -360,7 +360,7 @@
       ],
       "failure_markers": [],
       "log": "sim/results/upper_tb_roi_scheduler.txt",
-      "log_sha256": "5bda88b7c0d92d7761bca3dd476d9b45d8765d9f2737fc6e810b007a60feb39d",
+      "log_sha256": "d81dcc00f88b49551ddc3a72d5ae4cf80c32c1b97c3f06e45ac8611baa913ac3",
       "inputs_unchanged": true
     },
     {
@@ -381,7 +381,7 @@
       ],
       "failure_markers": [],
       "log": "sim/results/upper_tb_servo6_compat.txt",
-      "log_sha256": "e88e2fe71f1f0d88b0cb31dc780acd8e0c20b70d42916ef9af278578ee9c68e0",
+      "log_sha256": "40ec3b46d41465c94776ef000900481b7008884ed597b89bd1add965a1cce581",
       "inputs_unchanged": true
     },
     {
@@ -445,7 +445,7 @@
       ],
       "failure_markers": [],
       "log": "sim/results/upper_tb_upper_lower_serial_compat.txt",
-      "log_sha256": "093b3d28a89d6d0648af6bf826269805fc9f0a0f0be3e4d8bf720d831d93bbfb",
+      "log_sha256": "65f976f0c2febbee54fb0797a0b17ee02ae918db05ae081ae3b48e3497122efd",
       "inputs_unchanged": true
     },
     {
@@ -467,7 +467,7 @@
       ],
       "failure_markers": [],
       "log": "sim/results/lower_tb_arm_red_track.txt",
-      "log_sha256": "51d0c9f376641ba8d9a88b47171308ac0918d2d4901aad47cf1bea04f875521b",
+      "log_sha256": "b54e3cb4f94647d716d8ea2d8cf042f70994af0133719badd9d088f7b3ccf9b4",
       "inputs_unchanged": true
     },
     {
@@ -490,7 +490,7 @@
       ],
       "failure_markers": [],
       "log": "sim/results/lower_tb_arm_stop.txt",
-      "log_sha256": "90c7a16cf48974972039f46f4aff7fa1236cef7fac21d375c259a3e4ac5c74de",
+      "log_sha256": "f69be30990b09f7ef897c6776f8025f71c2ed625055c28016d39f13496e0655f",
       "inputs_unchanged": true
     },
     {
@@ -510,7 +510,7 @@
       ],
       "failure_markers": [],
       "log": "sim/results/lower_tb_bbox_unpack.txt",
-      "log_sha256": "1eba6c5172d08f012a6710d7c04e405dd2ee5df0fa1b03c39096868c56c125b2",
+      "log_sha256": "336bc997eddd967e35db7d356c090e1e9bb8ef17875fb89a9a70ddc9880872fd",
       "inputs_unchanged": true
     },
     {
@@ -537,7 +537,7 @@
       ],
       "failure_markers": [],
       "log": "sim/results/lower_tb_board_link.txt",
-      "log_sha256": "c633be6714ba5a67c5d3813ef87f187783e695b7875b9fc8d440a98f431f2eb8",
+      "log_sha256": "9a0d4f200c7eca3d5b678f3597d116c3f6ecc398340f7f5ff6e27bc104450846",
       "inputs_unchanged": true
     },
     {
@@ -557,7 +557,7 @@
       ],
       "failure_markers": [],
       "log": "sim/results/lower_tb_chassis_filter.txt",
-      "log_sha256": "2b1cb15c85529923f0119b63e82d29b8bc7bb6914f4274b9635ed45504689e86",
+      "log_sha256": "97faff9fb1fd0bead81f7e758671bce7009ff276e60ebf21a82178726584d218",
       "inputs_unchanged": true
     },
     {
@@ -577,7 +577,7 @@
       ],
       "failure_markers": [],
       "log": "sim/results/lower_tb_corner_turn.txt",
-      "log_sha256": "5a21b13e1c92226757998ea6c5d4dd244c786ca57fd6b05ef7e8372b2db37ee2",
+      "log_sha256": "3f4a4b7f6278a12db7ebde64027cae2c8458c4781e530a087c4553e530a82e1f",
       "inputs_unchanged": true
     },
     {
@@ -597,7 +597,7 @@
       ],
       "failure_markers": [],
       "log": "sim/results/lower_tb_defense_spin.txt",
-      "log_sha256": "80c8c7da3dd56d065979ae078a76b99e0419fe7388204368b8d2587cd1e8adae",
+      "log_sha256": "c3f83b0411876003b984cb5004aa70f4fe1ab8a49b609524ac8e1466a8585c8a",
       "inputs_unchanged": true
     },
     {
@@ -618,7 +618,7 @@
       ],
       "failure_markers": [],
       "log": "sim/results/lower_tb_iic_stop.txt",
-      "log_sha256": "422292f5a3054abd1818a66ffa851cf628ee2faab4476ffa17dd75e5e2fc9f5f",
+      "log_sha256": "8b605bce80f079ffc7de8f6b7ab5516e8a990eed6afb02d07a9ea336cc261134",
       "inputs_unchanged": true
     },
     {
@@ -638,7 +638,7 @@
       ],
       "failure_markers": [],
       "log": "sim/results/lower_tb_line_pid.txt",
-      "log_sha256": "30ef477d2b2214f9ca50b8dd8d08a6e9baa49326567e75871c4bb29ba9b3ebc2",
+      "log_sha256": "afd0d77bf58c6918cf6fd6f70eabee22e5d5a52f5feb657b542e5e94095fa500",
       "inputs_unchanged": true
     },
     {
@@ -658,7 +658,7 @@
       ],
       "failure_markers": [],
       "log": "sim/results/lower_tb_rgb2hsv_pipeline.txt",
-      "log_sha256": "94423799587706d2a67e67d58a2d091f32024f099cb1400a027ddf77de11fb07",
+      "log_sha256": "c4338a0d81375c482c38b20c5ca35cad012b19327d4a5114adabca76010fedf4",
       "inputs_unchanged": true
     },
     {
@@ -685,7 +685,7 @@
       ],
       "failure_markers": [],
       "log": "sim/results/lower_tb_voice_arm.txt",
-      "log_sha256": "3655e5a7d81369c7a9650563cf483f8aa937aafa8ac1fa5441d928dae3d5be61",
+      "log_sha256": "a4b227c50766801742db9c7dc82d5576515a1c2e8a956879ea0af2aab340c067",
       "inputs_unchanged": true
     },
     {
@@ -712,7 +712,7 @@
       ],
       "failure_markers": [],
       "log": "sim/results/lower_tb_voice_mode.txt",
-      "log_sha256": "ccb27b3f98bf9bd600866a1d3235f8db1d2ca808a16e0de233554637f558e6d1",
+      "log_sha256": "507a381c732417370f918563f15fe13471511c5f7649797f825baf8bc8d70353",
       "inputs_unchanged": true
     },
     {
@@ -736,7 +736,7 @@
       ],
       "failure_markers": [],
       "log": "sim/results/lower_tb_xunbi_tracking.txt",
-      "log_sha256": "a23e160219dcde860e2d3d0589ee3cb5c8d20646d7d8084adada55a19e467542",
+      "log_sha256": "89bd3e6903d4918774a56149aa0f54e4e9fe8be8297439273e7fcccdf2df7844",
       "inputs_unchanged": true
     }
   ]

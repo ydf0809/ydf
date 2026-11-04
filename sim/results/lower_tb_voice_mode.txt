@@ -47,7 +47,7 @@ Built simulation snapshot lower_tb_voice_mode
   **** SW Build 6511674 on Tue Jun 16 11:02:23 MDT 2026
   **** IP Build 6504888 on Tue Jun 09 09:05:25 MDT 2026
   **** SharedData Build 6501428 on Mon Jun 08 17:34:18 MDT 2026
-  **** Start of session at: Wed Nov  4 00:22:30 2026
+  **** Start of session at: Wed Nov  4 14:50:20 2026
     ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
     ** Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
 
@@ -86,4 +86,4 @@ source run_all.tcl
 ==================================================
 $finish called at time : 8525235 ns : File "[repository]/projects/realfinal_min_102404/realfinal.srcs/sim_1/new/tb_voice_mode.v" Line 240
 ## quit
-INFO: [Common 17-206] Exiting xsim at Wed Nov  4 00:22:32 2026...
+INFO: [Common 17-206] Exiting xsim at Wed Nov  4 14:50:22 2026...

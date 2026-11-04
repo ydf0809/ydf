@@ -32,7 +32,7 @@ Built simulation snapshot upper_tb_lower_display_compat
   **** SW Build 6511674 on Tue Jun 16 11:02:23 MDT 2026
   **** IP Build 6504888 on Tue Jun 09 09:05:25 MDT 2026
   **** SharedData Build 6501428 on Mon Jun 08 17:34:18 MDT 2026
-  **** Start of session at: Wed Nov  4 00:20:33 2026
+  **** Start of session at: Wed Nov  4 14:48:21 2026
     ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
     ** Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
 
@@ -44,4 +44,4 @@ source run_all.tcl
 LOWER_DISPLAY_COMPAT_TEST: PASS
 $finish called at time : 13230 ns : File "[repository]/projects/merged_cam_lcd_voice_scnn/merged_cam_lcd_voice_scnn.srcs/sim_1/new/tb_lower_display_compat.v" Line 17
 ## quit
-INFO: [Common 17-206] Exiting xsim at Wed Nov  4 00:20:35 2026...
+INFO: [Common 17-206] Exiting xsim at Wed Nov  4 14:48:23 2026...
