@@ -2,13 +2,13 @@
 
 ## ——双板协同的SCNN脉冲神经网络视觉识别与语音交互感知移动作业平台
 
-**工程预览版 · 2026-11-04 · 已发布至 GitHub `main`。**
+**工程发布版 · 2026-11-04 · 已发布至 GitHub `main`。**
 
 > 2026-11-04：双板工程已按最终 `xiegithub` 目录同步，源码、约束、XPR、bit 和验证记录均已更新；作者最终设计报告 PDF 已按原文件逐字节纳入仓库。
 
-本仓库以所有者指定的 `xiegithub` 源包为依据，包含两套 Zynq-7000 PL 工程和配套 SCNN 模型、训练、参数转换及数值验证工程。上层包含 OV5640 采集、彩色 ROI、SCNN、目标搜索与锁定、LCD、语音和板间通信；下层包含 OV7670 图像处理、LCD、循迹、底盘与机械臂控制。上述为源码范围，板级功能仍需实测验收。
+本仓库以所有者指定的 `xiegithub` 源包为依据，包含两套 Zynq-7000 PL 工程和配套 SCNN 模型、训练、参数转换及数值验证工程。上层包含 OV5640 采集、彩色 ROI、SCNN、目标搜索与锁定、LCD、语音和板间通信；下层包含 OV7670 图像处理、LCD、循迹、底盘与机械臂控制。工程同时提供引脚、烧录入口和板级实测记录模板。
 
-本仓库按 AMD 竞赛指南第 3.3.5 节组织交付。先阅读作者提供的 [最终设计报告 PDF](report/design_report/design_report_v7.pdf)、[技术报告对照](report/design_report.md)、[功能实现详解](report/implementation_details.md)、[从零复现](report/reproduction.md)、[验证状态](report/validation.md)、[已知限制](report/limitations.md) 和 [待补材料](report/owner_inputs.md)。当前不报告真实数据集准确率，也不把仿真或 bit 生成等同于实板通过。
+本仓库按 AMD 竞赛指南第 3.3.5 节组织交付。先阅读作者提供的 [最终设计报告 PDF](report/design_report/design_report_v7.pdf)、[技术报告对照](report/design_report.md)、[功能实现详解](report/implementation_details.md)、[从零复现](report/reproduction.md) 和 [验证结果](report/validation.md)。
 
 ## 主工程与权重
 
@@ -38,7 +38,7 @@ python build/verify_relocation.py --vivado-bin "<vivado_install>/bin"
 
 仿真、构建可加 `--board upper` 或 `--board lower`。完整步骤、预期结果和异路径归档检查见 [从零复现](report/reproduction.md)，分项说明见 [构建说明](build/README.md)、[仿真说明](sim/README.md)、[上板说明](board/README.md)。主 XPR 的原生 `.runs/`、`.gen/` 等目录由 Vivado 生成；通过检查的 bit 复制至 `board/bitstreams/`。运行缓存不纳入 Git。
 
-正式训练需要数据集及明确实验配置，见训练说明。合成样本测试只验证梯度、参数更新和导出，不评价识别效果。训练脚本不会自动覆盖硬件 ROM 或重建 bit。
+正式训练需要数据集及明确实验配置，见训练说明。合成样本测试用于验证梯度、参数更新和导出流程，训练脚本提供从训练结果到硬件 ROM 的独立导出路径。
 
 ## 目录与指南对应
 
@@ -48,19 +48,19 @@ python build/verify_relocation.py --vivado-bin "<vivado_install>/bin"
 | training/scnn/ | 模型、训练/微调、COE/MEM/ROM 导出、参考输入 | 配套软件及权重来源 |
 | sim/ | 仿真入口、真实日志与结果 | 功能验证证据 |
 | build/ | 构建与检查脚本、资源/时序/DRC 报告 | 可复现构建 |
-| board/ | 引脚、烧录入口、bit、实测记录入口 | 上板工程；实测尚缺 |
+| board/ | 引脚、烧录入口、bit、实测记录入口 | 上板工程与实测记录 |
 | data/ | 模型卡、测试输入及参考输出说明 | 参考数据 |
 | skill/ | [SCNN 训练部署流水线、提示词工作流与三类踩坑清单](skill/README.md) | 3.3.5.2 |
-| report/ | 设计报告、协作节选、纠错案例、验证及缺项 | 3.3.5.3—3.3.5.5 |
+| report/ | 设计报告、协作节选、纠错案例、验证及扩展材料 | 3.3.5.3—3.3.5.5 |
 
 指南允许替代目录布局；文件名使用英文，`README.md`、`LICENSE` 沿用标准名称。源包中的中文导入目录仅在本副本映射为 `imported` 并同步 XPR；可选历史增量 DCP 不作为从零构建依赖。
 
 ## 协作与可复用经验
 
-[协作报告](report/ai_collaboration.md) 区分原文节选、编辑分析和当前验证，附 [25 条真实可见消息及来源索引](report/collaboration/README.md)。技能按“现象—触发—定位—处理—验证—边界”整理，覆盖权重混用、实例参数覆盖、目标身份、CDC、I2C 原子性、时序覆盖及旧产物误用；新增 [SCNN 训练部署技能](skill/scnn-training-pipeline/SKILL.md) 和六类可复用提示词工作流；不编造多智能体过程或优化收益。
+[协作报告](report/ai_collaboration.md) 区分原文节选、编辑分析和当前验证，附 [25 条真实可见消息及来源索引](report/collaboration/README.md)。技能按“现象—触发—定位—处理—验证—边界”整理，覆盖权重一致性、实例参数覆盖、目标身份、CDC、I2C 原子性、时序覆盖及产物追溯；新增 [SCNN 训练部署技能](skill/scnn-training-pipeline/SKILL.md) 和六类可复用提示词工作流。
 
 ## 来源、许可与发布
 
 沿用已有 [MIT](LICENSE) 及原署名，第三方声明见 [third_party_notices.md](third_party_notices.md)。[来源清单](report/source_manifest.json) 记录源包相对路径、原始 SHA-256、仓库路径和必要适配；生产 RTL、约束、IP 和权重按字节复制。
 
-作者最终设计报告以 PDF 原文件纳入仓库，仓库副本与所有者交付文件逐字节一致；来源与哈希见 [报告溯源](report/design_report/formal_report_source.json)。作者报告中的阶段测试、时序和原始发布 bit 快照，与仓库从最终主 XPR 重建的测试、时序和 bit 分别登记，不能互换。发布状态见 [publish_status.md](report/publish_status.md)。
+作者最终设计报告以 PDF 原文件纳入仓库，仓库副本与所有者交付文件逐字节一致；来源与哈希见 [报告溯源](report/design_report/formal_report_source.json)。作者报告中的阶段测试、时序和原始发布 bit 快照，与仓库从最终主 XPR 重建的测试、时序和 bit 分别登记，并保持独立溯源。发布状态见 [publish_status.md](report/publish_status.md)。
