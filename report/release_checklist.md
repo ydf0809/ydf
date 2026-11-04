@@ -7,7 +7,7 @@
 | 来源、映射与适配哈希 | source_manifest.json、source_integrity.json |
 | 名称、依赖、链接、明显凭据模式 | repository_check.json |
 | 判定器和 XPR 检查正负反例 | checker_tests.json |
-| 作者正式报告与渲染检查 | design_report/design_report_v7.pdf、design_report/formal_report_source.json |
+| 作者最终报告书与渲染检查 | design_report/design_report_final.pdf、design_report/design_report_final.docx、design_report/formal_report_source.json |
 | SCNN 训练部署技能结构与可运行检查 | scnn-training-pipeline、skill_validation.json |
 | 23 项回归与依赖检查日志 | sim/results/summary.json、attempts |
 | 主 XPR、源未变、bit 对应 | build/reports 各板 manifest |

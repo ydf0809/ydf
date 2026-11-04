@@ -46,7 +46,7 @@ source_manifest.json 记录来源及适配，source_integrity.json 记录原源�
 
 ## 6. 作者正式报告
 
-作者提供的 [最终设计报告 PDF](design_report/design_report_v7.pdf) 已按原文件逐字节纳入仓库，共 47 页，PDF SHA-256 为 `dab7a8c09a288848f57c2bc8de6bce1b83b0b4cde04376c84f16d9fad4491b82`。PDF 无表单、JavaScript、批注，47 页均已渲染检查，无空白页或可见版面破损。作者报告快照与仓库最终主 XPR 重建证据分别在 [formal_report_source.json](design_report/formal_report_source.json) 中独立登记。
+作者最终报告书已提供 [修改后 DOCX](design_report/design_report_final.docx) 与 [导出 PDF](design_report/design_report_final.pdf)，共 47 页。DOCX SHA-256 为 `5f8f78cb8b8bc504b460a1afd3569ad5670fcab7cbfb595e7a8af8401012328f`，PDF SHA-256 为 `3f2323e9163f3ae43a8c9d28a995e46cfab82f18e4f751788e1a3d751d561739`。DOCX 与 PDF 均无批注或修订，PDF 无表单和 JavaScript，47 页均已渲染检查，无空白页或可见版面破损。作者报告快照与仓库最终主 XPR 重建证据分别在 [formal_report_source.json](design_report/formal_report_source.json) 中独立登记。
 
 ## 7. SCNN 训练部署技能
 

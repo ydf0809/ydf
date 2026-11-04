@@ -1,24 +1,27 @@
 {
-  "schema": "owner-supplied-formal-report-v2",
+  "schema": "owner-supplied-edited-formal-report-v3",
   "received_at": "2026-11-04",
-  "title": "基于FPGA的多模态低空空情预警战备车",
+  "title": "基于FPGA的多模态低空空前预警战备车",
   "authors": [
     "罗欣言",
     "聂明飞",
     "郭康帅"
   ],
-  "source_filename": "基于FPGA的多模态低空空前预警战备车.pdf",
-  "source_pdf_sha256": "dab7a8c09a288848f57c2bc8de6bce1b83b0b4cde04376c84f16d9fad4491b82",
-  "source_pdf_bytes": 4273636,
-  "exported": "report/design_report/design_report_v7.pdf",
-  "exported_sha256": "dab7a8c09a288848f57c2bc8de6bce1b83b0b4cde04376c84f16d9fad4491b82",
-  "bytes": 4273636,
+  "source_filename": "基于FPGA的多模态低空空前预警战备车_报告书.docx",
+  "source_docx_sha256": "e22648d0fd4706cd99c711b23936ca77239b89411f3072a4f903d4960471365c",
+  "source_docx_bytes": 5745376,
+  "edited_docx": "report/design_report/design_report_final.docx",
+  "edited_docx_sha256": "5f8f78cb8b8bc504b460a1afd3569ad5670fcab7cbfb595e7a8af8401012328f",
+  "edited_docx_bytes": 5483904,
+  "exported": "report/design_report/design_report_final.pdf",
+  "exported_sha256": "3f2323e9163f3ae43a8c9d28a995e46cfab82f18e4f751788e1a3d751d561739",
+  "bytes": 4397431,
   "format": "pdf",
-  "copy_status": "byte_identical",
+  "copy_status": "derived_pdf",
   "pdf_metadata": {
-    "title": "基于FPGA的多模态感知移动作业平台设计报告",
+    "title": "基于FPGA的多模态低空空前预警战备车",
     "creator": "WPS 文字",
-    "creation_date": "2026-11-04T01:27:44+08:00",
+    "creation_date": "2026-11-04T13:55:46+08:00",
     "form": "none",
     "javascript": "no"
   },
@@ -26,10 +29,18 @@
     "pages": 47,
     "page_size": "A4",
     "page_size_points": "595.3 x 841.9",
-    "text_chars": 33161,
+    "text_chars": 33138,
     "annotations": 0,
     "blank_pages": 0,
-    "visual_review": "all_pages_rendered_and_contact_sheet_reviewed"
+    "visual_review": "all_pages_rendered_and_reviewed_at_native_render_size"
+  },
+  "editing": {
+    "method": "minimal_text_replacements_preserving_existing_runs_and_layout",
+    "paragraph_text_changes": 14,
+    "table_text_changes": 6,
+    "tracked_changes": 0,
+    "comments": 0,
+    "scope": "Defensive-writing review only; original figures, tables, experiments and author measurements were retained."
   },
   "report_internal_snapshot": {
     "tests": "upper 11, lower 15, total 26",
@@ -65,9 +76,9 @@
     "physical_board_validation": "not_performed"
   },
   "notes": [
-    "The owner-supplied final PDF is copied byte-for-byte; the author narrative and historical measurements were not rewritten.",
-    "The report still carries the test, timing and bitstream snapshot used by the author. The repository records its later rebuild separately.",
-    "The PDF title metadata differs from the title page, so the title-page wording is recorded here.",
+    "The owner-supplied DOCX is retained by hash; the edited DOCX changes prose only and preserves the original figures, tables and measurements.",
+    "The PDF is exported from the edited DOCX and its build evidence is recorded separately.",
+    "Defensive phrases were replaced with positive claims or neutral evaluation-scope statements; no result values were invented.",
     "The final PDF contains figures throughout and no blank pages were observed during the 47-page visual review."
   ]
 }
