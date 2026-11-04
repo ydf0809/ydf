@@ -11,17 +11,17 @@
   "source_docx_sha256": "e22648d0fd4706cd99c711b23936ca77239b89411f3072a4f903d4960471365c",
   "source_docx_bytes": 5745376,
   "edited_docx": "report/design_report/design_report_final.docx",
-  "edited_docx_sha256": "aabaecde5b762c167580781e1fa980e874292385fcb844f449d9f3cfb89051ae",
-  "edited_docx_bytes": 5485389,
+  "edited_docx_sha256": "2cc5973231fa605a076ae7d063176d66984aaa252be21f52dbc8edd59a4daac3",
+  "edited_docx_bytes": 5485368,
   "exported": "report/design_report/design_report_final.pdf",
-  "exported_sha256": "b430770a54ce93b0d31097e55f00725eb59fd83be6d5ecf15f0c28d153c65e09",
-  "bytes": 4406136,
+  "exported_sha256": "587df8e2b6998743c101a1122d34c9dde0652fa8954dc02fadecbf35fae6b1b3",
+  "bytes": 4406168,
   "format": "pdf",
   "copy_status": "derived_pdf",
   "pdf_metadata": {
     "title": "基于FPGA的多模态低空空前预警战备车",
     "creator": "WPS 文字",
-    "creation_date": "2026-11-04T14:35:14+08:00",
+    "creation_date": "2026-11-04T17:45:22+08:00",
     "form": "none",
     "javascript": "no"
   },
@@ -29,7 +29,7 @@
     "pages": 49,
     "page_size": "A4",
     "page_size_points": "595.3 x 841.9",
-    "text_chars": 34214,
+    "text_chars": 34220,
     "annotations": 0,
     "blank_pages": 0,
     "visual_review": "all_pages_rendered_and_reviewed_at_native_render_size"
@@ -45,7 +45,7 @@
   },
   "board_evidence": {
     "index": "board/evidence/report/evidence_index.json",
-    "index_sha256": "0a8d04fc211ce72db8db2b498c6f25db4e8e5b0ff14e1244bdd4c0a196d7ca05",
+    "index_sha256": "605951763e68f6946c02c7c7afb019f6eec796140ad09a6a5f75c908fbab7743",
     "record_count": 21,
     "source": "Images extracted without re-encoding from the final report DOCX"
   },
@@ -86,6 +86,7 @@
     "The owner-supplied DOCX is retained by hash; the edited DOCX preserves the original figures and measurements while adding related work, an optimization comparison and defensive-writing revisions.",
     "The PDF is exported from the edited DOCX and its build evidence is recorded separately.",
     "Defensive phrases were replaced with positive claims or neutral evaluation-scope statements; no result values were invented.",
+    "Periodic recheck parameters were synchronized to the current RTL: 2 seconds, five completed checks, drone_count <= 10.",
     "The final PDF contains figures throughout and no blank pages were observed during the 49-page visual review."
   ]
 }
