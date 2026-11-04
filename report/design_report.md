@@ -2,7 +2,7 @@
 
 工程发布版；2026-11-04；依据指定 xiegithub 最终源包和本次运行。作者最终报告书提供 [PDF](design_report/design_report_final.pdf) 与 [可编辑 DOCX](design_report/design_report_final.docx)；本文从系统架构、关键机制、实现结果和复现证据四个层面组织技术对照。
 
-> 报告版本：2026-11-04 作者最终报告书完成防御性写作修订，共 47 页。DOCX 保留原始版式、图表与技术数据，PDF 由修改后的 DOCX 导出。作者报告快照与仓库从最终主 XPR 重建的结果分别在 [报告溯源](design_report/formal_report_source.json) 和 [验证结果](validation.md) 中登记。
+> 报告版本：2026-11-04 作者最终报告书完成防御性写作修订，并补充相关工作、优化前后对比和板级证据，共 49 页。DOCX 保留原始版式、图表与技术数据，PDF 由修改后的 DOCX 导出。作者报告快照与仓库从最终主 XPR 重建的结果分别在 [报告溯源](design_report/formal_report_source.json) 和 [验证结果](validation.md) 中登记。
 
 ## 1. 选题背景与解决的问题
 

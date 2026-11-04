@@ -12,6 +12,7 @@
 | 23 项回归与依赖检查日志 | sim/results/summary.json、attempts |
 | 主 XPR、源未变、bit 对应 | build/reports 各板 manifest |
 | 时序/DRC/环/时钟覆盖与工具诊断 | validation.md、rpt/console |
+| 板级实拍、识别结果、执行过程与 ILA | board/evidence/README.md、board/measurements.md |
 | 训练/数值/语法/部署 | training/scnn/verification、weight_alignment.json |
 | 异路径真实仿真和构建 | relocation.json、relocation_simulation.json、repository_check_relocation.json |
 | 当前证据时效性 | delivery_check.json |

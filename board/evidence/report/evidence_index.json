@@ -1,0 +1,239 @@
+{
+  "generated_at": "2026-11-04T14:38:15.088289+08:00",
+  "source_document": "report/design_report/design_report_final.docx",
+  "source_sha256": "aabaecde5b762c167580781e1fa980e874292385fcb844f449d9f3cfb89051ae",
+  "record_count": 21,
+  "records": [
+    {
+      "id": "fig3-1-platform-overall",
+      "file": "report/fig3-1-platform-overall.jpeg",
+      "figure": "figure 3-1 overall platform photo",
+      "evidence_type": "system_photo",
+      "report_page": 35,
+      "observed_result": "整机、底盘和上层板的实物组成",
+      "sha256": "aab33769808157af487fab5f42aad564e0ed5286e40e1571c08a79207703bfe0",
+      "bytes": 180661,
+      "source_document": "report/design_report/design_report_final.docx"
+    },
+    {
+      "id": "fig3-1-system-boards",
+      "file": "report/fig3-1-system-boards.jpeg",
+      "figure": "figure 3-1 upper and lower board photo",
+      "evidence_type": "system_photo",
+      "report_page": 35,
+      "observed_result": "上下层板卡安装与连接关系",
+      "sha256": "a4fbdc84c39b80afcf2aca6ac8f52a4aa07e6f0530be4c9a84ce7b23b2f7646b",
+      "bytes": 297001,
+      "source_document": "report/design_report/design_report_final.docx"
+    },
+    {
+      "id": "fig3-2-mechanical",
+      "file": "report/fig3-2-mechanical.jpeg",
+      "figure": "figure 3-2 mechanical assembly photo",
+      "evidence_type": "system_photo",
+      "report_page": 35,
+      "observed_result": "麦克纳姆底盘与六路舵机机械臂",
+      "sha256": "2fbe802da04e424a97e98789ac9c3406fb99af9f853a4eba8108a3620d789d80",
+      "bytes": 139679,
+      "source_document": "report/design_report/design_report_final.docx"
+    },
+    {
+      "id": "fig3-3-chassis",
+      "file": "report/fig3-3-chassis.png",
+      "figure": "figure 3-3 mecanum chassis photo",
+      "evidence_type": "system_photo",
+      "report_page": 35,
+      "observed_result": "四轮全向底盘与安装方向",
+      "sha256": "4a1d1dda7c06590154651946c12192c4856b03e83d9cbbf39fc0578d1bd98092",
+      "bytes": 89389,
+      "source_document": "report/design_report/design_report_final.docx"
+    },
+    {
+      "id": "fig3-4-hardware-platform",
+      "file": "report/fig3-4-hardware-platform.jpeg",
+      "figure": "figure 3-4 assembled hardware photo",
+      "evidence_type": "board_photo",
+      "report_page": 36,
+      "observed_result": "摄像头、LCD、语音与车体连接",
+      "sha256": "df9d1fbe916440c1b030998d0b996c8b2f9f6ebd4ff6318718aac075fa784f26",
+      "bytes": 138975,
+      "source_document": "report/design_report/design_report_final.docx"
+    },
+    {
+      "id": "fig3-4-circuit",
+      "file": "report/fig3-4-circuit.jpeg",
+      "figure": "figure 3-4 circuit implementation photo",
+      "evidence_type": "board_photo",
+      "report_page": 36,
+      "observed_result": "上层板、下层板及外设连线",
+      "sha256": "fa3ed9078067fe3a606333342a548be4784d55da64703dc5aef2568ee432c4df",
+      "bytes": 818606,
+      "source_document": "report/design_report/design_report_final.docx"
+    },
+    {
+      "id": "fig3-5-upper-build",
+      "file": "report/fig3-5-upper-build.png",
+      "figure": "figure 3-5 upper implementation result",
+      "evidence_type": "build_screenshot",
+      "report_page": 36,
+      "observed_result": "上层实现后的Vivado资源与时序摘要",
+      "sha256": "97ff58ec4eb17ac59bc08162c9c4a8d57495048f697c923c71a29359c8bfd4f0",
+      "bytes": 108843,
+      "source_document": "report/design_report/design_report_final.docx"
+    },
+    {
+      "id": "fig3-6-lower-build",
+      "file": "report/fig3-6-lower-build.png",
+      "figure": "figure 3-6 lower implementation result",
+      "evidence_type": "build_screenshot",
+      "report_page": 37,
+      "observed_result": "下层实现后的Vivado资源与时序摘要",
+      "sha256": "0071af4c713d9ffb23db3d835efb99bae383798407556d30f922625eb90c72d0",
+      "bytes": 115613,
+      "source_document": "report/design_report/design_report_final.docx"
+    },
+    {
+      "id": "fig3-7-nontarget-red",
+      "file": "report/fig3-7-nontarget-red.jpeg",
+      "figure": "figure 3-7 low-altitude non-target red-box output",
+      "evidence_type": "recognition_output",
+      "report_page": 38,
+      "observed_result": "非无人机目标显示红框",
+      "sha256": "1b103ef64a259d7d4445972d53f65a209f4d0f00c6953333e65c861603fe8dbb",
+      "bytes": 16067,
+      "source_document": "report/design_report/design_report_final.docx"
+    },
+    {
+      "id": "fig3-8-drone-green",
+      "file": "report/fig3-8-drone-green.jpeg",
+      "figure": "figure 3-8 low-altitude drone green-box output",
+      "evidence_type": "recognition_output",
+      "report_page": 38,
+      "observed_result": "无人机目标显示绿框",
+      "sha256": "d3cc611cc5c12cefbc102468436aedffff4473503251e3f76a7931e427bb9f04",
+      "bytes": 12064,
+      "source_document": "report/design_report/design_report_final.docx"
+    },
+    {
+      "id": "fig3-9-initial",
+      "file": "report/fig3-9-initial.jpeg",
+      "figure": "figure 3-9 initial unlocked state",
+      "evidence_type": "lock_sequence",
+      "report_page": 39,
+      "observed_result": "目标进入画面、初始未锁状态",
+      "sha256": "63aaa62803af037a67b2985e8369e3454f366eb35b1f2e4ce752da3d53c8d347",
+      "bytes": 16907,
+      "source_document": "report/design_report/design_report_final.docx"
+    },
+    {
+      "id": "fig3-9-locked",
+      "file": "report/fig3-9-locked.jpeg",
+      "figure": "figure 3-9 locked state",
+      "evidence_type": "lock_sequence",
+      "report_page": 39,
+      "observed_result": "多次分类确认后进入绿色锁定状态",
+      "sha256": "d3cc611cc5c12cefbc102468436aedffff4473503251e3f76a7931e427bb9f04",
+      "bytes": 12064,
+      "source_document": "report/design_report/design_report_final.docx"
+    },
+    {
+      "id": "fig3-9-unlocked",
+      "file": "report/fig3-9-unlocked.jpeg",
+      "figure": "figure 3-9 unlock state",
+      "evidence_type": "lock_sequence",
+      "report_page": 39,
+      "observed_result": "低脉冲复核后退出锁定",
+      "sha256": "60b138650f3a21ee52e9d285dfd10f9f201e3e0e63eee27699f540da2e7b983f",
+      "bytes": 28165,
+      "source_document": "report/design_report/design_report_final.docx"
+    },
+    {
+      "id": "fig3-10-voice-module",
+      "file": "report/fig3-10-voice-module.jpeg",
+      "figure": "figure 3-10 voice recognition module",
+      "evidence_type": "system_photo",
+      "report_page": 41,
+      "observed_result": "LU-ASR02语音识别模块及接线",
+      "sha256": "7775d67d1cbc7ea97f6fc18a2be4b86cfaadab916b900f25410bb55b690eac42",
+      "bytes": 65266,
+      "source_document": "report/design_report/design_report_final.docx"
+    },
+    {
+      "id": "fig3-11-corner-turn",
+      "file": "report/fig3-11-corner-turn.jpeg",
+      "figure": "figure 3-11 line-following corner turn",
+      "evidence_type": "motion_output",
+      "report_page": 42,
+      "observed_result": "循迹路径中的直角转弯过程",
+      "sha256": "aa2186a3d4bfd4787f007ccfb69c020adc17609875d3832e202fda6991f68472",
+      "bytes": 24212,
+      "source_document": "report/design_report/design_report_final.docx"
+    },
+    {
+      "id": "fig3-12-arm-1",
+      "file": "report/fig3-12-arm-1.jpeg",
+      "figure": "figure 3-12 arm transfer sequence 1",
+      "evidence_type": "arm_sequence",
+      "report_page": 42,
+      "observed_result": "机械臂装卸动作序列1",
+      "sha256": "824d609a2367ecdebc990eec4a89e710bb432a020ee8c41fc8e02ea72f7c300a",
+      "bytes": 23795,
+      "source_document": "report/design_report/design_report_final.docx"
+    },
+    {
+      "id": "fig3-12-arm-2",
+      "file": "report/fig3-12-arm-2.jpeg",
+      "figure": "figure 3-12 arm transfer sequence 2",
+      "evidence_type": "arm_sequence",
+      "report_page": 42,
+      "observed_result": "机械臂装卸动作序列2",
+      "sha256": "a702b52bfbda5fb15e8d9a4857ee5e4ff9b02993e201cd53e415cb84bc9a9817",
+      "bytes": 25906,
+      "source_document": "report/design_report/design_report_final.docx"
+    },
+    {
+      "id": "fig3-12-arm-3",
+      "file": "report/fig3-12-arm-3.jpeg",
+      "figure": "figure 3-12 arm transfer sequence 3",
+      "evidence_type": "arm_sequence",
+      "report_page": 42,
+      "observed_result": "机械臂装卸动作序列3",
+      "sha256": "700f2337173cc3330a80fb51fbcaf1d13bf75545673f92b328a6c49e26695950",
+      "bytes": 19411,
+      "source_document": "report/design_report/design_report_final.docx"
+    },
+    {
+      "id": "fig3-12-arm-4",
+      "file": "report/fig3-12-arm-4.jpeg",
+      "figure": "figure 3-12 arm transfer sequence 4",
+      "evidence_type": "arm_sequence",
+      "report_page": 42,
+      "observed_result": "机械臂装卸动作序列4",
+      "sha256": "81e14ee667e060a5c58a6afa2e1516d7f9b1085967c02dd8992689783feaee8d",
+      "bytes": 15004,
+      "source_document": "report/design_report/design_report_final.docx"
+    },
+    {
+      "id": "fig3-13-defense-tracking",
+      "file": "report/fig3-13-defense-tracking.jpeg",
+      "figure": "figure 3-13 air-defence gimbal tracking",
+      "evidence_type": "tracking_output",
+      "report_page": 43,
+      "observed_result": "防空模式下云台与底盘辅助转向跟踪",
+      "sha256": "057101dde4ddc06e9f20abc88e8e825030a7dca85309cbfec1fb88dbdec8afe4",
+      "bytes": 419454,
+      "source_document": "report/design_report/design_report_final.docx"
+    },
+    {
+      "id": "fig3-14-ila-roi",
+      "file": "report/fig3-14-ila-roi.png",
+      "figure": "figure 3-14 board ILA capture for ROI coordinates",
+      "evidence_type": "ila_capture",
+      "report_page": 46,
+      "observed_result": "ILA实测roi_x0=0x110、roi_y0=0x054，即(272,84)，位于有效范围[0,472]x[0,272]",
+      "sha256": "a40fbb126b5852f9c0aeaa5691c052b9be89d560f0d43cbb0a023fa9547c5b22",
+      "bytes": 51332,
+      "source_document": "report/design_report/design_report_final.docx"
+    }
+  ]
+}

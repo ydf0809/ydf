@@ -6,7 +6,7 @@
 
 > 2026-11-04：双板工程已按最终 `xiegithub` 目录同步，源码、约束、XPR、bit 和验证记录均已更新；作者最终报告书已完成防御性写作修订，并以 DOCX 与导出 PDF 两种格式纳入仓库。
 
-本仓库以所有者指定的 `xiegithub` 源包为依据，包含两套 Zynq-7000 PL 工程和配套 SCNN 模型、训练、参数转换及数值验证工程。上层包含 OV5640 采集、彩色 ROI、SCNN、目标搜索与锁定、LCD、语音和板间通信；下层包含 OV7670 图像处理、LCD、循迹、底盘与机械臂控制。工程同时提供引脚、烧录入口和板级实测记录模板。
+本仓库以所有者指定的 `xiegithub` 源包为依据，包含两套 Zynq-7000 PL 工程和配套 SCNN 模型、训练、参数转换及数值验证工程。上层包含 OV5640 采集、彩色 ROI、SCNN、目标搜索与锁定、LCD、语音和板间通信；下层包含 OV7670 图像处理、LCD、循迹、底盘与机械臂控制。工程同时提供引脚、烧录入口、板级证据索引和实测记录模板。
 
 本仓库按 AMD 竞赛指南第 3.3.5 节组织交付。先阅读 [最终设计报告 PDF](report/design_report/design_report_final.pdf)、[可编辑报告书 DOCX](report/design_report/design_report_final.docx)、[技术报告对照](report/design_report.md)、[功能实现详解](report/implementation_details.md)、[从零复现](report/reproduction.md) 和 [验证结果](report/validation.md)。
 
@@ -48,7 +48,7 @@ python build/verify_relocation.py --vivado-bin "<vivado_install>/bin"
 | training/scnn/ | 模型、训练/微调、COE/MEM/ROM 导出、参考输入 | 配套软件及权重来源 |
 | sim/ | 仿真入口、真实日志与结果 | 功能验证证据 |
 | build/ | 构建与检查脚本、资源/时序/DRC 报告 | 可复现构建 |
-| board/ | 引脚、烧录入口、bit、实测记录入口 | 上板工程与实测记录 |
+| board/ | 引脚、烧录入口、bit、报告图像证据与实测记录 | 上板工程与实测记录 |
 | data/ | 模型卡、测试输入及参考输出说明 | 参考数据 |
 | skill/ | [SCNN 训练部署流水线、提示词工作流与三类踩坑清单](skill/README.md) | 3.3.5.2 |
 | report/ | 设计报告、协作节选、纠错案例、验证及扩展材料 | 3.3.5.3—3.3.5.5 |

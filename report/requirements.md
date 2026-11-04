@@ -7,11 +7,11 @@
 | 3.3.5.1 完整工程/源码 | projects、training/scnn | 直接取指定源包 |
 | 仿真/验证 | sim/results、训练 verification | 23 项回归、定点数值与部署检查 |
 | 资源/时序/关键指标 | build/reports、resources.csv | 资源、时序、DRC 与工具诊断 |
-| 上板工程/运行/实测对照 | board | bit、引脚、烧录入口与测量模板 |
+| 上板工程/运行/实测对照 | board、board/evidence | bit、引脚、烧录入口、报告图像证据与逐项参考结果 |
 | 可复现构建 | build、relocation.json | 主 XPR 与异路径复现 |
 | 3.3.5.2 技能 | skill 训练部署流水线、提示词工作流、三类踩坑及检查器 | 来源/用法/效果/失效条件；非 PYNQ |
 | 3.3.5.3 原理/框图/划分/接口 | design_report/design_report_final.pdf、design_report/design_report_final.docx、design_report.md、implementation_details.md | 作者最终报告书、技术对照与实现附录形成完整证据链 |
-| 优化前后对比 | 设计报告第 4 节 | 设计选择、资源与实现结果 |
+| 优化前后对比 | 设计报告 3.3.10 表3-7 | 作者交付快照与最终主工程的资源、时序及功能回归对照 |
 | 协作/纠错/工作流 | collaboration、ai_collaboration.md | 25 条真实可见消息与来源索引 |
 | 从零复现 | reproduction.md、README、build/sim/board | 环境、命令、预期结果与异常处理 |
 | 3.3.5.4 结构/命名 | README、repository_check | projects/training 替代布局 |

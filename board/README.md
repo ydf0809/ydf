@@ -41,3 +41,5 @@ python board/export_pinmap.py
 上板验收以构建产物、引脚核对、烧录记录和板级测量共同构成完整证据。
 
 也提供program.tcl作为可审核的批处理烧录入口，参数为upper或lower、精确hw_target名称及精确hw_device名称。脚本要求连接目标唯一且器件为xc7z020；执行前核对manifest与实物，不使用通配符随意选取板卡。
+
+报告书中的实拍、识别结果、执行过程、实现摘要和ILA抓取已整理到 [证据索引](evidence/README.md)，图像哈希见 [evidence_index.json](evidence/report/evidence_index.json)。运行 `python board/evidence/verify_evidence.py` 可核对报告来源及全部证据文件的SHA-256。

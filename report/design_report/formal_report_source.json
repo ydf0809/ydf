@@ -11,36 +11,43 @@
   "source_docx_sha256": "e22648d0fd4706cd99c711b23936ca77239b89411f3072a4f903d4960471365c",
   "source_docx_bytes": 5745376,
   "edited_docx": "report/design_report/design_report_final.docx",
-  "edited_docx_sha256": "5f8f78cb8b8bc504b460a1afd3569ad5670fcab7cbfb595e7a8af8401012328f",
-  "edited_docx_bytes": 5483904,
+  "edited_docx_sha256": "aabaecde5b762c167580781e1fa980e874292385fcb844f449d9f3cfb89051ae",
+  "edited_docx_bytes": 5485389,
   "exported": "report/design_report/design_report_final.pdf",
-  "exported_sha256": "3f2323e9163f3ae43a8c9d28a995e46cfab82f18e4f751788e1a3d751d561739",
-  "bytes": 4397431,
+  "exported_sha256": "b430770a54ce93b0d31097e55f00725eb59fd83be6d5ecf15f0c28d153c65e09",
+  "bytes": 4406136,
   "format": "pdf",
   "copy_status": "derived_pdf",
   "pdf_metadata": {
     "title": "基于FPGA的多模态低空空前预警战备车",
     "creator": "WPS 文字",
-    "creation_date": "2026-11-04T13:55:46+08:00",
+    "creation_date": "2026-11-04T14:35:14+08:00",
     "form": "none",
     "javascript": "no"
   },
   "render": {
-    "pages": 47,
+    "pages": 49,
     "page_size": "A4",
     "page_size_points": "595.3 x 841.9",
-    "text_chars": 33138,
+    "text_chars": 34214,
     "annotations": 0,
     "blank_pages": 0,
     "visual_review": "all_pages_rendered_and_reviewed_at_native_render_size"
   },
   "editing": {
-    "method": "minimal_text_replacements_preserving_existing_runs_and_layout",
-    "paragraph_text_changes": 14,
+    "method": "minimal_text_replacements_plus_related_work_and_optimization_table",
+    "paragraph_text_changes": 21,
     "table_text_changes": 6,
+    "tables_added": 1,
     "tracked_changes": 0,
     "comments": 0,
-    "scope": "Defensive-writing review only; original figures, tables, experiments and author measurements were retained."
+    "scope": "Defensive-writing review plus related-work positioning, optimization comparison and board-evidence completion; original figures and author measurements were retained."
+  },
+  "board_evidence": {
+    "index": "board/evidence/report/evidence_index.json",
+    "index_sha256": "0a8d04fc211ce72db8db2b498c6f25db4e8e5b0ff14e1244bdd4c0a196d7ca05",
+    "record_count": 21,
+    "source": "Images extracted without re-encoding from the final report DOCX"
   },
   "report_internal_snapshot": {
     "tests": "upper 11, lower 15, total 26",
@@ -76,9 +83,9 @@
     "physical_board_validation": "not_performed"
   },
   "notes": [
-    "The owner-supplied DOCX is retained by hash; the edited DOCX changes prose only and preserves the original figures, tables and measurements.",
+    "The owner-supplied DOCX is retained by hash; the edited DOCX preserves the original figures and measurements while adding related work, an optimization comparison and defensive-writing revisions.",
     "The PDF is exported from the edited DOCX and its build evidence is recorded separately.",
     "Defensive phrases were replaced with positive claims or neutral evaluation-scope statements; no result values were invented.",
-    "The final PDF contains figures throughout and no blank pages were observed during the 47-page visual review."
+    "The final PDF contains figures throughout and no blank pages were observed during the 49-page visual review."
   ]
 }
